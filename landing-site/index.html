@@ -196,6 +196,13 @@
         }
 
 
+        .logo-section img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
         .logo-text {
             display: flex;
             flex-direction: column;
@@ -575,6 +582,10 @@
                 height: 32px;
             }
 
+            .logo-section img {
+                height: 32px;
+            }
+
             .logo-text {
                 display: none;
             }
@@ -653,7 +664,7 @@
             right: -20%;
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(94, 196, 213, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 156, 222, 0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -665,7 +676,7 @@
             left: -10%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(94, 196, 213, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 156, 222, 0.05) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -1442,9 +1453,10 @@
         <div class="header-container">
             <!-- Logo Section -->
             <a href="#" class="logo-section">
+                <img src="logo.png" alt="Medikal - AI Health Assistant" />
                 <div class="logo-text">
                     <div class="logo-title">MEDIKAL</div>
-                    <div class="logo-subtitle">AI HEALTHCARE</div>
+                    <div class="logo-subtitle">AI Healthcare</div>
                 </div>
             </a>
             
@@ -1458,20 +1470,92 @@
                     </li>
                     
                     <li>
+                        <a href="#">
+                            Solutions
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    AI Diagnostics
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-shield-virus"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    AMR Surveillance
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    Patient Portal
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li>
                         <a href="#about">
-                            About
+                            Features
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#">
+                            Resources
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-book-medical"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    Clinical Guidelines
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    AMR Data
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    Training Materials
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#team">
+                            Our Team
                         </a>
                     </li>
                     
                     <li>
                         <a href="#mission">
-                            Mission
+                            Impact
                         </a>
                     </li>
-
+                    
                     <li>
-                        <a href="#team">
-                            Team
+                        <a href="#news">
+                            News & Media
                         </a>
                     </li>
                     
@@ -1519,20 +1603,26 @@
             </li>
             <li>
                 <a href="#about">
-                    <i class="fas fa-info-circle"></i>
-                    About
-                </a>
-            </li>
-            <li>
-                <a href="#mission">
-                    <i class="fas fa-bullseye"></i>
-                    Mission
+                    <i class="fas fa-star"></i>
+                    Features
                 </a>
             </li>
             <li>
                 <a href="#team">
                     <i class="fas fa-users"></i>
-                    Team
+                    Our Team
+                </a>
+            </li>
+            <li>
+                <a href="#mission">
+                    <i class="fas fa-heart"></i>
+                    Impact
+                </a>
+            </li>
+            <li>
+                <a href="#news">
+                    <i class="fas fa-newspaper"></i>
+                    News & Media
                 </a>
             </li>
             <li>
@@ -1791,6 +1881,92 @@
                         <span class="bg-pink-500/20 text-pink-400 px-3 py-1 rounded-full text-sm">Innovation</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Media Section -->
+    <section id="news" class="py-20 bg-gradient-to-b from-dark-bg to-midnight">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    News & <span class="text-gradient">Media</span>
+                </h2>
+                <p class="text-xl text-soft-cream/80 max-w-3xl mx-auto">
+                    Stay updated with the latest news, updates, and media coverage about Medikal's impact on healthcare in Africa
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- News Item 1 -->
+                <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                    <div class="mb-4">
+                        <div class="w-full h-48 bg-gradient-to-br from-neon-cyan/20 to-warm-beige/10 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-newspaper text-4xl text-neon-cyan"></i>
+                        </div>
+                        <span class="text-sm text-neon-cyan font-semibold">Press Release</span>
+                        <span class="text-sm text-soft-cream/60 mx-2">•</span>
+                        <span class="text-sm text-soft-cream/60">Dec 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-soft-cream">
+                        Medikal Launches AI-Powered AMR Surveillance System
+                    </h3>
+                    <p class="text-soft-cream/70 mb-4 line-clamp-3">
+                        Medikal introduces groundbreaking AI technology to combat antimicrobial resistance across East African healthcare facilities.
+                    </p>
+                    <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- News Item 2 -->
+                <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                    <div class="mb-4">
+                        <div class="w-full h-48 bg-gradient-to-br from-warm-beige/20 to-neon-cyan/10 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-video text-4xl text-warm-beige"></i>
+                        </div>
+                        <span class="text-sm text-warm-beige font-semibold">Media Coverage</span>
+                        <span class="text-sm text-soft-cream/60 mx-2">•</span>
+                        <span class="text-sm text-soft-cream/60">Nov 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-soft-cream">
+                        WHO Recognizes Medikal's Impact on AMR Prevention
+                    </h3>
+                    <p class="text-soft-cream/70 mb-4 line-clamp-3">
+                        World Health Organization highlights Medikal's innovative approach to antimicrobial stewardship in African healthcare systems.
+                    </p>
+                    <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+
+                <!-- News Item 3 -->
+                <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                    <div class="mb-4">
+                        <div class="w-full h-48 bg-gradient-to-br from-neon-cyan/20 to-warm-beige/10 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fas fa-bullhorn text-4xl text-neon-cyan"></i>
+                        </div>
+                        <span class="text-sm text-neon-cyan font-semibold">Announcement</span>
+                        <span class="text-sm text-soft-cream/60 mx-2">•</span>
+                        <span class="text-sm text-soft-cream/60">Oct 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-soft-cream">
+                        Partnership with AMR Initiative Rwanda Expands
+                    </h3>
+                    <p class="text-soft-cream/70 mb-4 line-clamp-3">
+                        Medikal strengthens collaboration with AMR Initiative Rwanda to reach more healthcare facilities across the region.
+                    </p>
+                    <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- View All News Button -->
+            <div class="text-center mt-12">
+                <a href="#" class="bg-gradient-to-r from-neon-cyan to-warm-beige text-midnight px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-neon-cyan/25 transition-all inline-flex items-center gap-2">
+                    View All News <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
