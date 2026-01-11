@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medikal - AI-Powered Health Assistant for Africa</title>
+    <meta name="description" content="Africa's AI-powered health assistant fighting Antimicrobial Resistance (AMR) for safer, smarter healthcare.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'midnight': '#0b2735',
+                        'warm-beige': '#efb291',
+                        'soft-cream': '#e5e2db',
+                        'neon-cyan': '#00ffff',
+                        'dark-bg': '#0a1a24',
+                        'card-bg': '#0f2a3a'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 3s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'pulse-cyber': 'pulseCyber 2s infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes glow {
+            from { box-shadow: 0 0 20px #00ffff; }
+            to { box-shadow: 0 0 30px #00ffff, 0 0 40px #00ffff; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulseCyber {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .cyber-border {
+            position: relative;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #0b2735, #0f2a3a) padding-box,
+                        linear-gradient(45deg, #00ffff, #efb291) border-box;
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(15, 42, 58, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #00ffff, #efb291);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-soft-cream font-inter overflow-x-hidden">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-neon-cyan to-warm-beige rounded-lg flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-midnight text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gradient">Medikal</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="hover:text-neon-cyan transition-colors">About</a>
+                    <a href="#mission" class="hover:text-neon-cyan transition-colors">Mission</a>
+                    <a href="#team" class="hover:text-neon-cyan transition-colors">Team</a>
+                    <a href="#access" class="bg-gradient-to-r from-neon-cyan to-warm-beige text-midnight px-6 py-2 rounded-full font-semibold hover:shadow-lg hover:shadow-neon-cyan/25 transition-all">
+                        Early Access
+                    </a>
+                </div>
+                <button class="md:hidden text-neon-cyan" id="mobileMenuBtn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-card-bg border-t border-neon-cyan/20">
+            <div class="container mx-auto px-6 py-4 space-y-4">
+                <a href="#about" class="block hover:text-neon-cyan transition-colors">About</a>
+                <a href="#mission" class="block hover:text-neon-cyan transition-colors">Mission</a>
+                <a href="#team" class="block hover:text-neon-cyan transition-colors">Team</a>
+                <a href="#access" class="block bg-gradient-to-r from-neon-cyan to-warm-beige text-midnight px-6 py-2 rounded-full font-semibold text-center">
+                    Early Access
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: AI Avatar -->
+                <div class="text-center lg:text-left animate-slide-up">
+                    <div class="relative mb-8">
+                        <div class="w-80 h-80 mx-auto lg:mx-0 cyber-border rounded-full p-2 animate-float">
+                            <div class="w-full h-full bg-gradient-to-br from-midnight to-card-bg rounded-full flex items-center justify-center relative overflow-hidden">
+                                <!-- African Doctor Avatar -->
+                                <div class="w-64 h-64 bg-gradient-to-br from-warm-beige/20 to-neon-cyan/10 rounded-full flex items-center justify-center border-2 border-neon-cyan/30">
+                                    <i class="fas fa-user-md text-6xl text-warm-beige"></i>
+                                </div>
+                                <!-- Pulse animation -->
+                                <div class="absolute inset-0 rounded-full border-2 border-neon-cyan/50 animate-pulse-cyber"></div>
+                            </div>
+                        </div>
+                        <!-- Click to speak button -->
+                        <button id="speakBtn" class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-neon-cyan to-warm-beige text-midnight px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-neon-cyan/25 transition-all animate-glow">
+                            <i class="fas fa-volume-up mr-2"></i>Click to Speak
+                        </button>
+                    </div>
+                    
+                    <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Africa's <span class="text-gradient">AI-Powered</span><br>
+                        Health Assistant
+                    </h1>
+                    
+                    <p class="text-xl lg:text-2xl mb-8 text-soft-cream/80 max-w-2xl">
+                        Fighting Antimicrobial Resistance (AMR) for safer, smarter healthcare across Africa
+                    </p>
+                    
+                    <button onclick="scrollToAccess()" class="bg-gradient-to-r from-warm-beige to-neon-cyan text-midnight px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-warm-beige/25 transition-all">
+                        Try Early Access →
+                    </button>
+                </div>
+                
+                <!-- Right: App Preview -->
+                <div class="animate-fade-in">
+                    <div class="relative">
+                        <!-- Desktop Preview -->
+                        <div class="bg-card-bg rounded-2xl p-6 shadow-2xl border border-neon-cyan/20">
+                            <div class="flex items-center space-x-2 mb-4">
+                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div class="bg-midnight rounded-lg p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-gradient-to-r from-neon-cyan to-warm-beige rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-heartbeat text-midnight text-sm"></i>
+                                        </div>
+                                        <span class="text-soft-cream font-semibold">Medikal Dashboard</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                        <span class="text-xs text-soft-cream/60">AI Active</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Mock interface -->
+                                <div class="space-y-3">
+                                    <div class="bg-card-bg/50 rounded-lg p-3">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-robot text-neon-cyan"></i>
+                                            <span class="text-sm text-soft-cream">AMR Risk Analysis Complete</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-card-bg/50 rounded-lg p-3">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-pills text-warm-beige"></i>
+                                            <span class="text-sm text-soft-cream">Antibiotic Recommendation: Safe</span>
+                                        </div>
+                                    </div>
+                                    <div class="bg-card-bg/50 rounded-lg p-3">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-chart-line text-neon-cyan"></i>
+                                            <span class="text-sm text-soft-cream">Patient Outcome: 94% Success</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Mobile Preview -->
+                        <div class="absolute -bottom-8 -right-8 w-48 bg-card-bg rounded-3xl p-4 shadow-2xl border border-neon-cyan/20">
+                            <div class="bg-midnight rounded-2xl p-4">
+                                <div class="text-center mb-3">
+                                    <div class="w-6 h-6 bg-gradient-to-r from-neon-cyan to-warm-beige rounded-lg mx-auto mb-2 flex items-center justify-center">
+                                        <i class="fas fa-mobile-alt text-midnight text-xs"></i>
+                                    </div>
+                                    <span class="text-xs text-soft-cream">Mobile App</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="h-2 bg-neon-cyan/20 rounded-full">
+                                        <div class="h-full bg-neon-cyan rounded-full w-3/4"></div>
+                                    </div>
+                                    <div class="h-2 bg-warm-beige/20 rounded-full">
+                                        <div class="h-full bg-warm-beige rounded-full w-1/2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-b from-dark-bg to-midnight">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    What is <span class="text-gradient">Medikal</span>?
+                </h2>
+                <p class="text-xl text-soft-cream/80 max-w-4xl mx-auto leading-relaxed">
+                    Medikal is an AI-powered platform developed to assist African clinicians and patients in fighting antimicrobial resistance, improving diagnosis, guiding safe medication use, and preserving life-saving drugs for future generations.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-effect rounded-2xl p-8 text-center hover:shadow-lg hover:shadow-neon-cyan/10 transition-all">
+                    <div class="w-16 h-16 bg-gradient-to-r from-neon-cyan to-warm-beige rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-brain text-midnight text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-neon-cyan">AI Diagnosis</h3>
+                    <p class="text-soft-cream/80">Advanced AI algorithms assist healthcare providers in accurate diagnosis and treatment recommendations.</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 text-center hover:shadow-lg hover:shadow-neon-cyan/10 transition-all">
+                    <div class="w-16 h-16 bg-gradient-to-r from-warm-beige to-neon-cyan rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-midnight text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-warm-beige">AMR Protection</h3>
+                    <p class="text-soft-cream/80">Intelligent monitoring and prevention of antimicrobial resistance to preserve medication effectiveness.</p>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 text-center hover:shadow-lg hover:shadow-neon-cyan/10 transition-all">
+                    <div class="w-16 h-16 bg-gradient-to-r from-neon-cyan to-warm-beige rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-globe-africa text-midnight text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-neon-cyan">Africa-Centered</h3>
+                    <p class="text-soft-cream/80">Built specifically for African healthcare systems, addressing unique challenges and cultural contexts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-20 bg-midnight">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    What We're <span class="text-gradient">Tackling</span>
+                </h2>
+                <p class="text-xl text-soft-cream/80 max-w-3xl mx-auto">
+                    Antimicrobial Resistance is one of the biggest threats to global health. In Africa, we're fighting back with AI.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="cyber-border rounded-2xl p-8 bg-card-bg hover:shadow-lg hover:shadow-warm-beige/10 transition-all">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-r from-red-500 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-pills text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-warm-beige">Antibiotic Overuse</h3>
+                    </div>
+                    <p class="text-soft-cream/80 text-center mb-4">
+                        Over-prescription and misuse of antibiotics leading to resistance
+                    </p>
+                    <div class="text-center">
+                        <span class="inline-block bg-red-500/20 text-red-400 px-4 py-2 rounded-full text-sm font-semibold">
+                            Critical Issue
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="cyber-border rounded-2xl p-8 bg-card-bg hover:shadow-lg hover:shadow-warm-beige/10 transition-all">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-search-minus text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-warm-beige">Misdiagnosis</h3>
+                    </div>
+                    <p class="text-soft-cream/80 text-center mb-4">
+                        Lack of diagnostic tools leading to incorrect treatment decisions
+                    </p>
+                    <div class="text-center">
+                        <span class="inline-block bg-yellow-500/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-semibold">
+                            High Priority
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="cyber-border rounded-2xl p-8 bg-card-bg hover:shadow-lg hover:shadow-warm-beige/10 transition-all">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-info-circle text-white text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-warm-beige">Information Gap</h3>
+                    </div>
+                    <p class="text-soft-cream/80 text-center mb-4">
+                        Limited access to updated medical information and guidelines
+                    </p>
+                    <div class="text-center">
+                        <span class="inline-block bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm font-semibold">
+                            Addressable
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-gradient-to-b from-midnight to-dark-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    Who's Behind <span class="text-gradient">Medikal</span>?
+                </h2>
+                <p class="text-xl text-soft-cream/80 max-w-3xl mx-auto">
+                    A powerful partnership between healthcare experts and AI innovators
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div class="glass-effect rounded-2xl p-8 text-center hover:shadow-lg hover:shadow-neon-cyan/10 transition-all">
+                    <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-hospital text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-neon-cyan">AMR Initiative Rwanda</h3>
+                    <p class="text-soft-cream/80 mb-4">
+                        Leading NGO partner focused on combating antimicrobial resistance across Rwanda and East Africa
+                    </p>
+                    <div class="flex justify-center space-x-2">
+                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">Healthcare</span>
+                        <span class="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm">NGO Partner</span>
+                    </div>
+                </div>
+                
+                <div class="glass-effect rounded-2xl p-8 text-center hover:shadow-lg hover:shadow-warm-beige/10 transition-all">
+                    <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-robot text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-warm-beige">ZeroX Intelligence</h3>
+                    <p class="text-soft-cream/80 mb-4">
+                        Cutting-edge AI firm specializing in healthcare technology and intelligent systems for African markets
+                    </p>
+                    <div class="flex justify-center space-x-2">
+                        <span class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm">AI Technology</span>
+                        <span class="bg-pink-500/20 text-pink-400 px-3 py-1 rounded-full text-sm">Innovation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Early Access Section -->
+    <section id="access" class="py-20 bg-gradient-to-r from-midnight via-card-bg to-midnight">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    Try <span class="text-gradient">Early Access</span>
+                </h2>
+                <p class="text-xl text-soft-cream/80 mb-10">
+                    Join healthcare professionals across Africa who are already testing Medikal's AI-powered platform
+                </p>
+                
+                <form id="accessForm" class="glass-effect rounded-2xl p-8 space-y-6">
+                    <div>
+                        <label for="email" class="block text-left text-soft-cream/80 mb-2 font-semibold">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            required
+                            class="w-full bg-midnight border border-neon-cyan/30 rounded-lg px-4 py-3 text-soft-cream focus:border-neon-cyan focus:outline-none transition-colors"
+                            placeholder="your.email@example.com"
+                        >
+                    </div>
+                    
+                    <div>
+                        <label for="reason" class="block text-left text-soft-cream/80 mb-2 font-semibold">Why do you want to try Medikal?</label>
+                        <textarea 
+                            id="reason" 
+                            rows="4" 
+                            required
+                            class="w-full bg-midnight border border-neon-cyan/30 rounded-lg px-4 py-3 text-soft-cream focus:border-neon-cyan focus:outline-none transition-colors resize-none"
+                            placeholder="Tell us about your healthcare role and how Medikal could help..."
+                        ></textarea>
+                    </div>
+                    
+                    <button 
+                        type="submit" 
+                        class="w-full bg-gradient-to-r from-warm-beige to-neon-cyan text-midnight px-8 py-4 rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-warm-beige/25 transition-all"
+                    >
+                        <span id="submitText">Request Early Access</span>
+                        <i id="submitIcon" class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </form>
+                
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden bg-green-500/20 border border-green-500/30 rounded-lg p-6 mt-6">
+                    <i class="fas fa-check-circle text-green-400 text-2xl mb-2"></i>
+                    <h3 class="text-xl font-bold text-green-400 mb-2">Thank You!</h3>
+                    <p class="text-soft-cream/80">Your early access request has been submitted. We'll be in touch soon!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-bg py-12 border-t border-neon-cyan/20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-r from-neon-cyan to-warm-beige rounded-lg flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-midnight text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-gradient">Medikal</span>
+                    </div>
+                    <p class="text-soft-cream/60 mb-6 max-w-md">
+                        Africa's AI-powered health assistant fighting antimicrobial resistance for safer, smarter healthcare.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-card-bg rounded-lg flex items-center justify-center hover:bg-neon-cyan/20 transition-colors">
+                            <i class="fab fa-twitter text-neon-cyan"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-card-bg rounded-lg flex items-center justify-center hover:bg-neon-cyan/20 transition-colors">
+                            <i class="fab fa-linkedin text-neon-cyan"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-card-bg rounded-lg flex items-center justify-center hover:bg-neon-cyan/20 transition-colors">
+                            <i class="fab fa-github text-neon-cyan"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-soft-cream font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-soft-cream/60">
+                        <li><a href="#about" class="hover:text-neon-cyan transition-colors">About</a></li>
+                        <li><a href="#mission" class="hover:text-neon-cyan transition-colors">Mission</a></li>
+                        <li><a href="#team" class="hover:text-neon-cyan transition-colors">Team</a></li>
+                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-soft-cream font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-soft-cream/60">
+                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-neon-cyan/20 pt-8 mt-8 text-center text-soft-cream/60">
+                <p>&copy; 2025 Medikal – Powered by AMR Initiative Rwanda & ZeroX Intelligence</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

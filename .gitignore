@@ -1,0 +1,5 @@
+-e 
+# Environment files (but keep .env.example)
+*.env
+*.env.*
+!.env.example
