@@ -72,44 +72,774 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
+        /* ========================================
+           NEW HEADER STYLES
+        ======================================== */
+        :root {
+            --primary-blue: #5EC4D5;
+            --primary-dark: #4AAFC0;
+            --accent-light: #E8F7F9;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #f8fafb;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(94, 196, 213, 0.08);
+            --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
+            --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.6rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-bar-item:hover {
+            opacity: 0.8;
+            transform: translateX(2px);
+        }
+
+        .top-bar-item i {
+            font-size: 0.9rem;
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: var(--white);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-selector:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Main Header */
+        .medikal-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .medikal-header.scrolled {
+            box-shadow: var(--shadow-md);
+            border-bottom-color: var(--border-light);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: relative;
+        }
+
+        /* Logo Section */
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .logo-section:hover {
+            opacity: 0.8;
+        }
+
+        .logo-section img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            color: var(--light-text);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Desktop Navigation */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0;
+        }
+
+        .nav-menu > li {
+            position: relative;
+        }
+
+        .nav-menu > li > a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu > li > a i.fa-chevron-down {
+            font-size: 0.75rem;
+            transition: var(--transition);
+        }
+
+        .nav-menu > li > a:hover {
+            color: var(--primary-blue);
+            background: var(--accent-light);
+        }
+
+        .nav-menu > li:hover > a i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Mega Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            padding: 1rem;
+            min-width: 260px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-light);
+            z-index: 100;
+        }
+
+        .nav-menu > li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: var(--white);
+            border-left: 1px solid var(--border-light);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--dark-text);
+            transition: var(--transition);
+            margin-bottom: 0.25rem;
+        }
+
+        .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .dropdown-item:hover {
+            background: var(--accent-light);
+            color: var(--primary-blue);
+        }
+
+        .dropdown-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text);
+            flex-shrink: 0;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-item:hover .dropdown-icon {
+            color: var(--primary-blue);
+        }
+
+        .dropdown-content {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: var(--primary-blue);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.65rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Mobile Navigation */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem 0;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 2rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav-logo img {
+            height: 32px;
+        }
+
+        .mobile-close-btn {
+            background: var(--accent-light);
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .mobile-close-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            margin: 0;
+            padding: 0 1.5rem;
+        }
+
+        .mobile-nav-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-nav-list a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .mobile-nav-list a i {
+            width: 20px;
+            text-align: center;
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        .mobile-nav-list a:hover,
+        .mobile-nav-list a:focus {
+            color: var(--primary-blue);
+            background: var(--accent-light);
+            border-color: var(--primary-blue);
+        }
+
+        .mobile-nav-list a:hover i {
+            color: var(--primary-blue);
+        }
+
+        .mobile-cta {
+            margin: 2rem 1.5rem 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .mobile-cta .cta-button {
+            width: 100%;
+            justify-content: center;
+            font-size: 1rem;
+            padding: 1rem 2rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .header-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-menu {
+                gap: 0.25rem;
+            }
+
+            .nav-menu > li > a {
+                padding: 0.65rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+
+            .header-container {
+                padding: 1rem;
+            }
+
+            .nav-menu,
+            .cta-button.desktop-only {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .logo-section {
+                padding: 0.375rem 0.75rem;
+            }
+
+            .logo-section img {
+                height: 32px;
+            }
+
+            .logo-text {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-nav {
+                width: 100vw;
+                right: -100vw;
+                max-width: none;
+            }
+
+            .logo-section img {
+                height: 28px;
+            }
+        }
+
+        /* Accessibility & Focus States */
+        .mobile-menu-btn:focus,
+        .mobile-close-btn:focus,
+        .mobile-nav-list a:focus,
+        .nav-menu a:focus,
+        .cta-button:focus {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* Scrollbar Styling */
+        .mobile-nav::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .mobile-nav::-webkit-scrollbar-track {
+            background: var(--light-bg);
+        }
+
+        .mobile-nav::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-container {
+            animation: fadeInDown 0.6s ease-out;
+        }
     </style>
 </head>
 <body class="bg-dark-bg text-soft-cream font-inter overflow-x-hidden">
     
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-effect">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-neon-cyan to-warm-beige rounded-lg flex items-center justify-center">
-                        <i class="fas fa-heartbeat text-midnight text-xl"></i>
-                    </div>
-                    <span class="text-2xl font-bold text-gradient">Medikal</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="hover:text-neon-cyan transition-colors">About</a>
-                    <a href="#mission" class="hover:text-neon-cyan transition-colors">Mission</a>
-                    <a href="#team" class="hover:text-neon-cyan transition-colors">Team</a>
-                    <a href="#access" class="bg-gradient-to-r from-neon-cyan to-warm-beige text-midnight px-6 py-2 rounded-full font-semibold hover:shadow-lg hover:shadow-neon-cyan/25 transition-all">
-                        Early Access
-                    </a>
-                </div>
-                <button class="md:hidden text-neon-cyan" id="mobileMenuBtn">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-card-bg border-t border-neon-cyan/20">
-            <div class="container mx-auto px-6 py-4 space-y-4">
-                <a href="#about" class="block hover:text-neon-cyan transition-colors">About</a>
-                <a href="#mission" class="block hover:text-neon-cyan transition-colors">Mission</a>
-                <a href="#team" class="block hover:text-neon-cyan transition-colors">Team</a>
-                <a href="#access" class="block bg-gradient-to-r from-neon-cyan to-warm-beige text-midnight px-6 py-2 rounded-full font-semibold text-center">
-                    Early Access
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <a href="tel:+250788123456" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+250 788 123 456</span>
+                </a>
+                <a href="mailto:info@medikalafrica.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@medikalafrica.com</span>
                 </a>
             </div>
+            <div class="top-bar-right">
+                <select class="language-selector">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="rw">🇷🇼 Kinyarwanda</option>
+                    <option value="fr">🇫🇷 Français</option>
+                </select>
+                <a href="https://app.medikalafrica.com/login" class="top-bar-item">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="medikal-header" id="mainHeader">
+        <div class="header-container">
+            <!-- Logo Section -->
+            <a href="https://medikalafrica.com/" class="logo-section">
+                <img src="https://medikalafrica.com/wp-content/uploads/2025/08/Logo-scaled.png" alt="Medikal - AI Health Assistant" />
+                <div class="logo-text">
+                    <div class="logo-title">MEDIKAL</div>
+                    <div class="logo-subtitle">AI Healthcare</div>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav>
+                <ul class="nav-menu">
+                    <li>
+                        <a href="https://medikalafrica.com/">
+                            Home
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#">
+                            Solutions
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    AI Diagnostics
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-shield-virus"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    AMR Surveillance
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    Patient Portal
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="https://medikalafrica.com/features/">
+                            Features
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#">
+                            Resources
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-book-medical"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    Clinical Guidelines
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    AMR Data
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="dropdown-content">
+                                    Training Materials
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="https://medikalafrica.com/our-team/">
+                            Our Team
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://medikalafrica.com/impact/">
+                            Impact
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://medikalafrica.com/contact/">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <!-- CTA Button -->
+            <a href="https://app.medikalafrica.com/register" class="cta-button desktop-only">
+                <i class="fas fa-rocket"></i>
+                Get Started
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">
+                <img src="https://medikalafrica.com/wp-content/uploads/2025/08/Logo-scaled.png" alt="Medikal" />
+            </div>
+            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul class="mobile-nav-list">
+            <li>
+                <a href="https://medikalafrica.com/">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="https://medikalafrica.com/about-us/">
+                    <i class="fas fa-info-circle"></i>
+                    About Us
+                </a>
+            </li>
+            <li>
+                <a href="https://medikalafrica.com/features/">
+                    <i class="fas fa-star"></i>
+                    Features
+                </a>
+            </li>
+            <li>
+                <a href="https://medikalafrica.com/our-team/">
+                    <i class="fas fa-users"></i>
+                    Our Team
+                </a>
+            </li>
+            <li>
+                <a href="https://medikalafrica.com/impact/">
+                    <i class="fas fa-heart"></i>
+                    Impact
+                </a>
+            </li>
+            <li>
+                <a href="https://medikalafrica.com/contact/">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </a>
+            </li>
+        </ul>
+
+        <div class="mobile-cta">
+            <a href="https://app.medikalafrica.com/register" class="cta-button">
+                <i class="fas fa-rocket"></i>
+                Get Started Free
+            </a>
         </div>
     </nav>
 
@@ -480,6 +1210,199 @@
         </div>
     </footer>
 
+    <script>
+        // ========================================
+        // NEW HEADER MOBILE MENU FUNCTIONALITY
+        // ========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-list a');
+            const body = document.body;
+            const mainHeader = document.getElementById('mainHeader');
+
+            // Open mobile menu
+            function openMobileMenu() {
+                mobileNav.classList.add('active');
+                mobileOverlay.classList.add('active');
+                body.classList.add('menu-open');
+                
+                // Update button icon
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.className = 'fas fa-times';
+            }
+
+            // Close mobile menu
+            function closeMobileMenu() {
+                mobileNav.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                body.classList.remove('menu-open');
+                
+                // Update button icon
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.className = 'fas fa-bars';
+            }
+
+            // Toggle mobile menu
+            function toggleMobileMenu() {
+                if (mobileNav.classList.contains('active')) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
+            }
+
+            // Event listeners
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+            if (mobileCloseBtn) {
+                mobileCloseBtn.addEventListener('click', closeMobileMenu);
+            }
+            if (mobileOverlay) {
+                mobileOverlay.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when clicking nav links
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMobileMenu();
+                });
+            });
+
+            // Close menu on window resize if open
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && mobileNav && mobileNav.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Keyboard support (ESC key)
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+
+            // ========================================
+            // SCROLL EFFECT FOR HEADER
+            // ========================================
+            let lastScroll = 0;
+            if (mainHeader) {
+                window.addEventListener('scroll', function() {
+                    const currentScroll = window.pageYOffset;
+                    
+                    if (currentScroll > 50) {
+                        mainHeader.classList.add('scrolled');
+                    } else {
+                        mainHeader.classList.remove('scrolled');
+                    }
+                    
+                    lastScroll = currentScroll;
+                });
+            }
+
+            // ========================================
+            // SMOOTH SCROLL FOR ANCHOR LINKS
+            // ========================================
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href !== '') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+
+        // ========================================
+        // EXISTING FUNCTIONALITY (from script.js)
+        // ========================================
+        // Smooth scroll function
+        function scrollToAccess() {
+            document.getElementById('access').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // AI Avatar speak functionality
+        const speakBtn = document.getElementById('speakBtn');
+        let isPlaying = false;
+
+        if (speakBtn) {
+            speakBtn.addEventListener('click', () => {
+                if (!isPlaying) {
+                    // Start speaking animation
+                    isPlaying = true;
+                    speakBtn.innerHTML = '<i class="fas fa-volume-up mr-2 animate-pulse"></i>Speaking...';
+                    speakBtn.classList.add('animate-pulse');
+                    
+                    // Simulate AI speaking (replace with actual audio/TTS)
+                    const message = "Welcome to Medikal – Africa's own AI-powered health assistant, fighting Antimicrobial Resistance for safer, smarter healthcare.";
+                    
+                    // Use Web Speech API if available
+                    if ('speechSynthesis' in window) {
+                        const utterance = new SpeechSynthesisUtterance(message);
+                        utterance.rate = 0.8;
+                        utterance.pitch = 1;
+                        utterance.volume = 1;
+                        
+                        utterance.onend = () => {
+                            isPlaying = false;
+                            speakBtn.innerHTML = '<i class="fas fa-volume-up mr-2"></i>Click to Speak';
+                            speakBtn.classList.remove('animate-pulse');
+                        };
+                        
+                        speechSynthesis.speak(utterance);
+                    } else {
+                        // Fallback if speech synthesis not available
+                        setTimeout(() => {
+                            isPlaying = false;
+                            speakBtn.innerHTML = '<i class="fas fa-volume-up mr-2"></i>Click to Speak';
+                            speakBtn.classList.remove('animate-pulse');
+                        }, 3000);
+                    }
+                }
+            });
+        }
+
+        // Form submission handler
+        const accessForm = document.getElementById('accessForm');
+        const successMessage = document.getElementById('successMessage');
+        const submitText = document.getElementById('submitText');
+        const submitIcon = document.getElementById('submitIcon');
+
+        if (accessForm) {
+            accessForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                submitText.textContent = 'Submitting...';
+                submitIcon.className = 'fas fa-spinner fa-spin ml-2';
+                
+                // Simulate API call (replace with actual submission)
+                setTimeout(() => {
+                    accessForm.reset();
+                    accessForm.style.display = 'none';
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('animate-slide-up');
+                    
+                    // Reset button state
+                    submitText.textContent = 'Request Early Access';
+                    submitIcon.className = 'fas fa-arrow-right ml-2';
+                }, 1500);
+            });
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
