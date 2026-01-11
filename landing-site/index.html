@@ -2215,7 +2215,6 @@
                             <span data-i18n="explorePlatform">Explore Platform</span>
                         </a>
                         <button class="features-btn-secondary" id="watchDemoBtn">
-                            <i class="fas fa-play-circle"></i>
                             <span data-i18n="watchDemo">Early Access</span>
                         </button>
                     </div>
@@ -3064,7 +3063,7 @@
                 heroTitle3: "binyuze mu Buryanga",
                 heroSubtitle: "Kurwanya Kwangirika kw'Indwara mu Afurika binyuze mu Buryanga bwa Moderne, Inyongera z'Indimi nyinshi, n'Ibyifuzo by'Ubuzima by'Ubwenge ku Buvuzi n'Abarwayi.",
                 explorePlatform: "Suzuma Porogaramu",
-                watchDemo: "Reba Demo",
+                watchDemo: "Kwinjira kwa Mbere",
                 aiAccuracy: "Gukora neza kwa AI",
                 languages: "Indimi",
                 aiSupport: "Inkunga ya AI",
@@ -3157,25 +3156,25 @@
             const navLinks = document.querySelectorAll('.nav-menu a, .mobile-nav-list a');
             navLinks.forEach(link => {
                 const text = link.textContent.trim();
-                if (text === 'Home' || text === 'Ahabanza' || text === 'Accueil') link.childNodes[0].textContent = ' ' + t.home;
-                else if (text === 'Solutions' || text === 'Ibyifuzo') link.childNodes[0].textContent = ' ' + t.solutions;
-                else if (text === 'Features' || text === 'Ibiranga' || text === 'Fonctionnalités') link.childNodes[0].textContent = ' ' + t.features;
-                else if (text === 'Resources' || text === 'Ibikoresho' || text === 'Ressources') link.childNodes[0].textContent = ' ' + t.resources;
-                else if (text === 'Our Team' || text === "Ikipe yacu" || text === "Notre Équipe") link.childNodes[0].textContent = ' ' + t.ourTeam;
+                if (text === 'Home' || text === 'Ahabanza' || text === 'Accueil' || text === 'Nyumbani') link.childNodes[0].textContent = ' ' + t.home;
+                else if (text === 'Solutions' || text === 'Ibyifuzo' || text === 'Suluhisho') link.childNodes[0].textContent = ' ' + t.solutions;
+                else if (text === 'Features' || text === 'Ibiranga' || text === 'Fonctionnalités' || text === 'Vipengele') link.childNodes[0].textContent = ' ' + t.features;
+                else if (text === 'Resources' || text === 'Ibikoresho' || text === 'Ressources' || text === 'Rasilimali') link.childNodes[0].textContent = ' ' + t.resources;
+                else if (text === 'Our Team' || text === "Ikipe yacu" || text === "Notre Équipe" || text === "Timu Yetu") link.childNodes[0].textContent = ' ' + t.ourTeam;
                 else if (text === 'Impact' || text === 'Ingaruka') link.childNodes[0].textContent = ' ' + t.impact;
-                else if (text === 'News & Media' || text === "Amakuru n'Ibirangazamakuru" || text === "Actualités & Médias") link.childNodes[0].textContent = ' ' + t.newsMedia;
-                else if (text === 'Contact' || text === "Vugana natwe" || text === "Contact") link.childNodes[0].textContent = ' ' + t.contact;
+                else if (text === 'News & Media' || text === "Amakuru n'Ibirangazamakuru" || text === "Actualités & Médias" || text === "Habari na Vyombo vya Habari") link.childNodes[0].textContent = ' ' + t.newsMedia;
+                else if (text === 'Contact' || text === "Vugana natwe" || text === "Contact" || text === "Wasiliana") link.childNodes[0].textContent = ' ' + t.contact;
             });
             
             // Update dropdown items
             document.querySelectorAll('.dropdown-item .dropdown-content').forEach(item => {
                 const text = item.textContent.trim();
-                if (text === 'AI Diagnostics' || text === "Gukuraho Indwara binyuze mu Buryanga" || text === "Diagnostics IA") item.textContent = t.aiDiagnostics;
-                else if (text === 'AMR Surveillance' || text === "Gukurikirana AMR" || text === "Surveillance RAM") item.textContent = t.amrSurveillance;
-                else if (text === 'Patient Portal' || text === "Poritari y'Abarwayi" || text === "Portail Patient") item.textContent = t.patientPortal;
-                else if (text === 'Clinical Guidelines' || text === "Amabwiriza y'Ubuvuzi" || text === "Directives Cliniques") item.textContent = t.clinicalGuidelines;
-                else if (text === 'AMR Data' || text === "Amakuru ya AMR" || text === "Données RAM") item.textContent = t.amrData;
-                else if (text === 'Training Materials' || text === "Inyigisho" || text === "Matériels de Formation") item.textContent = t.trainingMaterials;
+                if (text === 'AI Diagnostics' || text === "Gukuraho Indwara binyuze mu Buryanga" || text === "Diagnostics IA" || text === "Uchunguzi wa AI") item.textContent = t.aiDiagnostics;
+                else if (text === 'AMR Surveillance' || text === "Gukurikirana AMR" || text === "Surveillance RAM" || text === "Ufuatiliaji wa AMR") item.textContent = t.amrSurveillance;
+                else if (text === 'Patient Portal' || text === "Poritari y'Abarwayi" || text === "Portail Patient" || text === "Lango la Mgonjwa") item.textContent = t.patientPortal;
+                else if (text === 'Clinical Guidelines' || text === "Amabwiriza y'Ubuvuzi" || text === "Directives Cliniques" || text === "Miongozo ya Kliniki") item.textContent = t.clinicalGuidelines;
+                else if (text === 'AMR Data' || text === "Amakuru ya AMR" || text === "Données RAM" || text === "Data ya AMR") item.textContent = t.amrData;
+                else if (text === 'Training Materials' || text === "Inyigisho" || text === "Matériels de Formation" || text === "Nyaraka za Mafunzo") item.textContent = t.trainingMaterials;
             });
             
             // Update CTA buttons
@@ -3190,9 +3189,8 @@
                     const icon = btn.querySelector('i');
                     btn.innerHTML = icon ? icon.outerHTML + ' ' + t.explorePlatform : t.explorePlatform;
                 }
-                else if (text === 'Early Access' || text === 'Kwinjira kwa Mbere' || text === "Accès Anticipé" || text === 'Watch Demo' || text === 'Reba Demo' || text === "Regarder la Démo") {
-                    const icon = btn.querySelector('i');
-                    btn.innerHTML = icon ? icon.outerHTML + ' ' + t.watchDemo : t.watchDemo;
+                else if (text === 'Early Access' || text === 'Kwinjira kwa Mbere' || text === "Accès Anticipé" || text === "Ufikiaji wa Mapema" || text === 'Watch Demo' || text === 'Reba Demo' || text === "Regarder la Démo") {
+                    btn.textContent = t.watchDemo;
                 }
             });
             
@@ -3211,18 +3209,18 @@
             // Update stats labels
             document.querySelectorAll('.stat-label').forEach(label => {
                 const text = label.textContent.trim();
-                if (text === 'AI Accuracy' || text === "Gukora neza kwa AI" || text === "Précision IA") label.textContent = t.aiAccuracy;
-                else if (text === 'Languages' || text === 'Indimi' || text === 'Langues') label.textContent = t.languages;
-                else if (text === 'AI Support' || text === "Inkunga ya AI" || text === "Support IA") label.textContent = t.aiSupport;
+                if (text === 'AI Accuracy' || text === "Gukora neza kwa AI" || text === "Précision IA" || text === "Usahihi wa AI") label.textContent = t.aiAccuracy;
+                else if (text === 'Languages' || text === 'Indimi' || text === 'Langues' || text === 'Lugha') label.textContent = t.languages;
+                else if (text === 'AI Support' || text === "Inkunga ya AI" || text === "Support IA" || text === "Msaada wa AI") label.textContent = t.aiSupport;
             });
             
             // Update visual features
             document.querySelectorAll('.visual-feature-text').forEach(feature => {
                 const text = feature.textContent.trim();
-                if (text === 'Clinical Support' || text === "Inkunga y'Ubuvuzi" || text === "Support Clinique") feature.textContent = t.clinicalSupport;
-                else if (text === 'AMR Tracking' || text === "Gukurikirana AMR" || text === "Suivi RAM") feature.textContent = t.amrTracking;
-                else if (text === 'Multilingual' || text === "Indimi nyinshi" || text === "Multilingue") feature.textContent = t.multilingual;
-                else if (text === 'Mobile Ready' || text === "Bishoboka kuri Telefoni" || text === "Compatible Mobile") feature.textContent = t.mobileReady;
+                if (text === 'Clinical Support' || text === "Inkunga y'Ubuvuzi" || text === "Support Clinique" || text === "Msaada wa Kliniki") feature.textContent = t.clinicalSupport;
+                else if (text === 'AMR Tracking' || text === "Gukurikirana AMR" || text === "Suivi RAM" || text === "Ufuatiliaji wa AMR") feature.textContent = t.amrTracking;
+                else if (text === 'Multilingual' || text === "Indimi nyinshi" || text === "Multilingue" || text === "Lugha Nyingi") feature.textContent = t.multilingual;
+                else if (text === 'Mobile Ready' || text === "Bishoboka kuri Telefoni" || text === "Compatible Mobile" || text === "Tayari kwa Simu") feature.textContent = t.mobileReady;
             });
             
             // Update unified hero/features section
