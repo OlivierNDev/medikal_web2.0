@@ -140,18 +140,37 @@
         }
 
         .language-selector {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             padding: 0.35rem 0.85rem;
             border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: var(--white);
             font-size: 0.875rem;
             cursor: pointer;
             transition: var(--transition);
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1rem;
+            padding-right: 2rem;
         }
 
         .language-selector:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .language-selector:focus {
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 2px;
+        }
+
+        .language-selector option {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.5rem;
         }
 
         /* Main Header */
@@ -2481,6 +2500,223 @@
                         input.value = '';
                     }, 3000);
                 }, 1500);
+            });
+        }
+
+        // Translation System
+        const translations = {
+            en: {
+                // Top bar
+                login: "Login",
+                // Navigation
+                home: "Home",
+                solutions: "Solutions",
+                aiDiagnostics: "AI Diagnostics",
+                amrSurveillance: "AMR Surveillance",
+                patientPortal: "Patient Portal",
+                features: "Features",
+                resources: "Resources",
+                clinicalGuidelines: "Clinical Guidelines",
+                amrData: "AMR Data",
+                trainingMaterials: "Training Materials",
+                ourTeam: "Our Team",
+                impact: "Impact",
+                newsMedia: "News & Media",
+                contact: "Contact",
+                getStarted: "Get Started",
+                getStartedFree: "Get Started Free",
+                // Hero section
+                heroBadge: "AI-Powered Healthcare Platform",
+                heroTitle1: "Revolutionizing",
+                heroTitle2: "African Healthcare",
+                heroTitle3: "with AI",
+                heroSubtitle: "Combating Antimicrobial Resistance across Africa through advanced AI technology, multilingual support, and intelligent health solutions for clinicians and patients.",
+                explorePlatform: "Explore Platform",
+                watchDemo: "Watch Demo",
+                aiAccuracy: "AI Accuracy",
+                languages: "Languages",
+                aiSupport: "AI Support",
+                clinicalSupport: "Clinical Support",
+                amrTracking: "AMR Tracking",
+                multilingual: "Multilingual",
+                mobileReady: "Mobile Ready"
+            },
+            rw: {
+                // Top bar
+                login: "Injira",
+                // Navigation
+                home: "Ahabanza",
+                solutions: "Ibyifuzo",
+                aiDiagnostics: "Gukuraho Indwara binyuze mu Buryanga",
+                amrSurveillance: "Gukurikirana AMR",
+                patientPortal: "Poritari y'Abarwayi",
+                features: "Ibiranga",
+                resources: "Ibikoresho",
+                clinicalGuidelines: "Amabwiriza y'Ubuvuzi",
+                amrData: "Amakuru ya AMR",
+                trainingMaterials: "Inyigisho",
+                ourTeam: "Ikipe yacu",
+                impact: "Ingaruka",
+                newsMedia: "Amakuru n'Ibirangazamakuru",
+                contact: "Vugana natwe",
+                getStarted: "Tangira",
+                getStartedFree: "Tangira kubuntu",
+                // Hero section
+                heroBadge: "Porogaramu y'Ubuzima ikoresha Ubwenge",
+                heroTitle1: "Guhindura",
+                heroTitle2: "Ubuvuzi bw'Abanyafurika",
+                heroTitle3: "binyuze mu Buryanga",
+                heroSubtitle: "Kurwanya Kwangirika kw'Indwara mu Afurika binyuze mu Buryanga bwa Moderne, Inyongera z'Indimi nyinshi, n'Ibyifuzo by'Ubuzima by'Ubwenge ku Buvuzi n'Abarwayi.",
+                explorePlatform: "Suzuma Porogaramu",
+                watchDemo: "Reba Demo",
+                aiAccuracy: "Gukora neza kwa AI",
+                languages: "Indimi",
+                aiSupport: "Inkunga ya AI",
+                clinicalSupport: "Inkunga y'Ubuvuzi",
+                amrTracking: "Gukurikirana AMR",
+                multilingual: "Indimi nyinshi",
+                mobileReady: "Bishoboka kuri Telefoni"
+            },
+            fr: {
+                // Top bar
+                login: "Connexion",
+                // Navigation
+                home: "Accueil",
+                solutions: "Solutions",
+                aiDiagnostics: "Diagnostics IA",
+                amrSurveillance: "Surveillance RAM",
+                patientPortal: "Portail Patient",
+                features: "Fonctionnalités",
+                resources: "Ressources",
+                clinicalGuidelines: "Directives Cliniques",
+                amrData: "Données RAM",
+                trainingMaterials: "Matériels de Formation",
+                ourTeam: "Notre Équipe",
+                impact: "Impact",
+                newsMedia: "Actualités & Médias",
+                contact: "Contact",
+                getStarted: "Commencer",
+                getStartedFree: "Commencer Gratuitement",
+                // Hero section
+                heroBadge: "Plateforme de Soins de Santé Alimentée par l'IA",
+                heroTitle1: "Révolutionner",
+                heroTitle2: "les Soins de Santé Africains",
+                heroTitle3: "avec l'IA",
+                heroSubtitle: "Lutter contre la Résistance aux Antimicrobiens à travers l'Afrique grâce à une technologie IA avancée, un support multilingue et des solutions de santé intelligentes pour les cliniciens et les patients.",
+                explorePlatform: "Explorer la Plateforme",
+                watchDemo: "Regarder la Démo",
+                aiAccuracy: "Précision IA",
+                languages: "Langues",
+                aiSupport: "Support IA",
+                clinicalSupport: "Support Clinique",
+                amrTracking: "Suivi RAM",
+                multilingual: "Multilingue",
+                mobileReady: "Compatible Mobile"
+            }
+        };
+
+        // Translation function
+        function translatePage(lang) {
+            if (!translations[lang]) return;
+            
+            const t = translations[lang];
+            
+            // Store language preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update navigation menu items
+            const navLinks = document.querySelectorAll('.nav-menu a, .mobile-nav-list a');
+            navLinks.forEach(link => {
+                const text = link.textContent.trim();
+                if (text === 'Home' || text === 'Ahabanza' || text === 'Accueil') link.childNodes[0].textContent = ' ' + t.home;
+                else if (text === 'Solutions' || text === 'Ibyifuzo') link.childNodes[0].textContent = ' ' + t.solutions;
+                else if (text === 'Features' || text === 'Ibiranga' || text === 'Fonctionnalités') link.childNodes[0].textContent = ' ' + t.features;
+                else if (text === 'Resources' || text === 'Ibikoresho' || text === 'Ressources') link.childNodes[0].textContent = ' ' + t.resources;
+                else if (text === 'Our Team' || text === "Ikipe yacu" || text === "Notre Équipe") link.childNodes[0].textContent = ' ' + t.ourTeam;
+                else if (text === 'Impact' || text === 'Ingaruka') link.childNodes[0].textContent = ' ' + t.impact;
+                else if (text === 'News & Media' || text === "Amakuru n'Ibirangazamakuru" || text === "Actualités & Médias") link.childNodes[0].textContent = ' ' + t.newsMedia;
+                else if (text === 'Contact' || text === "Vugana natwe" || text === "Contact") link.childNodes[0].textContent = ' ' + t.contact;
+            });
+            
+            // Update dropdown items
+            document.querySelectorAll('.dropdown-item .dropdown-content').forEach(item => {
+                const text = item.textContent.trim();
+                if (text === 'AI Diagnostics' || text === "Gukuraho Indwara binyuze mu Buryanga" || text === "Diagnostics IA") item.textContent = t.aiDiagnostics;
+                else if (text === 'AMR Surveillance' || text === "Gukurikirana AMR" || text === "Surveillance RAM") item.textContent = t.amrSurveillance;
+                else if (text === 'Patient Portal' || text === "Poritari y'Abarwayi" || text === "Portail Patient") item.textContent = t.patientPortal;
+                else if (text === 'Clinical Guidelines' || text === "Amabwiriza y'Ubuvuzi" || text === "Directives Cliniques") item.textContent = t.clinicalGuidelines;
+                else if (text === 'AMR Data' || text === "Amakuru ya AMR" || text === "Données RAM") item.textContent = t.amrData;
+                else if (text === 'Training Materials' || text === "Inyigisho" || text === "Matériels de Formation") item.textContent = t.trainingMaterials;
+            });
+            
+            // Update CTA buttons
+            document.querySelectorAll('.cta-button, .btn-primary, .btn-secondary').forEach(btn => {
+                const text = btn.textContent.trim();
+                if (text === 'Get Started' || text === 'Tangira' || text === 'Commencer') {
+                    const icon = btn.querySelector('i');
+                    btn.innerHTML = icon ? icon.outerHTML + ' ' + t.getStarted : t.getStarted;
+                }
+                else if (text === 'Get Started Free' || text === 'Tangira kubuntu' || text === 'Commencer Gratuitement') btn.textContent = t.getStartedFree;
+                else if (text === 'Explore Platform' || text === "Suzuma Porogaramu" || text === "Explorer la Plateforme") {
+                    const icon = btn.querySelector('i');
+                    btn.innerHTML = icon ? icon.outerHTML + ' ' + t.explorePlatform : t.explorePlatform;
+                }
+                else if (text === 'Watch Demo' || text === 'Reba Demo' || text === "Regarder la Démo") {
+                    const icon = btn.querySelector('i');
+                    btn.innerHTML = icon ? icon.outerHTML + ' ' + t.watchDemo : t.watchDemo;
+                }
+            });
+            
+            // Update hero section
+            const heroBadge = document.querySelector('.hero-badge span');
+            if (heroBadge) heroBadge.textContent = t.heroBadge;
+            
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                heroTitle.innerHTML = `${t.heroTitle1} <span class="highlight">${t.heroTitle2}</span> ${t.heroTitle3}`;
+            }
+            
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            if (heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
+            
+            // Update stats labels
+            document.querySelectorAll('.stat-label').forEach(label => {
+                const text = label.textContent.trim();
+                if (text === 'AI Accuracy' || text === "Gukora neza kwa AI" || text === "Précision IA") label.textContent = t.aiAccuracy;
+                else if (text === 'Languages' || text === 'Indimi' || text === 'Langues') label.textContent = t.languages;
+                else if (text === 'AI Support' || text === "Inkunga ya AI" || text === "Support IA") label.textContent = t.aiSupport;
+            });
+            
+            // Update visual features
+            document.querySelectorAll('.visual-feature-text').forEach(feature => {
+                const text = feature.textContent.trim();
+                if (text === 'Clinical Support' || text === "Inkunga y'Ubuvuzi" || text === "Support Clinique") feature.textContent = t.clinicalSupport;
+                else if (text === 'AMR Tracking' || text === "Gukurikirana AMR" || text === "Suivi RAM") feature.textContent = t.amrTracking;
+                else if (text === 'Multilingual' || text === "Indimi nyinshi" || text === "Multilingue") feature.textContent = t.multilingual;
+                else if (text === 'Mobile Ready' || text === "Bishoboka kuri Telefoni" || text === "Compatible Mobile") feature.textContent = t.mobileReady;
+            });
+            
+            // Update top bar login
+            const loginLink = document.querySelector('.top-bar-item:has(span)');
+            if (loginLink) {
+                const span = loginLink.querySelector('span');
+                if (span && (span.textContent === 'Login' || span.textContent === 'Injira' || span.textContent === 'Connexion')) {
+                    span.textContent = t.login;
+                }
+            }
+        }
+
+        // Initialize language selector
+        const languageSelector = document.querySelector('.language-selector');
+        if (languageSelector) {
+            // Load saved language preference
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            languageSelector.value = savedLang;
+            translatePage(savedLang);
+            
+            // Add event listener for language change
+            languageSelector.addEventListener('change', function(e) {
+                translatePage(e.target.value);
             });
         }
     </script>
