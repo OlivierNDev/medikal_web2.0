@@ -3255,13 +3255,12 @@
             document.querySelectorAll('[data-i18n="mobileReady"]').forEach(el => el.textContent = t.mobileReady);
             
             // Update top bar login
-            const loginLink = document.querySelector('.top-bar-item:has(span)');
-            if (loginLink) {
-                const span = loginLink.querySelector('span');
-                if (span && (span.textContent === 'Login' || span.textContent === 'Injira' || span.textContent === 'Connexion')) {
+            document.querySelectorAll('.top-bar-item span').forEach(span => {
+                const text = span.textContent.trim();
+                if (text === 'Login' || text === 'Injira' || text === 'Connexion' || text === 'Ingia') {
                     span.textContent = t.login;
                 }
-            }
+            });
         }
 
         // Initialize language selector
