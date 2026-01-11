@@ -1035,11 +1035,122 @@
             }
         }
 
+        /* Features Section Styles */
+        .features-section {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .teal-color {
+            color: #5ec4d5;
+        }
+        
+        .grey-color {
+            color: #979797;
+        }
+        
+        .teal-bg {
+            background-color: #5ec4d5;
+        }
+        
+        .light-blue-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(94, 196, 213, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(94, 196, 213, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #5ec4d5, #4db5c8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(94, 196, 213, 0.3);
+        }
+        
+        .section-title-gradient {
+            background: linear-gradient(135deg, #5ec4d5, #4db5c8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .fade-in-up:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in-up:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in-up:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in-up:nth-child(4) { animation-delay: 0.4s; }
+        .fade-in-up:nth-child(5) { animation-delay: 0.5s; }
+        .fade-in-up:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #5ec4d5;
+            border-radius: 50%;
+            animation: pulseDot 2s infinite;
+            margin: 0 auto 30px;
+        }
+        
+        @keyframes pulseDot {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 padding: 4rem 0 3rem;
                 min-height: auto;
             }
+            
+            .feature-card {
+                margin-bottom: 20px;
+            }
+            
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
 
             .video-modal {
                 padding: 0.75rem;
@@ -1790,6 +1901,107 @@
         </div>
     </div>
 
+    <!-- Features Section -->
+    <section id="features" class="features-section light-blue-bg py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <div class="pulse-dot"></div>
+                <h2 class="section-title-gradient text-4xl md:text-5xl font-bold mb-6">
+                    AI-Powered Healthcare
+                </h2>
+                <p class="grey-color text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                    Advanced artificial intelligence capabilities designed specifically for African healthcare challenges
+                </p>
+            </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Symptom Analysis -->
+                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureSymptomAnalysis">
+                        Symptom Analysis
+                    </h3>
+                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureSymptomAnalysisDesc">
+                        Advanced AI algorithms analyze patient symptoms and medical history to provide accurate diagnostic assistance and treatment recommendations.
+                    </p>
+                </div>
+
+                <!-- Multilingual Support -->
+                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureMultilingual">
+                        Multilingual Support
+                    </h3>
+                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureMultilingualDesc">
+                        Seamless communication in Kinyarwanda and English, breaking language barriers for better healthcare accessibility across Africa.
+                    </p>
+                </div>
+
+                <!-- Medical Imaging -->
+                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureMedicalImaging">
+                        Medical Imaging
+                    </h3>
+                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureMedicalImagingDesc">
+                        AI-powered image analysis for medical conditions, enabling rapid identification of health issues from clinical photographs and scans.
+                    </p>
+                </div>
+
+                <!-- Medication Reminders -->
+                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureSmartReminders">
+                        Smart Reminders
+                    </h3>
+                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureSmartRemindersDesc">
+                        Intelligent medication adherence tracking with personalized reminders to ensure proper treatment compliance and better outcomes.
+                    </p>
+                </div>
+
+                <!-- Real-time Results -->
+                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureInstantResults">
+                        Instant Results
+                    </h3>
+                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureInstantResultsDesc">
+                        Real-time AI processing delivers immediate diagnostic insights and treatment recommendations, reducing critical decision time.
+                    </p>
+                </div>
+
+                <!-- Clinical Decision Support -->
+                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureClinicalSupport">
+                        Clinical Support
+                    </h3>
+                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureClinicalSupportDesc">
+                        Evidence-based decision support for healthcare professionals, enhancing diagnostic accuracy and treatment effectiveness.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="py-20 bg-gradient-to-b from-dark-bg to-midnight">
         <div class="container mx-auto px-6">
@@ -2539,7 +2751,22 @@
                 clinicalSupport: "Clinical Support",
                 amrTracking: "AMR Tracking",
                 multilingual: "Multilingual",
-                mobileReady: "Mobile Ready"
+                mobileReady: "Mobile Ready",
+                // Features section
+                featuresTitle: "AI-Powered Healthcare",
+                featuresSubtitle: "Advanced artificial intelligence capabilities designed specifically for African healthcare challenges",
+                featureSymptomAnalysis: "Symptom Analysis",
+                featureSymptomAnalysisDesc: "Advanced AI algorithms analyze patient symptoms and medical history to provide accurate diagnostic assistance and treatment recommendations.",
+                featureMultilingual: "Multilingual Support",
+                featureMultilingualDesc: "Seamless communication in Kinyarwanda and English, breaking language barriers for better healthcare accessibility across Africa.",
+                featureMedicalImaging: "Medical Imaging",
+                featureMedicalImagingDesc: "AI-powered image analysis for medical conditions, enabling rapid identification of health issues from clinical photographs and scans.",
+                featureSmartReminders: "Smart Reminders",
+                featureSmartRemindersDesc: "Intelligent medication adherence tracking with personalized reminders to ensure proper treatment compliance and better outcomes.",
+                featureInstantResults: "Instant Results",
+                featureInstantResultsDesc: "Real-time AI processing delivers immediate diagnostic insights and treatment recommendations, reducing critical decision time.",
+                featureClinicalSupport: "Clinical Support",
+                featureClinicalSupportDesc: "Evidence-based decision support for healthcare professionals, enhancing diagnostic accuracy and treatment effectiveness."
             },
             rw: {
                 // Top bar
@@ -2575,7 +2802,22 @@
                 clinicalSupport: "Inkunga y'Ubuvuzi",
                 amrTracking: "Gukurikirana AMR",
                 multilingual: "Indimi nyinshi",
-                mobileReady: "Bishoboka kuri Telefoni"
+                mobileReady: "Bishoboka kuri Telefoni",
+                // Features section
+                featuresTitle: "Ubuvuzi bwikoresha Ubwenge",
+                featuresSubtitle: "Ubushobozi bw'Ubwenge bwa Moderne bwaheruka bushyizweho ukurikije Ibibazo by'Ubuvuzi bw'Abanyafurika.",
+                featureSymptomAnalysis: "Gusesengura Ibimenyetso",
+                featureSymptomAnalysisDesc: "Algorithme z'Ubwenge zwa Moderne zisesengura ibimenyetso by'abagwayi n'amateka y'ubuvuzi kugira ngo bitange ubuyobozi bukwiriye bw'ubuvuzi n'ubuhanuzi bw'ubwoba.",
+                featureMultilingual: "Inkunga z'Indimi nyinshi",
+                featureMultilingualDesc: "Ikoranabuhanga mu Kinyarwanda n'Icyongereza, zikemura ibibazo by'ururimi kugira ngo ubuvuzi bugere ku bantu bose mu Afurika.",
+                featureMedicalImaging: "Gufoto ya Ubuvuzi",
+                featureMedicalImagingDesc: "Gusesengura amashusho binyuze mu Bwenge by'ubuvuzi, bituma haboneka vuba ibibazo by'ubuzima bivuka mu mashusho n'amafoto y'ubuvuzi.",
+                featureSmartReminders: "Ibyibutsa by'Ubwenge",
+                featureSmartRemindersDesc: "Gukurikirana gukoresha ibiyobyabwenge binyuze mu byibutsa byawe byihariye kugira ngo wunze uko ibiyobyabwenge bikoreshwa neza.",
+                featureInstantResults: "Ibyo Usanga vuba",
+                featureInstantResultsDesc: "Gutunganya amakuru binyuze mu Bwenge mu minsi yacu yose bitanga ubuyobozi bw'ubuvuzi n'ubuhanuzi bwa vuba, bikagabanya igihe cyo gufata ibyemezo by'ingirakamaro.",
+                featureClinicalSupport: "Inkunga y'Ubuvuzi",
+                featureClinicalSupportDesc: "Inkunga y'ibyemezo zishingiye ku bikubiye ku buhamya ku bavuzi, zijyana neza ubuvuzi n'uburyo bwo gukira."
             },
             fr: {
                 // Top bar
@@ -2611,7 +2853,22 @@
                 clinicalSupport: "Support Clinique",
                 amrTracking: "Suivi RAM",
                 multilingual: "Multilingue",
-                mobileReady: "Compatible Mobile"
+                mobileReady: "Compatible Mobile",
+                // Features section
+                featuresTitle: "Soins de Santé Alimentés par l'IA",
+                featuresSubtitle: "Capacités d'intelligence artificielle avancées conçues spécifiquement pour les défis de soins de santé africains",
+                featureSymptomAnalysis: "Analyse des Symptômes",
+                featureSymptomAnalysisDesc: "Des algorithmes IA avancés analysent les symptômes des patients et les antécédents médicaux pour fournir une assistance diagnostique précise et des recommandations de traitement.",
+                featureMultilingual: "Support Multilingue",
+                featureMultilingualDesc: "Communication fluide en Kinyarwanda et en Anglais, éliminant les barrières linguistiques pour une meilleure accessibilité des soins de santé à travers l'Afrique.",
+                featureMedicalImaging: "Imagerie Médicale",
+                featureMedicalImagingDesc: "Analyse d'images alimentée par l'IA pour les conditions médicales, permettant l'identification rapide des problèmes de santé à partir de photographies cliniques et de scanners.",
+                featureSmartReminders: "Rappels Intelligents",
+                featureSmartRemindersDesc: "Suivi intelligent de l'observance des médicaments avec des rappels personnalisés pour assurer une conformité au traitement appropriée et de meilleurs résultats.",
+                featureInstantResults: "Résultats Instantanés",
+                featureInstantResultsDesc: "Le traitement IA en temps réel fournit des informations diagnostiques immédiates et des recommandations de traitement, réduisant le temps de décision critique.",
+                featureClinicalSupport: "Support Clinique",
+                featureClinicalSupportDesc: "Support décisionnel basé sur des preuves pour les professionnels de la santé, améliorant la précision diagnostique et l'efficacité du traitement."
             }
         };
 
@@ -2719,6 +2976,40 @@
                 translatePage(e.target.value);
             });
         }
+
+        // Features Section Animations
+        (function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const featureObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        featureObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in-up elements in features section
+            document.querySelectorAll('#features .fade-in-up').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                featureObserver.observe(el);
+            });
+
+            // Add hover effect to feature cards
+            document.querySelectorAll('#features .feature-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+        })();
     </script>
     <script src="script.js"></script>
 </body>
