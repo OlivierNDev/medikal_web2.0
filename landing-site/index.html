@@ -1276,6 +1276,99 @@
             }
         }
 
+        /* Demo Video Section Styles */
+        .demo-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafb 100%);
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .demo-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .demo-subtitle {
+            font-size: 1.125rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .demo-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .demo-video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .demo-video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .demo-section {
+                padding: 4rem 0;
+            }
+
+            .demo-title {
+                font-size: 2rem;
+            }
+
+            .demo-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .demo-container {
+                padding: 0 1rem;
+            }
+
+            .demo-video-container {
+                border-radius: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .demo-title {
+                font-size: 1.75rem;
+            }
+
+            .demo-header {
+                margin-bottom: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 padding: 4rem 0 3rem;
@@ -2056,6 +2149,25 @@
         </div>
     </div>
 
+    <!-- Demo Video Section -->
+    <section id="demo" class="demo-section">
+        <div class="demo-container">
+            <div class="demo-header">
+                <h2 class="demo-title" data-i18n="demoTitle">See Medikal in Action</h2>
+                <p class="demo-subtitle" data-i18n="demoSubtitle">Watch how our AI-powered platform transforms healthcare delivery across Africa</p>
+            </div>
+            
+            <div class="demo-video-container">
+                <div class="demo-video-wrapper">
+                    <video controls preload="metadata" poster="">
+                        <source src="demo-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="py-20 bg-gradient-to-b from-dark-bg to-midnight">
         <div class="container mx-auto px-6">
@@ -2820,7 +2932,10 @@
                 featureInstantResults: "Instant Results",
                 featureInstantResultsDesc: "Real-time AI processing delivers immediate diagnostic insights and treatment recommendations, reducing critical decision time.",
                 featureClinicalSupport: "Clinical Support",
-                featureClinicalSupportDesc: "Evidence-based decision support for healthcare professionals, enhancing diagnostic accuracy and treatment effectiveness."
+                featureClinicalSupportDesc: "Evidence-based decision support for healthcare professionals, enhancing diagnostic accuracy and treatment effectiveness.",
+                // Demo section
+                demoTitle: "See Medikal in Action",
+                demoSubtitle: "Watch how our AI-powered platform transforms healthcare delivery across Africa"
             },
             rw: {
                 // Top bar
@@ -2922,7 +3037,10 @@
                 featureInstantResults: "Résultats Instantanés",
                 featureInstantResultsDesc: "Le traitement IA en temps réel fournit des informations diagnostiques immédiates et des recommandations de traitement, réduisant le temps de décision critique.",
                 featureClinicalSupport: "Support Clinique",
-                featureClinicalSupportDesc: "Support décisionnel basé sur des preuves pour les professionnels de la santé, améliorant la précision diagnostique et l'efficacité du traitement."
+                featureClinicalSupportDesc: "Support décisionnel basé sur des preuves pour les professionnels de la santé, améliorant la précision diagnostique et l'efficacité du traitement.",
+                // Demo section
+                demoTitle: "Voir Medikal en Action",
+                demoSubtitle: "Regardez comment notre plateforme alimentée par l'IA transforme la prestation de soins de santé en Afrique"
             }
         };
 
@@ -3037,6 +3155,10 @@
             document.querySelectorAll('[data-i18n="amrTracking"]').forEach(el => el.textContent = t.amrTracking);
             document.querySelectorAll('[data-i18n="multilingual"]').forEach(el => el.textContent = t.multilingual);
             document.querySelectorAll('[data-i18n="mobileReady"]').forEach(el => el.textContent = t.mobileReady);
+            
+            // Update demo section
+            document.querySelectorAll('[data-i18n="demoTitle"]').forEach(el => el.textContent = t.demoTitle);
+            document.querySelectorAll('[data-i18n="demoSubtitle"]').forEach(el => el.textContent = t.demoSubtitle);
             
             // Update top bar login
             const loginLink = document.querySelector('.top-bar-item:has(span)');
