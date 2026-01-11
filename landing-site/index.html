@@ -1038,66 +1038,148 @@
         /* Features Section Styles */
         .features-section {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .teal-color {
-            color: #5ec4d5;
-        }
-        
-        .grey-color {
-            color: #979797;
-        }
-        
-        .teal-bg {
-            background-color: #5ec4d5;
-        }
-        
-        .light-blue-bg {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(94, 196, 213, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(94, 196, 213, 0.1);
-            background: rgba(255, 255, 255, 0.95);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #5ec4d5, #4db5c8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            margin: 0 auto 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(94, 196, 213, 0.3);
+
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(94, 196, 213, 0.3), transparent);
         }
         
         .section-title-gradient {
-            background: linear-gradient(135deg, #5ec4d5, #4db5c8);
+            background: linear-gradient(135deg, #1a1a1a, #5ec4d5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
+        .grey-color {
+            color: #64748b;
+        }
+        
+        .feature-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--card-gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            border-color: transparent;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            background: var(--card-gradient);
+            box-shadow: 0 8px 24px var(--card-shadow);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 32px var(--card-shadow-hover);
+        }
+
+        .feature-icon-wrapper i {
+            font-size: 2rem;
+            color: white;
+            z-index: 1;
+        }
+
+        /* Unique colors for each feature */
+        .feature-card-1 {
+            --card-gradient: linear-gradient(135deg, #3b82f6, #2563eb);
+            --card-shadow: rgba(59, 130, 246, 0.25);
+            --card-shadow-hover: rgba(59, 130, 246, 0.4);
+        }
+
+        .feature-card-2 {
+            --card-gradient: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            --card-shadow: rgba(139, 92, 246, 0.25);
+            --card-shadow-hover: rgba(139, 92, 246, 0.4);
+        }
+
+        .feature-card-3 {
+            --card-gradient: linear-gradient(135deg, #f59e0b, #d97706);
+            --card-shadow: rgba(245, 158, 11, 0.25);
+            --card-shadow-hover: rgba(245, 158, 11, 0.4);
+        }
+
+        .feature-card-4 {
+            --card-gradient: linear-gradient(135deg, #10b981, #059669);
+            --card-shadow: rgba(16, 185, 129, 0.25);
+            --card-shadow-hover: rgba(16, 185, 129, 0.4);
+        }
+
+        .feature-card-5 {
+            --card-gradient: linear-gradient(135deg, #f59e0b, #f97316);
+            --card-shadow: rgba(245, 158, 11, 0.25);
+            --card-shadow-hover: rgba(245, 158, 11, 0.4);
+        }
+
+        .feature-card-6 {
+            --card-gradient: linear-gradient(135deg, #ec4899, #db2777);
+            --card-shadow: rgba(236, 72, 153, 0.25);
+            --card-shadow-hover: rgba(236, 72, 153, 0.4);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
         
         .fade-in-up {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             animation: fadeInUp 0.8s ease forwards;
         }
         
@@ -1112,26 +1194,6 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-            }
-        }
-        
-        .pulse-dot {
-            width: 8px;
-            height: 8px;
-            background: #5ec4d5;
-            border-radius: 50%;
-            animation: pulseDot 2s infinite;
-            margin: 0 auto 30px;
-        }
-        
-        @keyframes pulseDot {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 0.7;
             }
         }
 
@@ -1207,6 +1269,23 @@
 
             .decorative-circle {
                 display: none;
+            }
+
+            .feature-card {
+                padding: 2rem;
+            }
+
+            .feature-icon-wrapper {
+                width: 70px;
+                height: 70px;
+            }
+
+            .feature-icon-wrapper i {
+                font-size: 1.75rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.25rem;
             }
         }
 
