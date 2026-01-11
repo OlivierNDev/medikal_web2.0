@@ -195,12 +195,6 @@
             opacity: 0.8;
         }
 
-        .logo-section img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            transition: var(--transition);
-        }
 
         .logo-text {
             display: flex;
@@ -442,8 +436,24 @@
             gap: 0.5rem;
         }
 
-        .mobile-nav-logo img {
-            height: 32px;
+        .mobile-nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .mobile-nav-logo-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .mobile-nav-logo-subtitle {
+            font-size: 0.65rem;
+            color: var(--light-text);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .mobile-close-btn {
@@ -577,9 +587,6 @@
                 max-width: none;
             }
 
-            .logo-section img {
-                height: 28px;
-            }
         }
 
         /* Accessibility & Focus States */
@@ -1435,10 +1442,9 @@
         <div class="header-container">
             <!-- Logo Section -->
             <a href="#" class="logo-section">
-                <img src="logo.png" alt="Medikal - AI Health Assistant" />
                 <div class="logo-text">
                     <div class="logo-title">MEDIKAL</div>
-                    <div class="logo-subtitle">AI Healthcare</div>
+                    <div class="logo-subtitle">AI HEALTHCARE</div>
                 </div>
             </a>
             
@@ -1537,8 +1543,8 @@
             </li>
         </ul>
 
-        <div class="mobile-cta">
-            <a href="https://app.medikalafrica.com/register" class="cta-button">
+            <div class="mobile-cta">
+            <a href="#access" class="cta-button">
                 <i class="fas fa-rocket"></i>
                 Get Started Free
             </a>
