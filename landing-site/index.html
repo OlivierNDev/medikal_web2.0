@@ -1143,6 +1143,7 @@
         .features-stats {
             display: flex;
             gap: 3rem;
+            flex-wrap: wrap;
         }
 
         .features-stat {
@@ -1982,110 +1983,22 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-container">
-            <!-- Content -->
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span>AI-Powered Healthcare Platform</span>
-                </div>
-
-                <h1 class="hero-title">
-                    Revolutionizing <span class="highlight">African Healthcare</span> with AI
-                </h1>
-
-                <p class="hero-subtitle">
-                    Combating Antimicrobial Resistance across Africa through advanced AI technology, multilingual support, and intelligent health solutions for clinicians and patients.
-                </p>
-
-                <div class="hero-cta">
-                    <a href="#about" class="btn-primary">
-                        <i class="fas fa-rocket"></i>
-                        Explore Platform
-                    </a>
-                    <button class="btn-secondary" id="watchDemoBtn">
-                        <i class="fas fa-play-circle"></i>
-                        Watch Demo
-                    </button>
-                </div>
-
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">AI Accuracy</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3+</div>
-                        <div class="stat-label">Languages</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">AI Support</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Visual Section -->
-            <div class="hero-visual">
-                <div class="visual-card">
-                    <div class="decorative-circle circle-1"></div>
-                    <div class="decorative-circle circle-2"></div>
-                    
-                    <div class="visual-icon-container">
-                        <i class="fas fa-user-md visual-icon"></i>
-                    </div>
-
-                    <div class="visual-grid">
-                        <div class="visual-feature">
-                            <i class="fas fa-stethoscope"></i>
-                            <div class="visual-feature-text">Clinical Support</div>
-                        </div>
-                        <div class="visual-feature">
-                            <i class="fas fa-shield-virus"></i>
-                            <div class="visual-feature-text">AMR Tracking</div>
-                        </div>
-                        <div class="visual-feature">
-                            <i class="fas fa-language"></i>
-                            <div class="visual-feature-text">Multilingual</div>
-                        </div>
-                        <div class="visual-feature">
-                            <i class="fas fa-mobile-alt"></i>
-                            <div class="visual-feature-text">Mobile Ready</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Modal -->
-    <div class="video-modal" id="videoModal">
-        <div class="video-content">
-            <button class="video-close" id="videoClose">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="video-wrapper">
-                <video id="demoVideo" controls preload="metadata">
-                    <source src="demo-video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </div>
-
-    <!-- Features Section -->
+    <!-- Hero/Features Section (Unified) -->
     <section id="features" class="features-section">
         <div class="features-curve"></div>
         <div class="features-container">
             <div class="features-content-wrapper">
                 <!-- Left Content -->
                 <div class="features-content">
-                    <h2 class="features-title" data-i18n="featuresTitle">
-                        AI-Powered Healthcare
-                    </h2>
-                    <p class="features-subtitle" data-i18n="featuresSubtitle">
-                        Advanced artificial intelligence capabilities designed specifically for African healthcare challenges
+                    <div class="hero-badge" style="display: inline-block; background: rgba(94, 196, 213, 0.1); padding: 0.5rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; font-size: 0.875rem; color: #5ec4d5; font-weight: 600;">
+                        <span data-i18n="heroBadge">AI-Powered Healthcare Platform</span>
+                    </div>
+
+                    <h1 class="features-title" style="font-size: 3.5rem; margin-bottom: 1.5rem;">
+                        <span data-i18n="heroTitle1">Revolutionizing</span> <span class="highlight" style="color: #5ec4d5;" data-i18n="heroTitle2">African Healthcare</span> <span data-i18n="heroTitle3">with AI</span>
+                    </h1>
+                    <p class="features-subtitle" data-i18n="heroSubtitle">
+                        Combating Antimicrobial Resistance across Africa through advanced AI technology, multilingual support, and intelligent health solutions for clinicians and patients.
                     </p>
                     
                     <div class="features-cta">
@@ -2093,7 +2006,7 @@
                             <i class="fas fa-rocket"></i>
                             <span data-i18n="explorePlatform">Explore Platform</span>
                         </a>
-                        <button class="features-btn-secondary" id="featuresWatchDemoBtn">
+                        <button class="features-btn-secondary" id="watchDemoBtn">
                             <i class="fas fa-play-circle"></i>
                             <span data-i18n="watchDemo">Watch Demo</span>
                         </button>
@@ -2107,6 +2020,10 @@
                         <div class="features-stat">
                             <div class="features-stat-number">3+</div>
                             <div class="features-stat-label" data-i18n="languages">Languages</div>
+                        </div>
+                        <div class="features-stat">
+                            <div class="features-stat-number">24/7</div>
+                            <div class="features-stat-label" data-i18n="aiSupport">AI Support</div>
                         </div>
                     </div>
                 </div>
@@ -2152,6 +2069,21 @@
             </div>
         </div>
     </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-content">
+            <button class="video-close" id="videoClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="video-wrapper">
+                <video id="demoVideo" controls preload="metadata">
+                    <source src="demo-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-gradient-to-b from-dark-bg to-midnight">
@@ -3104,17 +3036,32 @@
                 else if (text === 'Mobile Ready' || text === "Bishoboka kuri Telefoni" || text === "Compatible Mobile") feature.textContent = t.mobileReady;
             });
             
-            // Update features section
+            // Update unified hero/features section
+            const heroBadge = document.querySelector('#features .hero-badge span');
+            if (heroBadge) heroBadge.textContent = t.heroBadge;
+            
             const featuresTitle = document.querySelector('#features .features-title');
-            if (featuresTitle) featuresTitle.textContent = t.featuresTitle;
+            if (featuresTitle) {
+                const title1 = featuresTitle.querySelector('[data-i18n="heroTitle1"]');
+                const title2 = featuresTitle.querySelector('[data-i18n="heroTitle2"]');
+                const title3 = featuresTitle.querySelector('[data-i18n="heroTitle3"]');
+                if (title1) title1.textContent = t.heroTitle1 + ' ';
+                if (title2) title2.textContent = t.heroTitle2;
+                if (title3) title3.textContent = ' ' + t.heroTitle3;
+            }
             
             const featuresSubtitle = document.querySelector('#features .features-subtitle');
-            if (featuresSubtitle) featuresSubtitle.textContent = t.featuresSubtitle;
+            if (featuresSubtitle && featuresSubtitle.hasAttribute('data-i18n')) {
+                if (featuresSubtitle.getAttribute('data-i18n') === 'heroSubtitle') {
+                    featuresSubtitle.textContent = t.heroSubtitle;
+                }
+            }
             
             document.querySelectorAll('[data-i18n="explorePlatform"]').forEach(el => el.textContent = t.explorePlatform);
             document.querySelectorAll('[data-i18n="watchDemo"]').forEach(el => el.textContent = t.watchDemo);
             document.querySelectorAll('[data-i18n="aiAccuracy"]').forEach(el => el.textContent = t.aiAccuracy);
             document.querySelectorAll('[data-i18n="languages"]').forEach(el => el.textContent = t.languages);
+            document.querySelectorAll('[data-i18n="aiSupport"]').forEach(el => el.textContent = t.aiSupport);
             document.querySelectorAll('[data-i18n="clinicalSupport"]').forEach(el => el.textContent = t.clinicalSupport);
             document.querySelectorAll('[data-i18n="amrTracking"]').forEach(el => el.textContent = t.amrTracking);
             document.querySelectorAll('[data-i18n="multilingual"]').forEach(el => el.textContent = t.multilingual);
@@ -3144,20 +3091,6 @@
             });
         }
 
-        // Features Section Watch Demo Button
-        const featuresWatchDemoBtn = document.getElementById('featuresWatchDemoBtn');
-        if (featuresWatchDemoBtn) {
-            featuresWatchDemoBtn.addEventListener('click', function() {
-                const videoModal = document.getElementById('videoModal');
-                if (videoModal) {
-                    videoModal.classList.add('active');
-                    const video = document.getElementById('demoVideo');
-                    if (video) {
-                        video.play();
-                    }
-                }
-            });
-        }
     </script>
     <script src="script.js"></script>
 </body>
