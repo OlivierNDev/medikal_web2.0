@@ -1222,6 +1222,14 @@
         }
 
         @media (max-width: 1024px) {
+            .features-section {
+                padding: 4rem 0;
+            }
+
+            .features-container {
+                padding: 0 1.5rem;
+            }
+
             .features-content-wrapper {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -1229,6 +1237,7 @@
 
             .features-content {
                 padding-right: 0;
+                text-align: center;
             }
 
             .features-title {
@@ -1241,12 +1250,161 @@
                 margin-bottom: 1.25rem;
             }
 
+            .features-subtitle {
+                max-width: 100%;
+            }
+
+            .features-cta {
+                justify-content: center;
+            }
+
+            .features-stats {
+                justify-content: center;
+            }
+
+            .features-visual {
+                padding: 1rem;
+            }
+
             .features-visual-content {
                 clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 0% 100%);
+                padding: 2rem;
             }
 
             .features-curve {
                 display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .features-section {
+                padding: 3rem 0;
+            }
+
+            .features-container {
+                padding: 0 1rem;
+            }
+
+            .features-content-wrapper {
+                gap: 2rem;
+            }
+
+            .features-title {
+                font-size: clamp(1.75rem, 5vw, 2rem);
+                margin-bottom: 1rem;
+            }
+
+            .features-subtitle {
+                font-size: clamp(0.875rem, 2.5vw, 1rem);
+                margin-bottom: 2rem;
+            }
+
+            .hero-badge-features {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .features-cta {
+                flex-direction: column;
+                gap: 0.75rem;
+                margin-bottom: 2rem;
+            }
+
+            .features-btn-primary,
+            .features-btn-secondary {
+                width: 100%;
+                justify-content: center;
+                padding: 0.875rem 1.5rem;
+            }
+
+            .features-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: center;
+            }
+
+            .features-stat {
+                width: 100%;
+                text-align: center;
+            }
+
+            .features-stat-number {
+                font-size: 2rem;
+            }
+
+            .features-visual {
+                padding: 0.5rem;
+            }
+
+            .features-visual-content {
+                padding: 1.5rem;
+                border-radius: 20px;
+                clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+            }
+
+            .features-list-item {
+                padding: 1rem 1.25rem;
+            }
+
+            .features-list-item-text {
+                font-size: 0.9375rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-section {
+                padding: 2.5rem 0;
+            }
+
+            .features-container {
+                padding: 0 0.75rem;
+            }
+
+            .features-title {
+                font-size: clamp(1.5rem, 6vw, 1.75rem);
+                line-height: 1.2;
+            }
+
+            .features-subtitle {
+                font-size: clamp(0.8125rem, 3vw, 0.9375rem);
+            }
+
+            .hero-badge-features {
+                font-size: 0.7rem;
+                padding: 0.35rem 0.7rem;
+                margin-bottom: 0.875rem;
+            }
+
+            .features-btn-primary,
+            .features-btn-secondary {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9375rem;
+            }
+
+            .features-stat-number {
+                font-size: 1.75rem;
+            }
+
+            .features-stat-label {
+                font-size: 0.8125rem;
+            }
+
+            .features-visual {
+                padding: 0.25rem;
+            }
+
+            .features-visual-content {
+                padding: 1.25rem;
+                border-radius: 16px;
+            }
+
+            .features-list-item {
+                padding: 0.875rem 1rem;
+            }
+
+            .features-list-item-text {
+                font-size: 0.875rem;
             }
         }
 
