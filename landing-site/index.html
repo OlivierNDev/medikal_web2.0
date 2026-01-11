@@ -1105,13 +1105,12 @@
             border-radius: 12px;
             font-weight: 600;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            display: inline-block;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(94, 196, 213, 0.3);
+            text-align: center;
         }
 
         .features-btn-primary:hover {
@@ -1207,7 +1206,7 @@
             padding: 1.25rem 1.5rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            justify-content: center;
             transition: all 0.3s ease;
             cursor: pointer;
         }
@@ -1219,26 +1218,11 @@
             box-shadow: 0 4px 12px rgba(94, 196, 213, 0.15);
         }
 
-        .features-list-item-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--item-gradient);
-            flex-shrink: 0;
-        }
-
-        .features-list-item-icon i {
-            font-size: 1.25rem;
-            color: white;
-        }
-
         .features-list-item-text {
             font-size: 1rem;
             font-weight: 600;
             color: #1e293b;
+            text-align: center;
         }
 
         .features-list-item-1 {
@@ -2003,7 +1987,6 @@
                     
                     <div class="features-cta">
                         <a href="#about" class="features-btn-primary">
-                            <i class="fas fa-rocket"></i>
                             <span data-i18n="explorePlatform">Explore Platform</span>
                         </a>
                         <button class="features-btn-secondary" id="watchDemoBtn">
@@ -2037,30 +2020,18 @@
                         
                         <div class="features-list">
                             <div class="features-list-item features-list-item-1">
-                                <div class="features-list-item-icon">
-                                    <i class="fas fa-stethoscope"></i>
-                                </div>
                                 <div class="features-list-item-text" data-i18n="clinicalSupport">Clinical Support</div>
                             </div>
                             
                             <div class="features-list-item features-list-item-2">
-                                <div class="features-list-item-icon">
-                                    <i class="fas fa-shield-virus"></i>
-                                </div>
                                 <div class="features-list-item-text" data-i18n="amrTracking">AMR Tracking</div>
                             </div>
                             
                             <div class="features-list-item features-list-item-3">
-                                <div class="features-list-item-icon">
-                                    <i class="fas fa-language"></i>
-                                </div>
                                 <div class="features-list-item-text" data-i18n="multilingual">Multilingual</div>
                             </div>
                             
                             <div class="features-list-item features-list-item-4">
-                                <div class="features-list-item-icon">
-                                    <i class="fas fa-mobile-alt"></i>
-                                </div>
                                 <div class="features-list-item-text" data-i18n="mobileReady">Mobile Ready</div>
                             </div>
                         </div>
