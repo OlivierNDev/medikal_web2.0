@@ -3126,6 +3126,22 @@
                 else if (text === 'Mobile Ready' || text === "Bishoboka kuri Telefoni" || text === "Compatible Mobile") feature.textContent = t.mobileReady;
             });
             
+            // Update features section
+            const featuresTitle = document.querySelector('#features .features-title');
+            if (featuresTitle) featuresTitle.textContent = t.featuresTitle;
+            
+            const featuresSubtitle = document.querySelector('#features .features-subtitle');
+            if (featuresSubtitle) featuresSubtitle.textContent = t.featuresSubtitle;
+            
+            document.querySelectorAll('[data-i18n="explorePlatform"]').forEach(el => el.textContent = t.explorePlatform);
+            document.querySelectorAll('[data-i18n="watchDemo"]').forEach(el => el.textContent = t.watchDemo);
+            document.querySelectorAll('[data-i18n="aiAccuracy"]').forEach(el => el.textContent = t.aiAccuracy);
+            document.querySelectorAll('[data-i18n="languages"]').forEach(el => el.textContent = t.languages);
+            document.querySelectorAll('[data-i18n="clinicalSupport"]').forEach(el => el.textContent = t.clinicalSupport);
+            document.querySelectorAll('[data-i18n="amrTracking"]').forEach(el => el.textContent = t.amrTracking);
+            document.querySelectorAll('[data-i18n="multilingual"]').forEach(el => el.textContent = t.multilingual);
+            document.querySelectorAll('[data-i18n="mobileReady"]').forEach(el => el.textContent = t.mobileReady);
+            
             // Update top bar login
             const loginLink = document.querySelector('.top-bar-item:has(span)');
             if (loginLink) {
