@@ -625,6 +625,321 @@
         .header-container {
             animation: fadeInDown 0.6s ease-out;
         }
+
+        /* ========================================
+           FOOTER STYLES
+        ======================================== */
+        .medikal-footer {
+            background: #0D3447;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .medikal-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-blue);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-company {
+            max-width: 350px;
+        }
+
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            opacity: 0.8;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-company-text {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 6px;
+            color: #94A3B8;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .social-link:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        .footer-column h3 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-blue);
+            transform: translateX(3px);
+        }
+
+        .footer-newsletter h3 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-newsletter p {
+            color: #94A3B8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .newsletter-input::placeholder {
+            color: #94A3B8;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .newsletter-button {
+            width: 100%;
+            padding: 0.875rem 1.5rem;
+            background: var(--primary-blue);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .newsletter-button:hover {
+            background: #4AAFC0;
+            transform: translateY(-1px);
+        }
+
+        .newsletter-button:active {
+            transform: translateY(0);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(148, 163, 184, 0.15);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-copyright {
+            color: #94A3B8;
+            font-size: 0.875rem;
+        }
+
+        .footer-developers {
+            color: #94A3B8;
+            font-size: 0.875rem;
+        }
+
+        .footer-developers strong {
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .footer-bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #94A3B8;
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom-right i {
+            color: var(--primary-blue);
+        }
+
+        @media (max-width: 1200px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1.5fr;
+                gap: 2.5rem;
+            }
+
+            .footer-column:nth-child(3) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-newsletter {
+                grid-column: 1 / -1;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                padding: 3rem 1.5rem 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-company {
+                max-width: 100%;
+            }
+
+            .footer-newsletter {
+                max-width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                padding: 2.5rem 1rem 1.5rem;
+            }
+
+            .footer-grid {
+                gap: 2rem;
+            }
+
+            .footer-column h3 {
+                font-size: 0.9rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .footer-link {
+                font-size: 0.9rem;
+            }
+
+            .newsletter-input,
+            .newsletter-button {
+                padding: 0.75rem 1rem;
+                font-size: 0.875rem;
+            }
+
+            .social-link {
+                width: 38px;
+                height: 38px;
+                font-size: 0.95rem;
+            }
+        }
+
+        .newsletter-button:focus,
+        .newsletter-input:focus,
+        .footer-link:focus,
+        .social-link:focus {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body class="bg-dark-bg text-soft-cream font-inter overflow-x-hidden">
@@ -648,7 +963,7 @@
                     <option value="rw">🇷🇼 Kinyarwanda</option>
                     <option value="fr">🇫🇷 Français</option>
                 </select>
-                <a href="https://app.medikalafrica.com/login" class="top-bar-item">
+                <a href="#access" class="top-bar-item">
                     <i class="fas fa-sign-in-alt"></i>
                     <span>Login</span>
                 </a>
@@ -660,8 +975,8 @@
     <header class="medikal-header" id="mainHeader">
         <div class="header-container">
             <!-- Logo Section -->
-            <a href="https://medikalafrica.com/" class="logo-section">
-                <img src="https://medikalafrica.com/wp-content/uploads/2025/08/Logo-scaled.png" alt="Medikal - AI Health Assistant" />
+            <a href="#" class="logo-section">
+                <img src="logo.png" alt="Medikal - AI Health Assistant" />
                 <div class="logo-text">
                     <div class="logo-title">MEDIKAL</div>
                     <div class="logo-subtitle">AI Healthcare</div>
@@ -770,7 +1085,7 @@
             </nav>
             
             <!-- CTA Button -->
-            <a href="https://app.medikalafrica.com/register" class="cta-button desktop-only">
+            <a href="#access" class="cta-button desktop-only">
                 <i class="fas fa-rocket"></i>
                 Get Started
             </a>
@@ -789,7 +1104,7 @@
     <nav class="mobile-nav" id="mobileNav">
         <div class="mobile-nav-header">
             <div class="mobile-nav-logo">
-                <img src="https://medikalafrica.com/wp-content/uploads/2025/08/Logo-scaled.png" alt="Medikal" />
+                <img src="logo.png" alt="Medikal" />
             </div>
             <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
                 <i class="fas fa-times"></i>
@@ -1158,54 +1473,105 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark-bg py-12 border-t border-neon-cyan/20">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="md:col-span-2">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-10 h-10 bg-gradient-to-r from-neon-cyan to-warm-beige rounded-lg flex items-center justify-center">
-                            <i class="fas fa-heartbeat text-midnight text-xl"></i>
-                        </div>
-                        <span class="text-2xl font-bold text-gradient">Medikal</span>
-                    </div>
-                    <p class="text-soft-cream/60 mb-6 max-w-md">
-                        Africa's AI-powered health assistant fighting antimicrobial resistance for safer, smarter healthcare.
+    <footer class="medikal-footer">
+        <div class="footer-container">
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                
+                <!-- Company Info -->
+                <div class="footer-company">
+                    <a href="#" class="footer-logo">
+                        <img src="logo.png" alt="Medikal - AI Healthcare for Africa">
+                    </a>
+                    <p class="footer-company-text">
+                        AI-powered healthcare platform combating Antimicrobial Resistance (AMR) in Africa through innovative technology and multilingual support.
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-card-bg rounded-lg flex items-center justify-center hover:bg-neon-cyan/20 transition-colors">
-                            <i class="fab fa-twitter text-neon-cyan"></i>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Follow us on X (Twitter)">
+                            <i class="fa-brands fa-x-twitter"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-card-bg rounded-lg flex items-center justify-center hover:bg-neon-cyan/20 transition-colors">
-                            <i class="fab fa-linkedin text-neon-cyan"></i>
+                        <a href="#" class="social-link" aria-label="Connect on LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-card-bg rounded-lg flex items-center justify-center hover:bg-neon-cyan/20 transition-colors">
-                            <i class="fab fa-github text-neon-cyan"></i>
+                        <a href="#" class="social-link" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Like us on Facebook">
+                            <i class="fab fa-facebook-f"></i>
                         </a>
                     </div>
                 </div>
-                
-                <div>
-                    <h4 class="text-soft-cream font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2 text-soft-cream/60">
-                        <li><a href="#about" class="hover:text-neon-cyan transition-colors">About</a></li>
-                        <li><a href="#mission" class="hover:text-neon-cyan transition-colors">Mission</a></li>
-                        <li><a href="#team" class="hover:text-neon-cyan transition-colors">Team</a></li>
-                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Contact</a></li>
+
+                <!-- Quick Links -->
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about" class="footer-link">Features</a></li>
+                        <li><a href="#mission" class="footer-link">Solutions</a></li>
+                        <li><a href="#team" class="footer-link">Team</a></li>
+                        <li><a href="#access" class="footer-link">Contact</a></li>
+                        <li><a href="#" class="footer-link">Download</a></li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h4 class="text-soft-cream font-semibold mb-4">Legal</h4>
-                    <ul class="space-y-2 text-soft-cream/60">
-                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Cookie Policy</a></li>
+
+                <!-- Company -->
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="#team" class="footer-link">Our Team</a></li>
+                        <li><a href="#mission" class="footer-link">Impact</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#access" class="footer-link">Contact</a></li>
                     </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#access" class="footer-link">Contact</a></li>
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">API</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Get the latest updates on Medikal's AI healthcare innovations.</p>
+                    <form class="newsletter-form" id="footerNewsletterForm">
+                        <input 
+                            type="email" 
+                            placeholder="Enter your email" 
+                            class="newsletter-input"
+                            required
+                            aria-label="Email address for newsletter"
+                        >
+                        <button type="submit" class="newsletter-button">
+                            <i class="fas fa-paper-plane"></i>
+                            Subscribe
+                        </button>
+                    </form>
                 </div>
             </div>
-            
-            <div class="border-t border-neon-cyan/20 pt-8 mt-8 text-center text-soft-cream/60">
-                <p>&copy; 2025 Medikal – Powered by AMR Initiative Rwanda & ZeroX Intelligence</p>
+
+            <!-- Bottom Footer -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    <p class="footer-copyright">
+                        &copy; 2025 Medikal. All rights reserved.
+                    </p>
+                    <p class="footer-developers">
+                        Developed by <strong>ZeroX Intelligence</strong> & <strong>AMR Initiative Rwanda</strong>
+                    </p>
+                </div>
+                <div class="footer-bottom-right">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Kigali, Rwanda</span>
+                </div>
             </div>
         </div>
     </footer>
@@ -1399,6 +1765,37 @@
                     // Reset button state
                     submitText.textContent = 'Request Early Access';
                     submitIcon.className = 'fas fa-arrow-right ml-2';
+                }, 1500);
+            });
+        }
+
+        // Footer newsletter form handling
+        const footerNewsletterForm = document.getElementById('footerNewsletterForm');
+        if (footerNewsletterForm) {
+            footerNewsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const button = this.querySelector('.newsletter-button');
+                const input = this.querySelector('.newsletter-input');
+                const originalHTML = button.innerHTML;
+                
+                // Show loading state
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+                button.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Success state
+                    button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+                    button.style.background = '#48bb78';
+                    
+                    // Reset after 3 seconds
+                    setTimeout(() => {
+                        button.innerHTML = originalHTML;
+                        button.disabled = false;
+                        button.style.background = '';
+                        input.value = '';
+                    }, 3000);
                 }, 1500);
             });
         }
