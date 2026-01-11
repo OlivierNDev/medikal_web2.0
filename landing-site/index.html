@@ -913,7 +913,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1rem;
         }
 
         .video-modal.active {
@@ -928,6 +928,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin: auto;
         }
 
         .video-close {
@@ -997,10 +998,45 @@
             }
         }
 
+        @media (max-width: 992px) {
+            .video-modal {
+                padding: 1rem;
+            }
+
+            .video-content {
+                max-width: 95%;
+            }
+
+            .video-close {
+                top: -10px;
+                right: -10px;
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 padding: 4rem 0 3rem;
                 min-height: auto;
+            }
+
+            .video-modal {
+                padding: 0.75rem;
+            }
+
+            .video-content {
+                max-width: 100%;
+                border-radius: 8px;
+            }
+
+            .video-close {
+                top: 5px;
+                right: 5px;
+                width: 34px;
+                height: 34px;
+                font-size: 0.95rem;
             }
 
             .hero-container {
@@ -1651,7 +1687,6 @@
             <!-- Content -->
             <div class="hero-content">
                 <div class="hero-badge">
-                    <i class="fas fa-heartbeat"></i>
                     <span>AI-Powered Healthcare Platform</span>
                 </div>
 
