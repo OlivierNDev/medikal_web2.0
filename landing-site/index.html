@@ -2075,103 +2075,81 @@
     </div>
 
     <!-- Features Section -->
-    <section id="features" class="features-section light-blue-bg py-20 px-4">
-        <div class="max-w-6xl mx-auto">
-            
-            <!-- Section Header -->
-            <div class="text-center mb-16">
-                <div class="pulse-dot"></div>
-                <h2 class="section-title-gradient text-4xl md:text-5xl font-bold mb-6">
-                    AI-Powered Healthcare
-                </h2>
-                <p class="grey-color text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-                    Advanced artificial intelligence capabilities designed specifically for African healthcare challenges
-                </p>
+    <section id="features" class="features-section">
+        <div class="features-curve"></div>
+        <div class="features-container">
+            <div class="features-content-wrapper">
+                <!-- Left Content -->
+                <div class="features-content">
+                    <h2 class="features-title" data-i18n="featuresTitle">
+                        AI-Powered Healthcare
+                    </h2>
+                    <p class="features-subtitle" data-i18n="featuresSubtitle">
+                        Advanced artificial intelligence capabilities designed specifically for African healthcare challenges
+                    </p>
+                    
+                    <div class="features-cta">
+                        <a href="#about" class="features-btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            <span data-i18n="explorePlatform">Explore Platform</span>
+                        </a>
+                        <button class="features-btn-secondary" id="featuresWatchDemoBtn">
+                            <i class="fas fa-play-circle"></i>
+                            <span data-i18n="watchDemo">Watch Demo</span>
+                        </button>
+                    </div>
+
+                    <div class="features-stats">
+                        <div class="features-stat">
+                            <div class="features-stat-number">95%</div>
+                            <div class="features-stat-label" data-i18n="aiAccuracy">AI Accuracy</div>
+                        </div>
+                        <div class="features-stat">
+                            <div class="features-stat-number">3+</div>
+                            <div class="features-stat-label" data-i18n="languages">Languages</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="features-visual">
+                    <div class="features-visual-content">
+                        <div class="features-main-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        
+                        <div class="features-list">
+                            <div class="features-list-item features-list-item-1">
+                                <div class="features-list-item-icon">
+                                    <i class="fas fa-stethoscope"></i>
+                                </div>
+                                <div class="features-list-item-text" data-i18n="clinicalSupport">Clinical Support</div>
+                            </div>
+                            
+                            <div class="features-list-item features-list-item-2">
+                                <div class="features-list-item-icon">
+                                    <i class="fas fa-shield-virus"></i>
+                                </div>
+                                <div class="features-list-item-text" data-i18n="amrTracking">AMR Tracking</div>
+                            </div>
+                            
+                            <div class="features-list-item features-list-item-3">
+                                <div class="features-list-item-icon">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <div class="features-list-item-text" data-i18n="multilingual">Multilingual</div>
+                            </div>
+                            
+                            <div class="features-list-item features-list-item-4">
+                                <div class="features-list-item-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="features-list-item-text" data-i18n="mobileReady">Mobile Ready</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Features Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Symptom Analysis -->
-                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-stethoscope"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureSymptomAnalysis">
-                        Symptom Analysis
-                    </h3>
-                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureSymptomAnalysisDesc">
-                        Advanced AI algorithms analyze patient symptoms and medical history to provide accurate diagnostic assistance and treatment recommendations.
-                    </p>
-                </div>
-
-                <!-- Multilingual Support -->
-                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-globe-africa"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureMultilingual">
-                        Multilingual Support
-                    </h3>
-                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureMultilingualDesc">
-                        Seamless communication in Kinyarwanda and English, breaking language barriers for better healthcare accessibility across Africa.
-                    </p>
-                </div>
-
-                <!-- Medical Imaging -->
-                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-x-ray"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureMedicalImaging">
-                        Medical Imaging
-                    </h3>
-                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureMedicalImagingDesc">
-                        AI-powered image analysis for medical conditions, enabling rapid identification of health issues from clinical photographs and scans.
-                    </p>
-                </div>
-
-                <!-- Medication Reminders -->
-                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-pills"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureSmartReminders">
-                        Smart Reminders
-                    </h3>
-                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureSmartRemindersDesc">
-                        Intelligent medication adherence tracking with personalized reminders to ensure proper treatment compliance and better outcomes.
-                    </p>
-                </div>
-
-                <!-- Real-time Results -->
-                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureInstantResults">
-                        Instant Results
-                    </h3>
-                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureInstantResultsDesc">
-                        Real-time AI processing delivers immediate diagnostic insights and treatment recommendations, reducing critical decision time.
-                    </p>
-                </div>
-
-                <!-- Clinical Decision Support -->
-                <div class="feature-card fade-in-up rounded-2xl p-8 text-center">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-md"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4" data-i18n="featureClinicalSupport">
-                        Clinical Support
-                    </h3>
-                    <p class="grey-color text-sm leading-relaxed" data-i18n="featureClinicalSupportDesc">
-                        Evidence-based decision support for healthcare professionals, enhancing diagnostic accuracy and treatment effectiveness.
-                    </p>
-                </div>
-
-            </div>
-
         </div>
     </section>
 
