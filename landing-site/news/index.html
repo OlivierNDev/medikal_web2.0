@@ -33,8 +33,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: #0a1a24;
-            color: #fff;
+            background: #f8fafb;
+            color: #1a1a1a;
         }
 
         .news-grid {
@@ -44,25 +44,26 @@
         }
 
         .news-card {
-            background: rgba(15, 42, 58, 0.8);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            border-radius: 16px;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
             padding: 1.5rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .news-card:hover {
-            border-color: rgba(0, 255, 255, 0.3);
+            border-color: #5EC4D5;
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 255, 255, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .news-card-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(239, 178, 145, 0.1));
-            border-radius: 12px;
+            background: #f8fafb;
+            border-radius: 8px;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
@@ -72,9 +73,9 @@
         }
 
         .news-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 100%;
+            max-height: 180px;
+            object-fit: contain;
         }
 
         .news-card-image iframe {
@@ -92,30 +93,30 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="bg-midnight border-b border-neon-cyan/10">
+    <header style="background: #ffffff; border-bottom: 1px solid #e5e7eb;">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="../index.html" class="flex items-center space-x-3">
                     <img src="../logo.png" alt="Medikal" class="h-10">
                 </a>
                 <nav class="hidden md:flex items-center space-x-6">
-                    <a href="../index.html" class="text-white hover:text-neon-cyan transition">Home</a>
-                    <a href="#about" class="text-white hover:text-neon-cyan transition">About</a>
-                    <a href="#mission" class="text-white hover:text-neon-cyan transition">Mission</a>
-                    <a href="index.html" class="text-neon-cyan font-semibold">News</a>
+                    <a href="../index.html" style="color: #666666;" class="hover:opacity-80 transition">Home</a>
+                    <a href="../index.html#about" style="color: #666666;" class="hover:opacity-80 transition">About</a>
+                    <a href="../index.html#mission" style="color: #666666;" class="hover:opacity-80 transition">Mission</a>
+                    <a href="index.html" style="color: #5EC4D5;" class="font-semibold">News</a>
                 </nav>
             </div>
         </div>
     </header>
 
     <!-- News Listing Page -->
-    <section class="py-20 bg-gradient-to-b from-dark-bg to-midnight min-h-screen">
+    <section class="py-20 min-h-screen" style="background: #f8fafb;">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h1 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #fff;">
-                    News & <span style="background: linear-gradient(135deg, #00ffff, #efb291); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Media</span>
+                <h1 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #1a1a1a;">
+                    News & Media
                 </h1>
-                <p class="text-xl max-w-3xl mx-auto" style="color: #fff;">
+                <p class="text-xl max-w-3xl mx-auto" style="color: #666666;">
                     Stay updated with the latest news, updates, and media coverage about Medikal's impact on healthcare in Africa
                 </p>
             </div>
@@ -124,22 +125,167 @@
                 <!-- News Item 1: Youth Digital Health Champion -->
                 <a href="youth-digital-health-champion.html" class="news-card block">
                     <div class="news-card-image">
-                        <div class="w-full h-full bg-gradient-to-br from-neon-cyan/10 to-warm-beige/5 flex items-center justify-center p-4">
-                            <img src="../africa-cdc-logo.png" alt="Africa CDC Logo" style="max-width: 200px; max-height: 150px; object-fit: contain;">
-                        </div>
+                        <img src="../africa-cdc-logo.png" alt="Africa CDC Logo">
                     </div>
                     <div class="mb-3">
-                        <span class="text-sm text-neon-cyan font-semibold">Leadership & Recognition</span>
-                        <span class="text-sm mx-2" style="color: #fff;">•</span>
-                        <span class="text-sm" style="color: #fff;">Dec 2025</span>
+                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Recognition</span>
+                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                        <span class="text-sm" style="color: #666;">Dec 2025</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
                         Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC
                     </h3>
-                    <p class="mb-4 line-clamp-3" style="color: #fff; opacity: 0.9;">
+                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
                         Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion by the Africa CDC Youth in Digital Health Network, recognizing his leadership in combating antimicrobial resistance.
                     </p>
+                    <span class="font-semibold inline-flex items-center gap-2" style="color: #5EC4D5;">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+
+                <!-- News Item 2: AMR Surveillance Launch -->
+                <a href="amr-surveillance-launch.html" class="news-card block">
+                    <div class="news-card-image">
+                        <i class="fas fa-chart-line" style="color: #5EC4D5; font-size: 3rem;"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Press Release</span>
+                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                        <span class="text-sm" style="color: #666;">Dec 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                        Medikal Launches AI-Powered AMR Surveillance System
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                        Medikal introduces groundbreaking AI technology to combat antimicrobial resistance across East African healthcare facilities. This new surveillance system represents a significant advancement in real-time AMR monitoring and prevention.
+                    </p>
+                    <span class="font-semibold inline-flex items-center gap-2" style="color: #5EC4D5;">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+
+                <!-- News Item 3: WHO Recognition -->
+                <a href="who-recognition.html" class="news-card block">
+                    <div class="news-card-image">
+                        <i class="fas fa-award" style="color: #5EC4D5; font-size: 3rem;"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Media Coverage</span>
+                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                        <span class="text-sm" style="color: #666;">Nov 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                        WHO Recognizes Medikal's Impact on AMR Prevention
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                        World Health Organization highlights Medikal's innovative approach to antimicrobial stewardship in African healthcare systems. The recognition emphasizes the critical role of AI technology in addressing global health challenges.
+                    </p>
+                    <span class="font-semibold inline-flex items-center gap-2" style="color: #5EC4D5;">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+
+                <!-- News Item 4: Outbreak News Interview -->
+                <a href="outbreak-news-interview.html" class="news-card block">
+                    <div class="news-card-image">
+                        <i class="fas fa-podcast" style="color: #5EC4D5; font-size: 3rem;"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Innovation</span>
+                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                        <span class="text-sm" style="color: #666;">Nov 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                        Leadership Spotlight: Outbreak News, USA
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                        Our co-founder and AMR Initiative Rwanda founder, Marcel Ishimwe, has been invited to the Outbreak News Interviews Podcast to share how AMR Initiative Rwanda is actively tackling antimicrobial resistance in Rwanda through collaboration with Medikal Africa.
+                    </p>
+                    <span class="font-semibold inline-flex items-center gap-2" style="color: #5EC4D5;">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+
+                <!-- News Item 5: ONPOD TV Interview -->
+                <a href="onpod-tv-interview.html" class="news-card block">
+                    <div class="news-card-image">
+                        <i class="fas fa-video" style="color: #5EC4D5; font-size: 3rem;"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm text-neon-cyan font-semibold">Leadership & Innovation</span>
+                        <span class="text-sm mx-2" style="color: #fff;">•</span>
+                        <span class="text-sm" style="color: #fff;">Oct 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                        Leadership Spotlight: ONPOD TV, Canada
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #fff; opacity: 0.9;">
+                        Our founder and CEO, Olivier Niyonshima, was featured on ONPOD TV Canada in an exclusive interview highlighting Medikal's groundbreaking mission to fight antimicrobial resistance across Africa through artificial intelligence.
+                    </p>
                     <span class="text-neon-cyan font-semibold inline-flex items-center gap-2">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+
+                <!-- News Item 6: CBOT/RoboLabs Partnership -->
+                <a href="cbot-robolabs-partnership.html" class="news-card block">
+                    <div class="news-card-image">
+                        <img src="../cbot.jpg" alt="cBot Robot" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Healthcare Innovation</span>
+                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                        <span class="text-sm" style="color: #666;">Oct 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                        ZeroX Intelligence × RoboLabs — Deploying cBot UV-C Disinfection Robots in Africa
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                        Medikal Africa's parent company ZeroX Intelligence partners with RoboLabs to bring advanced autonomous disinfection technology to African healthcare facilities, working alongside Medikal AI to reduce healthcare-associated infections.
+                    </p>
+                    <span class="font-semibold inline-flex items-center gap-2" style="color: #5EC4D5;">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+
+                <!-- News Item 7: ZeroX/AMR Partnership -->
+                <a href="zerox-amr-partnership.html" class="news-card block">
+                    <div class="news-card-image">
+                        <img src="../amr-logo.png" alt="AMR Initiative Logo">
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Healthcare & AI Innovation</span>
+                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                        <span class="text-sm" style="color: #666;">Oct 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                        ZeroX Intelligence Partners with AMR Initiative Rwanda to Develop "Medikal"
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                        Medikal is an AI-powered health assistant developed by ZeroX Intelligence and AMR Initiative Rwanda to help clinicians and patients improve diagnosis accuracy, manage medication adherence, and reduce antimicrobial misuse.
+                    </p>
+                    <span class="font-semibold inline-flex items-center gap-2" style="color: #5EC4D5;">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+
+                <!-- News Item 8: Partnership Expansion -->
+                <a href="partnership-expansion.html" class="news-card block">
+                    <div class="news-card-image">
+                        <i class="fas fa-handshake" style="color: #5EC4D5; font-size: 3rem;"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Announcement</span>
+                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                        <span class="text-sm" style="color: #666;">Oct 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                        Partnership with AMR Initiative Rwanda Expands
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                        Medikal strengthens collaboration with AMR Initiative Rwanda to reach more healthcare facilities across the region. This expanded partnership enables broader deployment of AI-powered healthcare solutions throughout East Africa.
+                    </p>
+                    <span class="font-semibold inline-flex items-center gap-2" style="color: #5EC4D5;">
                         Read More <i class="fas fa-arrow-right text-sm"></i>
                     </span>
                 </a>
@@ -149,13 +295,13 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-midnight border-t border-neon-cyan/10 py-8">
+    <footer style="background: #ffffff; border-top: 1px solid #e5e7eb;" class="py-8">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-white/70 text-sm">© 2025 Medikal. All rights reserved.</p>
+            <p style="color: #666666;" class="text-sm">© 2025 Medikal. All rights reserved.</p>
             <div class="mt-4 flex justify-center space-x-4">
-                <a href="../index.html" class="text-white/70 hover:text-neon-cyan transition">Home</a>
-                <span class="text-white/30">|</span>
-                <a href="index.html" class="text-neon-cyan">News</a>
+                <a href="../index.html" style="color: #666666;" class="hover:opacity-80 transition">Home</a>
+                <span style="color: #cccccc;">|</span>
+                <a href="index.html" style="color: #5EC4D5;">News</a>
             </div>
         </div>
     </footer>

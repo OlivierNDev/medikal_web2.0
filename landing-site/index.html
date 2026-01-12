@@ -76,6 +76,82 @@
             background-clip: text;
         }
 
+        /* Minimalist Professional Styles */
+        .minimal-section {
+            background: #5EC4D5;
+            color: #ffffff;
+        }
+
+        .minimal-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .minimal-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .minimal-card-blue {
+            background: #5EC4D5;
+            color: #ffffff;
+            border: none;
+        }
+
+        .minimal-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        .minimal-badge-light {
+            background: #E8F7F9;
+            color: #5EC4D5;
+        }
+
+        .news-card-minimal {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card-minimal:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .news-card-image-minimal {
+            width: 100%;
+            height: 180px;
+            background: #f8fafb;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .news-card-image-minimal img {
+            max-width: 150px;
+            max-height: 120px;
+            object-fit: contain;
+        }
+
         /* ========================================
            NEW HEADER STYLES
         ======================================== */
@@ -1845,9 +1921,10 @@
            FOOTER STYLES
         ======================================== */
         .medikal-footer {
-            background: #0D3447;
-            color: #ffffff;
+            background: #ffffff;
+            color: #1a1a1a;
             position: relative;
+            border-top: 1px solid #e5e7eb;
         }
 
         .medikal-footer::before {
@@ -1891,11 +1968,10 @@
             height: 40px;
             width: auto;
             display: block;
-            filter: brightness(0) invert(1);
         }
 
         .footer-company-text {
-            color: #94A3B8;
+            color: #666666;
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
@@ -1912,9 +1988,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(148, 163, 184, 0.15);
+            border: 1px solid #e5e7eb;
             border-radius: 6px;
-            color: #94A3B8;
+            color: #666666;
             text-decoration: none;
             transition: var(--transition);
             font-size: 1rem;
@@ -1927,7 +2003,7 @@
         }
 
         .footer-column h3 {
-            color: #ffffff;
+            color: #1a1a1a;
             font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
@@ -1944,7 +2020,7 @@
         }
 
         .footer-link {
-            color: #94A3B8;
+            color: #666666;
             text-decoration: none;
             font-size: 0.95rem;
             transition: var(--transition);
@@ -1957,7 +2033,7 @@
         }
 
         .footer-newsletter h3 {
-            color: #ffffff;
+            color: #1a1a1a;
             font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 1rem;
@@ -1966,7 +2042,7 @@
         }
 
         .footer-newsletter p {
-            color: #94A3B8;
+            color: #666666;
             font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 1.25rem;
@@ -1981,23 +2057,23 @@
         .newsletter-input {
             width: 100%;
             padding: 0.875rem 1rem;
-            border: 1px solid rgba(148, 163, 184, 0.15);
+            border: 1px solid #e5e7eb;
             border-radius: 6px;
-            background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
+            background: #ffffff;
+            color: #1a1a1a;
             font-size: 0.9rem;
             font-family: inherit;
             transition: var(--transition);
         }
 
         .newsletter-input::placeholder {
-            color: #94A3B8;
+            color: #999999;
         }
 
         .newsletter-input:focus {
             outline: none;
             border-color: var(--primary-blue);
-            background: rgba(255, 255, 255, 0.08);
+            background: #ffffff;
         }
 
         .newsletter-button {
@@ -2027,7 +2103,7 @@
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(148, 163, 184, 0.15);
+            border-top: 1px solid #e5e7eb;
             padding-top: 2rem;
             display: flex;
             justify-content: space-between;
@@ -2043,12 +2119,12 @@
         }
 
         .footer-copyright {
-            color: #94A3B8;
+            color: #666666;
             font-size: 0.875rem;
         }
 
         .footer-developers {
-            color: #94A3B8;
+            color: #666666;
             font-size: 0.875rem;
         }
 
@@ -2061,7 +2137,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #94A3B8;
+            color: #666666;
             font-size: 0.875rem;
         }
 
@@ -2457,102 +2533,90 @@
     </div>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-gradient-to-b from-dark-bg to-midnight">
+    <section id="about" class="minimal-section py-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #fff;">
-                    What is <span class="text-gradient">Medikal</span>?
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #ffffff;">
+                    What is Medikal?
                 </h2>
-                <p class="text-xl max-w-4xl mx-auto leading-relaxed" style="color: #fff;">
+                <p class="text-xl max-w-4xl mx-auto leading-relaxed" style="color: #ffffff; opacity: 0.95;">
                     Medikal is an AI-powered platform developed to assist African clinicians and patients in fighting antimicrobial resistance, improving diagnosis, guiding safe medication use, and preserving life-saving drugs for future generations.
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-effect rounded-2xl p-8 text-center hover:shadow-lg hover:shadow-neon-cyan/10 transition-all">
-                    <h3 class="text-2xl font-bold mb-4" style="color: #fff;">AI Diagnosis</h3>
-                    <p style="color: #fff;">Advanced AI algorithms assist healthcare providers in accurate diagnosis and treatment recommendations.</p>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="minimal-card text-center">
+                    <h3 class="text-2xl font-bold mb-4" style="color: #1a1a1a;">AI Diagnosis</h3>
+                    <p style="color: #666666; line-height: 1.7;">Advanced AI algorithms assist healthcare providers in accurate diagnosis and treatment recommendations.</p>
                 </div>
                 
-                <div class="glass-effect rounded-2xl p-8 text-center hover:shadow-lg hover:shadow-neon-cyan/10 transition-all">
-                    <h3 class="text-2xl font-bold mb-4" style="color: #fff;">AMR Protection</h3>
-                    <p style="color: #fff;">Intelligent monitoring and prevention of antimicrobial resistance to preserve medication effectiveness.</p>
+                <div class="minimal-card text-center">
+                    <h3 class="text-2xl font-bold mb-4" style="color: #1a1a1a;">AMR Protection</h3>
+                    <p style="color: #666666; line-height: 1.7;">Intelligent monitoring and prevention of antimicrobial resistance to preserve medication effectiveness.</p>
                 </div>
                 
-                <div class="glass-effect rounded-2xl p-8 text-center hover:shadow-lg hover:shadow-neon-cyan/10 transition-all">
-                    <h3 class="text-2xl font-bold mb-4" style="color: #fff;">Africa-Centered</h3>
-                    <p style="color: #fff;">Built specifically for African healthcare systems, addressing unique challenges and cultural contexts.</p>
+                <div class="minimal-card text-center">
+                    <h3 class="text-2xl font-bold mb-4" style="color: #1a1a1a;">Africa-Centered</h3>
+                    <p style="color: #666666; line-height: 1.7;">Built specifically for African healthcare systems, addressing unique challenges and cultural contexts.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Mission Section -->
-    <section id="mission" class="py-20 bg-midnight">
+    <section id="mission" class="py-20" style="background: #f8fafb;">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #fff;">
-                    What We're <span class="text-gradient">Tackling</span>
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #1a1a1a;">
+                    What We're Tackling
                 </h2>
-                <p class="text-xl max-w-3xl mx-auto" style="color: #fff;">
+                <p class="text-xl max-w-3xl mx-auto" style="color: #666666;">
                     Antimicrobial Resistance is one of the biggest threats to global health. In Africa, we're fighting back with AI.
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="cyber-border rounded-2xl p-8 bg-card-bg hover:shadow-lg hover:shadow-warm-beige/10 transition-all">
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold mb-4" style="color: #fff;">Antibiotic Overuse</h3>
-                        <p class="text-center mb-4" style="color: #fff;">
-                            Over-prescription and misuse of antibiotics leading to resistance
-                        </p>
-                        <div class="text-center">
-                            <span class="inline-block bg-neon-cyan/20 text-neon-cyan px-4 py-2 rounded-full text-sm font-semibold">
-                                Critical Issue
-                            </span>
-                        </div>
-                    </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="minimal-card text-center">
+                    <h3 class="text-2xl font-bold mb-4" style="color: #1a1a1a;">Antibiotic Overuse</h3>
+                    <p class="mb-6" style="color: #666666; line-height: 1.7;">
+                        Over-prescription and misuse of antibiotics leading to resistance
+                    </p>
+                    <span class="minimal-badge-light">
+                        Critical Issue
+                    </span>
                 </div>
                 
-                <div class="cyber-border rounded-2xl p-8 bg-card-bg hover:shadow-lg hover:shadow-warm-beige/10 transition-all">
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold mb-4" style="color: #fff;">Misdiagnosis</h3>
-                        <p class="text-center mb-4" style="color: #fff;">
-                            Lack of diagnostic tools leading to incorrect treatment decisions
-                        </p>
-                        <div class="text-center">
-                            <span class="inline-block bg-neon-cyan/20 text-neon-cyan px-4 py-2 rounded-full text-sm font-semibold">
-                                High Priority
-                            </span>
-                        </div>
-                    </div>
+                <div class="minimal-card text-center">
+                    <h3 class="text-2xl font-bold mb-4" style="color: #1a1a1a;">Misdiagnosis</h3>
+                    <p class="mb-6" style="color: #666666; line-height: 1.7;">
+                        Lack of diagnostic tools leading to incorrect treatment decisions
+                    </p>
+                    <span class="minimal-badge-light">
+                        High Priority
+                    </span>
                 </div>
                 
-                <div class="cyber-border rounded-2xl p-8 bg-card-bg hover:shadow-lg hover:shadow-warm-beige/10 transition-all">
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold mb-4" style="color: #fff;">Information Gap</h3>
-                        <p class="text-center mb-4" style="color: #fff;">
-                            Limited access to updated medical information and guidelines
-                        </p>
-                        <div class="text-center">
-                            <span class="inline-block bg-neon-cyan/20 text-neon-cyan px-4 py-2 rounded-full text-sm font-semibold">
-                                Addressable
-                            </span>
-                        </div>
-                    </div>
+                <div class="minimal-card text-center">
+                    <h3 class="text-2xl font-bold mb-4" style="color: #1a1a1a;">Information Gap</h3>
+                    <p class="mb-6" style="color: #666666; line-height: 1.7;">
+                        Limited access to updated medical information and guidelines
+                    </p>
+                    <span class="minimal-badge-light">
+                        Addressable
+                    </span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Partners Section -->
-    <section id="team" class="py-20 bg-gradient-to-b from-midnight to-dark-bg">
+    <section id="team" class="minimal-section py-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #fff;">
-                    Our <span class="text-gradient">Partners</span>
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #ffffff;">
+                    Our Partners
                 </h2>
-                <p class="text-xl max-w-3xl mx-auto" style="color: #fff;">
+                <p class="text-xl max-w-3xl mx-auto" style="color: #ffffff; opacity: 0.95;">
                     A powerful partnership between healthcare experts and AI innovators committed to transforming African healthcare
                 </p>
             </div>
@@ -2620,13 +2684,13 @@
     </section>
 
     <!-- News & Media Section -->
-    <section id="news" class="py-20 bg-gradient-to-b from-dark-bg to-midnight">
+    <section id="news" class="py-20" style="background: #f8fafb;">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #fff;">
-                    News & <span class="text-gradient">Media</span>
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #1a1a1a;">
+                    News & Media
                 </h2>
-                <p class="text-xl max-w-3xl mx-auto" style="color: #fff;">
+                <p class="text-xl max-w-3xl mx-auto" style="color: #666666;">
                     Stay updated with the latest news, updates, and media coverage about Medikal's impact on healthcare in Africa
                 </p>
             </div>
@@ -2637,51 +2701,149 @@
                     <!-- News Item 1: Youth Digital Health Champion -->
                     <div class="news-card-item">
                         <a href="news/youth-digital-health-champion.html" class="block">
-                            <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                            <div class="news-card-minimal">
                                 <div class="mb-4">
-                                    <div class="w-full h-48 bg-gradient-to-br from-neon-cyan/20 to-warm-beige/10 rounded-lg mb-4 flex items-center justify-center">
-                                        <img src="africa-cdc-logo.png" alt="Africa CDC Logo" style="max-width: 180px; max-height: 120px; object-fit: contain;">
+                                    <div class="news-card-image-minimal">
+                                        <img src="africa-cdc-logo.png" alt="Africa CDC Logo">
                                     </div>
-                                    <span class="text-sm text-neon-cyan font-semibold">Leadership & Recognition</span>
-                                    <span class="text-sm mx-2" style="color: #fff;">•</span>
-                                    <span class="text-sm" style="color: #fff;">Dec 2025</span>
+                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Recognition</span>
+                                    <span class="text-sm mx-2" style="color: #999;">•</span>
+                                    <span class="text-sm" style="color: #666;">Dec 2025</span>
                                 </div>
-                                <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
                                     Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC
                                 </h3>
-                                <p class="mb-4 line-clamp-3" style="color: #fff;">
+                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
                                     Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion by the Africa CDC Youth in Digital Health Network, recognizing his leadership in combating AMR.
                                 </p>
-                                <span class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
-                                    Read More <i class="fas fa-arrow-right text-sm"></i>
+                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
+                                    Read More <i class="fas fa-arrow-right"></i>
                                 </span>
                             </div>
                         </a>
                     </div>
 
-                    <!-- Duplicate item for seamless loop -->
+                    <!-- News Item 2: WHO Recognition -->
+                    <div class="news-card-item">
+                        <a href="news/who-recognition.html" class="block">
+                            <div class="news-card-minimal">
+                                <div class="mb-4">
+                                    <div class="news-card-image-minimal">
+                                        <i class="fas fa-award" style="color: #5EC4D5; font-size: 3rem;"></i>
+                                    </div>
+                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Media Coverage</span>
+                                    <span class="text-sm mx-2" style="color: #999;">•</span>
+                                    <span class="text-sm" style="color: #666;">Nov 2025</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                                    WHO Recognizes Medikal's Impact on AMR Prevention
+                                </h3>
+                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                                    World Health Organization highlights Medikal's innovative approach to antimicrobial stewardship in African healthcare systems, emphasizing the critical role of AI technology.
+                                </p>
+                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
 
-                    <!-- Duplicate item for seamless loop -->
+                    <!-- News Item 3: ONPOD TV Interview -->
+                    <div class="news-card-item">
+                        <a href="news/onpod-tv-interview.html" class="block">
+                            <div class="news-card-minimal">
+                                <div class="mb-4">
+                                    <div class="news-card-image-minimal">
+                                        <i class="fas fa-video" style="color: #5EC4D5; font-size: 3rem;"></i>
+                                    </div>
+                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Innovation</span>
+                                    <span class="text-sm mx-2" style="color: #999;">•</span>
+                                    <span class="text-sm" style="color: #666;">Oct 2025</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                                    Leadership Spotlight: ONPOD TV, Canada
+                                </h3>
+                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                                    Our founder and CEO, Olivier Niyonshima, was featured on ONPOD TV Canada in an exclusive interview highlighting Medikal's mission to fight AMR through AI.
+                                </p>
+                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- News Item 4: CBOT/RoboLabs Partnership -->
+                    <div class="news-card-item">
+                        <a href="news/cbot-robolabs-partnership.html" class="block">
+                            <div class="news-card-minimal">
+                                <div class="mb-4">
+                                    <div class="news-card-image-minimal" style="height: 180px; overflow: hidden;">
+                                        <img src="cbot.jpg" alt="cBot Robot" style="width: 100%; height: 100%; object-fit: cover;">
+                                    </div>
+                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Healthcare Innovation</span>
+                                    <span class="text-sm mx-2" style="color: #999;">•</span>
+                                    <span class="text-sm" style="color: #666;">Oct 2025</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                                    ZeroX Intelligence × RoboLabs — Deploying cBot UV-C Disinfection Robots
+                                </h3>
+                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                                    ZeroX Intelligence partners with RoboLabs to bring advanced autonomous disinfection technology to African healthcare facilities, working alongside Medikal AI.
+                                </p>
+                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- News Item 5: AMR Surveillance Launch -->
+                    <div class="news-card-item">
+                        <a href="news/amr-surveillance-launch.html" class="block">
+                            <div class="news-card-minimal">
+                                <div class="mb-4">
+                                    <div class="news-card-image-minimal">
+                                        <i class="fas fa-chart-line" style="color: #5EC4D5; font-size: 3rem;"></i>
+                                    </div>
+                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Press Release</span>
+                                    <span class="text-sm mx-2" style="color: #999;">•</span>
+                                    <span class="text-sm" style="color: #666;">Dec 2025</span>
+                                </div>
+                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                                    Medikal Launches AI-Powered AMR Surveillance System
+                                </h3>
+                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                                    Medikal introduces groundbreaking AI technology to combat antimicrobial resistance across East African healthcare facilities with real-time AMR monitoring.
+                                </p>
+                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Duplicate items for seamless loop -->
                     <!-- News Item 1 (Duplicate): Youth Digital Health Champion -->
                     <div class="news-card-item">
                         <a href="news/youth-digital-health-champion.html" class="block">
-                            <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                            <div class="news-card-minimal">
                                 <div class="mb-4">
-                                    <div class="w-full h-48 bg-gradient-to-br from-neon-cyan/20 to-warm-beige/10 rounded-lg mb-4 flex items-center justify-center">
-                                        <img src="africa-cdc-logo.png" alt="Africa CDC Logo" style="max-width: 180px; max-height: 120px; object-fit: contain;">
+                                    <div class="news-card-image-minimal">
+                                        <img src="africa-cdc-logo.png" alt="Africa CDC Logo">
                                     </div>
-                                    <span class="text-sm text-neon-cyan font-semibold">Leadership & Recognition</span>
-                                    <span class="text-sm mx-2" style="color: #fff;">•</span>
-                                    <span class="text-sm" style="color: #fff;">Dec 2025</span>
+                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Recognition</span>
+                                    <span class="text-sm mx-2" style="color: #999;">•</span>
+                                    <span class="text-sm" style="color: #666;">Dec 2025</span>
                                 </div>
-                                <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
                                     Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC
                                 </h3>
-                                <p class="mb-4 line-clamp-3" style="color: #fff;">
+                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
                                     Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion by the Africa CDC Youth in Digital Health Network, recognizing his leadership in combating AMR.
                                 </p>
-                                <span class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
-                                    Read More <i class="fas fa-arrow-right text-sm"></i>
+                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
+                                    Read More <i class="fas fa-arrow-right"></i>
                                 </span>
                             </div>
                         </a>
@@ -2692,62 +2854,23 @@
 
             <!-- View All News Button -->
             <div class="text-center mt-12">
-                <a href="news/index.html" class="bg-gradient-to-r from-neon-cyan to-warm-beige text-midnight px-8 py-4 rounded-full font-bold text-lg hover:shadow-lg hover:shadow-neon-cyan/25 transition-all inline-flex items-center gap-2">
+                <a href="news/index.html" class="bg-5EC4D5 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-4AAFC0 transition-all inline-flex items-center gap-2" style="background: #5EC4D5; color: #ffffff;">
                     View All News <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Early Access Section -->
-    <section id="access" class="py-20 bg-gradient-to-r from-midnight via-card-bg to-midnight">
+    <!-- Vision Section -->
+    <section id="vision" class="minimal-section py-20">
         <div class="container mx-auto px-6">
-            <div class="max-w-2xl mx-auto text-center">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-                    Try <span class="text-gradient">Early Access</span>
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-8" style="color: #ffffff;">
+                    Our Shared Vision for Africa
                 </h2>
-                <p class="text-xl text-soft-cream/80 mb-10">
-                    Join healthcare professionals across Africa who are already testing Medikal's AI-powered platform
+                <p class="text-xl lg:text-2xl leading-relaxed" style="color: #ffffff; opacity: 0.95; line-height: 1.8;">
+                    Together, our leadership team is committed to transforming African healthcare through innovative AI solutions. We believe that by combining cutting-edge technology with strategic partnerships and deep local understanding, we can create a healthcare revolution that serves all 54 African countries and sets a new global standard for combating antimicrobial resistance.
                 </p>
-                
-                <form id="accessForm" class="glass-effect rounded-2xl p-8 space-y-6">
-                    <div>
-                        <label for="email" class="block text-left text-soft-cream/80 mb-2 font-semibold">Email Address</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            required
-                            class="w-full bg-midnight border border-neon-cyan/30 rounded-lg px-4 py-3 text-soft-cream focus:border-neon-cyan focus:outline-none transition-colors"
-                            placeholder="your.email@example.com"
-                        >
-                    </div>
-                    
-                    <div>
-                        <label for="reason" class="block text-left text-soft-cream/80 mb-2 font-semibold">Why do you want to try Medikal?</label>
-                        <textarea 
-                            id="reason" 
-                            rows="4" 
-                            required
-                            class="w-full bg-midnight border border-neon-cyan/30 rounded-lg px-4 py-3 text-soft-cream focus:border-neon-cyan focus:outline-none transition-colors resize-none"
-                            placeholder="Tell us about your healthcare role and how Medikal could help..."
-                        ></textarea>
-                    </div>
-                    
-                    <button 
-                        type="submit" 
-                        class="w-full bg-gradient-to-r from-warm-beige to-neon-cyan text-midnight px-8 py-4 rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-warm-beige/25 transition-all"
-                    >
-                        <span id="submitText">Request Early Access</span>
-                        <i id="submitIcon" class="fas fa-arrow-right ml-2"></i>
-                    </button>
-                </form>
-                
-                <!-- Success Message -->
-                <div id="successMessage" class="hidden bg-green-500/20 border border-green-500/30 rounded-lg p-6 mt-6">
-                    <i class="fas fa-check-circle text-green-400 text-2xl mb-2"></i>
-                    <h3 class="text-xl font-bold text-green-400 mb-2">Thank You!</h3>
-                    <p class="text-soft-cream/80">Your early access request has been submitted. We'll be in touch soon!</p>
-                </div>
             </div>
         </div>
     </section>
@@ -2768,7 +2891,7 @@
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link" aria-label="Follow us on X (Twitter)">
-                            <i class="fa-brands fa-x-twitter"></i>
+                            <i class="fa-brands fa-twitter"></i>
                         </a>
                         <a href="#" class="social-link" aria-label="Connect on LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
@@ -3116,33 +3239,6 @@
             });
         }
 
-        // Form submission handler
-        const accessForm = document.getElementById('accessForm');
-        const successMessage = document.getElementById('successMessage');
-        const submitText = document.getElementById('submitText');
-        const submitIcon = document.getElementById('submitIcon');
-
-        if (accessForm) {
-            accessForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Show loading state
-                submitText.textContent = 'Submitting...';
-                submitIcon.className = 'fas fa-spinner fa-spin ml-2';
-                
-                // Simulate API call (replace with actual submission)
-                setTimeout(() => {
-                    accessForm.reset();
-                    accessForm.style.display = 'none';
-                    successMessage.classList.remove('hidden');
-                    successMessage.classList.add('animate-slide-up');
-                    
-                    // Reset button state
-                    submitText.textContent = 'Request Early Access';
-                    submitIcon.className = 'fas fa-arrow-right ml-2';
-                }, 1500);
-            });
-        }
 
         // Footer newsletter form handling
         const footerNewsletterForm = document.getElementById('footerNewsletterForm');
