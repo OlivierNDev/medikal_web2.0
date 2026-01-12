@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Medikal is an AI-powered health assistant developed by ZeroX Intelligence and AMR Initiative Rwanda to improve diagnosis accuracy and reduce antimicrobial resistance.">
+    <title>ZeroX Intelligence × AMR Initiative Rwanda — Medikal AI Health Platform - Medikal</title>
+    <link rel="icon" type="image/png" href="../logo.png">
+    <link rel="shortcut icon" type="image/png" href="../logo.png">
+    <link rel="apple-touch-icon" href="../logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'midnight': '#0b2735',
+                        'warm-beige': '#efb291',
+                        'soft-cream': '#e5e2db',
+                        'neon-cyan': '#00ffff',
+                        'dark-bg': '#0a1a24',
+                        'card-bg': '#0f2a3a'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a1a24;
+            color: #fff;
+        }
+
+        .article-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background: #0f2a3a;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 700;
+            color: #00ffff;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .article-paragraph {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .article-paragraph strong {
+            color: #00ffff;
+            font-weight: 600;
+        }
+
+        .stats-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-chip {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            flex: 1 1 calc(25% - 0.75rem);
+            min-width: 140px;
+        }
+
+        .stat-chip-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00ffff;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-chip-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            color: #fff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 42, 58, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 255, 255, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 255, 255, 0.1);
+        }
+
+        .feature-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #00ffff;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(0, 255, 255, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            background: #efb291;
+            border-radius: 50%;
+            border: 2px solid #0a1a24;
+            box-shadow: 0 0 0 2px #efb291;
+        }
+
+        .timeline-year {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #00ffff;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-text {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .partners-section {
+            background: rgba(15, 42, 58, 0.8);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .partners-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #00ffff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .partner-item {
+            text-align: center;
+        }
+
+        .partner-logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 0.5rem;
+        }
+
+        .partner-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: #efb291;
+            color: #0a1a24;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: #00ffff;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .stat-chip {
+                flex: 1 1 calc(50% - 0.5rem);
+            }
+            
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .scroll-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 44px;
+                height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-midnight border-b border-neon-cyan/10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="flex items-center space-x-3">
+                    <img src="../logo.png" alt="Medikal" class="h-10">
+                </a>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="../index.html" class="text-white hover:text-neon-cyan transition">Home</a>
+                    <a href="../index.html#about" class="text-white hover:text-neon-cyan transition">About</a>
+                    <a href="../index.html#mission" class="text-white hover:text-neon-cyan transition">Mission</a>
+                    <a href="index.html" class="text-white hover:text-neon-cyan transition">News</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-midnight to-dark-bg py-12">
+        <div class="container mx-auto px-6">
+            <div class="article-content">
+                <div class="flex flex-wrap gap-4 mb-6 text-sm" style="color: rgba(255,255,255,0.8);">
+                    <span class="text-neon-cyan font-semibold">Healthcare & AI Innovation</span>
+                    <span>•</span>
+                    <span>October 27, 2025</span>
+                    <span>•</span>
+                    <span>Read time: ~9 min</span>
+                </div>
+
+                <h1 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #fff;">
+                    ZeroX Intelligence Partners with AMR Initiative Rwanda to Develop "Medikal" — Africa's AI Health Platform
+                </h1>
+
+                <p class="text-xl leading-relaxed mb-6" style="color: rgba(255,255,255,0.9);">
+                    Medikal is an AI-powered health assistant developed by ZeroX Intelligence and AMR Initiative Rwanda to help clinicians and patients improve diagnosis accuracy, manage medication adherence, and reduce antimicrobial misuse — available in Kinyarwanda, English, and French.
+                </p>
+
+                <!-- Stats Chips -->
+                <div class="stats-chips">
+                    <div class="stat-chip">
+                        <span class="stat-chip-number">94–95%</span>
+                        <span class="stat-chip-label">AI Diagnostic Accuracy</span>
+                    </div>
+                    <div class="stat-chip">
+                        <span class="stat-chip-number">70%</span>
+                        <span class="stat-chip-label">AMR Reduction Goal</span>
+                    </div>
+                    <div class="stat-chip">
+                        <span class="stat-chip-number">3</span>
+                        <span class="stat-chip-label">Languages Supported</span>
+                    </div>
+                    <div class="stat-chip">
+                        <span class="stat-chip-number">24/7</span>
+                        <span class="stat-chip-label">AI Health Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-12 bg-dark-bg">
+        <div class="container mx-auto px-6">
+            <div class="article-content">
+                <!-- Article Content -->
+                <article class="bg-card-bg rounded-2xl p-8 lg:p-12 border border-neon-cyan/10">
+                    <!-- Introduction -->
+                    <section>
+                        <h2 class="section-title">Transforming Healthcare Delivery Across Africa</h2>
+                        <p class="article-paragraph">
+                            <strong>Medikal</strong> represents a paradigm shift in how African healthcare systems approach clinical decision-making, antimicrobial stewardship, and patient care coordination. Developed through a strategic partnership between <strong>ZeroX Intelligence</strong> and <strong>AMR Initiative Rwanda</strong>, this AI-powered platform addresses critical gaps in healthcare delivery while combating the growing threat of antimicrobial resistance.
+                        </p>
+                        <p class="article-paragraph">
+                            Currently at 60% completion and in active seed funding, Medikal leverages advanced machine learning algorithms, natural language processing, and contextual medical intelligence to deliver diagnostic support, medication management, and patient engagement tools tailored specifically for African healthcare contexts.
+                        </p>
+                    </section>
+
+                    <!-- Video Demo -->
+                    <section id="demo">
+                        <h2 class="section-title">See Medikal in Action</h2>
+                        <div class="video-container">
+                            <video 
+                                controls 
+                                preload="metadata"
+                                aria-label="Medikal platform demonstration video"
+                            >
+                                <source src="../demo-video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </section>
+
+                    <!-- Core Features -->
+                    <section>
+                        <h2 class="section-title">Core Platform Features</h2>
+                        
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <h3 class="feature-title">AI Medical Intelligence</h3>
+                                <p class="feature-text">
+                                    Context-aware consultations, differential diagnosis support, evidence-based recommendations, medical image interpretation.
+                                </p>
+                            </div>
+
+                            <div class="feature-card">
+                                <h3 class="feature-title">Multilingual Healthcare Support</h3>
+                                <p class="feature-text">
+                                    Kinyarwanda (native), English, French; local terminology & cultural context.
+                                </p>
+                            </div>
+
+                            <div class="feature-card">
+                                <h3 class="feature-title">AMR Combat System</h3>
+                                <p class="feature-text">
+                                    WHO AWaRe integration, resistance detection, smart prescribing, AST pattern detection and early warning.
+                                </p>
+                            </div>
+
+                            <div class="feature-card">
+                                <h3 class="feature-title">Healthcare Management Suite</h3>
+                                <p class="feature-text">
+                                    Patient registry, appointment system, prescription management, lab integration.
+                                </p>
+                            </div>
+
+                            <div class="feature-card">
+                                <h3 class="feature-title">Multi-Platform Deployment</h3>
+                                <p class="feature-text">
+                                    Desktop (offline-ready), Mobile apps, SMS & WhatsApp integration for remote/low-connectivity contexts.
+                                </p>
+                            </div>
+
+                            <div class="feature-card">
+                                <h3 class="feature-title">Data Security & Privacy</h3>
+                                <p class="feature-text">
+                                    End-to-end encryption, local-first storage, GDPR-ready features.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Implementation Roadmap -->
+                    <section>
+                        <h2 class="section-title">Implementation Roadmap</h2>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">Phase 1 (2026)</div>
+                                <div class="timeline-text">Launch in Rwanda, Kenya, Tanzania</div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-year">Phase 2 (2027)</div>
+                                <div class="timeline-text">Expand to Uganda, Ghana, Senegal</div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-year">Phase 3 (2028–2029)</div>
+                                <div class="timeline-text">Continental rollout</div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-year">Phase 4 (2030+)</div>
+                                <div class="timeline-text">Pan-African research & network</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Impact Statement -->
+                    <section>
+                        <h2 class="section-title">Clinical Impact & AMR Reduction</h2>
+                        <p class="article-paragraph">
+                            Medikal's integration of <strong>WHO AWaRe classification</strong> and real-time antimicrobial stewardship protocols positions it as a critical tool in Africa's fight against antimicrobial resistance. By providing clinicians with evidence-based prescribing guidance and resistance pattern detection, the platform aims to reduce inappropriate antibiotic use by 70% across deployment sites.
+                        </p>
+                        <p class="article-paragraph">
+                            The platform's multilingual capabilities ensure that language barriers do not impede quality care delivery. With native Kinyarwanda support alongside English and French, Medikal respects cultural contexts while maintaining clinical rigor—a balance often missing in imported health technologies.
+                        </p>
+                    </section>
+
+                    <!-- Partners -->
+                    <section class="partners-section">
+                        <h3 class="partners-title">Partnership Ecosystem</h3>
+                        <div class="partners-grid">
+                            <div class="partner-item">
+                                <img src="../zerox-logo.png" alt="ZeroX Intelligence Logo" class="partner-logo" style="background: white; padding: 0.5rem; border-radius: 8px;">
+                                <div class="partner-name">ZeroX Intelligence</div>
+                            </div>
+                            <div class="partner-item">
+                                <img src="../amr-logo.png" alt="AMR Initiative Rwanda Logo" class="partner-logo">
+                                <div class="partner-name">AMR Initiative Rwanda</div>
+                            </div>
+                            <div class="partner-item">
+                                <img src="../logo.png" alt="Medikal Logo" class="partner-logo" style="height: 60px;">
+                                <div class="partner-name" style="color: #00ffff; font-size: 1rem;">Medikal</div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+
+                <!-- CTA Section -->
+                <div class="bg-gradient-to-r from-neon-cyan/20 to-warm-beige/20 rounded-2xl p-8 mt-8 text-center border border-neon-cyan/20">
+                    <h3 class="text-2xl font-bold mb-4" style="color: #fff;">
+                        Support Medikal's Development
+                    </h3>
+                    <p class="mb-6" style="color: rgba(255,255,255,0.9);">
+                        Interested in supporting Medikal through seed funding, partnership, or pilot deployment? We're actively seeking healthcare institutions, funding partners, and technology collaborators to accelerate our mission.
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center">
+                        <a href="#access" class="bg-gradient-to-r from-warm-beige to-neon-cyan text-midnight px-6 py-3 rounded-lg font-bold hover:shadow-lg transition inline-block">
+                            Seed Funding Inquiry
+                        </a>
+                        <a href="#access" class="bg-transparent border-2 border-neon-cyan text-neon-cyan px-6 py-3 rounded-lg font-bold hover:bg-neon-cyan/10 transition inline-block">
+                            Partnership Request
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Back to News Link -->
+                <div class="mt-8 text-center">
+                    <a href="index.html" class="inline-flex items-center gap-2 text-neon-cyan hover:text-warm-beige transition">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to News & Media
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-midnight border-t border-neon-cyan/10 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-white/70 text-sm">© 2025 Medikal. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="../index.html" class="text-white/70 hover:text-neon-cyan transition">Home</a>
+                <span class="text-white/30">|</span>
+                <a href="index.html" class="text-white/70 hover:text-neon-cyan transition">News</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        if (scrollTopBtn) {
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 500) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
+</body>
+</html>
