@@ -1649,6 +1649,15 @@
             }
         }
 
+        @keyframes scrollNews {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
         .hero-content {
             animation: fadeInUp 0.6s ease-out;
         }
@@ -1764,6 +1773,64 @@
             .logo-bg {
                 padding: 0.75rem;
                 border-radius: 8px;
+            }
+        }
+
+        /* News Carousel Styles */
+        .news-carousel-wrapper {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .news-carousel-track {
+            display: flex;
+            gap: 2rem;
+            width: fit-content;
+            animation: scrollNews 60s linear infinite;
+        }
+
+        .news-carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .news-card-item {
+            flex-shrink: 0;
+            width: 380px;
+        }
+
+        @media (max-width: 1024px) {
+            .news-card-item {
+                width: 340px;
+            }
+
+            .news-carousel-track {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .news-carousel-wrapper {
+                padding: 1.5rem 0;
+            }
+
+            .news-card-item {
+                width: 300px;
+            }
+
+            .news-carousel-track {
+                gap: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-card-item {
+                width: 280px;
+            }
+
+            .news-carousel-track {
+                gap: 1rem;
             }
         }
 
@@ -2564,68 +2631,147 @@
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- News Item 1 -->
-                <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
-                    <div class="mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-neon-cyan/20 to-warm-beige/10 rounded-lg mb-4 flex items-center justify-center">
-                            <i class="fas fa-newspaper text-4xl text-neon-cyan"></i>
+            <!-- News Carousel -->
+            <div class="news-carousel-wrapper">
+                <div class="news-carousel-track" id="newsCarousel">
+                    <!-- News Item 1 -->
+                    <div class="news-card-item">
+                        <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                            <div class="mb-4">
+                                <div class="w-full h-48 bg-gradient-to-br from-neon-cyan/20 to-warm-beige/10 rounded-lg mb-4 flex items-center justify-center">
+                                    <i class="fas fa-newspaper text-4xl text-neon-cyan"></i>
+                                </div>
+                                <span class="text-sm text-neon-cyan font-semibold">Press Release</span>
+                                <span class="text-sm mx-2" style="color: #fff;">•</span>
+                                <span class="text-sm" style="color: #fff;">Dec 2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                                Medikal Launches AI-Powered AMR Surveillance System
+                            </h3>
+                            <p class="mb-4 line-clamp-3" style="color: #fff;">
+                                Medikal introduces groundbreaking AI technology to combat antimicrobial resistance across East African healthcare facilities.
+                            </p>
+                            <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
+                                Read More <i class="fas fa-arrow-right text-sm"></i>
+                            </a>
                         </div>
-                        <span class="text-sm text-neon-cyan font-semibold">Press Release</span>
-                        <span class="text-sm mx-2" style="color: #fff;">•</span>
-                        <span class="text-sm" style="color: #fff;">Dec 2025</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-soft-cream">
-                        Medikal Launches AI-Powered AMR Surveillance System
-                    </h3>
-                    <p class="text-soft-cream/70 mb-4 line-clamp-3">
-                        Medikal introduces groundbreaking AI technology to combat antimicrobial resistance across East African healthcare facilities.
-                    </p>
-                    <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
-                        Read More <i class="fas fa-arrow-right text-sm"></i>
-                    </a>
-                </div>
 
-                <!-- News Item 2 -->
-                <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
-                    <div class="mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-warm-beige/20 to-neon-cyan/10 rounded-lg mb-4 flex items-center justify-center">
-                            <i class="fas fa-video text-4xl text-warm-beige"></i>
+                    <!-- News Item 2 -->
+                    <div class="news-card-item">
+                        <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                            <div class="mb-4">
+                                <div class="w-full h-48 bg-gradient-to-br from-warm-beige/20 to-neon-cyan/10 rounded-lg mb-4 flex items-center justify-center">
+                                    <i class="fas fa-video text-4xl text-warm-beige"></i>
+                                </div>
+                                <span class="text-sm text-warm-beige font-semibold">Media Coverage</span>
+                                <span class="text-sm mx-2" style="color: #fff;">•</span>
+                                <span class="text-sm" style="color: #fff;">Nov 2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                                WHO Recognizes Medikal's Impact on AMR Prevention
+                            </h3>
+                            <p class="mb-4 line-clamp-3" style="color: #fff;">
+                                World Health Organization highlights Medikal's innovative approach to antimicrobial stewardship in African healthcare systems.
+                            </p>
+                            <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
+                                Read More <i class="fas fa-arrow-right text-sm"></i>
+                            </a>
                         </div>
-                        <span class="text-sm text-warm-beige font-semibold">Media Coverage</span>
-                        <span class="text-sm mx-2" style="color: #fff;">•</span>
-                        <span class="text-sm" style="color: #fff;">Nov 2025</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-3" style="color: #fff;">
-                        WHO Recognizes Medikal's Impact on AMR Prevention
-                    </h3>
-                    <p class="mb-4 line-clamp-3" style="color: #fff;">
-                        World Health Organization highlights Medikal's innovative approach to antimicrobial stewardship in African healthcare systems.
-                    </p>
-                    <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
-                        Read More <i class="fas fa-arrow-right text-sm"></i>
-                    </a>
-                </div>
 
-                <!-- News Item 3 -->
-                <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
-                    <div class="mb-4">
-                        <div class="w-full h-48 bg-gradient-to-br from-neon-cyan/20 to-warm-beige/10 rounded-lg mb-4 flex items-center justify-center">
-                            <i class="fas fa-bullhorn text-4xl text-neon-cyan"></i>
+                    <!-- News Item 3 -->
+                    <div class="news-card-item">
+                        <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                            <div class="mb-4">
+                                <div class="w-full h-48 bg-gradient-to-br from-neon-cyan/20 to-warm-beige/10 rounded-lg mb-4 flex items-center justify-center">
+                                    <i class="fas fa-bullhorn text-4xl text-neon-cyan"></i>
+                                </div>
+                                <span class="text-sm text-neon-cyan font-semibold">Announcement</span>
+                                <span class="text-sm mx-2" style="color: #fff;">•</span>
+                                <span class="text-sm" style="color: #fff;">Oct 2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                                Partnership with AMR Initiative Rwanda Expands
+                            </h3>
+                            <p class="mb-4 line-clamp-3" style="color: #fff;">
+                                Medikal strengthens collaboration with AMR Initiative Rwanda to reach more healthcare facilities across the region.
+                            </p>
+                            <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
+                                Read More <i class="fas fa-arrow-right text-sm"></i>
+                            </a>
                         </div>
-                        <span class="text-sm text-neon-cyan font-semibold">Announcement</span>
-                        <span class="text-sm mx-2" style="color: #fff;">•</span>
-                        <span class="text-sm" style="color: #fff;">Oct 2025</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-soft-cream">
-                        Partnership with AMR Initiative Rwanda Expands
-                    </h3>
-                    <p class="text-soft-cream/70 mb-4 line-clamp-3">
-                        Medikal strengthens collaboration with AMR Initiative Rwanda to reach more healthcare facilities across the region.
-                    </p>
-                    <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
-                        Read More <i class="fas fa-arrow-right text-sm"></i>
-                    </a>
+
+                    <!-- Duplicate items for seamless loop -->
+                    <!-- News Item 1 (Duplicate) -->
+                    <div class="news-card-item">
+                        <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                            <div class="mb-4">
+                                <div class="w-full h-48 bg-gradient-to-br from-neon-cyan/20 to-warm-beige/10 rounded-lg mb-4 flex items-center justify-center">
+                                    <i class="fas fa-newspaper text-4xl text-neon-cyan"></i>
+                                </div>
+                                <span class="text-sm text-neon-cyan font-semibold">Press Release</span>
+                                <span class="text-sm mx-2" style="color: #fff;">•</span>
+                                <span class="text-sm" style="color: #fff;">Dec 2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                                Medikal Launches AI-Powered AMR Surveillance System
+                            </h3>
+                            <p class="mb-4 line-clamp-3" style="color: #fff;">
+                                Medikal introduces groundbreaking AI technology to combat antimicrobial resistance across East African healthcare facilities.
+                            </p>
+                            <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
+                                Read More <i class="fas fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- News Item 2 (Duplicate) -->
+                    <div class="news-card-item">
+                        <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                            <div class="mb-4">
+                                <div class="w-full h-48 bg-gradient-to-br from-warm-beige/20 to-neon-cyan/10 rounded-lg mb-4 flex items-center justify-center">
+                                    <i class="fas fa-video text-4xl text-warm-beige"></i>
+                                </div>
+                                <span class="text-sm text-warm-beige font-semibold">Media Coverage</span>
+                                <span class="text-sm mx-2" style="color: #fff;">•</span>
+                                <span class="text-sm" style="color: #fff;">Nov 2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                                WHO Recognizes Medikal's Impact on AMR Prevention
+                            </h3>
+                            <p class="mb-4 line-clamp-3" style="color: #fff;">
+                                World Health Organization highlights Medikal's innovative approach to antimicrobial stewardship in African healthcare systems.
+                            </p>
+                            <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
+                                Read More <i class="fas fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- News Item 3 (Duplicate) -->
+                    <div class="news-card-item">
+                        <div class="glass-effect rounded-2xl p-6 hover:shadow-lg hover:shadow-neon-cyan/10 transition-all cursor-pointer">
+                            <div class="mb-4">
+                                <div class="w-full h-48 bg-gradient-to-br from-neon-cyan/20 to-warm-beige/10 rounded-lg mb-4 flex items-center justify-center">
+                                    <i class="fas fa-bullhorn text-4xl text-neon-cyan"></i>
+                                </div>
+                                <span class="text-sm text-neon-cyan font-semibold">Announcement</span>
+                                <span class="text-sm mx-2" style="color: #fff;">•</span>
+                                <span class="text-sm" style="color: #fff;">Oct 2025</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                                Partnership with AMR Initiative Rwanda Expands
+                            </h3>
+                            <p class="mb-4 line-clamp-3" style="color: #fff;">
+                                Medikal strengthens collaboration with AMR Initiative Rwanda to reach more healthcare facilities across the region.
+                            </p>
+                            <a href="#" class="text-neon-cyan font-semibold hover:underline inline-flex items-center gap-2">
+                                Read More <i class="fas fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
