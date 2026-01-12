@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Media - Medikal</title>
+    <link rel="icon" type="image/png" href="../logo.png">
+    <link rel="shortcut icon" type="image/png" href="../logo.png">
+    <link rel="apple-touch-icon" href="../logo.png">
+    <meta name="description" content="Latest news, updates, and media coverage about Medikal's impact on healthcare in Africa.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'midnight': '#0b2735',
+                        'warm-beige': '#efb291',
+                        'soft-cream': '#e5e2db',
+                        'neon-cyan': '#00ffff',
+                        'dark-bg': '#0a1a24',
+                        'card-bg': '#0f2a3a'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a1a24;
+            color: #fff;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: rgba(15, 42, 58, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            border-color: rgba(0, 255, 255, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 255, 255, 0.1);
+        }
+
+        .news-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(239, 178, 145, 0.1));
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-card-image iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-midnight border-b border-neon-cyan/10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="flex items-center space-x-3">
+                    <img src="../logo.png" alt="Medikal" class="h-10">
+                </a>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="../index.html" class="text-white hover:text-neon-cyan transition">Home</a>
+                    <a href="#about" class="text-white hover:text-neon-cyan transition">About</a>
+                    <a href="#mission" class="text-white hover:text-neon-cyan transition">Mission</a>
+                    <a href="index.html" class="text-neon-cyan font-semibold">News</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- News Listing Page -->
+    <section class="py-20 bg-gradient-to-b from-dark-bg to-midnight min-h-screen">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #fff;">
+                    News & <span style="background: linear-gradient(135deg, #00ffff, #efb291); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Media</span>
+                </h1>
+                <p class="text-xl max-w-3xl mx-auto" style="color: #fff;">
+                    Stay updated with the latest news, updates, and media coverage about Medikal's impact on healthcare in Africa
+                </p>
+            </div>
+
+            <div class="news-grid max-w-7xl mx-auto">
+                <!-- News Item 1: ONPOD TV -->
+                <a href="onpod-tv-interview.html" class="news-card block">
+                    <div class="news-card-image">
+                        <iframe 
+                            src="https://www.youtube.com/embed/fs0uUfnqxOw?si=63aYBIroRocid3ps" 
+                            title="ONPOD TV Canada Interview" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm text-neon-cyan font-semibold">Leadership & Innovation</span>
+                        <span class="text-sm mx-2" style="color: #fff;">•</span>
+                        <span class="text-sm" style="color: #fff;">Oct 25, 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                        Leadership Spotlight: ONPOD TV, Canada
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #fff; opacity: 0.9;">
+                        Our founder and CEO, Olivier Niyonshima, was featured on ONPOD TV Canada in an exclusive interview highlighting Medikal's groundbreaking mission to fight antimicrobial resistance (AMR) across Africa through artificial intelligence.
+                    </p>
+                    <span class="text-neon-cyan font-semibold inline-flex items-center gap-2">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+
+                <!-- News Item 2: AMR Surveillance -->
+                <a href="amr-surveillance-launch.html" class="news-card block">
+                    <div class="news-card-image">
+                        <i class="fas fa-newspaper text-6xl text-neon-cyan"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm text-neon-cyan font-semibold">Press Release</span>
+                        <span class="text-sm mx-2" style="color: #fff;">•</span>
+                        <span class="text-sm" style="color: #fff;">Dec 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                        Medikal Launches AI-Powered AMR Surveillance System
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #fff; opacity: 0.9;">
+                        Medikal introduces groundbreaking AI technology to combat antimicrobial resistance across East African healthcare facilities.
+                    </p>
+                    <span class="text-neon-cyan font-semibold inline-flex items-center gap-2">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+
+                <!-- News Item 3: WHO Recognition -->
+                <a href="who-recognition.html" class="news-card block">
+                    <div class="news-card-image">
+                        <i class="fas fa-video text-6xl text-warm-beige"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm text-warm-beige font-semibold">Media Coverage</span>
+                        <span class="text-sm mx-2" style="color: #fff;">•</span>
+                        <span class="text-sm" style="color: #fff;">Nov 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                        WHO Recognizes Medikal's Impact on AMR Prevention
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #fff; opacity: 0.9;">
+                        World Health Organization highlights Medikal's innovative approach to antimicrobial stewardship in African healthcare systems.
+                    </p>
+                    <span class="text-neon-cyan font-semibold inline-flex items-center gap-2">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+
+                <!-- News Item 4: Partnership Expansion -->
+                <a href="partnership-expansion.html" class="news-card block">
+                    <div class="news-card-image">
+                        <i class="fas fa-bullhorn text-6xl text-neon-cyan"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="text-sm text-neon-cyan font-semibold">Announcement</span>
+                        <span class="text-sm mx-2" style="color: #fff;">•</span>
+                        <span class="text-sm" style="color: #fff;">Oct 2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" style="color: #fff;">
+                        Partnership with AMR Initiative Rwanda Expands
+                    </h3>
+                    <p class="mb-4 line-clamp-3" style="color: #fff; opacity: 0.9;">
+                        Medikal strengthens collaboration with AMR Initiative Rwanda to reach more healthcare facilities across the region.
+                    </p>
+                    <span class="text-neon-cyan font-semibold inline-flex items-center gap-2">
+                        Read More <i class="fas fa-arrow-right text-sm"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-midnight border-t border-neon-cyan/10 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-white/70 text-sm">© 2025 Medikal. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="../index.html" class="text-white/70 hover:text-neon-cyan transition">Home</a>
+                <span class="text-white/30">|</span>
+                <a href="index.html" class="text-neon-cyan">News</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
