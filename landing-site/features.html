@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Features - Medikal Africa</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #5EC4D5;
+            --primary-dark: #4AAFC0;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #f8fafb;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(94, 196, 213, 0.08);
+            --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
+            --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.6rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-bar-item:hover {
+            opacity: 0.8;
+            transform: translateX(2px);
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-selector:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Header */
+        .medikal-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-section img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu > li > a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-menu > li > a:hover {
+            background: var(--light-bg);
+            color: var(--primary-blue);
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-blue);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+            transform: translateY(-4px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-card h3 i {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--light-text);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .feature-list li {
+            color: var(--light-text);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        /* Language Cards */
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .language-card {
+            background: var(--light-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .language-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        .language-card ul {
+            list-style: none;
+        }
+
+        .language-card ul li {
+            color: var(--light-text);
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .language-card ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .cta-stat {
+            text-align: center;
+        }
+
+        .cta-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .cta-button-large {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-blue);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+
+        .cta-button-large:hover {
+            background: var(--light-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer */
+        .medikal-footer {
+            background: #5EC4D5;
+            color: #ffffff;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-company-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .footer-column h3 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright,
+        .footer-developers {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+        }
+
+        .footer-developers strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .footer-bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .feature-grid,
+            .language-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+
+            .cta-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 3rem 1.5rem;
+            }
+
+            .content-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <a href="tel:+17024163329" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+1 (702) 416-3329</span>
+                </a>
+                <a href="mailto:info@medikalafrica.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@medikalafrica.com</span>
+                </a>
+            </div>
+            <div class="top-bar-right">
+                <select class="language-selector">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                </select>
+                <a href="index.html#access" class="top-bar-item">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="medikal-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-section">
+                <img src="logo.png" alt="Medikal - AI Health Assistant" />
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="index.html#mission">Impact</a></li>
+                    <li><a href="news/index.html">News & Media</a></li>
+                    <li><a href="index.html#access">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="index.html#access" class="cta-button">Get Started</a>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Medikal Platform Features</h1>
+        <p>Comprehensive AI-powered healthcare solutions designed specifically for African healthcare transformation. Discover what you'll get when you install the Medikal platform locally.</p>
+    </section>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">94-95%</div>
+            <div class="stat-label">AI Accuracy</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Languages</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">AI Support</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">70%</div>
+            <div class="stat-label">AMR Reduction</div>
+        </div>
+    </div>
+
+    <!-- AI Medical Intelligence -->
+    <section class="content-section">
+        <h2 class="section-title">AI Medical Intelligence</h2>
+        <p class="section-subtitle">Advanced artificial intelligence capabilities that will power your local healthcare operations</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3><i class="fas fa-brain"></i> AI Medical Assistant</h3>
+                <ul class="feature-list">
+                    <li>Real AI with advanced medical reasoning capabilities</li>
+                    <li>Context-aware patient consultations with comprehensive medical history integration</li>
+                    <li>Professional medical responses with detailed consultations</li>
+                    <li>Differential diagnosis support with evidence-based recommendations</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3><i class="fas fa-stethoscope"></i> Advanced Diagnostics</h3>
+                <ul class="feature-list">
+                    <li>Skin Disease Analysis: AI-powered dermatological condition detection</li>
+                    <li>Symptom Checker: Comprehensive symptom analysis and assessment</li>
+                    <li>Lab Analysis Tools: Automated laboratory result interpretation</li>
+                    <li>Medical Imaging: Deep learning-powered image analysis capabilities</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multilingual Healthcare Support -->
+    <section class="content-section" style="background: var(--light-bg); margin: 0; padding: 4rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Multilingual Healthcare Support</h2>
+            <p class="section-subtitle">Breaking language barriers in African healthcare with intelligent multilingual capabilities</p>
+            
+            <div class="language-grid">
+                <div class="language-card">
+                    <h4>Kinyarwanda</h4>
+                    <ul>
+                        <li>Native language medical consultations</li>
+                        <li>Cultural context understanding</li>
+                        <li>Local medical terminology</li>
+                        <li>Community health worker support</li>
+                    </ul>
+                </div>
+                
+                <div class="language-card">
+                    <h4>English</h4>
+                    <ul>
+                        <li>International medical standards</li>
+                        <li>Research and documentation</li>
+                        <li>Global healthcare integration</li>
+                        <li>Medical education support</li>
+                    </ul>
+                </div>
+                
+                <div class="language-card">
+                    <h4>French</h4>
+                    <ul>
+                        <li>Regional healthcare compatibility</li>
+                        <li>Cross-border medical communication</li>
+                        <li>Francophone Africa integration</li>
+                        <li>Medical translation capabilities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AMR Combat System -->
+    <section class="content-section">
+        <h2 class="section-title">AMR Combat System</h2>
+        <p class="section-subtitle">Advanced antimicrobial resistance detection and prevention tools built into your local platform</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3><i class="fas fa-pills"></i> Smart Prescribing</h3>
+                <ul class="feature-list">
+                    <li>WHO AWaRe Classification: Integrated antibiotic categorization system</li>
+                    <li>Watch & Reserve Alerts: Automatic highlighting of critical antibiotics</li>
+                    <li>Resistance-Aware Recommendations: AI-powered prescription guidance</li>
+                    <li>Treatment Optimization: Evidence-based antibiotic selection</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3><i class="fas fa-shield-virus"></i> Resistance Monitoring</h3>
+                <ul class="feature-list">
+                    <li>AST Integration: Antibiotic Sensitivity Testing result analysis</li>
+                    <li>Pattern Detection: Real-time resistance pattern identification</li>
+                    <li>Trend Analysis: Local and regional resistance tracking</li>
+                    <li>Early Warning System: Emerging resistance alerts</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Healthcare Management Suite -->
+    <section class="content-section" style="background: var(--light-bg); margin: 0; padding: 4rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Healthcare Management Suite</h2>
+            <p class="section-subtitle">Comprehensive patient and clinical management tools for efficient healthcare delivery</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-user-injured"></i> Patient Registry</h3>
+                    <ul class="feature-list">
+                        <li>Complete patient registration with National ID integration</li>
+                        <li>Comprehensive medical history tracking</li>
+                        <li>Emergency contact and insurance management</li>
+                        <li>Searchable patient database</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-calendar-check"></i> Appointment System</h3>
+                    <ul class="feature-list">
+                        <li>Intelligent appointment scheduling</li>
+                        <li>Real-time queue management</li>
+                        <li>Patient flow optimization</li>
+                        <li>Appointment status tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-prescription"></i> Prescription Management</h3>
+                    <ul class="feature-list">
+                        <li>Digital prescription creation</li>
+                        <li>Medication history tracking</li>
+                        <li>Drug interaction alerts</li>
+                        <li>AMR-conscious prescribing</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-flask"></i> Laboratory Integration</h3>
+                    <ul class="feature-list">
+                        <li>Lab result integration</li>
+                        <li>Automated result interpretation</li>
+                        <li>Critical value alerts</li>
+                        <li>Quality control monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-file-medical"></i> Clinical Documentation</h3>
+                    <ul class="feature-list">
+                        <li>Comprehensive visit notes</li>
+                        <li>Structured data entry</li>
+                        <li>Treatment plan tracking</li>
+                        <li>Discharge summary generation</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-chart-line"></i> Analytics & Reporting</h3>
+                    <ul class="feature-list">
+                        <li>Healthcare performance metrics</li>
+                        <li>AMR surveillance reports</li>
+                        <li>Patient outcome tracking</li>
+                        <li>Quality improvement insights</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Platform Deployment -->
+    <section class="content-section">
+        <h2 class="section-title">Multi-Platform Deployment</h2>
+        <p class="section-subtitle">Flexible deployment options designed for Africa's diverse technological infrastructure</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3><i class="fas fa-desktop"></i> Desktop Applications</h3>
+                <ul class="feature-list">
+                    <li>Local Privacy Protection: All data stored locally for maximum security</li>
+                    <li>Offline Access: Full functionality without internet connectivity</li>
+                    <li>Remote Area Support: Perfect for rural healthcare facilities</li>
+                    <li>Data Synchronization: Seamless sync when connectivity returns</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3><i class="fas fa-mobile-alt"></i> Mobile Solutions</h3>
+                <ul class="feature-list">
+                    <li>Community Health Workers: Dedicated mobile app with full functionality</li>
+                    <li>Patient Portal: Mobile access to medical records and appointments</li>
+                    <li>SMS Integration: Medication reminders via encrypted SMS</li>
+                    <li>WhatsApp Messaging: Appointment notifications and health reminders</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Security & Privacy -->
+    <section class="content-section" style="background: var(--light-bg); margin: 0; padding: 4rem 2rem;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">Data Security & Privacy</h2>
+            <p class="section-subtitle">Enterprise-grade security features protecting sensitive medical information</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-lock"></i> End-to-End Encryption</h3>
+                    <p>All communications and data transfers protected with military-grade encryption</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-database"></i> Local Data Storage</h3>
+                    <p>Patient data stored locally with optional cloud backup for disaster recovery</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-globe-africa"></i> Cross-Africa Access</h3>
+                    <p>Secure medical record access across African countries with patient consent</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-shield-alt"></i> Compliance Ready</h3>
+                    <p>GDPR compliant with support for local healthcare regulations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation & Support -->
+    <section class="content-section">
+        <h2 class="section-title">Implementation & Support</h2>
+        <p class="section-subtitle">Complete support ecosystem for seamless platform deployment and ongoing operation</p>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3><i class="fas fa-download"></i> Easy Installation</h3>
+                <ul class="feature-list">
+                    <li>One-click installation packages</li>
+                    <li>Automated system requirements check</li>
+                    <li>Database setup and configuration</li>
+                    <li>System optimization</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3><i class="fas fa-graduation-cap"></i> Training & Education</h3>
+                <ul class="feature-list">
+                    <li>Comprehensive user training programs</li>
+                    <li>Video tutorials and documentation</li>
+                    <li>Community health worker certification</li>
+                    <li>Best practices guidance</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3><i class="fas fa-headset"></i> Technical Support</h3>
+                <ul class="feature-list">
+                    <li>24/7 technical assistance</li>
+                    <li>Remote troubleshooting</li>
+                    <li>Regular system updates</li>
+                    <li>Performance monitoring</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="cta-section">
+        <h2>Transform African Healthcare with Medikal</h2>
+        <p>Experience the future of healthcare with locally-installed, AI-powered medical intelligence designed specifically for African healthcare challenges.</p>
+        
+        <div class="cta-stats">
+            <div class="cta-stat">
+                <div class="cta-stat-number">94-95%</div>
+                <div class="cta-stat-label">AI Accuracy</div>
+            </div>
+            <div class="cta-stat">
+                <div class="cta-stat-number">70%</div>
+                <div class="cta-stat-label">AMR Reduction</div>
+            </div>
+            <div class="cta-stat">
+                <div class="cta-stat-number">3</div>
+                <div class="cta-stat-label">Languages</div>
+            </div>
+            <div class="cta-stat">
+                <div class="cta-stat-number">24/7</div>
+                <div class="cta-stat-label">AI Support</div>
+            </div>
+        </div>
+        
+        <a href="index.html#access" class="cta-button-large">Get Started Today</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="medikal-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-company">
+                    <a href="index.html" class="footer-logo">
+                        <img src="logo.png" alt="Medikal - AI Healthcare for Africa">
+                    </a>
+                    <p class="footer-company-text">
+                        AI-powered healthcare platform combating Antimicrobial Resistance (AMR) in Africa through innovative technology and multilingual support.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Follow us on Twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Connect on LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Like us on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="features.html" class="footer-link">Features</a></li>
+                        <li><a href="index.html#mission" class="footer-link">Solutions</a></li>
+                        <li><a href="team.html" class="footer-link">Team</a></li>
+                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about" class="footer-link">About Us</a></li>
+                        <li><a href="team.html" class="footer-link">Our Team</a></li>
+                        <li><a href="index.html#mission" class="footer-link">Impact</a></li>
+                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    <p class="footer-copyright">
+                        &copy; 2024-2026 Medikal Africa. All rights reserved.
+                    </p>
+                    <p class="footer-developers">
+                        Developed by <strong>ZeroX Intelligence</strong>
+                    </p>
+                </div>
+                <div class="footer-bottom-right">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Kigali, Rwanda</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
