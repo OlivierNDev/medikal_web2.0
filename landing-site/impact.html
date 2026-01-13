@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Impact - Medikal Africa</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #5EC4D5;
+            --primary-dark: #4AAFC0;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #f8fafb;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(94, 196, 213, 0.08);
+            --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
+            --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --orange: #d56918;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.6rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-bar-item:hover {
+            opacity: 0.8;
+            transform: translateX(2px);
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-selector:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Header */
+        .medikal-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-section img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu > li > a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-menu > li > a:hover {
+            background: var(--light-bg);
+            color: var(--primary-blue);
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+            cursor: pointer;
+        }
+
+        /* Impact Page Styles */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.08) 0%, rgba(255, 255, 255, 0.98) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        .hero-tags .tag-teal {
+            color: var(--primary-blue);
+        }
+
+        .hero-tags .tag-orange {
+            color: var(--orange);
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-bg-alt {
+            background: rgba(94, 196, 213, 0.03);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--light-text);
+            font-size: 1.125rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-description {
+            font-size: 0.875rem;
+            color: var(--light-text);
+        }
+
+        .chart-container {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        .continental-reach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .country-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .country-card {
+            background: var(--white);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .country-card:hover {
+            background: rgba(94, 196, 213, 0.05);
+            transform: translateX(5px);
+        }
+
+        .country-card h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .country-card p {
+            font-size: 0.875rem;
+            color: var(--light-text);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .phase-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--orange));
+        }
+
+        .phase-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .phase-description {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .phase-badge {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .phase-badge-alt {
+            background: var(--orange);
+        }
+
+        .economic-section {
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.08) 0%, rgba(255, 255, 255, 0.9) 100%);
+            border: 2px solid rgba(94, 196, 213, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .economic-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--orange), var(--primary-blue));
+        }
+
+        .economic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .economic-card {
+            background: var(--white);
+            border: 1px solid rgba(94, 196, 213, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .economic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue);
+        }
+
+        .economic-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .economic-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .economic-description {
+            font-size: 0.75rem;
+            color: var(--light-text);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        .medikal-footer {
+            background: #5EC4D5;
+            color: #ffffff;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-company {
+            max-width: 350px;
+        }
+
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            opacity: 0.8;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-company-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .social-link:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .footer-column h3 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        .footer-newsletter h3 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 0.875rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .newsletter-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright,
+        .footer-developers {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+        }
+
+        .footer-developers strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .footer-bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .continental-reach-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .economic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .content-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .economic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <a href="tel:+17024163329" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+1 (702) 416-3329</span>
+                </a>
+                <a href="mailto:info@medikalafrica.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@medikalafrica.com</span>
+                </a>
+            </div>
+            <div class="top-bar-right">
+                <select class="language-selector">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                </select>
+                <a href="index.html#access" class="top-bar-item">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="medikal-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-section">
+                <img src="logo.png" alt="Medikal - AI Health Assistant" />
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="impact.html">Impact</a></li>
+                    <li><a href="news/index.html">News & Media</a></li>
+                    <li><a href="index.html#access">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="index.html#access" class="cta-button">Get Started</a>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section fade-in">
+        <div class="hero-content">
+            <h1 class="hero-title">Our Impact</h1>
+            <p class="hero-subtitle">Transforming Healthcare Across Africa Through AI-Powered Solutions</p>
+            <div class="hero-tags">
+                <span class="tag-teal">Combating AMR</span>
+                <span class="tag-orange">Saving Lives</span>
+                <span class="tag-teal">Empowering Communities</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Measurable Impact -->
+    <section class="content-section section-bg-alt fade-in">
+        <h2 class="section-title">Measurable Impact</h2>
+        <p class="section-subtitle">Our AI-powered platform is projected to create significant positive changes across African healthcare systems</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">70%</div>
+                <div class="stat-label">AMR Reduction</div>
+                <div class="stat-description">Target reduction in antimicrobial resistance cases through improved diagnostic accuracy</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-number">2M+</div>
+                <div class="stat-label">Lives Impacted</div>
+                <div class="stat-description">Projected patients to benefit from improved healthcare access and quality</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Healthcare Facilities</div>
+                <div class="stat-description">Hospitals and clinics equipped with AI diagnostic tools across Africa</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">African Countries</div>
+                <div class="stat-description">Nations participating in the cross-border medical records network</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AMR Reduction Timeline -->
+    <section class="content-section fade-in">
+        <h2 class="section-title">AMR Reduction Timeline</h2>
+        <p class="section-subtitle">Projected reduction in antimicrobial resistance over 5 years</p>
+        
+        <div class="chart-container">
+            <div class="chart-wrapper">
+                <canvas id="amrChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Continental Reach -->
+    <section class="content-section section-bg-alt fade-in">
+        <h2 class="section-title">Continental Reach</h2>
+        <p class="section-subtitle">Medikal's impact across African nations</p>
+        
+        <div class="continental-reach-grid">
+            <div class="chart-container">
+                <div class="chart-wrapper">
+                    <canvas id="reachPieChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="country-cards">
+                <div class="country-card">
+                    <h3>Rwanda</h3>
+                    <p>Launch Country • 50+ Healthcare Facilities • 200K+ Patients</p>
+                </div>
+                
+                <div class="country-card">
+                    <h3>Kenya</h3>
+                    <p>Phase 1 Expansion • 75+ Facilities • 300K+ Patients</p>
+                </div>
+                
+                <div class="country-card">
+                    <h3>Tanzania</h3>
+                    <p>Phase 1 Expansion • 60+ Facilities • 250K+ Patients</p>
+                </div>
+                
+                <div class="country-card">
+                    <h3>Uganda</h3>
+                    <p>Phase 2 Target • 45+ Facilities • 180K+ Patients</p>
+                </div>
+                
+                <div class="country-card">
+                    <h3>Ghana</h3>
+                    <p>Phase 2 Target • 40+ Facilities • 160K+ Patients</p>
+                </div>
+                
+                <div class="country-card">
+                    <h3>Nigeria</h3>
+                    <p>Phase 3 Vision • 150+ Facilities • 500K+ Patients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Healthcare Outcomes -->
+    <section class="content-section fade-in">
+        <h2 class="section-title">Healthcare Outcomes Improvement</h2>
+        <p class="section-subtitle">Comparative analysis of key health indicators</p>
+        
+        <div class="chart-container">
+            <div class="chart-wrapper">
+                <canvas id="outcomesChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Transformation -->
+    <section class="content-section section-bg-alt fade-in">
+        <h2 class="section-title">Community Transformation</h2>
+        <p class="section-subtitle">Real benefits for African communities</p>
+        
+        <div class="feature-grid">
+            <div class="stat-card">
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Rural Healthcare Access</h3>
+                <p style="color: var(--light-text); margin-bottom: 1rem;">Bringing advanced medical diagnostics to remote communities through mobile and SMS integration.</p>
+                <ul style="list-style: none; font-size: 0.875rem; color: var(--light-text);">
+                    <li style="margin-bottom: 0.5rem;">• WhatsApp medical consultations</li>
+                    <li style="margin-bottom: 0.5rem;">• SMS-based health alerts</li>
+                    <li style="margin-bottom: 0.5rem;">• Mobile diagnostic units</li>
+                </ul>
+            </div>
+            
+            <div class="stat-card">
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Healthcare Professional Training</h3>
+                <p style="color: var(--light-text); margin-bottom: 1rem;">AI-powered training modules for healthcare workers across Africa.</p>
+                <ul style="list-style: none; font-size: 0.875rem; color: var(--light-text);">
+                    <li style="margin-bottom: 0.5rem;">• 5,000+ healthcare workers trained</li>
+                    <li style="margin-bottom: 0.5rem;">• Multilingual training materials</li>
+                    <li style="margin-bottom: 0.5rem;">• Continuous professional development</li>
+                </ul>
+            </div>
+            
+            <div class="stat-card">
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Cultural Integration</h3>
+                <p style="color: var(--light-text); margin-bottom: 1rem;">Healthcare solutions that respect and integrate local languages and customs.</p>
+                <ul style="list-style: none; font-size: 0.875rem; color: var(--light-text);">
+                    <li style="margin-bottom: 0.5rem;">• English and French language support</li>
+                    <li style="margin-bottom: 0.5rem;">• Cultural-sensitive diagnostics</li>
+                    <li style="margin-bottom: 0.5rem;">• Community health education</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Economic Impact -->
+    <section class="content-section fade-in">
+        <div class="economic-section">
+            <h2 class="section-title">Economic Impact</h2>
+            <p class="section-subtitle">Healthcare cost reduction and economic benefits</p>
+            
+            <div class="economic-grid">
+                <div class="economic-card">
+                    <div class="economic-number">40%</div>
+                    <div class="economic-label">Cost Reduction</div>
+                    <div class="economic-description">Healthcare delivery costs through AI optimization</div>
+                </div>
+                
+                <div class="economic-card">
+                    <div class="economic-number">$2.5B</div>
+                    <div class="economic-label">Economic Savings</div>
+                    <div class="economic-description">Projected savings across African healthcare systems</div>
+                </div>
+                
+                <div class="economic-card">
+                    <div class="economic-number">85%</div>
+                    <div class="economic-label">Efficiency Gain</div>
+                    <div class="economic-description">Improved diagnostic accuracy and speed</div>
+                </div>
+                
+                <div class="economic-card">
+                    <div class="economic-number">60%</div>
+                    <div class="economic-label">Time Savings</div>
+                    <div class="economic-description">Reduced waiting times and faster treatment</div>
+                </div>
+            </div>
+            
+            <div class="chart-container" style="margin-top: 2rem;">
+                <div class="chart-wrapper" style="height: 300px;">
+                    <canvas id="economicChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Roadmap -->
+    <section class="content-section section-bg-alt fade-in">
+        <h2 class="section-title">Implementation Roadmap</h2>
+        <p class="section-subtitle">Our strategic approach to continental healthcare transformation</p>
+        
+        <div class="phase-card">
+            <h3 class="phase-title">Phase 1: Foundation (2025)</h3>
+            <p class="phase-description">Launch in Rwanda, Kenya, and Tanzania with core AI diagnostic features</p>
+            <div class="phase-badges">
+                <span class="phase-badge">Rwanda Deployment</span>
+                <span class="phase-badge phase-badge-alt">Kenya Integration</span>
+                <span class="phase-badge">Tanzania Rollout</span>
+            </div>
+        </div>
+        
+        <div class="phase-card">
+            <h3 class="phase-title">Phase 2: Expansion (2026)</h3>
+            <p class="phase-description">Extend to Uganda, Ghana, and Senegal with enhanced multilingual support</p>
+            <div class="phase-badges">
+                <span class="phase-badge phase-badge-alt">Uganda Preparation</span>
+                <span class="phase-badge">Ghana Assessment</span>
+                <span class="phase-badge phase-badge-alt">Senegal Planning</span>
+            </div>
+        </div>
+        
+        <div class="phase-card">
+            <h3 class="phase-title">Phase 3: Scale (2027-2028)</h3>
+            <p class="phase-description">Continental deployment including Nigeria, Ethiopia, and South Africa</p>
+            <div class="phase-badges">
+                <span class="phase-badge">Nigeria Integration</span>
+                <span class="phase-badge phase-badge-alt">Ethiopia Launch</span>
+                <span class="phase-badge">South Africa</span>
+            </div>
+        </div>
+        
+        <div class="phase-card">
+            <h3 class="phase-title">Phase 4: Excellence (2029+)</h3>
+            <p class="phase-description">Full continental network with advanced AI research integration</p>
+            <div class="phase-badges">
+                <span class="phase-badge phase-badge-alt">Continental Network</span>
+                <span class="phase-badge">AI Research Hub</span>
+                <span class="phase-badge phase-badge-alt">Global Standards</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainable Healthcare Future -->
+    <section class="content-section fade-in">
+        <h2 class="section-title">Sustainable Healthcare Future</h2>
+        <p class="section-subtitle">Building a self-sustaining ecosystem that grows stronger with each implementation</p>
+        
+        <div class="feature-grid">
+            <div class="stat-card" style="text-align: center;">
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Self-Improving AI</h3>
+                <p style="color: var(--light-text);">Machine learning models that become more accurate with each diagnosis, benefiting the entire network.</p>
+            </div>
+            
+            <div class="stat-card" style="text-align: center;">
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Interconnected Care</h3>
+                <p style="color: var(--light-text);">Cross-border medical records and collaborative treatment protocols for seamless patient care.</p>
+            </div>
+            
+            <div class="stat-card" style="text-align: center;">
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Local Ownership</h3>
+                <p style="color: var(--light-text);">Community-driven implementation ensuring cultural relevance and long-term sustainability.</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 4rem;">
+            <h3 style="font-size: 1.75rem; font-weight: 700; color: var(--dark-text);">Together, we're building the future of African healthcare</h3>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="medikal-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-company">
+                    <a href="index.html" class="footer-logo">
+                        <img src="logo.png" alt="Medikal - AI Healthcare for Africa">
+                    </a>
+                    <p class="footer-company-text">
+                        AI-powered healthcare platform combating Antimicrobial Resistance (AMR) in Africa through innovative technology and multilingual support.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Follow us on Twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Connect on LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Like us on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="features.html" class="footer-link">Features</a></li>
+                        <li><a href="index.html#mission" class="footer-link">Solutions</a></li>
+                        <li><a href="team.html" class="footer-link">Team</a></li>
+                        <li><a href="impact.html" class="footer-link">Impact</a></li>
+                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about" class="footer-link">About Us</a></li>
+                        <li><a href="team.html" class="footer-link">Our Team</a></li>
+                        <li><a href="impact.html" class="footer-link">Impact</a></li>
+                        <li><a href="news/index.html" class="footer-link">News</a></li>
+                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Get the latest updates on Medikal's AI healthcare innovations.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-button">
+                            <i class="fas fa-paper-plane"></i>
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>
+                    <p class="footer-copyright">&copy; 2024-2026 Medikal Africa. All rights reserved.</p>
+                    <p class="footer-developers">Developed by <strong>ZeroX Intelligence</strong></p>
+                </div>
+                <div class="footer-bottom-right">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Kigali, Rwanda</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // AMR Reduction Chart
+        const amrCtx = document.getElementById('amrChart').getContext('2d');
+        new Chart(amrCtx, {
+            type: 'line',
+            data: {
+                labels: ['2024', '2025', '2026', '2027', '2028'],
+                datasets: [{
+                    label: 'AMR Reduction %',
+                    data: [15, 30, 45, 60, 70],
+                    borderColor: '#5EC4D5',
+                    backgroundColor: 'rgba(94, 196, 213, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#1a1a1a'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 80,
+                        grid: {
+                            color: 'rgba(94, 196, 213, 0.1)'
+                        },
+                        ticks: {
+                            color: '#666666'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(94, 196, 213, 0.1)'
+                        },
+                        ticks: {
+                            color: '#666666'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Continental Reach Pie Chart
+        const reachCtx = document.getElementById('reachPieChart').getContext('2d');
+        new Chart(reachCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Rwanda', 'Kenya', 'Tanzania', 'Uganda', 'Ghana', 'Nigeria'],
+                datasets: [{
+                    data: [200, 300, 250, 180, 160, 500],
+                    backgroundColor: [
+                        '#5EC4D5',
+                        '#d56918',
+                        '#5EC4D5',
+                        '#d56918',
+                        '#5EC4D5',
+                        '#d56918'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#1a1a1a',
+                            padding: 20
+                        }
+                    }
+                }
+            }
+        });
+
+        // Healthcare Outcomes Chart
+        const outcomesCtx = document.getElementById('outcomesChart').getContext('2d');
+        new Chart(outcomesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Diagnostic Accuracy', 'Treatment Speed', 'Patient Satisfaction', 'Cost Efficiency'],
+                datasets: [{
+                    label: 'Before Medikal',
+                    data: [60, 45, 65, 40],
+                    backgroundColor: '#979797'
+                }, {
+                    label: 'After Medikal',
+                    data: [92, 85, 90, 78],
+                    backgroundColor: '#5EC4D5'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#1a1a1a'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: 'rgba(94, 196, 213, 0.1)'
+                        },
+                        ticks: {
+                            color: '#666666'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(94, 196, 213, 0.1)'
+                        },
+                        ticks: {
+                            color: '#666666'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Economic Impact Chart
+        const economicCtx = document.getElementById('economicChart').getContext('2d');
+        new Chart(economicCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Cost Reduction', 'Economic Savings', 'Efficiency Gain', 'Time Savings'],
+                datasets: [{
+                    data: [40, 85, 85, 60],
+                    backgroundColor: ['#5EC4D5', '#d56918', '#5EC4D5', '#d56918'],
+                    borderRadius: 8,
+                    borderSkipped: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: 'rgba(94, 196, 213, 0.1)'
+                        },
+                        ticks: {
+                            color: '#666666',
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#666666'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
