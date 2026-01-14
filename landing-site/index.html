@@ -38,6 +38,7 @@
         }
     </script>
     <style>
+        /* Optimized animations with will-change for better performance */
         @keyframes glow {
             from { box-shadow: 0 0 20px #00ffff; }
             to { box-shadow: 0 0 30px #00ffff, 0 0 40px #00ffff; }
@@ -57,6 +58,31 @@
         @keyframes pulseCyber {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
+        }
+        
+        /* Performance optimizations */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Use GPU acceleration for animations */
+        .animate-float,
+        .animate-glow,
+        .animate-pulse-cyber {
+            will-change: transform, opacity;
+            transform: translateZ(0);
+        }
+        
+        /* Reduce animation complexity on low-end devices */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
         .cyber-border {
             position: relative;
@@ -1021,12 +1047,13 @@
         .video-content {
             position: relative;
             width: 100%;
-            max-width: 900px;
+            max-width: 900px !important;
             background: #ffffff;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             margin: auto;
+            box-sizing: border-box;
         }
 
         .video-close {
@@ -1058,14 +1085,19 @@
             padding-bottom: 56.25%;
             height: 0;
             background: #000;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .video-wrapper video {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            object-fit: contain;
         }
 
         @media (max-width: 1024px) {
@@ -1102,7 +1134,7 @@
             }
 
             .video-content {
-                max-width: 95%;
+                max-width: 95% !important;
             }
 
             .video-close {
@@ -1602,7 +1634,7 @@
             }
 
             .video-content {
-                max-width: 100%;
+                max-width: 100% !important;
                 border-radius: 8px;
             }
 
@@ -2288,11 +2320,16 @@
                     </li>
                     
                     <li>
-                        <a href="#">
+                        <a href="solutions.html">
                             Solutions
                             <i class="fas fa-chevron-down"></i>
                         </a>
                         <div class="dropdown-menu">
+                            <a href="solutions.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    Our Solutions
+                                </div>
+                            </a>
                             <a href="ai-diagnostics.html" class="dropdown-item">
                                 <div class="dropdown-content">
                                     AI Diagnostics
@@ -2501,12 +2538,12 @@
 
     <!-- Video Modal -->
     <div class="video-modal" id="videoModal">
-        <div class="video-content">
+        <div class="video-content" style="max-width: 900px !important; width: 100% !important;">
             <button class="video-close" id="videoClose">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="video-wrapper">
-                <video id="demoVideo" controls preload="metadata">
+            <div class="video-wrapper" style="width: 100% !important; max-width: 100% !important;">
+                <video id="demoVideo" controls preload="metadata" style="width: 100% !important; height: 100% !important; max-width: 100% !important;">
                     <source src="demo-video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -2892,7 +2929,7 @@
                     <h3>Product</h3>
                     <ul class="footer-links">
                         <li><a href="features.html" class="footer-link">Features</a></li>
-                        <li><a href="#mission" class="footer-link">Solutions</a></li>
+                        <li><a href="solutions.html" class="footer-link">Solutions</a></li>
                         <li><a href="team.html" class="footer-link">Team</a></li>
                         <li><a href="contact.html" class="footer-link">Contact</a></li>
                         <li><a href="download.html" class="footer-link">Download</a></li>
@@ -3097,6 +3134,10 @@
             function openVideoModal() {
                 videoModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                // Reset video size to prevent growth
+                demoVideo.style.width = '100%';
+                demoVideo.style.height = '100%';
+                demoVideo.style.maxWidth = '100%';
                 setTimeout(() => {
                     demoVideo.play().catch(e => console.log('Autoplay prevented'));
                 }, 200);
@@ -3107,6 +3148,10 @@
                 document.body.style.overflow = '';
                 demoVideo.pause();
                 demoVideo.currentTime = 0;
+                // Reset video size
+                demoVideo.style.width = '100%';
+                demoVideo.style.height = '100%';
+                demoVideo.style.maxWidth = '100%';
             }
 
             watchDemoBtn.addEventListener('click', openVideoModal);
