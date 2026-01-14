@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - Medikal Africa</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #5EC4D5;
+            --primary-dark: #4AAFC0;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #f8fafb;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(94, 196, 213, 0.08);
+            --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
+            --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.6rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-bar-item:hover {
+            opacity: 0.8;
+            transform: translateX(2px);
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-selector:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Header */
+        .medikal-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-section img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu > li > a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-menu > li > a:hover {
+            background: var(--light-bg);
+            color: var(--primary-blue);
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+            cursor: pointer;
+        }
+
+        /* Download Page Styles */
+        .download-hero {
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.08) 0%, rgba(255, 255, 255, 0.98) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .download-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        .download-hero p {
+            font-size: 1.125rem;
+            color: var(--light-text);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .feature-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--dark-text);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-badge i {
+            color: var(--primary-blue);
+        }
+
+        .download-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .download-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .download-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+            border-color: var(--primary-blue);
+        }
+
+        .download-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(94, 196, 213, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
+
+        .download-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .download-card-subtitle {
+            font-size: 0.875rem;
+            color: var(--light-text);
+        }
+
+        .download-card-body {
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-specs {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .download-specs li {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .download-specs li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .download-version {
+            font-size: 0.875rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .download-version strong {
+            color: var(--dark-text);
+        }
+
+        .download-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.875rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .download-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .download-button.secondary {
+            background: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .download-button.secondary:hover {
+            background: var(--light-bg);
+        }
+
+        .requirements-section {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .requirements-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .requirements-card h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        .requirements-list {
+            list-style: none;
+        }
+
+        .requirements-list li {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .requirements-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .medikal-footer {
+            background: #5EC4D5;
+            color: #ffffff;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-company {
+            max-width: 350px;
+        }
+
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-logo:hover {
+            opacity: 0.8;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-company-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .social-link:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .footer-column h3 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        .footer-newsletter h3 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 0.875rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .newsletter-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright,
+        .footer-developers {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+        }
+
+        .footer-developers strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .footer-bottom-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .download-hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .download-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .download-hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .feature-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <a href="tel:+17024163329" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+1 (702) 416-3329</span>
+                </a>
+                <a href="mailto:info@medikalafrica.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@medikalafrica.com</span>
+                </a>
+            </div>
+            <div class="top-bar-right">
+                <select class="language-selector">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                </select>
+                <a href="index.html#access" class="top-bar-item">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="medikal-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-section">
+                <img src="logo.png" alt="Medikal - AI Health Assistant" />
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="impact.html">Impact</a></li>
+                    <li><a href="news/index.html">News & Media</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="index.html#access" class="cta-button">Get Started</a>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Download Hero -->
+    <section class="download-hero">
+        <h1>Download Medikal Platform</h1>
+        <p>Access our comprehensive AI-powered healthcare platform across all your devices. Choose from desktop applications, mobile apps, browser extensions, and integration tools.</p>
+        
+        <div class="feature-badges">
+            <div class="feature-badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>Secure & HIPAA Compliant</span>
+            </div>
+            <div class="feature-badge">
+                <i class="fas fa-globe"></i>
+                <span>Multi-Language Support</span>
+            </div>
+            <div class="feature-badge">
+                <i class="fas fa-robot"></i>
+                <span>AI-Powered Diagnostics</span>
+            </div>
+            <div class="feature-badge">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Cross-Platform Compatible</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desktop Applications -->
+    <section class="download-section">
+        <div class="section-header">
+            <h2 class="section-title">Desktop Applications</h2>
+            <p class="section-description">Full-featured desktop applications with advanced AI diagnostics, comprehensive patient management, and offline capabilities.</p>
+        </div>
+
+        <div class="download-grid">
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">Windows</h3>
+                        <p class="download-card-subtitle">Compatible with Windows 10/11</p>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <div class="download-version">
+                        <strong>Version 2.1.0</strong> • 245 MB
+                    </div>
+                </div>
+                <a href="#" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download for Windows
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">macOS</h3>
+                        <p class="download-card-subtitle">macOS 11.0 or later</p>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <div class="download-version">
+                        <strong>Version 2.1.0</strong> • 198 MB
+                    </div>
+                </div>
+                <a href="#" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download for Mac
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">Linux</h3>
+                        <p class="download-card-subtitle">Ubuntu 18.04+, CentOS 7+</p>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <div class="download-version">
+                        <strong>Version 2.1.0</strong> • 267 MB
+                    </div>
+                </div>
+                <a href="#" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download for Linux
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Applications -->
+    <section class="download-section" style="background: var(--light-bg); margin: 0; padding: 4rem 2rem;">
+        <div class="section-header">
+            <h2 class="section-title">Mobile Applications</h2>
+            <p class="section-description">On-the-go healthcare solutions with voice recognition, image analysis, and seamless sync across devices.</p>
+        </div>
+
+        <div class="download-grid">
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fab fa-android"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">Android App</h3>
+                        <p class="download-card-subtitle">Android 8.0 (API 26) or higher</p>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <ul class="download-specs">
+                        <li>Voice Commands</li>
+                        <li>Offline Mode</li>
+                        <li>Camera Integration</li>
+                    </ul>
+                    <div class="download-version">
+                        <strong>Version 1.8.3</strong> • 89 MB
+                    </div>
+                </div>
+                <a href="#" class="download-button">
+                    <i class="fab fa-google-play"></i>
+                    Download on Google Play
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fab fa-apple"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">iOS App</h3>
+                        <p class="download-card-subtitle">iOS 13.0 or later</p>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <ul class="download-specs">
+                        <li>Siri Integration</li>
+                        <li>HealthKit Support</li>
+                        <li>Face ID/Touch ID</li>
+                    </ul>
+                    <div class="download-version">
+                        <strong>Version 1.8.3</strong> • 76 MB
+                    </div>
+                </div>
+                <a href="#" class="download-button">
+                    <i class="fab fa-app-store"></i>
+                    Download on App Store
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Browser Extensions -->
+    <section class="download-section">
+        <div class="section-header">
+            <h2 class="section-title">Browser Extensions</h2>
+            <p class="section-description">Quick access to medical information and AI consultations directly from your browser while researching or working.</p>
+        </div>
+
+        <div class="download-grid">
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fab fa-chrome"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">Chrome</h3>
+                        <p class="download-card-subtitle">v3.2.1</p>
+                    </div>
+                </div>
+                <div class="download-card-body"></div>
+                <a href="#" class="download-button secondary">
+                    <i class="fas fa-plus-circle"></i>
+                    Add to Chrome
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fab fa-firefox"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">Firefox</h3>
+                        <p class="download-card-subtitle">v3.2.1</p>
+                    </div>
+                </div>
+                <div class="download-card-body"></div>
+                <a href="#" class="download-button secondary">
+                    <i class="fas fa-plus-circle"></i>
+                    Add to Firefox
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fab fa-safari"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">Safari</h3>
+                        <p class="download-card-subtitle">v3.2.1</p>
+                    </div>
+                </div>
+                <div class="download-card-body"></div>
+                <a href="#" class="download-button secondary">
+                    <i class="fas fa-plus-circle"></i>
+                    Add to Safari
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fab fa-edge"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">Edge</h3>
+                        <p class="download-card-subtitle">v3.2.1</p>
+                    </div>
+                </div>
+                <div class="download-card-body"></div>
+                <a href="#" class="download-button secondary">
+                    <i class="fas fa-plus-circle"></i>
+                    Add to Edge
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Healthcare Provider Tools -->
+    <section class="download-section" style="background: var(--light-bg); margin: 0; padding: 4rem 2rem;">
+        <div class="section-header">
+            <h2 class="section-title">Healthcare Provider Tools</h2>
+            <p class="section-description">Specialized applications for healthcare professionals with advanced diagnostic tools and patient management systems.</p>
+        </div>
+
+        <div class="download-grid">
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">Clinical Dashboard</h3>
+                        <p class="download-card-subtitle">Complete practice management system with AI diagnostics</p>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <ul class="download-specs">
+                        <li>Patient Records</li>
+                        <li>AI Diagnostics</li>
+                        <li>Appointment Scheduling</li>
+                    </ul>
+                    <div class="download-version">
+                        <strong>Version 4.1.2</strong> • Web-based
+                    </div>
+                </div>
+                <a href="#" class="download-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Access Clinical Dashboard
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">Lab Integration Suite</h3>
+                        <p class="download-card-subtitle">Connect and analyze laboratory results with AI insights</p>
+                    </div>
+                </div>
+                <div class="download-card-body">
+                    <ul class="download-specs">
+                        <li>Lab Results</li>
+                        <li>AI Analysis</li>
+                        <li>Report Generation</li>
+                    </ul>
+                    <div class="download-version">
+                        <strong>Version 2.3.1</strong> • 156 MB
+                    </div>
+                </div>
+                <a href="#" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download Lab Suite
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration & APIs -->
+    <section class="download-section">
+        <div class="section-header">
+            <h2 class="section-title">Integration & APIs</h2>
+            <p class="section-description">Developer tools and APIs to integrate Medikal's AI capabilities into existing healthcare systems and applications.</p>
+        </div>
+
+        <div class="download-grid">
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">REST API SDK</h3>
+                        <p class="download-card-subtitle">Complete API documentation and SDKs</p>
+                    </div>
+                </div>
+                <div class="download-card-body"></div>
+                <a href="#" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download SDK
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">WhatsApp Gateway</h3>
+                        <p class="download-card-subtitle">WhatsApp integration for patient communication</p>
+                    </div>
+                </div>
+                <div class="download-card-body"></div>
+                <a href="#" class="download-button">
+                    <i class="fas fa-cog"></i>
+                    Setup Gateway
+                </a>
+            </div>
+
+            <div class="download-card">
+                <div class="download-card-header">
+                    <div class="download-icon">
+                        <i class="fas fa-sms"></i>
+                    </div>
+                    <div>
+                        <h3 class="download-card-title">SMS Integration</h3>
+                        <p class="download-card-subtitle">SMS-based health consultations</p>
+                    </div>
+                </div>
+                <div class="download-card-body"></div>
+                <a href="#" class="download-button">
+                    <i class="fas fa-download"></i>
+                    Download Tools
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Requirements -->
+    <section class="download-section" style="background: var(--light-bg); margin: 0; padding: 4rem 2rem;">
+        <div class="section-header">
+            <h2 class="section-title">System Requirements</h2>
+        </div>
+
+        <div class="requirements-section">
+            <div class="requirements-grid">
+                <div class="requirements-card">
+                    <h4>Desktop Minimum</h4>
+                    <ul class="requirements-list">
+                        <li>4GB RAM (8GB recommended)</li>
+                        <li>2GB free disk space</li>
+                        <li>Internet connection</li>
+                        <li>Webcam (optional)</li>
+                        <li>Microphone (optional)</li>
+                    </ul>
+                </div>
+
+                <div class="requirements-card">
+                    <h4>Mobile Requirements</h4>
+                    <ul class="requirements-list">
+                        <li>2GB RAM minimum</li>
+                        <li>500MB free storage</li>
+                        <li>Camera access</li>
+                        <li>Microphone access</li>
+                        <li>Location services (optional)</li>
+                    </ul>
+                </div>
+
+                <div class="requirements-card">
+                    <h4>Network & Security</h4>
+                    <ul class="requirements-list">
+                        <li>HTTPS/SSL support</li>
+                        <li>Port 443 access</li>
+                        <li>TLS 1.2 or higher</li>
+                        <li>Firewall exceptions</li>
+                        <li>HIPAA compliance ready</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="medikal-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-company">
+                    <a href="index.html" class="footer-logo">
+                        <img src="logo.png" alt="Medikal - AI Healthcare for Africa">
+                    </a>
+                    <p class="footer-company-text">
+                        AI-powered healthcare platform combating Antimicrobial Resistance (AMR) in Africa through innovative technology and multilingual support.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Follow us on Twitter">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Connect on LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Like us on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="features.html" class="footer-link">Features</a></li>
+                        <li><a href="index.html#mission" class="footer-link">Solutions</a></li>
+                        <li><a href="team.html" class="footer-link">Team</a></li>
+                        <li><a href="impact.html" class="footer-link">Impact</a></li>
+                        <li><a href="download.html" class="footer-link">Download</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about" class="footer-link">About Us</a></li>
+                        <li><a href="team.html" class="footer-link">Our Team</a></li>
+                        <li><a href="impact.html" class="footer-link">Impact</a></li>
+                        <li><a href="news/index.html" class="footer-link">News</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Get the latest updates on Medikal's AI healthcare innovations.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="newsletter-button">
+                            <i class="fas fa-paper-plane"></i>
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>
+                    <p class="footer-copyright">&copy; 2024-2026 Medikal Africa. All rights reserved.</p>
+                    <p class="footer-developers">Developed by <strong>ZeroX Intelligence</strong></p>
+                </div>
+                <div class="footer-bottom-right">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Kigali, Rwanda</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+    </script>
+</body>
+</html>
