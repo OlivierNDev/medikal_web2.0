@@ -188,26 +188,18 @@
             border-radius: 8px;
             cursor: pointer;
             min-height: 180px;
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.1) 0%, rgba(94, 196, 213, 0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .video-thumbnail-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: var(--transition);
-            display: block;
-        }
-
-        .video-thumbnail-container:hover img {
-            transform: scale(1.05);
+        .video-thumbnail-container:hover {
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.15) 0%, rgba(94, 196, 213, 0.08) 100%);
         }
 
         .video-play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
             background: rgba(94, 196, 213, 0.9);
             border-radius: 50%;
             width: 60px;
@@ -223,7 +215,7 @@
 
         .video-thumbnail-container:hover .video-play-button {
             background: rgba(94, 196, 213, 1);
-            transform: translate(-50%, -50%) scale(1.1);
+            transform: scale(1.1);
         }
 
         .video-play-button i {
@@ -2455,10 +2447,6 @@
                     <option value="en">🇬🇧 English</option>
                     <option value="fr">🇫🇷 Français</option>
                 </select>
-                <a href="#access" class="top-bar-item">
-                    <i class="fas fa-sign-in-alt"></i>
-                    <span>Login</span>
-                </a>
             </div>
         </div>
     </div>
@@ -2542,6 +2530,12 @@
                     <li>
                         <a href="team.html">
                             Our Team
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="about.html">
+                            About Us
                         </a>
                     </li>
                     
@@ -2910,10 +2904,6 @@
                                 <div class="mb-4">
                                     <div class="news-card-image-minimal">
                                         <div class="video-thumbnail-container">
-                                            <img 
-                                                src="media/images/Olivier In.jpg" 
-                                                alt="Olivier Niyonshima - ONPOD TV Interview"
-                                                loading="lazy">
                                             <div class="video-play-button">
                                                 <i class="fas fa-play"></i>
                                             </div>
@@ -3047,7 +3037,6 @@
                         <li><a href="features.html" class="footer-link">Features</a></li>
                         <li><a href="solutions.html" class="footer-link">Solutions</a></li>
                         <li><a href="team.html" class="footer-link">Team</a></li>
-                        <li><a href="contact.html" class="footer-link">Contact</a></li>
                         <li><a href="download.html" class="footer-link">Download</a></li>
                     </ul>
                 </div>
@@ -3056,11 +3045,10 @@
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul class="footer-links">
-                        <li><a href="#about" class="footer-link">About Us</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
                         <li><a href="team.html" class="footer-link">Our Team</a></li>
                         <li><a href="impact.html" class="footer-link">Impact</a></li>
                         <li><a href="#" class="footer-link">Blog</a></li>
-                        <li><a href="contact.html" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
 
@@ -3069,9 +3057,9 @@
                     <h3>Support</h3>
                     <ul class="footer-links">
                         <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="faq.html" class="footer-link">FAQ</a></li>
                         <li><a href="#" class="footer-link">Help Center</a></li>
-                        <li><a href="#" class="footer-link">Documentation</a></li>
-                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="documentation.html" class="footer-link">Documentation</a></li>
                         <li><a href="#" class="footer-link">API</a></li>
                     </ul>
                 </div>
@@ -3633,13 +3621,6 @@
             document.querySelectorAll('[data-i18n="multilingual"]').forEach(el => el.textContent = t.multilingual);
             document.querySelectorAll('[data-i18n="mobileReady"]').forEach(el => el.textContent = t.mobileReady);
             
-            // Update top bar login
-            document.querySelectorAll('.top-bar-item span').forEach(span => {
-                const text = span.textContent.trim();
-                if (text === 'Login' || text === 'Connexion') {
-                    span.textContent = t.login;
-                }
-            });
         }
 
         // Initialize language selector

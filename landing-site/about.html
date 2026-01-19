@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Materials - Medikal Africa</title>
+    <title>About Us - Medikal Africa</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -246,6 +246,10 @@
             transform: translateY(-1px);
         }
 
+        .desktop-only {
+            display: block;
+        }
+
         .mobile-menu-btn {
             display: none;
             background: var(--primary-blue);
@@ -307,71 +311,48 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
             padding: 0 2rem 1.5rem;
             border-bottom: 1px solid var(--border-light);
-        }
-
-        .mobile-nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .mobile-nav-logo img {
-            height: 40px;
-            width: auto;
+            height: 35px;
         }
 
         .mobile-close-btn {
-            background: var(--accent-light);
+            background: none;
             border: none;
             font-size: 1.5rem;
             color: var(--dark-text);
             cursor: pointer;
             padding: 0.5rem;
-            border-radius: 6px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             transition: var(--transition);
         }
 
         .mobile-close-btn:hover {
-            background: var(--light-bg);
+            color: var(--primary-blue);
         }
 
         .mobile-nav-list {
             list-style: none;
-            padding: 0;
-            margin: 0;
+            padding: 0 1.5rem;
         }
 
         .mobile-nav-list li {
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .mobile-nav-list li:last-child {
-            border-bottom: none;
+            margin-bottom: 0.5rem;
         }
 
         .mobile-nav-list a {
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1.25rem 2rem;
+            padding: 1rem;
             color: var(--dark-text);
             text-decoration: none;
-            font-weight: 500;
+            border-radius: 8px;
             transition: var(--transition);
-        }
-
-        .mobile-nav-list a i {
-            width: 20px;
-            text-align: center;
-            color: var(--primary-blue);
+            font-weight: 500;
         }
 
         .mobile-nav-list a:hover {
@@ -379,147 +360,325 @@
             color: var(--primary-blue);
         }
 
-        .mobile-cta {
-            padding: 2rem;
-            border-top: 1px solid var(--border-light);
-            margin-top: 1rem;
-        }
-
-        .mobile-cta .cta-button {
-            width: 100%;
-            justify-content: center;
-        }
-
-        .desktop-only {
-            display: flex;
-        }
-
-        @media (max-width: 768px) {
-            .desktop-only {
-                display: none;
-            }
-        }
-
-        /* Page Header */
-        .page-header {
-            background: var(--primary-blue);
-            color: var(--white);
-            padding: 4rem 2rem;
+        .mobile-nav-list a i {
+            width: 20px;
             text-align: center;
         }
 
-        .page-header h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+        .mobile-cta {
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-light);
         }
 
-        .page-header p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.95;
-            line-height: 1.6;
+        body.menu-open {
+            overflow: hidden;
         }
 
-        /* Content Section */
-        .content-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 700;
-            color: var(--dark-text);
-            margin-bottom: 1rem;
+        /* About Page Styles */
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
             position: relative;
-            padding-bottom: 1rem;
-            line-height: 1.2;
+            overflow: hidden;
         }
 
-        .section-title::after {
+        .about-hero::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--primary-blue);
-            border-radius: 2px;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--light-text);
-            margin-bottom: 3rem;
-            line-height: 1.7;
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
-        /* Feature Grid */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: 2rem;
+        .about-hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-hero p {
+            font-size: clamp(1.125rem, 2vw, 1.5rem);
+            line-height: 1.8;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            padding: 5rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
             margin-bottom: 4rem;
         }
 
-        .feature-card {
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .mission-card,
+        .vision-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .mission-card:hover,
+        .vision-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .mission-card i,
+        .vision-card i {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-card h3,
+        .vision-card h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        .mission-card p,
+        .vision-card p {
+            font-size: 1.05rem;
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+
+        .story-section {
+            background: var(--light-bg);
+            padding: 5rem 2rem;
+        }
+
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story-content p {
+            font-size: 1.125rem;
+            color: var(--light-text);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
             background: var(--white);
             border: 1px solid var(--border-light);
             border-radius: 12px;
             padding: 2rem;
+            text-align: center;
             transition: var(--transition);
         }
 
-        .feature-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-blue);
+        .value-card:hover {
+            box-shadow: var(--shadow-md);
             transform: translateY(-4px);
+            border-color: var(--primary-blue);
         }
 
-        .feature-card h3 {
-            font-size: 1.4rem;
+        .value-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .value-card h4 {
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--dark-text);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
-        .feature-card p {
+        .value-card p {
+            font-size: 0.95rem;
             color: var(--light-text);
             line-height: 1.7;
-            margin-bottom: 1rem;
         }
 
-        .feature-list {
-            list-style: none;
-            margin-top: 1rem;
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 5rem 2rem;
         }
 
-        .feature-list li {
-            color: var(--light-text);
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            line-height: 1.6;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-blue);
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.125rem;
+            opacity: 0.9;
+        }
+
+        .cta-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: var(--light-bg);
+        }
+
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.125rem;
+            color: var(--light-text);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-large {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary-large:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary-large {
+            background: var(--white);
+            color: var(--dark-text);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid var(--border-light);
+        }
+
+        .btn-secondary-large:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
         }
 
         /* Footer */
         .medikal-footer {
-            background: #5EC4D5;
-            color: #ffffff;
+            background: var(--primary-blue);
+            color: var(--white);
             position: relative;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .medikal-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary-blue);
         }
 
         .footer-container {
@@ -533,6 +692,20 @@
             grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
             gap: 3rem;
             margin-bottom: 3rem;
+        }
+
+        .footer-company {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            height: 45px;
+            filter: brightness(0) invert(1);
         }
 
         .footer-company-text {
@@ -550,27 +723,26 @@
         .social-link {
             width: 40px;
             height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 6px;
-            color: #ffffff;
+            color: var(--white);
             text-decoration: none;
             transition: var(--transition);
         }
 
         .social-link:hover {
-            border-color: rgba(255, 255, 255, 0.6);
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.25);
             transform: translateY(-2px);
         }
 
         .footer-column h3 {
-            color: #ffffff;
-            font-size: 0.95rem;
+            color: var(--white);
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -579,18 +751,87 @@
             list-style: none;
         }
 
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
         .footer-link {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             font-size: 0.95rem;
             transition: var(--transition);
             display: inline-block;
-            margin-bottom: 0.75rem;
         }
 
         .footer-link:hover {
             color: #ffffff;
             transform: translateX(3px);
+        }
+
+        .footer-newsletter h3 {
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-newsletter p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .newsletter-button {
+            width: 100%;
+            padding: 0.875rem 1.5rem;
+            background: #ffffff;
+            color: #5EC4D5;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .newsletter-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-1px);
         }
 
         .footer-bottom {
@@ -603,57 +844,39 @@
             gap: 1rem;
         }
 
-        .footer-copyright,
-        .footer-developers {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.875rem;
+        .footer-bottom-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .footer-developers strong {
-            color: #ffffff;
-            font-weight: 600;
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .footer-developers {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
         }
 
         .footer-bottom-right {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
         }
 
-        .footer-logo img {
-            height: 40px;
-            width: auto;
-            display: block;
-            filter: brightness(0) invert(1);
-            margin-bottom: 1rem;
-        }
-
-        /* Responsive */
+        /* Responsive Design */
         @media (max-width: 1024px) {
             .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr;
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .header-container,
-            .top-bar-container,
-            .footer-container {
-                padding: 0 1.5rem;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr;
+                grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
                 gap: 2rem;
             }
 
-            .content-section {
-                padding: 3rem 1.5rem;
+            .mission-vision-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -676,82 +899,38 @@
                 gap: 1rem;
             }
 
-            .top-bar-item span {
-                font-size: 0.8rem;
-            }
-
             .mobile-menu-btn {
                 display: block;
             }
 
             .nav-menu {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: var(--shadow-lg);
-                border-top: 1px solid var(--border-light);
             }
 
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-menu > li {
-                width: 100%;
-            }
-
-            .nav-menu > li > a {
-                display: block;
-                width: 100%;
-                padding: 1rem;
+            .desktop-only {
+                display: none;
             }
 
             .header-container {
                 padding: 0.75rem 1rem;
-                position: relative;
             }
 
-            .cta-button {
-                display: none;
+            .about-hero {
+                padding: 4rem 1.5rem 3rem;
             }
 
-            .page-header {
-                padding: 3rem 1rem;
+            .about-section,
+            .story-section,
+            .stats-section,
+            .cta-section {
+                padding: 3rem 1.5rem;
             }
 
-            .page-header h1 {
-                font-size: clamp(1.75rem, 5vw, 2rem);
-            }
-
-            .page-header p {
-                font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-            }
-
-            .content-section {
-                padding: 2.5rem 1rem;
-            }
-
-            .section-title {
-                font-size: 1.875rem;
-            }
-
-            .section-subtitle {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-            }
-
-            .feature-grid {
+            .mission-vision-grid,
+            .values-grid,
+            .stats-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
             }
 
             .footer-grid {
@@ -766,36 +945,35 @@
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
-                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary-large,
+            .btn-secondary-large {
+                width: 100%;
+                justify-content: center;
             }
         }
 
         @media (max-width: 480px) {
-            .page-header {
-                padding: 2.5rem 0.75rem;
+            .about-hero {
+                padding: 3rem 1rem 2rem;
             }
 
-            .content-section {
-                padding: 2rem 0.75rem;
+            .about-section,
+            .story-section,
+            .stats-section,
+            .cta-section {
+                padding: 2.5rem 1rem;
             }
 
-            .feature-card {
-                padding: 1.25rem;
-            }
-
-            .feature-card h3 {
-                font-size: 1.125rem;
-            }
-        }
-
-        /* Touch-friendly */
-        @media (hover: none) and (pointer: coarse) {
-            .cta-button,
-            .nav-menu > li > a {
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .mission-card,
+            .vision-card,
+            .value-card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -816,8 +994,9 @@
             </div>
             <div class="top-bar-right">
                 <select class="language-selector">
-                    <option value="en">🇬🇧 English</option>
-                    <option value="fr">🇫🇷 Français</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="sw">Kiswahili</option>
                 </select>
             </div>
         </div>
@@ -826,12 +1005,10 @@
     <!-- Main Header -->
     <header class="medikal-header" id="mainHeader">
         <div class="header-container">
-            <!-- Logo Section -->
             <a href="index.html" class="logo-section">
                 <img src="logo.png" alt="Medikal - AI Health Assistant" />
             </a>
             
-            <!-- Desktop Navigation -->
             <nav>
                 <ul class="nav-menu">
                     <li>
@@ -918,7 +1095,7 @@
                     </li>
                     
                     <li>
-                        <a href="news/index.html">
+                        <a href="#news">
                             News & Media
                         </a>
                     </li>
@@ -931,43 +1108,34 @@
                 </ul>
             </nav>
             
-            <!-- CTA Button -->
             <a href="index.html#access" class="cta-button desktop-only">
                 Get Started
             </a>
 
-            <!-- Mobile Menu Button -->
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
-    <!-- Mobile Menu Overlay -->
+    <!-- Mobile Overlay -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <!-- Mobile Navigation -->
     <nav class="mobile-nav" id="mobileNav">
         <div class="mobile-nav-header">
-            <div class="mobile-nav-logo">
+            <a href="index.html" class="mobile-nav-logo">
                 <img src="logo.png" alt="Medikal" />
-            </div>
-            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
+            </a>
+            <button class="mobile-close-btn" id="mobileCloseBtn">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        
         <ul class="mobile-nav-list">
             <li>
                 <a href="index.html">
                     <i class="fas fa-home"></i>
                     Home
-                </a>
-            </li>
-            <li>
-                <a href="solutions.html">
-                    <i class="fas fa-puzzle-piece"></i>
-                    Solutions
                 </a>
             </li>
             <li>
@@ -995,7 +1163,7 @@
                 </a>
             </li>
             <li>
-                <a href="news/index.html">
+                <a href="#news">
                     <i class="fas fa-newspaper"></i>
                     News & Media
                 </a>
@@ -1007,7 +1175,6 @@
                 </a>
             </li>
         </ul>
-
         <div class="mobile-cta">
             <a href="index.html#access" class="cta-button">
                 Get Started Free
@@ -1015,142 +1182,138 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>Training Materials</h1>
-        <p>Comprehensive training resources and educational materials for healthcare professionals and community health workers</p>
-    </section>
-
-    <!-- Healthcare Professional Training -->
-    <section class="content-section">
-        <h2 class="section-title">Healthcare Professional Training</h2>
-        <p class="section-subtitle">Training programs and materials for doctors, nurses, and clinical staff</p>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Platform Training</h3>
-                <p>Comprehensive training on using the Medikal platform for clinical decision support and patient management.</p>
-                <ul class="feature-list">
-                    <li>Platform navigation and features</li>
-                    <li>Patient registration and management</li>
-                    <li>AI diagnostic tool usage</li>
-                    <li>Prescription management</li>
-                    <li>Reporting and analytics</li>
-                </ul>
-            </div>
-            
-            <div class="feature-card">
-                <h3>AMR Stewardship Training</h3>
-                <p>Training on antimicrobial stewardship principles and best practices for reducing resistance.</p>
-                <ul class="feature-list">
-                    <li>Antimicrobial stewardship principles</li>
-                    <li>Appropriate prescribing practices</li>
-                    <li>Resistance prevention strategies</li>
-                    <li>Guideline implementation</li>
-                    <li>Quality improvement methods</li>
-                </ul>
-            </div>
-            
-            <div class="feature-card">
-                <h3>Clinical Guidelines Training</h3>
-                <p>Training on implementing and following clinical guidelines for optimal patient care.</p>
-                <ul class="feature-list">
-                    <li>Guideline interpretation</li>
-                    <li>Clinical decision-making</li>
-                    <li>Evidence-based practice</li>
-                    <li>Case study reviews</li>
-                    <li>Best practice implementation</li>
-                </ul>
-            </div>
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1>About Medikal Africa</h1>
+            <p>Transforming healthcare across Africa through innovative AI solutions that combat antimicrobial resistance and improve patient outcomes.</p>
         </div>
     </section>
 
-    <!-- Community Health Worker Training -->
-    <section class="content-section" style="background: var(--light-bg); margin: 0; padding: 4rem 2rem;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 class="section-title">Community Health Worker Training</h2>
-            <p class="section-subtitle">Training programs designed for community health workers and primary care providers</p>
-            
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Mobile App Training</h3>
-                    <p>Training on using the Medikal mobile application for community health worker activities.</p>
-                    <ul class="feature-list">
-                        <li>Mobile app navigation</li>
-                        <li>Patient data collection</li>
-                        <li>Symptom assessment tools</li>
-                        <li>Referral protocols</li>
-                        <li>Data synchronization</li>
-                    </ul>
+    <!-- Mission & Vision Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="mission-vision-grid">
+                <div class="mission-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To empower African healthcare providers with AI-powered tools that improve diagnosis accuracy, guide safe medication use, and combat antimicrobial resistance, ultimately saving lives and preserving life-saving drugs for future generations.</p>
                 </div>
-                
-                <div class="feature-card">
-                    <h3>Basic Healthcare Training</h3>
-                    <p>Fundamental healthcare training for community health workers in resource-limited settings.</p>
-                    <ul class="feature-list">
-                        <li>Basic diagnosis and triage</li>
-                        <li>Medication administration</li>
-                        <li>Patient education techniques</li>
-                        <li>Infection prevention</li>
-                        <li>Emergency response protocols</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Certification Programs</h3>
-                    <p>Certification programs for community health workers to validate their training and competencies.</p>
-                    <ul class="feature-list">
-                        <li>Competency assessments</li>
-                        <li>Certification exams</li>
-                        <li>Continuing education credits</li>
-                        <li>Skills validation</li>
-                        <li>Professional development</li>
-                    </ul>
+                <div class="vision-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>To become the leading AI healthcare platform in Africa, serving all 54 African countries with innovative technology that sets a new global standard for combating antimicrobial resistance and improving healthcare outcomes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Educational Resources -->
-    <section class="content-section">
-        <h2 class="section-title">Educational Resources</h2>
-        <p class="section-subtitle">Video tutorials, documentation, and learning materials</p>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Video Tutorials</h3>
-                <p>Comprehensive video tutorials covering platform features and best practices.</p>
-                <ul class="feature-list">
-                    <li>Step-by-step video guides</li>
-                    <li>Feature demonstrations</li>
-                    <li>Case study walkthroughs</li>
-                    <li>Quick reference videos</li>
-                    <li>Multilingual video content</li>
-                </ul>
+    <!-- Our Story Section -->
+    <section class="story-section">
+        <div class="about-container">
+            <div class="section-header">
+                <h2>Our Story</h2>
+                <p>Born from a deep understanding of Africa's unique healthcare challenges</p>
             </div>
-            
-            <div class="feature-card">
-                <h3>Documentation</h3>
-                <p>Comprehensive written documentation and user guides for all platform features.</p>
-                <ul class="feature-list">
-                    <li>User manuals</li>
-                    <li>Feature documentation</li>
-                    <li>FAQ resources</li>
-                    <li>Troubleshooting guides</li>
-                    <li>Best practice documentation</li>
-                </ul>
+            <div class="story-content">
+                <p>
+                    Medikal Africa was founded with a clear vision: to address the critical challenge of antimicrobial resistance (AMR) that threatens healthcare systems across the African continent. Our journey began when our founder, Olivier Niyonshima, recognized the urgent need for intelligent, accessible healthcare solutions tailored specifically for African contexts.
+                </p>
+                <p>
+                    Unlike generic healthcare platforms, Medikal is built from the ground up with African healthcare systems in mind. We understand the unique challenges faced by clinicians and patients across 54 diverse countries, from language barriers to resource constraints, and we've designed our platform to address these realities.
+                </p>
+                <p>
+                    Through strategic partnerships with organizations like the AMR Initiative Rwanda, Africa CDC, and leading technology companies, we're creating a comprehensive ecosystem that supports healthcare providers, educates patients, and monitors antimicrobial resistance patterns in real-time.
+                </p>
+                <p>
+                    Today, Medikal Africa stands as a testament to what's possible when cutting-edge technology meets deep local understanding. We're not just building software—we're building a movement that will transform healthcare delivery across the continent.
+                </p>
             </div>
-            
-            <div class="feature-card">
-                <h3>Learning Materials</h3>
-                <p>Additional learning materials including presentations, handouts, and reference materials.</p>
-                <ul class="feature-list">
-                    <li>Training presentations</li>
-                    <li>Reference handouts</li>
-                    <li>Quick reference guides</li>
-                    <li>Poster materials</li>
-                    <li>Educational infographics</li>
-                </ul>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="section-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h4>Patient-Centered</h4>
+                    <p>Every decision we make prioritizes patient safety and improved health outcomes.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-globe-africa"></i>
+                    <h4>Africa-First</h4>
+                    <p>We're committed to understanding and addressing the unique needs of African healthcare systems.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Innovation</h4>
+                    <p>We continuously push boundaries to develop cutting-edge solutions that make a real difference.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Partnership</h4>
+                    <p>We believe in the power of collaboration to achieve transformative healthcare outcomes.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Integrity</h4>
+                    <p>We maintain the highest standards of ethical practice and data security in everything we do.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-language"></i>
+                    <h4>Accessibility</h4>
+                    <p>We ensure our platform is available in multiple languages and accessible to all healthcare providers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="about-container">
+            <div class="section-header" style="color: white;">
+                <h2 style="color: white;">Our Impact in Numbers</h2>
+                <p style="color: rgba(255, 255, 255, 0.9);">Making a measurable difference across Africa</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">54</div>
+                    <div class="stat-label">African Countries</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Languages Supported</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Healthcare Providers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Patients Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Join Us in Transforming African Healthcare</h2>
+            <p>Whether you're a healthcare provider, researcher, or partner organization, there's a place for you in the Medikal Africa community.</p>
+            <div class="cta-buttons">
+                <a href="index.html#access" class="btn-primary-large">
+                    Get Started <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="contact.html" class="btn-secondary-large">
+                    Contact Us <i class="fas fa-envelope"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -1183,9 +1346,10 @@
                     <h3>Product</h3>
                     <ul class="footer-links">
                         <li><a href="features.html" class="footer-link">Features</a></li>
-                        <li><a href="index.html#mission" class="footer-link">Solutions</a></li>
+                        <li><a href="solutions.html" class="footer-link">Solutions</a></li>
                         <li><a href="team.html" class="footer-link">Team</a></li>
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="download.html" class="footer-link">Download</a></li>
                     </ul>
                 </div>
 
@@ -1194,19 +1358,39 @@
                     <ul class="footer-links">
                         <li><a href="about.html" class="footer-link">About Us</a></li>
                         <li><a href="team.html" class="footer-link">Our Team</a></li>
-                        <li><a href="index.html#mission" class="footer-link">Impact</a></li>
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                        <li><a href="impact.html" class="footer-link">Impact</a></li>
+                        <li><a href="news/index.html" class="footer-link">News & Media</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>Support</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
-                        <li><a href="#" class="footer-link">Help Center</a></li>
-                        <li><a href="documentation.html" class="footer-link">Documentation</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="clinical-guidelines.html" class="footer-link">Clinical Guidelines</a></li>
+                        <li><a href="training-materials.html" class="footer-link">Training Materials</a></li>
+                        <li><a href="amr-data.html" class="footer-link">AMR Data</a></li>
                         <li><a href="#" class="footer-link">FAQ</a></li>
                     </ul>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Get the latest updates on Medikal's AI healthcare innovations.</p>
+                    <form class="newsletter-form" id="footerNewsletterForm">
+                        <input 
+                            type="email" 
+                            placeholder="Enter your email" 
+                            class="newsletter-input"
+                            required
+                            aria-label="Email address for newsletter"
+                        >
+                        <button type="submit" class="newsletter-button">
+                            <i class="fas fa-paper-plane"></i>
+                            Subscribe
+                        </button>
+                    </form>
                 </div>
             </div>
 
@@ -1216,7 +1400,7 @@
                         &copy; 2024-2026 Medikal Africa. All rights reserved.
                     </p>
                     <p class="footer-developers">
-                        Developed by <strong>ZeroX Intelligence</strong>
+                        Developed by <strong>ZeroX Intelligence</strong> 
                     </p>
                 </div>
                 <div class="footer-bottom-right">
@@ -1228,52 +1412,77 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+        // Mobile Menu Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-list a');
+            const body = document.body;
 
-        function openMobileMenu() {
-            if (mobileNav && mobileOverlay) {
+            function openMobileMenu() {
                 mobileNav.classList.add('active');
                 mobileOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                body.classList.add('menu-open');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.className = 'fas fa-times';
             }
-        }
 
-        function closeMobileMenu() {
-            if (mobileNav && mobileOverlay) {
+            function closeMobileMenu() {
                 mobileNav.classList.remove('active');
                 mobileOverlay.classList.remove('active');
-                document.body.style.overflow = '';
+                body.classList.remove('menu-open');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.className = 'fas fa-bars';
             }
-        }
 
-        if (mobileMenuBtn) {
             mobileMenuBtn.addEventListener('click', openMobileMenu);
-        }
-
-        if (mobileCloseBtn) {
             mobileCloseBtn.addEventListener('click', closeMobileMenu);
-        }
-
-        if (mobileOverlay) {
             mobileOverlay.addEventListener('click', closeMobileMenu);
-        }
 
-        // Close mobile menu when clicking on a link
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-list a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        closeMobileMenu();
+                    }
+                });
+            });
 
-        // Close mobile menu on window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                closeMobileMenu();
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Newsletter Form
+            const newsletterForm = document.getElementById('footerNewsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    alert('Thank you for subscribing! We\'ll keep you updated on Medikal\'s latest innovations.');
+                    this.reset();
+                });
             }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href !== '#news') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            closeMobileMenu();
+                        }
+                    }
+                });
+            });
         });
     </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Materials - Medikal Africa</title>
+    <title>FAQ - Medikal Africa</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -400,6 +400,13 @@
             }
         }
 
+        @media (min-width: 769px) {
+            .mobile-nav,
+            .mobile-overlay {
+                display: none !important;
+            }
+        }
+
         /* Page Header */
         .page-header {
             background: var(--primary-blue);
@@ -423,95 +430,147 @@
             line-height: 1.6;
         }
 
-        /* Content Section */
-        .content-section {
-            max-width: 1200px;
+        /* FAQ Section */
+        .faq-section {
+            max-width: 1000px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
 
-        .section-title {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            font-weight: 700;
-            color: var(--dark-text);
-            margin-bottom: 1rem;
-            position: relative;
-            padding-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--primary-blue);
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            margin: 2.5rem 0 1.5rem 0;
+            border-radius: 8px;
+            font-weight: 600;
             font-size: 1.1rem;
-            color: var(--light-text);
-            margin-bottom: 3rem;
-            line-height: 1.7;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        /* Feature Grid */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .feature-card {
-            background: var(--white);
+        .faq-item {
             border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 2rem;
+            margin-bottom: 0.75rem;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            background: var(--white);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .faq-question:hover {
+            background: var(--accent-light);
+        }
+
+        .faq-question.active {
+            background: var(--accent-light);
+            color: var(--primary-blue);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            background: var(--white);
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .faq-answer.active {
+            max-height: 2000px;
+            padding: 0 1.5rem 1.25rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--light-text);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer ul,
+        .faq-answer ol {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+            color: var(--light-text);
+            line-height: 1.8;
+        }
+
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer li strong {
+            color: var(--dark-text);
+        }
+
+        .faq-answer a {
+            color: var(--primary-blue);
+            text-decoration: none;
             transition: var(--transition);
         }
 
-        .feature-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-blue);
-            transform: translateY(-4px);
+        .faq-answer a:hover {
+            text-decoration: underline;
         }
 
-        .feature-card h3 {
-            font-size: 1.4rem;
+        .faq-icon {
+            transition: var(--transition);
+            color: var(--primary-blue);
+            font-size: 0.875rem;
+        }
+
+        .faq-icon.active {
+            transform: rotate(180deg);
+        }
+
+        .contact-box {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-box h3 {
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--dark-text);
             margin-bottom: 1rem;
         }
 
-        .feature-card p {
+        .contact-box p {
             color: var(--light-text);
+            margin-bottom: 1.5rem;
             line-height: 1.7;
-            margin-bottom: 1rem;
         }
 
-        .feature-list {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .feature-list li {
-            color: var(--light-text);
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary-blue);
-            font-weight: 700;
+        .contact-box .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         /* Footer */
@@ -631,28 +690,21 @@
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr;
-                gap: 2rem;
-            }
-        }
-
         @media (max-width: 1200px) {
             .header-container,
             .top-bar-container,
             .footer-container {
                 padding: 0 1.5rem;
             }
-        }
 
-        @media (max-width: 1024px) {
             .footer-grid {
                 grid-template-columns: 2fr 1fr 1fr;
                 gap: 2rem;
             }
+        }
 
-            .content-section {
+        @media (max-width: 1024px) {
+            .faq-section {
                 padding: 3rem 1.5rem;
             }
         }
@@ -686,34 +738,15 @@
 
             .nav-menu {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: var(--shadow-lg);
-                border-top: 1px solid var(--border-light);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-menu > li {
-                width: 100%;
-            }
-
-            .nav-menu > li > a {
-                display: block;
-                width: 100%;
-                padding: 1rem;
             }
 
             .header-container {
                 padding: 0.75rem 1rem;
                 position: relative;
+            }
+
+            .logo-section img {
+                height: 35px;
             }
 
             .cta-button {
@@ -724,34 +757,30 @@
                 padding: 3rem 1rem;
             }
 
-            .page-header h1 {
-                font-size: clamp(1.75rem, 5vw, 2rem);
-            }
-
-            .page-header p {
-                font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-            }
-
-            .content-section {
+            .faq-section {
                 padding: 2.5rem 1rem;
             }
 
-            .section-title {
-                font-size: 1.875rem;
+            .faq-question {
+                padding: 1rem 1.25rem;
+                font-size: 0.95rem;
             }
 
-            .section-subtitle {
+            .faq-answer {
+                padding: 0 1.25rem;
+            }
+
+            .faq-answer.active {
+                padding: 0 1.25rem 1rem 1.25rem;
+            }
+
+            .category-header {
+                padding: 0.875rem 1.25rem;
                 font-size: 1rem;
-                margin-bottom: 2rem;
             }
 
-            .feature-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
+            .contact-box {
+                padding: 2rem 1.5rem;
             }
 
             .footer-grid {
@@ -775,27 +804,25 @@
                 padding: 2.5rem 0.75rem;
             }
 
-            .content-section {
+            .faq-section {
                 padding: 2rem 0.75rem;
             }
 
-            .feature-card {
-                padding: 1.25rem;
+            .faq-question {
+                padding: 0.875rem 1rem;
+                font-size: 0.9rem;
             }
 
-            .feature-card h3 {
-                font-size: 1.125rem;
+            .faq-answer {
+                padding: 0 1rem;
             }
-        }
 
-        /* Touch-friendly */
-        @media (hover: none) and (pointer: coarse) {
-            .cta-button,
-            .nav-menu > li > a {
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .faq-answer.active {
+                padding: 0 1rem 0.875rem 1rem;
+            }
+
+            .contact-box {
+                padding: 1.5rem 1rem;
             }
         }
     </style>
@@ -906,12 +933,6 @@
                     </li>
                     
                     <li>
-                        <a href="about.html">
-                            About Us
-                        </a>
-                    </li>
-                    
-                    <li>
                         <a href="impact.html">
                             Impact
                         </a>
@@ -983,12 +1004,6 @@
                 </a>
             </li>
             <li>
-                <a href="about.html">
-                    <i class="fas fa-info-circle"></i>
-                    About Us
-                </a>
-            </li>
-            <li>
                 <a href="impact.html">
                     <i class="fas fa-heart"></i>
                     Impact
@@ -998,6 +1013,12 @@
                 <a href="news/index.html">
                     <i class="fas fa-newspaper"></i>
                     News & Media
+                </a>
+            </li>
+            <li>
+                <a href="faq.html">
+                    <i class="fas fa-question-circle"></i>
+                    FAQ
                 </a>
             </li>
             <li>
@@ -1017,141 +1038,253 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>Training Materials</h1>
-        <p>Comprehensive training resources and educational materials for healthcare professionals and community health workers</p>
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about Medikal platform, features, and support</p>
     </section>
 
-    <!-- Healthcare Professional Training -->
-    <section class="content-section">
-        <h2 class="section-title">Healthcare Professional Training</h2>
-        <p class="section-subtitle">Training programs and materials for doctors, nurses, and clinical staff</p>
+    <!-- FAQ Section -->
+    <section class="faq-section">
         
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Platform Training</h3>
-                <p>Comprehensive training on using the Medikal platform for clinical decision support and patient management.</p>
-                <ul class="feature-list">
-                    <li>Platform navigation and features</li>
-                    <li>Patient registration and management</li>
-                    <li>AI diagnostic tool usage</li>
-                    <li>Prescription management</li>
-                    <li>Reporting and analytics</li>
-                </ul>
+        <!-- General Questions -->
+        <div class="category-header">
+            <i class="fas fa-info-circle"></i>
+            General Questions
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What is Medikal platform?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
             </div>
-            
-            <div class="feature-card">
-                <h3>AMR Stewardship Training</h3>
-                <p>Training on antimicrobial stewardship principles and best practices for reducing resistance.</p>
-                <ul class="feature-list">
-                    <li>Antimicrobial stewardship principles</li>
-                    <li>Appropriate prescribing practices</li>
-                    <li>Resistance prevention strategies</li>
-                    <li>Guideline implementation</li>
-                    <li>Quality improvement methods</li>
-                </ul>
+            <div class="faq-answer">
+                <p>Medikal is an AI-powered healthcare platform designed specifically for African healthcare challenges. It combines machine learning, deep learning, and natural language processing to provide intelligent medical assistance, combat antimicrobial resistance (AMR), and deliver healthcare solutions across desktop, mobile, SMS, and WhatsApp platforms in multiple languages including Kinyarwanda, English, and French.</p>
             </div>
-            
-            <div class="feature-card">
-                <h3>Clinical Guidelines Training</h3>
-                <p>Training on implementing and following clinical guidelines for optimal patient care.</p>
-                <ul class="feature-list">
-                    <li>Guideline interpretation</li>
-                    <li>Clinical decision-making</li>
-                    <li>Evidence-based practice</li>
-                    <li>Case study reviews</li>
-                    <li>Best practice implementation</li>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Who developed Medikal?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Medikal is developed through a partnership between ZeroX Intelligence (a Rwandan-Canadian AI company) and the AMR Initiative Rwanda. This collaboration combines advanced AI technology expertise with deep understanding of African healthcare challenges and antimicrobial resistance issues.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What languages does Medikal support?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Medikal supports three languages to serve diverse African communities:</p>
+                <ul>
+                    <li><strong>Kinyarwanda</strong> - Native language support for local communities</li>
+                    <li><strong>English</strong> - International communication and medical documentation</li>
+                    <li><strong>French</strong> - Regional healthcare integration across francophone Africa</li>
                 </ul>
             </div>
         </div>
-    </section>
 
-    <!-- Community Health Worker Training -->
-    <section class="content-section" style="background: var(--light-bg); margin: 0; padding: 4rem 2rem;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 class="section-title">Community Health Worker Training</h2>
-            <p class="section-subtitle">Training programs designed for community health workers and primary care providers</p>
-            
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>Mobile App Training</h3>
-                    <p>Training on using the Medikal mobile application for community health worker activities.</p>
-                    <ul class="feature-list">
-                        <li>Mobile app navigation</li>
-                        <li>Patient data collection</li>
-                        <li>Symptom assessment tools</li>
-                        <li>Referral protocols</li>
-                        <li>Data synchronization</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Basic Healthcare Training</h3>
-                    <p>Fundamental healthcare training for community health workers in resource-limited settings.</p>
-                    <ul class="feature-list">
-                        <li>Basic diagnosis and triage</li>
-                        <li>Medication administration</li>
-                        <li>Patient education techniques</li>
-                        <li>Infection prevention</li>
-                        <li>Emergency response protocols</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Certification Programs</h3>
-                    <p>Certification programs for community health workers to validate their training and competencies.</p>
-                    <ul class="feature-list">
-                        <li>Competency assessments</li>
-                        <li>Certification exams</li>
-                        <li>Continuing education credits</li>
-                        <li>Skills validation</li>
-                        <li>Professional development</li>
-                    </ul>
-                </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What is the main goal of Medikal?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Medikal's primary goal is to achieve a 70% reduction in antimicrobial resistance (AMR) cases across Africa while transforming healthcare delivery through AI-powered solutions. The platform aims to provide accessible, intelligent healthcare support that bridges the gap between advanced medical technology and African healthcare needs.</p>
             </div>
         </div>
-    </section>
 
-    <!-- Educational Resources -->
-    <section class="content-section">
-        <h2 class="section-title">Educational Resources</h2>
-        <p class="section-subtitle">Video tutorials, documentation, and learning materials</p>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Video Tutorials</h3>
-                <p>Comprehensive video tutorials covering platform features and best practices.</p>
-                <ul class="feature-list">
-                    <li>Step-by-step video guides</li>
-                    <li>Feature demonstrations</li>
-                    <li>Case study walkthroughs</li>
-                    <li>Quick reference videos</li>
-                    <li>Multilingual video content</li>
+        <!-- Technical Questions -->
+        <div class="category-header">
+            <i class="fas fa-cogs"></i>
+            Technical Questions
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What platforms is Medikal available on?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Medikal is designed for multi-platform accessibility to reach all communities:</p>
+                <ul>
+                    <li><strong>Desktop Applications</strong> - Windows, macOS, and Linux versions for offline access</li>
+                    <li><strong>Mobile Apps</strong> - Android and iOS applications for patients and healthcare workers</li>
+                    <li><strong>SMS Integration</strong> - Text message support for medication reminders and basic consultations</li>
+                    <li><strong>WhatsApp</strong> - Appointment notifications and health alerts</li>
+                    <li><strong>Web Platform</strong> - Browser-based access for universal compatibility</li>
                 </ul>
             </div>
-            
-            <div class="feature-card">
-                <h3>Documentation</h3>
-                <p>Comprehensive written documentation and user guides for all platform features.</p>
-                <ul class="feature-list">
-                    <li>User manuals</li>
-                    <li>Feature documentation</li>
-                    <li>FAQ resources</li>
-                    <li>Troubleshooting guides</li>
-                    <li>Best practice documentation</li>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What AI technologies does Medikal use?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Medikal leverages cutting-edge AI technologies:</p>
+                <ul>
+                    <li><strong>Machine Learning</strong> - 94-95% diagnostic accuracy with real-time analysis</li>
+                    <li><strong>Deep Learning</strong> - Neural networks for complex medical pattern recognition</li>
+                    <li><strong>Natural Language Processing</strong> - Multilingual medical communication and understanding</li>
+                    <li><strong>Computer Vision</strong> - Medical image analysis and diagnostic support</li>
+                    <li><strong>Predictive Analytics</strong> - AMR risk assessment and treatment optimization</li>
                 </ul>
             </div>
-            
-            <div class="feature-card">
-                <h3>Learning Materials</h3>
-                <p>Additional learning materials including presentations, handouts, and reference materials.</p>
-                <ul class="feature-list">
-                    <li>Training presentations</li>
-                    <li>Reference handouts</li>
-                    <li>Quick reference guides</li>
-                    <li>Poster materials</li>
-                    <li>Educational infographics</li>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How accurate is Medikal's AI diagnostic system?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Medikal's AI diagnostic system achieves 94-95% accuracy in medical analysis and recommendations. The system processes information in real-time and continuously learns from medical data to improve its accuracy. However, it's important to note that Medikal is designed to assist healthcare professionals, not replace clinical judgment.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Can Medikal work offline?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, Medikal desktop applications are designed to work offline, making it accessible in remote areas with limited internet connectivity. Core diagnostic features and medical reference materials are available locally, with optional cloud synchronization when internet access is available for updates and cross-platform medical record access.</p>
+            </div>
+        </div>
+
+        <!-- Medical & Health Questions -->
+        <div class="category-header">
+            <i class="fas fa-stethoscope"></i>
+            Medical & Health Questions
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How does Medikal combat antimicrobial resistance (AMR)?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Medikal combats AMR through multiple AI-powered approaches:</p>
+                <ul>
+                    <li><strong>WHO AWaRe Classification</strong> - Integration with international antibiotic guidelines</li>
+                    <li><strong>Real-time Resistance Detection</strong> - Instant analysis of resistance patterns</li>
+                    <li><strong>Smart Prescriptions</strong> - AI-guided antibiotic recommendations</li>
+                    <li><strong>Predictive Analytics</strong> - Forecasting resistance trends and outbreaks</li>
+                    <li><strong>Cross-Africa Data</strong> - Shared medical records network for resistance tracking</li>
                 </ul>
             </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Can Medikal replace my doctor?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p><strong>No, Medikal is not a replacement for professional medical care.</strong> Medikal is designed as an AI assistant to support healthcare professionals and provide preliminary guidance to patients. It enhances clinical decision-making but should never replace professional medical consultation, especially for serious health concerns or emergency situations. Always consult qualified healthcare providers for medical diagnoses and treatment decisions.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>What types of medical conditions can Medikal help with?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Medikal provides AI assistance across various healthcare areas:</p>
+                <ul>
+                    <li><strong>Infectious Diseases</strong> - Bacterial, viral, and parasitic infections with AMR considerations</li>
+                    <li><strong>Symptom Analysis</strong> - Initial assessment and differential diagnosis suggestions</li>
+                    <li><strong>Medical Imaging</strong> - Analysis and interpretation support for diagnostic images</li>
+                    <li><strong>Medication Management</strong> - Drug interactions, dosing, and resistance-aware prescribing</li>
+                    <li><strong>Preventive Care</strong> - Health screening recommendations and risk assessments</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Is my medical data secure with Medikal?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, Medikal implements comprehensive healthcare data protection measures including HIPAA compliance standards, end-to-end encryption, secure cloud infrastructure, and strict access controls. Medical data is anonymized for AI training purposes, and users maintain full control over their health information. The platform follows international healthcare data protection regulations and African data sovereignty requirements.</p>
+            </div>
+        </div>
+
+        <!-- Support & Account Questions -->
+        <div class="category-header">
+            <i class="fas fa-life-ring"></i>
+            Support & Account Questions
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How do I get started with Medikal?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Getting started with Medikal is simple:</p>
+                <ol>
+                    <li>Visit our Download page to access available applications</li>
+                    <li>Choose your preferred platform (desktop, mobile, web)</li>
+                    <li>Download and install the application</li>
+                    <li>Create your secure account</li>
+                    <li>Complete the guided setup process</li>
+                    <li>Begin using AI-powered healthcare assistance</li>
+                </ol>
+                <p><strong>Note:</strong> Medikal is currently in development. Visit our website for updates on availability and early access opportunities.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>How can I contact support?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>You can reach our support team through:</p>
+                <ul>
+                    <li><strong>Email:</strong> <a href="mailto:info@medikalafrica.com">info@medikalafrica.com</a></li>
+                    <li><strong>Response Time:</strong> Within 24 hours for general inquiries</li>
+                    <li><strong>Languages:</strong> Support available in English, French, and Kinyarwanda</li>
+                    <li><strong>Emergency:</strong> For medical emergencies, contact local emergency services immediately</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>Will Medikal be free to use?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Medikal is being developed with accessibility in mind for African healthcare systems. While specific pricing details haven't been announced, the platform is designed to be affordable and accessible to healthcare providers, institutions, and communities across Africa. Contact us at <a href="mailto:info@medikalafrica.com">info@medikalafrica.com</a> for information about institutional licensing and partnership opportunities.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+                <span>When will Medikal be available?</span>
+                <i class="fas fa-chevron-down faq-icon"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Medikal is currently in active development with a planned phased rollout starting in Rwanda, Kenya, and Tanzania in 2026, followed by expansion to Uganda, Ghana, and Senegal in 2027, and continental deployment through 2028-2029. Stay updated on launch timelines and early access opportunities by visiting our website or contacting our team for institutional partnerships.</p>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-box">
+            <h3>Still have questions?</h3>
+            <p>Our support team is here to help you with any questions about Medikal platform.</p>
+            <a href="mailto:info@medikalafrica.com" class="cta-button">
+                <i class="fas fa-envelope"></i>
+                Contact Support
+            </a>
         </div>
     </section>
 
@@ -1183,29 +1316,27 @@
                     <h3>Product</h3>
                     <ul class="footer-links">
                         <li><a href="features.html" class="footer-link">Features</a></li>
-                        <li><a href="index.html#mission" class="footer-link">Solutions</a></li>
+                        <li><a href="solutions.html" class="footer-link">Solutions</a></li>
                         <li><a href="team.html" class="footer-link">Team</a></li>
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul class="footer-links">
-                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="index.html#about" class="footer-link">About Us</a></li>
                         <li><a href="team.html" class="footer-link">Our Team</a></li>
                         <li><a href="index.html#mission" class="footer-link">Impact</a></li>
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>Support</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="faq.html" class="footer-link">FAQ</a></li>
                         <li><a href="#" class="footer-link">Help Center</a></li>
-                        <li><a href="documentation.html" class="footer-link">Documentation</a></li>
-                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Documentation</a></li>
                     </ul>
                 </div>
             </div>
@@ -1228,7 +1359,6 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileNav = document.getElementById('mobileNav');
@@ -1275,6 +1405,26 @@
                 closeMobileMenu();
             }
         });
+
+        // FAQ Toggle Function
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+                if (activeAnswer !== answer) {
+                    activeAnswer.classList.remove('active');
+                    activeAnswer.previousElementSibling.classList.remove('active');
+                    activeAnswer.previousElementSibling.querySelector('.faq-icon').classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('active');
+            element.classList.toggle('active');
+            icon.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
