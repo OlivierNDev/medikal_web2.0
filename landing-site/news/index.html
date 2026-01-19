@@ -246,6 +246,49 @@
             font-size: 3rem;
         }
 
+        .video-thumbnail-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .video-thumbnail-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .video-play-overlay:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .video-play-overlay i {
+            color: white;
+            font-size: 3rem;
+            background: rgba(94, 196, 213, 0.9);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 4px;
+        }
+
         .news-card-content {
             padding: 1.5rem;
         }
@@ -299,13 +342,260 @@
             transform: translateX(3px);
         }
 
+        /* Mobile Carousel Styles */
+        .news-carousel {
+            display: none;
+        }
+
+        .news-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .news-carousel-track {
+            display: flex;
+            transition: transform 0.3s ease;
+            gap: 1rem;
+        }
+
+        .news-carousel-card {
+            min-width: 85%;
+            flex-shrink: 0;
+            margin-right: 1rem;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-light);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background: var(--primary-blue);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: var(--primary-blue);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.65rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem 0;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 2rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .mobile-close-btn {
+            background: var(--accent-light);
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .mobile-close-btn:hover {
+            background: var(--light-bg);
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-list li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-list a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-list a i {
+            width: 20px;
+            text-align: center;
+            color: var(--primary-blue);
+        }
+
+        .mobile-nav-list a:hover {
+            background: var(--accent-light);
+            color: var(--primary-blue);
+        }
+
+        .mobile-cta {
+            padding: 2rem;
+            border-top: 1px solid var(--border-light);
+            margin-top: 1rem;
+        }
+
+        .mobile-cta .cta-button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .desktop-only {
+            display: flex;
+        }
+
         @media (max-width: 768px) {
+            .desktop-only {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
             .news-grid {
-                grid-template-columns: 1fr;
+                display: none;
+            }
+
+            .news-carousel {
+                display: block;
             }
 
             .nav-menu {
                 display: none;
+            }
+
+            .news-section {
+                padding: 2rem 1rem;
+            }
+
+            .news-header {
+                margin-bottom: 2rem;
+            }
+
+            .news-title {
+                font-size: 2rem;
+            }
+
+            .news-subtitle {
+                font-size: 1rem;
             }
         }
     </style>
@@ -352,9 +642,44 @@
                 </ul>
             </nav>
             
-            <a href="../index.html#access" class="cta-button">Get Started</a>
+            <a href="../index.html#access" class="cta-button desktop-only">Get Started</a>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">
+                <img src="../logo.png" alt="Medikal" />
+            </div>
+            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul class="mobile-nav-list">
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="../solutions.html"><i class="fas fa-puzzle-piece"></i> Solutions</a></li>
+            <li><a href="../features.html"><i class="fas fa-star"></i> Features</a></li>
+            <li><a href="../team.html"><i class="fas fa-users"></i> Our Team</a></li>
+            <li><a href="../impact.html"><i class="fas fa-heart"></i> Impact</a></li>
+            <li><a href="index.html"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="../about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="../contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+
+        <div class="mobile-cta">
+            <a href="../index.html#access" class="cta-button">Get Started Free</a>
+        </div>
+    </nav>
 
     <!-- News Listing Page -->
     <section class="news-section">
@@ -366,6 +691,7 @@
                 </p>
             </div>
 
+            <!-- Desktop Grid View -->
             <div class="news-grid">
                 <!-- News Item 1: Youth Digital Health Champion -->
                 <a href="youth-digital-health-champion.html" class="news-card">
@@ -490,6 +816,145 @@
                     </div>
                 </a>
             </div>
+
+            <!-- Mobile Carousel View -->
+            <div class="news-carousel">
+                <div class="news-carousel-wrapper">
+                    <div class="news-carousel-track" id="newsCarouselTrack">
+                        <!-- News Item 1: Youth Digital Health Champion -->
+                        <a href="youth-digital-health-champion.html" class="news-card news-carousel-card">
+                            <div class="news-card-image">
+                                <img src="../africa-cdc-logo.png" alt="Africa CDC Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-award\'></i>';">
+                            </div>
+                            <div class="news-card-content">
+                                <div class="news-card-meta">
+                                    <span class="news-card-category">Leadership & Recognition</span>
+                                    <span>•</span>
+                                    <span class="news-card-date">Dec 2025</span>
+                                </div>
+                                <h3 class="news-card-title">
+                                    Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC
+                                </h3>
+                                <p class="news-card-excerpt">
+                                    Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion by the Africa CDC Youth in Digital Health Network, recognizing his leadership in combating antimicrobial resistance.
+                                </p>
+                                <span class="news-card-link">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- News Item 2: Outbreak News Interview -->
+                        <a href="outbreak-news-interview.html" class="news-card news-carousel-card">
+                            <div class="news-card-image">
+                                <i class="fas fa-podcast"></i>
+                            </div>
+                            <div class="news-card-content">
+                                <div class="news-card-meta">
+                                    <span class="news-card-category">Leadership & Innovation</span>
+                                    <span>•</span>
+                                    <span class="news-card-date">Nov 2025</span>
+                                </div>
+                                <h3 class="news-card-title">
+                                    Leadership Spotlight: Outbreak News, USA
+                                </h3>
+                                <p class="news-card-excerpt">
+                                    Our co-founder and AMR Initiative Rwanda founder, Marcel Ishimwe, has been invited to the Outbreak News Interviews Podcast to share how AMR Initiative Rwanda is actively tackling antimicrobial resistance in Rwanda through collaboration with Medikal Africa.
+                                </p>
+                                <span class="news-card-link">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- News Item 3: ONPOD TV Interview -->
+                        <a href="onpod-tv-interview.html" class="news-card news-carousel-card">
+                            <div class="news-card-image">
+                                <div class="video-thumbnail-wrapper">
+                                    <img 
+                                        src="https://img.youtube.com/vi/fs0uUfnqxOw/maxresdefault.jpg" 
+                                        alt="AI for Africa's Future | Olivier Niyonshima on Healthcare, Education & Innovation"
+                                        onerror="this.src='https://img.youtube.com/vi/fs0uUfnqxOw/hqdefault.jpg';">
+                                    <div class="video-play-overlay">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-card-content">
+                                <div class="news-card-meta">
+                                    <span class="news-card-category">Leadership & Innovation</span>
+                                    <span>•</span>
+                                    <span class="news-card-date">Oct 2025</span>
+                                </div>
+                                <h3 class="news-card-title">
+                                    Leadership Spotlight: ONPOD TV, Canada
+                                </h3>
+                                <p class="news-card-excerpt">
+                                    Our founder and CEO, Olivier Niyonshima, was featured on ONPOD TV Canada in an exclusive interview highlighting Medikal's groundbreaking mission to fight antimicrobial resistance (AMR) across Africa through artificial intelligence.
+                                </p>
+                                <span class="news-card-link">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- News Item 4: CBOT/RoboLabs Partnership -->
+                        <a href="cbot-robolabs-partnership.html" class="news-card news-carousel-card">
+                            <div class="news-card-image">
+                                <img src="../cbot.jpg" alt="cBot Robot" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-robot\'></i>';">
+                            </div>
+                            <div class="news-card-content">
+                                <div class="news-card-meta">
+                                    <span class="news-card-category">Healthcare Innovation</span>
+                                    <span>•</span>
+                                    <span class="news-card-date">Oct 2025</span>
+                                </div>
+                                <h3 class="news-card-title">
+                                    ZeroX Intelligence × RoboLabs — Deploying cBot UV-C Disinfection Robots in Africa
+                                </h3>
+                                <p class="news-card-excerpt">
+                                    Medikal Africa's parent company ZeroX Intelligence partners with RoboLabs to bring advanced autonomous disinfection technology to African healthcare facilities, working alongside Medikal AI to reduce healthcare-associated infections.
+                                </p>
+                                <span class="news-card-link">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- News Item 5: ZeroX/AMR Partnership -->
+                        <a href="zerox-amr-partnership.html" class="news-card news-carousel-card">
+                            <div class="news-card-image">
+                                <img src="../amr-logo.png" alt="AMR Initiative Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-handshake\'></i>';">
+                            </div>
+                            <div class="news-card-content">
+                                <div class="news-card-meta">
+                                    <span class="news-card-category">Healthcare & AI Innovation</span>
+                                    <span>•</span>
+                                    <span class="news-card-date">Oct 2025</span>
+                                </div>
+                                <h3 class="news-card-title">
+                                    ZeroX Intelligence Partners with AMR Initiative Rwanda to Develop "Medikal"
+                                </h3>
+                                <p class="news-card-excerpt">
+                                    Medikal is an AI-powered health assistant developed by ZeroX Intelligence and AMR Initiative Rwanda to help clinicians and patients improve diagnosis accuracy, manage medication adherence, and reduce antimicrobial misuse.
+                                </p>
+                                <span class="news-card-link">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="carouselPrev" aria-label="Previous">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-indicators" id="carouselIndicators"></div>
+                    <button class="carousel-btn" id="carouselNext" aria-label="Next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -504,5 +969,146 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile Carousel Functionality
+        (function() {
+            if (window.innerWidth > 768) return; // Only on mobile
+
+            const track = document.getElementById('newsCarouselTrack');
+            const cards = track.querySelectorAll('.news-carousel-card');
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+            const indicators = document.getElementById('carouselIndicators');
+            
+            if (!track || cards.length === 0) return;
+
+            let currentIndex = 0;
+            const cardWidth = cards[0].offsetWidth + 16; // card width + gap
+
+            // Create indicators
+            cards.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                dot.addEventListener('click', () => goToSlide(index));
+                indicators.appendChild(dot);
+            });
+
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                
+                // Update indicators
+                const dots = indicators.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+
+                // Update buttons
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === cards.length - 1;
+            }
+
+            function goToSlide(index) {
+                currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+                updateCarousel();
+            }
+
+            function nextSlide() {
+                if (currentIndex < cards.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            }
+
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Touch/swipe support
+            let startX = 0;
+            let isDragging = false;
+
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+
+            track.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+            });
+
+            track.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) nextSlide();
+                    else prevSlide();
+                }
+            });
+
+            // Initialize
+            updateCarousel();
+
+            // Handle resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    if (window.innerWidth <= 768) {
+                        const newCardWidth = cards[0].offsetWidth + 16;
+                        track.style.transform = `translateX(-${currentIndex * newCardWidth}px)`;
+                    }
+                }, 250);
+            });
+        })();
+
+        // Mobile Menu Toggle
+        (function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+
+            if (!mobileMenuBtn || !mobileNav || !mobileOverlay || !mobileCloseBtn) return;
+
+            function openMobileMenu() {
+                mobileNav.classList.add('active');
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenu() {
+                mobileNav.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+            mobileCloseBtn.addEventListener('click', closeMobileMenu);
+            mobileOverlay.addEventListener('click', closeMobileMenu);
+
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-list a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    closeMobileMenu();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

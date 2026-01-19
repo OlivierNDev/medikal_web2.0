@@ -402,7 +402,67 @@
             transform: translateY(-3px);
         }
 
+        .author-bio {
+            background: var(--accent-light);
+            border-left: 4px solid var(--primary-blue);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 12px;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .author-bio-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .author-bio-content {
+            flex: 1;
+        }
+
+        .author-bio-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .author-bio-title {
+            font-size: 0.95rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .author-bio-text {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
         @media (max-width: 768px) {
+            .author-bio {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .author-bio-avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
             .article-hero {
                 padding: 2rem 1rem;
             }
@@ -598,6 +658,18 @@
                         Moving African health systems from <strong>reactive care to preventive, data-informed resilience</strong> requires the kind of innovation that Medikal Africa represents. Through this recognition, Africa CDC Youth acknowledges the importance of supporting youth-led solutions that can scale across borders and contribute to continental health security.
                     </p>
                 </section>
+
+                <!-- Author Bio -->
+                <div class="author-bio">
+                    <div class="author-bio-avatar">ON</div>
+                    <div class="author-bio-content">
+                        <div class="author-bio-name">Olivier Niyonshima</div>
+                        <div class="author-bio-title">CEO & Founder, Medikal Africa</div>
+                        <div class="author-bio-text">
+                            Olivier Niyonshima is the CEO and Founder of Medikal Africa, an AI-powered healthcare platform combating antimicrobial resistance across Africa. Recognized as a Youth Digital Health Champion by Africa CDC, he leads innovative digital health solutions that support clinicians and improve patient outcomes in low-resource settings.
+                        </div>
+                    </div>
+                </div>
 
                 <a href="index.html" class="back-link">
                     <i class="fas fa-arrow-left"></i>
