@@ -131,6 +131,11 @@
             list-style: none;
             align-items: center;
             gap: 0.5rem;
+            margin: 0;
+        }
+
+        .nav-menu > li {
+            position: relative;
         }
 
         .nav-menu > li > a {
@@ -141,11 +146,88 @@
             padding: 0.75rem 1.25rem;
             border-radius: 8px;
             transition: var(--transition);
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu > li > a i.fa-chevron-down {
+            font-size: 0.75rem;
+            transition: var(--transition);
         }
 
         .nav-menu > li > a:hover {
-            background: var(--light-bg);
             color: var(--primary-blue);
+            background: var(--accent-light);
+        }
+
+        .nav-menu > li:hover > a i.fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Mega Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            padding: 1rem;
+            min-width: 260px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-light);
+            z-index: 100;
+        }
+
+        .nav-menu > li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: var(--white);
+            border-left: 1px solid var(--border-light);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--dark-text);
+            transition: var(--transition);
+            margin-bottom: 0.25rem;
+        }
+
+        .dropdown-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .dropdown-item:hover {
+            background: var(--accent-light);
+            color: var(--primary-blue);
+        }
+
+        .dropdown-content {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--dark-text);
         }
 
         .cta-button {
@@ -601,29 +683,184 @@
     </div>
 
     <!-- Main Header -->
-    <header class="medikal-header">
+    <header class="medikal-header" id="mainHeader">
         <div class="header-container">
+            <!-- Logo Section -->
             <a href="index.html" class="logo-section">
                 <img src="logo.png" alt="Medikal - AI Health Assistant" />
             </a>
             
+            <!-- Desktop Navigation -->
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="team.html">Our Team</a></li>
-                    <li><a href="index.html#mission">Impact</a></li>
-                    <li><a href="news/index.html">News & Media</a></li>
-                    <li><a href="index.html#access">Contact</a></li>
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="solutions.html">
+                            Solutions
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="solutions.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    Our Solutions
+                                </div>
+                            </a>
+                            <a href="ai-diagnostics.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    AI Diagnostics
+                                </div>
+                            </a>
+                            <a href="amr-surveillance.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    AMR Surveillance
+                                </div>
+                            </a>
+                            <a href="patient-portal.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    Patient Portal
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="features.html">
+                            Features
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#">
+                            Resources
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="clinical-guidelines.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    Clinical Guidelines
+                                </div>
+                            </a>
+                            <a href="amr-data.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    AMR Data
+                                </div>
+                            </a>
+                            <a href="training-materials.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    Training Materials
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="team.html">
+                            Our Team
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="impact.html">
+                            Impact
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="news/index.html">
+                            News & Media
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
                 </ul>
             </nav>
             
-            <a href="index.html#access" class="cta-button">Get Started</a>
-            <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+            <!-- CTA Button -->
+            <a href="index.html#access" class="cta-button desktop-only">
+                Get Started
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">
+                <img src="logo.png" alt="Medikal" />
+            </div>
+            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul class="mobile-nav-list">
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="solutions.html">
+                    <i class="fas fa-puzzle-piece"></i>
+                    Solutions
+                </a>
+            </li>
+            <li>
+                <a href="features.html">
+                    <i class="fas fa-star"></i>
+                    Features
+                </a>
+            </li>
+            <li>
+                <a href="team.html">
+                    <i class="fas fa-users"></i>
+                    Our Team
+                </a>
+            </li>
+            <li>
+                <a href="impact.html">
+                    <i class="fas fa-heart"></i>
+                    Impact
+                </a>
+            </li>
+            <li>
+                <a href="news/index.html">
+                    <i class="fas fa-newspaper"></i>
+                    News & Media
+                </a>
+            </li>
+            <li>
+                <a href="contact.html">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </a>
+            </li>
+        </ul>
+
+        <div class="mobile-cta">
+            <a href="index.html#access" class="cta-button">
+                Get Started Free
+            </a>
+        </div>
+    </nav>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -830,56 +1067,52 @@
 
     <script>
         // Mobile menu toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        if (mobileMenuBtn && navMenu) {
-            mobileMenuBtn.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-                const icon = mobileMenuBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.toggle('fa-bars');
-                    icon.classList.toggle('fa-times');
-                }
-            });
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
 
-            document.addEventListener('click', function(event) {
-                const isClickInsideNav = navMenu.contains(event.target);
-                const isClickOnButton = mobileMenuBtn.contains(event.target);
-                
-                if (!isClickInsideNav && !isClickOnButton && navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    if (icon) {
-                        icon.classList.add('fa-bars');
-                        icon.classList.remove('fa-times');
-                    }
-                }
-            });
-
-            const navLinks = navMenu.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navMenu.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    if (icon) {
-                        icon.classList.add('fa-bars');
-                        icon.classList.remove('fa-times');
-                    }
-                });
-            });
-
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768) {
-                    navMenu.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    if (icon) {
-                        icon.classList.add('fa-bars');
-                        icon.classList.remove('fa-times');
-                    }
-                }
-            });
+        function openMobileMenu() {
+            if (mobileNav && mobileOverlay) {
+                mobileNav.classList.add('active');
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
+
+        function closeMobileMenu() {
+            if (mobileNav && mobileOverlay) {
+                mobileNav.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+        }
+
+        if (mobileCloseBtn) {
+            mobileCloseBtn.addEventListener('click', closeMobileMenu);
+        }
+
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', closeMobileMenu);
+        }
+
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-list a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close mobile menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
     </script>
 </body>
 </html>
