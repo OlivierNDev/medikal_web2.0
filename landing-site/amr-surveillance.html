@@ -124,6 +124,8 @@
         .logo-section img {
             height: 40px;
             width: auto;
+            max-width: 100%;
+            object-fit: contain;
         }
 
         .nav-menu {
@@ -248,11 +250,151 @@
 
         .mobile-menu-btn {
             display: none;
-            background: none;
+            background: var(--primary-blue);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.65rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Mobile Navigation */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem 0;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 2rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav-logo img {
+            height: 40px;
+            width: auto;
+            max-width: 100%;
+        }
+
+        .mobile-close-btn {
+            background: var(--accent-light);
             border: none;
             font-size: 1.5rem;
             color: var(--dark-text);
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .mobile-close-btn:hover {
+            background: var(--light-bg);
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-list li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-list li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-list a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-list a i {
+            width: 20px;
+            text-align: center;
+            color: var(--primary-blue);
+        }
+
+        .mobile-nav-list a:hover {
+            background: var(--accent-light);
+            color: var(--primary-blue);
+        }
+
+        .mobile-cta {
+            padding: 2rem;
+            border-top: 1px solid var(--border-light);
+            margin-top: 1rem;
+        }
+
+        .mobile-cta .cta-button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .desktop-only {
+            display: flex;
         }
 
         /* Page Header */
@@ -480,19 +622,14 @@
         .footer-logo img {
             height: 40px;
             width: auto;
+            max-width: 100%;
             display: block;
             filter: brightness(0) invert(1);
             margin-bottom: 1rem;
+            object-fit: contain;
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr;
-                gap: 2rem;
-            }
-        }
-
         @media (max-width: 1200px) {
             .header-container,
             .top-bar-container,
@@ -509,6 +646,12 @@
 
             .content-section {
                 padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none;
             }
         }
 
@@ -539,32 +682,6 @@
                 display: block;
             }
 
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: var(--shadow-lg);
-                border-top: 1px solid var(--border-light);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-menu > li {
-                width: 100%;
-            }
-
-            .nav-menu > li > a {
-                display: block;
-                width: 100%;
-                padding: 1rem;
-            }
 
             .header-container {
                 padding: 0.75rem 1rem;
@@ -736,6 +853,16 @@
                             <i class="fas fa-chevron-down"></i>
                         </a>
                         <div class="dropdown-menu">
+                            <a href="documentation.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    Documentation
+                                </div>
+                            </a>
+                            <a href="api.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    API <span style="color: #ff9800; font-size: 0.85rem;">(Dev)</span>
+                                </div>
+                            </a>
                             <a href="clinical-guidelines.html" class="dropdown-item">
                                 <div class="dropdown-content">
                                     Clinical Guidelines
@@ -761,12 +888,6 @@
                     </li>
                     
                     <li>
-                        <a href="about.html">
-                            About Us
-                        </a>
-                    </li>
-                    
-                    <li>
                         <a href="impact.html">
                             Impact
                         </a>
@@ -774,13 +895,7 @@
                     
                     <li>
                         <a href="news/index.html">
-                            News & Media
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="contact.html">
-                            Contact
+                            News
                         </a>
                     </li>
                 </ul>
@@ -838,12 +953,6 @@
                 </a>
             </li>
             <li>
-                <a href="about.html">
-                    <i class="fas fa-info-circle"></i>
-                    About Us
-                </a>
-            </li>
-            <li>
                 <a href="impact.html">
                     <i class="fas fa-heart"></i>
                     Impact
@@ -852,7 +961,13 @@
             <li>
                 <a href="news/index.html">
                     <i class="fas fa-newspaper"></i>
-                    News & Media
+                    News
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    <i class="fas fa-info-circle"></i>
+                    About Us
                 </a>
             </li>
             <li>
@@ -1040,18 +1155,18 @@
                     <ul class="footer-links">
                         <li><a href="about.html" class="footer-link">About Us</a></li>
                         <li><a href="team.html" class="footer-link">Our Team</a></li>
-                        <li><a href="index.html#mission" class="footer-link">Impact</a></li>
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                        <li><a href="impact.html" class="footer-link">Impact</a></li>
+                        <li><a href="news/index.html" class="footer-link">News</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>Support</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
                         <li><a href="help-center.html" class="footer-link">Help Center</a></li>
                         <li><a href="documentation.html" class="footer-link">Documentation</a></li>
-                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="api.html" class="footer-link">API</a></li>
                     </ul>
                 </div>
             </div>
