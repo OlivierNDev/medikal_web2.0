@@ -8,33 +8,162 @@
     <link rel="icon" type="image/png" href="../logo.png">
     <link rel="shortcut icon" type="image/png" href="../logo.png">
     <link rel="apple-touch-icon" href="../logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'midnight': '#0b2735',
-                        'warm-beige': '#efb291',
-                        'soft-cream': '#e5e2db',
-                        'neon-cyan': '#00ffff',
-                        'dark-bg': '#0a1a24',
-                        'card-bg': '#0f2a3a'
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #5EC4D5;
+            --primary-dark: #4AAFC0;
+            --accent-light: #E8F7F9;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #f8fafb;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(94, 196, 213, 0.08);
+            --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
+            --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: #0a1a24;
-            color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.6rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-bar-item:hover {
+            opacity: 0.8;
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        /* Main Header */
+        .medikal-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-section img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-menu a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-blue);
+            background: var(--accent-light);
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Article Content */
+        .article-hero {
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.08) 0%, rgba(255, 255, 255, 0.98) 100%);
+            padding: 4rem 2rem;
         }
 
         .article-content {
@@ -42,37 +171,89 @@
             margin: 0 auto;
         }
 
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--light-text);
+        }
+
+        .article-meta span {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .article-subtitle {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .article-body {
+            background: var(--white);
+            padding: 3rem 2rem;
+        }
+
+        .article-section {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
         .featured-image {
             margin-bottom: 3rem;
             border-radius: 12px;
             overflow: hidden;
+            background: var(--light-bg);
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .featured-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+            max-width: 400px;
+            max-height: 250px;
+            object-fit: contain;
         }
 
         .section-title {
-            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 700;
-            color: #00ffff;
+            color: var(--primary-blue);
             margin: 3rem 0 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
         }
 
         .article-paragraph {
             font-size: 1.05rem;
             line-height: 1.8;
-            color: #fff;
+            color: var(--dark-text);
             margin-bottom: 1.5rem;
-            opacity: 0.95;
         }
 
         .article-paragraph strong {
-            color: #00ffff;
+            color: var(--primary-blue);
             font-weight: 600;
         }
 
@@ -82,8 +263,8 @@
             gap: 2rem;
             margin: 3rem 0;
             padding: 2rem 0;
-            border-top: 1px solid rgba(0, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            border-top: 2px solid var(--accent-light);
+            border-bottom: 2px solid var(--accent-light);
         }
 
         .stat-card {
@@ -93,7 +274,7 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #efb291;
+            color: var(--primary-blue);
             display: block;
             margin-bottom: 0.5rem;
             line-height: 1;
@@ -101,13 +282,13 @@
 
         .stat-label {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--light-text);
             font-weight: 500;
         }
 
         .quote-block {
-            background: rgba(15, 42, 58, 0.8);
-            border-left: 4px solid #efb291;
+            background: var(--accent-light);
+            border-left: 4px solid var(--primary-blue);
             padding: 2.5rem;
             margin: 3rem 0;
             border-radius: 8px;
@@ -117,36 +298,36 @@
             font-size: 1.15rem;
             line-height: 1.7;
             font-style: italic;
-            color: #fff;
+            color: var(--dark-text);
             margin-bottom: 1.5rem;
         }
 
         .quote-author {
             font-style: normal;
             font-weight: 600;
-            color: #00ffff;
+            color: var(--primary-blue);
         }
 
         .author-title {
             display: block;
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--light-text);
             font-size: 0.95rem;
             margin-top: 0.3rem;
         }
 
         .key-points {
-            background: rgba(15, 42, 58, 0.8);
+            background: var(--accent-light);
             padding: 2rem;
             margin: 2rem 0;
             border-radius: 12px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
+            border: 1px solid var(--border-light);
         }
 
         .key-points-title {
             font-size: 1.1rem;
             font-weight: 700;
-            color: #00ffff;
+            color: var(--primary-blue);
             margin-bottom: 1rem;
         }
 
@@ -158,7 +339,7 @@
             padding: 0.75rem 0;
             padding-left: 1.5rem;
             position: relative;
-            color: #fff;
+            color: var(--dark-text);
             line-height: 1.6;
         }
 
@@ -169,8 +350,24 @@
             top: 1.2rem;
             width: 6px;
             height: 6px;
-            background: #efb291;
+            background: var(--primary-blue);
             border-radius: 50%;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(-3px);
         }
 
         .scroll-top {
@@ -179,19 +376,20 @@
             right: 2rem;
             width: 48px;
             height: 48px;
-            background: #efb291;
-            color: #0a1a24;
+            background: var(--primary-blue);
+            color: var(--white);
             border: none;
             border-radius: 50%;
             font-size: 1.2rem;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             z-index: 999;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: var(--shadow-md);
         }
 
         .scroll-top.visible {
@@ -200,11 +398,19 @@
         }
 
         .scroll-top:hover {
-            background: #00ffff;
+            background: var(--primary-dark);
             transform: translateY(-3px);
         }
 
         @media (max-width: 768px) {
+            .article-hero {
+                padding: 2rem 1rem;
+            }
+
+            .article-section {
+                padding: 2rem 1.5rem;
+            }
+
             .stats-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -212,6 +418,10 @@
 
             .stat-number {
                 font-size: 2rem;
+            }
+
+            .nav-menu {
+                display: none;
             }
 
             .scroll-top {
@@ -224,169 +434,191 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="bg-midnight border-b border-neon-cyan/10">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../index.html" class="flex items-center space-x-3">
-                    <img src="../logo.png" alt="Medikal" class="h-10">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <a href="tel:+250788123456" class="top-bar-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+250 788 123 456</span>
                 </a>
-                <nav class="hidden md:flex items-center space-x-6">
-                    <a href="../index.html" class="text-white hover:text-neon-cyan transition">Home</a>
-                    <a href="../index.html#about" class="text-white hover:text-neon-cyan transition">About</a>
-                    <a href="../index.html#mission" class="text-white hover:text-neon-cyan transition">Mission</a>
-                    <a href="index.html" class="text-white hover:text-neon-cyan transition">News</a>
-                </nav>
+                <a href="mailto:info@medikalafrica.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@medikalafrica.com</span>
+                </a>
             </div>
+            <div class="top-bar-right">
+                <select class="language-selector">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                </select>
+                <a href="../index.html#access" class="top-bar-item">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="medikal-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-section">
+                <img src="../logo.png" alt="Medikal - AI Health Assistant" />
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../solutions.html">Solutions</a></li>
+                    <li><a href="../features.html">Features</a></li>
+                    <li><a href="../team.html">Our Team</a></li>
+                    <li><a href="../impact.html">Impact</a></li>
+                    <li><a href="index.html">News & Media</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="../index.html#access" class="cta-button">Get Started</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-midnight to-dark-bg py-12">
-        <div class="container mx-auto px-6">
-            <div class="article-content">
-                <div class="flex flex-wrap gap-4 mb-6 text-sm" style="color: rgba(255,255,255,0.8);">
-                    <span class="text-neon-cyan font-semibold">Leadership & Recognition</span>
-                    <span>•</span>
-                    <span>December 2025</span>
-                    <span>•</span>
-                    <span>Read time: ~6 min</span>
-                </div>
-
-                <h1 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #fff;">
-                    Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC
-                </h1>
-
-                <p class="text-xl leading-relaxed" style="color: rgba(255,255,255,0.9);">
-                    Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion (Y-DHC) by the Africa CDC Youth in Digital Health Network (YiDHN), recognizing his leadership in combating antimicrobial resistance through innovative digital health solutions.
-                </p>
+    <section class="article-hero">
+        <div class="article-content">
+            <div class="article-meta">
+                <span>Leadership & Recognition</span>
+                <span>•</span>
+                <span>December 2025</span>
+                <span>•</span>
+                <span>Read time: ~6 min</span>
             </div>
+
+            <h1 class="article-title">
+                Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC
+            </h1>
+
+            <p class="article-subtitle">
+                Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion (Y-DHC) by the Africa CDC Youth in Digital Health Network (YiDHN), recognizing his leadership in combating antimicrobial resistance through innovative digital health solutions.
+            </p>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main class="py-12 bg-dark-bg">
-        <div class="container mx-auto px-6">
-            <div class="article-content">
-                <!-- Featured Image -->
-                <div class="featured-image">
-                    <div class="w-full bg-gradient-to-br from-neon-cyan/10 to-warm-beige/5 rounded-lg p-8 flex items-center justify-center" style="min-height: 300px;">
-                        <img src="../africa-cdc-logo.png" alt="Africa CDC Logo" loading="lazy" style="max-width: 400px; max-height: 250px; object-fit: contain;">
+    <main class="article-body">
+        <div class="article-content">
+            <!-- Featured Image -->
+            <div class="featured-image">
+                <img src="../africa-cdc-logo.png" alt="Africa CDC Logo" loading="lazy">
+            </div>
+
+            <div class="article-section">
+                <!-- Introduction -->
+                <section>
+                    <h2 class="section-title">Continental Recognition for Youth-Led Innovation</h2>
+                    <p class="article-paragraph">
+                        <strong>Olivier Niyonshima</strong>, CEO and Founder of Medikal Africa, has been selected as a <strong>Youth Digital Health Champion (Y-DHC)</strong> under the Youth in Digital Health Network (YiDHN), a prestigious initiative established by <strong>Africa CDC Youth</strong>. This recognition highlights his leadership in developing innovative digital health solutions to address one of Africa's most pressing healthcare challenges: antimicrobial resistance (AMR).
+                    </p>
+                    <p class="article-paragraph">
+                        The Y-DHC programme aims to strengthen youth leadership, innovation, and policy engagement in digital health across the African continent. Olivier's selection reflects the significant impact of Medikal Africa's work in supporting clinicians with AI-powered decision support tools that reduce inappropriate antibiotic use and strengthen infection surveillance.
+                    </p>
+                </section>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">5M+</span>
+                        <span class="stat-label">Deaths from AMR (2019)</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">1/3</span>
+                        <span class="stat-label">Africa's AMR Burden</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">10%</span>
+                        <span class="stat-label">Increased Mortality per Hour (Delayed Treatment)</span>
                     </div>
                 </div>
 
-                <!-- Article Content -->
-                <article class="bg-card-bg rounded-2xl p-8 lg:p-12 border border-neon-cyan/10">
-                    <!-- Introduction -->
-                    <section>
-                        <h2 class="section-title">Continental Recognition for Youth-Led Innovation</h2>
-                        <p class="article-paragraph">
-                            <strong>Olivier Niyonshima</strong>, CEO and Founder of Medikal Africa, has been selected as a <strong>Youth Digital Health Champion (Y-DHC)</strong> under the Youth in Digital Health Network (YiDHN), a prestigious initiative established by <strong>Africa CDC Africa CDC Youth</strong>. This recognition highlights his leadership in developing innovative digital health solutions to address one of Africa's most pressing healthcare challenges: antimicrobial resistance (AMR).
-                        </p>
-                        <p class="article-paragraph">
-                            The Y-DHC programme aims to strengthen youth leadership, innovation, and policy engagement in digital health across the African continent. Olivier's selection reflects the significant impact of Medikal Africa's work in supporting clinicians with AI-powered decision support tools that reduce inappropriate antibiotic use and strengthen infection surveillance.
-                        </p>
-                    </section>
+                <!-- The Challenge -->
+                <section>
+                    <h2 class="section-title">Tackling the AMR Crisis: A Systemic Healthcare Challenge</h2>
+                    <p class="article-paragraph">
+                        Antimicrobial resistance represents a <strong>systemic failure of modern healthcare</strong> and stands as one of the most severe threats to global health security. According to the World Health Organization, drug-resistant infections were directly associated with nearly <strong>5 million deaths in 2019</strong>, with Africa bearing close to one-third of this devastating burden.
+                    </p>
+                    <p class="article-paragraph">
+                        In low-resource settings, the stakes are even higher. Delayed or inappropriate antibiotic treatment can increase mortality by <strong>up to 10 percent per hour</strong>, accelerating resistance development and leading to avoidable loss of life. These statistics underscore the urgent need for innovative solutions that can provide real-time, evidence-based guidance to healthcare workers.
+                    </p>
+                    <p class="article-paragraph">
+                        If AMR continues on its current trajectory, projections estimate it could cause <strong>more deaths annually than cancer by 2050</strong>. Reducing this risk requires aligned action across technology, policy, and clinical practice—a challenge that Medikal Africa addresses through its comprehensive digital health platform.
+                    </p>
+                </section>
 
-                    <!-- Stats Grid -->
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <span class="stat-number">5M+</span>
-                            <span class="stat-label">Deaths from AMR (2019)</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">1/3</span>
-                            <span class="stat-label">Africa's AMR Burden</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">10%</span>
-                            <span class="stat-label">Increased Mortality per Hour (Delayed Treatment)</span>
-                        </div>
-                    </div>
+                <!-- Medikal Africa's Approach -->
+                <section>
+                    <h2 class="section-title">Medikal Africa: Clinical Augmentation Through Digital Health</h2>
+                    <p class="article-paragraph">
+                        Through Medikal Africa, Olivier leads the development of a <strong>digital health platform designed to support clinicians</strong> with real-time, data-driven decision support. The system integrates resistance pattern analysis, treatment guidance, and patient follow-up mechanisms to reduce diagnostic uncertainty, limit inappropriate antibiotic use, and strengthen infection surveillance at both facility and community levels.
+                    </p>
+                    <p class="article-paragraph">
+                        The goal is not automation for its own sake, but <strong>clinical augmentation</strong>, enabling healthcare workers to make safer, faster, and context-aware decisions. Medikal Africa's AI-powered platform provides evidence-based recommendations that help clinicians navigate complex treatment scenarios while preserving the effectiveness of critical medications.
+                    </p>
+                </section>
 
-                    <!-- The Challenge -->
-                    <section>
-                        <h2 class="section-title">Tackling the AMR Crisis: A Systemic Healthcare Challenge</h2>
-                        <p class="article-paragraph">
-                            Antimicrobial resistance represents a <strong>systemic failure of modern healthcare</strong> and stands as one of the most severe threats to global health security. According to the World Health Organization, drug-resistant infections were directly associated with nearly <strong>5 million deaths in 2019</strong>, with Africa bearing close to one-third of this devastating burden.
-                        </p>
-                        <p class="article-paragraph">
-                            In low-resource settings, the stakes are even higher. Delayed or inappropriate antibiotic treatment can increase mortality by <strong>up to 10 percent per hour</strong>, accelerating resistance development and leading to avoidable loss of life. These statistics underscore the urgent need for innovative solutions that can provide real-time, evidence-based guidance to healthcare workers.
-                        </p>
-                        <p class="article-paragraph">
-                            If AMR continues on its current trajectory, projections estimate it could cause <strong>more deaths annually than cancer by 2050</strong>. Reducing this risk requires aligned action across technology, policy, and clinical practice—a challenge that Medikal Africa addresses through its comprehensive digital health platform.
-                        </p>
-                    </section>
-
-                    <!-- Medikal Africa's Approach -->
-                    <section>
-                        <h2 class="section-title">Medikal Africa: Clinical Augmentation Through Digital Health</h2>
-                        <p class="article-paragraph">
-                            Through Medikal Africa, Olivier leads the development of a <strong>digital health platform designed to support clinicians</strong> with real-time, data-driven decision support. The system integrates resistance pattern analysis, treatment guidance, and patient follow-up mechanisms to reduce diagnostic uncertainty, limit inappropriate antibiotic use, and strengthen infection surveillance at both facility and community levels.
-                        </p>
-                        <p class="article-paragraph">
-                            The goal is not automation for its own sake, but <strong>clinical augmentation</strong>, enabling healthcare workers to make safer, faster, and context-aware decisions. Medikal Africa's AI-powered platform provides evidence-based recommendations that help clinicians navigate complex treatment scenarios while preserving the effectiveness of critical medications.
-                        </p>
-                    </section>
-
-                    <!-- Key Points -->
-                    <div class="key-points">
-                        <h3 class="key-points-title">Medikal Africa's Impact</h3>
-                        <ul class="key-points-list">
-                            <li>Real-time, data-driven decision support for clinicians</li>
-                            <li>Resistance pattern analysis and treatment guidance</li>
-                            <li>Reduced diagnostic uncertainty in low-resource settings</li>
-                            <li>Strengthened infection surveillance at facility and community levels</li>
-                            <li>Clinical augmentation approach—supporting, not replacing, healthcare workers</li>
-                            <li>Integration with continental policy dialogue through YiDHN</li>
-                        </ul>
-                    </div>
-
-                    <!-- Quote Block -->
-                    <blockquote class="quote-block">
-                        <p class="quote-text">
-                            "The Y-DHC programme provides a critical platform to connect this work with continental policy dialogue, capacity building, and cross-border collaboration, ensuring youth-led digital health innovations contribute directly to stronger health systems and universal health coverage."
-                        </p>
-                        <cite class="quote-author">
-                            Olivier Niyonshima
-                            <span class="author-title">CEO & Founder, Medikal Africa | Youth Digital Health Champion</span>
-                        </cite>
-                    </blockquote>
-
-                    <!-- Continental Impact -->
-                    <section>
-                        <h2 class="section-title">Advancing Continental Health Systems Through Youth Leadership</h2>
-                        <p class="article-paragraph">
-                            The Youth in Digital Health Network (YiDHN) recognition positions Olivier and Medikal Africa at the forefront of continental efforts to strengthen health systems through technology and innovation. This platform enables connection with <strong>continental policy dialogue, capacity building, and cross-border collaboration</strong>, ensuring that youth-led digital health innovations contribute directly to stronger health systems and universal health coverage.
-                        </p>
-                        <p class="article-paragraph">
-                            As a Youth Digital Health Champion, Olivier's work with Medikal Africa demonstrates how <strong>young African innovators are addressing systemic healthcare challenges</strong> through technology. The platform's focus on antimicrobial resistance aligns with Africa CDC's priorities in health security and disease prevention, making it a critical tool in the continent's fight against one of its most pressing health threats.
-                        </p>
-                        <p class="article-paragraph">
-                            Moving African health systems from <strong>reactive care to preventive, data-informed resilience</strong> requires the kind of innovation that Medikal Africa represents. Through this recognition, Africa CDC Youth acknowledges the importance of supporting youth-led solutions that can scale across borders and contribute to continental health security.
-                        </p>
-                    </section>
-                </article>
-
-                <!-- Back to News Link -->
-                <div class="mt-8 text-center">
-                    <a href="index.html" class="inline-flex items-center gap-2 text-neon-cyan hover:text-warm-beige transition">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to News & Media
-                    </a>
+                <!-- Key Points -->
+                <div class="key-points">
+                    <h3 class="key-points-title">Medikal Africa's Impact</h3>
+                    <ul class="key-points-list">
+                        <li>Real-time, data-driven decision support for clinicians</li>
+                        <li>Resistance pattern analysis and treatment guidance</li>
+                        <li>Reduced diagnostic uncertainty in low-resource settings</li>
+                        <li>Strengthened infection surveillance at facility and community levels</li>
+                        <li>Clinical augmentation approach—supporting, not replacing, healthcare workers</li>
+                        <li>Integration with continental policy dialogue through YiDHN</li>
+                    </ul>
                 </div>
+
+                <!-- Quote Block -->
+                <blockquote class="quote-block">
+                    <p class="quote-text">
+                        "The Y-DHC programme provides a critical platform to connect this work with continental policy dialogue, capacity building, and cross-border collaboration, ensuring youth-led digital health innovations contribute directly to stronger health systems and universal health coverage."
+                    </p>
+                    <cite class="quote-author">
+                        Olivier Niyonshima
+                        <span class="author-title">CEO & Founder, Medikal Africa | Youth Digital Health Champion</span>
+                    </cite>
+                </blockquote>
+
+                <!-- Continental Impact -->
+                <section>
+                    <h2 class="section-title">Advancing Continental Health Systems Through Youth Leadership</h2>
+                    <p class="article-paragraph">
+                        The Youth in Digital Health Network (YiDHN) recognition positions Olivier and Medikal Africa at the forefront of continental efforts to strengthen health systems through technology and innovation. This platform enables connection with <strong>continental policy dialogue, capacity building, and cross-border collaboration</strong>, ensuring that youth-led digital health innovations contribute directly to stronger health systems and universal health coverage.
+                    </p>
+                    <p class="article-paragraph">
+                        As a Youth Digital Health Champion, Olivier's work with Medikal Africa demonstrates how <strong>young African innovators are addressing systemic healthcare challenges</strong> through technology. The platform's focus on antimicrobial resistance aligns with Africa CDC's priorities in health security and disease prevention, making it a critical tool in the continent's fight against one of its most pressing health threats.
+                    </p>
+                    <p class="article-paragraph">
+                        Moving African health systems from <strong>reactive care to preventive, data-informed resilience</strong> requires the kind of innovation that Medikal Africa represents. Through this recognition, Africa CDC Youth acknowledges the importance of supporting youth-led solutions that can scale across borders and contribute to continental health security.
+                    </p>
+                </section>
+
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to News & Media
+                </a>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-midnight border-t border-neon-cyan/10 py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-white/70 text-sm">© 2025 Medikal. All rights reserved.</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <a href="../index.html" class="text-white/70 hover:text-neon-cyan transition">Home</a>
-                <span class="text-white/30">|</span>
-                <a href="index.html" class="text-white/70 hover:text-neon-cyan transition">News</a>
+    <footer style="background: var(--light-bg); border-top: 1px solid var(--border-light); padding: 3rem 2rem; margin-top: 4rem;">
+        <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+            <p style="color: var(--light-text); font-size: 0.875rem; margin-bottom: 1rem;">© 2025 Medikal. All rights reserved.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="../index.html" style="color: var(--light-text); text-decoration: none; transition: var(--transition);">Home</a>
+                <span style="color: var(--border-light);">|</span>
+                <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">News</a>
             </div>
         </div>
     </footer>

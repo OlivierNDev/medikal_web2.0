@@ -8,33 +8,162 @@
     <link rel="icon" type="image/png" href="../logo.png">
     <link rel="shortcut icon" type="image/png" href="../logo.png">
     <link rel="apple-touch-icon" href="../logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'midnight': '#0b2735',
-                        'warm-beige': '#efb291',
-                        'soft-cream': '#e5e2db',
-                        'neon-cyan': '#00ffff',
-                        'dark-bg': '#0a1a24',
-                        'card-bg': '#0f2a3a'
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #5EC4D5;
+            --primary-dark: #4AAFC0;
+            --accent-light: #E8F7F9;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #f8fafb;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(94, 196, 213, 0.08);
+            --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
+            --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: #0a1a24;
-            color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.6rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-bar-item:hover {
+            opacity: 0.8;
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        /* Main Header */
+        .medikal-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-section img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-menu a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-blue);
+            background: var(--accent-light);
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Article Content */
+        .article-hero {
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.08) 0%, rgba(255, 255, 255, 0.98) 100%);
+            padding: 4rem 2rem;
         }
 
         .article-content {
@@ -42,37 +171,90 @@
             margin: 0 auto;
         }
 
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--light-text);
+        }
+
+        .article-meta span {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .article-subtitle {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .article-body {
+            background: var(--white);
+            padding: 3rem 2rem;
+        }
+
+        .article-section {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
         .featured-image {
             margin-bottom: 3rem;
             border-radius: 12px;
             overflow: hidden;
+            background: var(--light-bg);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .featured-image img {
             width: 100%;
+            max-width: 600px;
             height: auto;
-            display: block;
+            border-radius: 8px;
         }
 
         .section-title {
-            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 700;
-            color: #00ffff;
+            color: var(--primary-blue);
             margin: 3rem 0 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
         }
 
         .article-paragraph {
             font-size: 1.05rem;
             line-height: 1.8;
-            color: #fff;
+            color: var(--dark-text);
             margin-bottom: 1.5rem;
-            opacity: 0.95;
         }
 
         .article-paragraph strong {
-            color: #00ffff;
+            color: var(--primary-blue);
             font-weight: 600;
         }
 
@@ -82,8 +264,8 @@
             gap: 2rem;
             margin: 3rem 0;
             padding: 2rem 0;
-            border-top: 1px solid rgba(0, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            border-top: 2px solid var(--accent-light);
+            border-bottom: 2px solid var(--accent-light);
         }
 
         .stat-card {
@@ -93,7 +275,7 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
-            color: #efb291;
+            color: var(--primary-blue);
             display: block;
             margin-bottom: 0.5rem;
             line-height: 1;
@@ -101,25 +283,13 @@
 
         .stat-label {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--light-text);
             font-weight: 500;
         }
 
-        .image-section {
-            margin: 3rem 0;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .image-section img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
         .quote-block {
-            background: rgba(15, 42, 58, 0.8);
-            border-left: 4px solid #efb291;
+            background: var(--accent-light);
+            border-left: 4px solid var(--primary-blue);
             padding: 2.5rem;
             margin: 3rem 0;
             border-radius: 8px;
@@ -129,36 +299,36 @@
             font-size: 1.15rem;
             line-height: 1.7;
             font-style: italic;
-            color: #fff;
+            color: var(--dark-text);
             margin-bottom: 1.5rem;
         }
 
         .quote-author {
             font-style: normal;
             font-weight: 600;
-            color: #00ffff;
+            color: var(--primary-blue);
         }
 
         .author-title {
             display: block;
             font-weight: 400;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--light-text);
             font-size: 0.95rem;
             margin-top: 0.3rem;
         }
 
         .key-points {
-            background: rgba(15, 42, 58, 0.8);
+            background: var(--accent-light);
             padding: 2rem;
             margin: 2rem 0;
             border-radius: 12px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
+            border: 1px solid var(--border-light);
         }
 
         .key-points-title {
             font-size: 1.1rem;
             font-weight: 700;
-            color: #00ffff;
+            color: var(--primary-blue);
             margin-bottom: 1rem;
         }
 
@@ -170,7 +340,7 @@
             padding: 0.75rem 0;
             padding-left: 1.5rem;
             position: relative;
-            color: #fff;
+            color: var(--dark-text);
             line-height: 1.6;
         }
 
@@ -181,8 +351,24 @@
             top: 1.2rem;
             width: 6px;
             height: 6px;
-            background: #efb291;
+            background: var(--primary-blue);
             border-radius: 50%;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(-3px);
         }
 
         .scroll-top {
@@ -191,19 +377,20 @@
             right: 2rem;
             width: 48px;
             height: 48px;
-            background: #efb291;
-            color: #0a1a24;
+            background: var(--primary-blue);
+            color: var(--white);
             border: none;
             border-radius: 50%;
             font-size: 1.2rem;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             z-index: 999;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: var(--shadow-md);
         }
 
         .scroll-top.visible {
@@ -212,11 +399,19 @@
         }
 
         .scroll-top:hover {
-            background: #00ffff;
+            background: var(--primary-dark);
             transform: translateY(-3px);
         }
 
         @media (max-width: 768px) {
+            .article-hero {
+                padding: 2rem 1rem;
+            }
+
+            .article-section {
+                padding: 2rem 1.5rem;
+            }
+
             .stats-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -224,6 +419,10 @@
 
             .stat-number {
                 font-size: 2.5rem;
+            }
+
+            .nav-menu {
+                display: none;
             }
 
             .scroll-top {
@@ -236,168 +435,192 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="bg-midnight border-b border-neon-cyan/10">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../index.html" class="flex items-center space-x-3">
-                    <img src="../logo.png" alt="Medikal" class="h-10">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <a href="tel:+250788123456" class="top-bar-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+250 788 123 456</span>
                 </a>
-                <nav class="hidden md:flex items-center space-x-6">
-                    <a href="../index.html" class="text-white hover:text-neon-cyan transition">Home</a>
-                    <a href="../index.html#about" class="text-white hover:text-neon-cyan transition">About</a>
-                    <a href="../index.html#mission" class="text-white hover:text-neon-cyan transition">Mission</a>
-                    <a href="index.html" class="text-white hover:text-neon-cyan transition">News</a>
-                </nav>
+                <a href="mailto:info@medikalafrica.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@medikalafrica.com</span>
+                </a>
             </div>
+            <div class="top-bar-right">
+                <select class="language-selector">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                </select>
+                <a href="../index.html#access" class="top-bar-item">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="medikal-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-section">
+                <img src="../logo.png" alt="Medikal - AI Health Assistant" />
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../solutions.html">Solutions</a></li>
+                    <li><a href="../features.html">Features</a></li>
+                    <li><a href="../team.html">Our Team</a></li>
+                    <li><a href="../impact.html">Impact</a></li>
+                    <li><a href="index.html">News & Media</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="../index.html#access" class="cta-button">Get Started</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-midnight to-dark-bg py-12">
-        <div class="container mx-auto px-6">
-            <div class="article-content">
-                <div class="flex flex-wrap gap-4 mb-6 text-sm" style="color: rgba(255,255,255,0.8);">
-                    <span>October 27, 2025</span>
-                    <span>•</span>
-                    <span class="text-neon-cyan font-semibold">Healthcare Innovation</span>
-                </div>
-
-                <h1 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #fff;">
-                    ZeroX Intelligence × RoboLabs — Deploying cBot UV-C Disinfection Robots in Africa
-                </h1>
-
-                <p class="text-xl leading-relaxed" style="color: rgba(255,255,255,0.9);">
-                    Medikal Africa's parent company ZeroX Intelligence partners with RoboLabs to bring advanced autonomous disinfection technology to African healthcare facilities, working alongside Medikal AI to reduce healthcare-associated infections.
-                </p>
+    <section class="article-hero">
+        <div class="article-content">
+            <div class="article-meta">
+                <span>October 27, 2025</span>
+                <span>•</span>
+                <span>Healthcare Innovation</span>
             </div>
+
+            <h1 class="article-title">
+                ZeroX Intelligence × RoboLabs — Deploying cBot UV-C Disinfection Robots in Africa
+            </h1>
+
+            <p class="article-subtitle">
+                Medikal Africa's parent company ZeroX Intelligence partners with RoboLabs to bring advanced autonomous disinfection technology to African healthcare facilities, working alongside Medikal AI to reduce healthcare-associated infections.
+            </p>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main class="py-12 bg-dark-bg">
-        <div class="container mx-auto px-6">
-            <div class="article-content">
-                <!-- Featured Image -->
-                <div class="featured-image">
-                    <img src="../cbot.jpg" alt="cBot UV-C Disinfection Robot" loading="lazy">
+    <main class="article-body">
+        <div class="article-content">
+            <!-- Featured Image -->
+            <div class="featured-image">
+                <img src="../cbot.jpg" alt="cBot UV-C Disinfection Robot" loading="lazy">
+            </div>
+
+            <div class="article-section">
+                <!-- Introduction -->
+                <section>
+                    <h2 class="section-title">A New Era of Healthcare Safety in Africa</h2>
+                    <p class="article-paragraph">
+                        <strong>ZeroX Intelligence</strong>, the parent company of Medikal Africa, is proud to announce a strategic partnership with <strong>RoboLabs Elektronik Otomasyon</strong> to introduce cBot, an advanced UV-C disinfection robot, into African healthcare facilities. This collaboration marks a significant milestone in our mission to deploy intelligent, life-saving technologies across the continent.
+                    </p>
+                    <p class="article-paragraph">
+                        The cBot platform works in synergy with <strong>Medikal AI</strong> to create a comprehensive infection control ecosystem. While Medikal AI assists clinicians in making evidence-based decisions to reduce antimicrobial resistance and prevent infections, cBot ensures physical environments are thoroughly disinfected, eliminating 99.99% of harmful microorganisms.
+                    </p>
+                    <p class="article-paragraph">
+                        This dual approach—combining AI-powered clinical decision support with autonomous disinfection technology—represents a holistic solution to infection control in African healthcare facilities, starting with a pilot program in Rwanda.
+                    </p>
+                </section>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">99.99%</span>
+                        <span class="stat-label">Microbe Disinfection Rate</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">35%</span>
+                        <span class="stat-label">Faster Room Disinfection</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">50%</span>
+                        <span class="stat-label">Lower Labor Costs</span>
+                    </div>
                 </div>
 
-                <!-- Article Content -->
-                <article class="bg-card-bg rounded-2xl p-8 lg:p-12 border border-neon-cyan/10">
-                    <!-- Introduction -->
-                    <section>
-                        <h2 class="section-title">A New Era of Healthcare Safety in Africa</h2>
-                        <p class="article-paragraph">
-                            <strong>ZeroX Intelligence</strong>, the parent company of Medikal Africa, is proud to announce a strategic partnership with <strong>RoboLabs Elektronik Otomasyon</strong> to introduce cBot, an advanced UV-C disinfection robot, into African healthcare facilities. This collaboration marks a significant milestone in our mission to deploy intelligent, life-saving technologies across the continent.
-                        </p>
-                        <p class="article-paragraph">
-                            The cBot platform works in synergy with <strong>Medikal AI</strong> to create a comprehensive infection control ecosystem. While Medikal AI assists clinicians in making evidence-based decisions to reduce antimicrobial resistance and prevent infections, cBot ensures physical environments are thoroughly disinfected, eliminating 99.99% of harmful microorganisms.
-                        </p>
-                        <p class="article-paragraph">
-                            This dual approach—combining AI-powered clinical decision support with autonomous disinfection technology—represents a holistic solution to infection control in African healthcare facilities, starting with a pilot program in Rwanda.
-                        </p>
-                    </section>
+                <!-- About cBot -->
+                <section>
+                    <h2 class="section-title">Meet cBot: Autonomous Disinfection Technology</h2>
+                    <p class="article-paragraph">
+                        cBot is a state-of-the-art autonomous disinfection robot that leverages <strong>UV-C sterilization technology</strong> to eliminate 99.99% of harmful microorganisms in healthcare environments. Available in both Classic Auto and Manual models, cBot integrates advanced navigation systems, autonomous scheduling, and real-time monitoring to deliver consistent, auditable disinfection results.
+                    </p>
+                    <p class="article-paragraph">
+                        When deployed alongside <strong>Medikal AI</strong>, cBot becomes part of a comprehensive infection prevention strategy. Medikal AI guides clinicians on appropriate antibiotic use and treatment protocols, while cBot ensures that healthcare environments remain sterile, reducing the risk of healthcare-associated infections (HAIs) that contribute to antimicrobial resistance.
+                    </p>
+                    <p class="article-paragraph">
+                        Unlike traditional manual disinfection methods, cBot operates autonomously, reducing human exposure to pathogens while ensuring thorough coverage of high-risk areas. The robot's intelligent mapping capabilities allow it to navigate complex hospital layouts, operating rooms, ICUs, and patient wards with precision.
+                    </p>
+                </section>
 
-                    <!-- Stats Grid -->
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <span class="stat-number">99.99%</span>
-                            <span class="stat-label">Microbe Disinfection Rate</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">35%</span>
-                            <span class="stat-label">Faster Room Disinfection</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">50%</span>
-                            <span class="stat-label">Lower Labor Costs</span>
-                        </div>
-                    </div>
+                <!-- Partnership Goals -->
+                <section>
+                    <h2 class="section-title">Partnership Goals & Vision</h2>
+                    <p class="article-paragraph">
+                        This partnership between ZeroX Intelligence (Medikal Africa's parent company) and RoboLabs aims to strengthen hygiene standards, patient safety, and operational efficiency across African healthcare systems. By deploying cBot technology alongside <strong>Medikal AI's clinical decision support</strong>, we're addressing infection control from both prevention and environmental perspectives.
+                    </p>
+                    <p class="article-paragraph">
+                        The Rwanda pilot program will serve as a proof-of-concept for broader deployment across the continent, with plans to expand to healthcare facilities in Kenya, Nigeria, Ghana, and South Africa in subsequent phases. Each deployment will integrate cBot with Medikal AI, creating a comprehensive infection control ecosystem.
+                    </p>
+                </section>
 
-                    <!-- About cBot -->
-                    <section>
-                        <h2 class="section-title">Meet cBot: Autonomous Disinfection Technology</h2>
-                        <p class="article-paragraph">
-                            cBot is a state-of-the-art autonomous disinfection robot that leverages <strong>UV-C sterilization technology</strong> to eliminate 99.99% of harmful microorganisms in healthcare environments. Available in both Classic Auto and Manual models, cBot integrates advanced navigation systems, autonomous scheduling, and real-time monitoring to deliver consistent, auditable disinfection results.
-                        </p>
-                        <p class="article-paragraph">
-                            When deployed alongside <strong>Medikal AI</strong>, cBot becomes part of a comprehensive infection prevention strategy. Medikal AI guides clinicians on appropriate antibiotic use and treatment protocols, while cBot ensures that healthcare environments remain sterile, reducing the risk of healthcare-associated infections (HAIs) that contribute to antimicrobial resistance.
-                        </p>
-                        <p class="article-paragraph">
-                            Unlike traditional manual disinfection methods, cBot operates autonomously, reducing human exposure to pathogens while ensuring thorough coverage of high-risk areas. The robot's intelligent mapping capabilities allow it to navigate complex hospital layouts, operating rooms, ICUs, and patient wards with precision.
-                        </p>
-                    </section>
-
-                    <!-- Partnership Goals -->
-                    <section>
-                        <h2 class="section-title">Partnership Goals & Vision</h2>
-                        <p class="article-paragraph">
-                            This partnership between ZeroX Intelligence (Medikal Africa's parent company) and RoboLabs aims to strengthen hygiene standards, patient safety, and operational efficiency across African healthcare systems. By deploying cBot technology alongside <strong>Medikal AI's clinical decision support</strong>, we're addressing infection control from both prevention and environmental perspectives.
-                        </p>
-                        <p class="article-paragraph">
-                            The Rwanda pilot program will serve as a proof-of-concept for broader deployment across the continent, with plans to expand to healthcare facilities in Kenya, Nigeria, Ghana, and South Africa in subsequent phases. Each deployment will integrate cBot with Medikal AI, creating a comprehensive infection control ecosystem.
-                        </p>
-                    </section>
-
-                    <!-- Key Highlights -->
-                    <div class="key-points">
-                        <h3 class="key-points-title">Key Highlights</h3>
-                        <ul class="key-points-list">
-                            <li>Proven performance in hospitals across Türkiye, Saudi Arabia, and Canada</li>
-                            <li>Autonomous navigation with advanced sensor fusion and intelligent mapping</li>
-                            <li>Real-time monitoring and comprehensive reporting for auditable results</li>
-                            <li>Integrated with Medikal AI to reduce infections and antimicrobial resistance</li>
-                            <li>Rwanda pilot launching with plans for continental expansion across 54 countries</li>
-                            <li>Available in Classic Auto and Manual models for different facility needs</li>
-                        </ul>
-                    </div>
-
-                    <!-- Quote Block -->
-                    <blockquote class="quote-block">
-                        <p class="quote-text">
-                            "We are proud to bring cBot's proven infection-control technology to African healthcare systems. Working with ZeroX Intelligence and Medikal Africa, we aim to deliver safe, efficient, and auditable disinfection solutions that protect patients and staff while supporting comprehensive infection prevention strategies."
-                        </p>
-                        <cite class="quote-author">
-                            Samer Abduldayem
-                            <span class="author-title">CEO, RoboLabs Elektronik Otomasyon</span>
-                        </cite>
-                    </blockquote>
-
-                    <!-- Impact & Future -->
-                    <section>
-                        <h2 class="section-title">Impact on African Healthcare</h2>
-                        <p class="article-paragraph">
-                            The introduction of cBot technology, working in tandem with <strong>Medikal AI</strong>, represents a paradigm shift in how African healthcare facilities approach infection control. While Medikal AI helps clinicians make informed decisions about antibiotic prescribing and treatment protocols, cBot ensures that physical environments are consistently sterilized, reducing the transmission of resistant pathogens.
-                        </p>
-                        <p class="article-paragraph">
-                            This integrated approach—combining <strong>AI-powered clinical intelligence with autonomous disinfection</strong>—addresses infection control from multiple angles: preventing inappropriate antibiotic use through Medikal AI's guidance, and eliminating environmental pathogens through cBot's UV-C sterilization.
-                        </p>
-                        <p class="article-paragraph">
-                            Enhanced patient confidence through visible, measurable safety protocols, combined with lower operational costs and improved outcomes, positions this technology partnership as a cornerstone of modern African healthcare infrastructure. As part of ZeroX Intelligence's broader Innovation Lab initiatives, this partnership aligns with our vision of leveraging autonomous systems, robotics, and AI to solve Africa's most pressing challenges in healthcare, agriculture, and infrastructure.
-                        </p>
-                    </section>
-                </article>
-
-                <!-- Back to News Link -->
-                <div class="mt-8 text-center">
-                    <a href="index.html" class="inline-flex items-center gap-2 text-neon-cyan hover:text-warm-beige transition">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to News & Media
-                    </a>
+                <!-- Key Highlights -->
+                <div class="key-points">
+                    <h3 class="key-points-title">Key Highlights</h3>
+                    <ul class="key-points-list">
+                        <li>Proven performance in hospitals across Türkiye, Saudi Arabia, and Canada</li>
+                        <li>Autonomous navigation with advanced sensor fusion and intelligent mapping</li>
+                        <li>Real-time monitoring and comprehensive reporting for auditable results</li>
+                        <li>Integrated with Medikal AI to reduce infections and antimicrobial resistance</li>
+                        <li>Rwanda pilot launching with plans for continental expansion across 54 countries</li>
+                        <li>Available in Classic Auto and Manual models for different facility needs</li>
+                    </ul>
                 </div>
+
+                <!-- Quote Block -->
+                <blockquote class="quote-block">
+                    <p class="quote-text">
+                        "We are proud to bring cBot's proven infection-control technology to African healthcare systems. Working with ZeroX Intelligence and Medikal Africa, we aim to deliver safe, efficient, and auditable disinfection solutions that protect patients and staff while supporting comprehensive infection prevention strategies."
+                    </p>
+                    <cite class="quote-author">
+                        Samer Abduldayem
+                        <span class="author-title">CEO, RoboLabs Elektronik Otomasyon</span>
+                    </cite>
+                </blockquote>
+
+                <!-- Impact & Future -->
+                <section>
+                    <h2 class="section-title">Impact on African Healthcare</h2>
+                    <p class="article-paragraph">
+                        The introduction of cBot technology, working in tandem with <strong>Medikal AI</strong>, represents a paradigm shift in how African healthcare facilities approach infection control. While Medikal AI helps clinicians make informed decisions about antibiotic prescribing and treatment protocols, cBot ensures that physical environments are consistently sterilized, reducing the transmission of resistant pathogens.
+                    </p>
+                    <p class="article-paragraph">
+                        This integrated approach—combining <strong>AI-powered clinical intelligence with autonomous disinfection</strong>—addresses infection control from multiple angles: preventing inappropriate antibiotic use through Medikal AI's guidance, and eliminating environmental pathogens through cBot's UV-C sterilization.
+                    </p>
+                    <p class="article-paragraph">
+                        Enhanced patient confidence through visible, measurable safety protocols, combined with lower operational costs and improved outcomes, positions this technology partnership as a cornerstone of modern African healthcare infrastructure. As part of ZeroX Intelligence's broader Innovation Lab initiatives, this partnership aligns with our vision of leveraging autonomous systems, robotics, and AI to solve Africa's most pressing challenges in healthcare, agriculture, and infrastructure.
+                    </p>
+                </section>
+
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to News & Media
+                </a>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-midnight border-t border-neon-cyan/10 py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-white/70 text-sm">© 2025 Medikal. All rights reserved.</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <a href="../index.html" class="text-white/70 hover:text-neon-cyan transition">Home</a>
-                <span class="text-white/30">|</span>
-                <a href="index.html" class="text-white/70 hover:text-neon-cyan transition">News</a>
+    <footer style="background: var(--light-bg); border-top: 1px solid var(--border-light); padding: 3rem 2rem; margin-top: 4rem;">
+        <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+            <p style="color: var(--light-text); font-size: 0.875rem; margin-bottom: 1rem;">© 2025 Medikal. All rights reserved.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="../index.html" style="color: var(--light-text); text-decoration: none; transition: var(--transition);">Home</a>
+                <span style="color: var(--border-light);">|</span>
+                <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">News</a>
             </div>
         </div>
     </footer>

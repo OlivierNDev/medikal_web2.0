@@ -8,33 +8,162 @@
     <link rel="icon" type="image/png" href="../logo.png">
     <link rel="shortcut icon" type="image/png" href="../logo.png">
     <link rel="apple-touch-icon" href="../logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'midnight': '#0b2735',
-                        'warm-beige': '#efb291',
-                        'soft-cream': '#e5e2db',
-                        'neon-cyan': '#00ffff',
-                        'dark-bg': '#0a1a24',
-                        'card-bg': '#0f2a3a'
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #5EC4D5;
+            --primary-dark: #4AAFC0;
+            --accent-light: #E8F7F9;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #f8fafb;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(94, 196, 213, 0.08);
+            --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
+            --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: #0a1a24;
-            color: #fff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.6rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-bar-item:hover {
+            opacity: 0.8;
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        /* Main Header */
+        .medikal-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-section img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-menu a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-blue);
+            background: var(--accent-light);
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Article Content */
+        .article-hero {
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.08) 0%, rgba(255, 255, 255, 0.98) 100%);
+            padding: 4rem 2rem;
         }
 
         .article-content {
@@ -42,14 +171,84 @@
             margin: 0 auto;
         }
 
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--light-text);
+        }
+
+        .article-meta span {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .article-subtitle {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .article-body {
+            background: var(--white);
+            padding: 3rem 2rem;
+        }
+
+        .article-section {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .article-paragraph {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .article-paragraph strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
         .video-container {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            background: #0f2a3a;
+            background: var(--light-bg);
             border-radius: 12px;
             overflow: hidden;
             margin: 2rem 0;
+            box-shadow: var(--shadow-md);
         }
 
         .video-container iframe {
@@ -61,26 +260,20 @@
             border: 0;
         }
 
-        .section-title {
-            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
-            font-weight: 700;
-            color: #00ffff;
-            margin: 3rem 0 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
-        }
-
-        .article-paragraph {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #fff;
-            margin-bottom: 1.5rem;
-            opacity: 0.95;
-        }
-
-        .article-paragraph strong {
-            color: #00ffff;
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-blue);
+            text-decoration: none;
             font-weight: 600;
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(-3px);
         }
 
         .scroll-top {
@@ -89,19 +282,20 @@
             right: 2rem;
             width: 48px;
             height: 48px;
-            background: #efb291;
-            color: #0a1a24;
+            background: var(--primary-blue);
+            color: var(--white);
             border: none;
             border-radius: 50%;
             font-size: 1.2rem;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             z-index: 999;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: var(--shadow-md);
         }
 
         .scroll-top.visible {
@@ -110,11 +304,23 @@
         }
 
         .scroll-top:hover {
-            background: #00ffff;
+            background: var(--primary-dark);
             transform: translateY(-3px);
         }
 
         @media (max-width: 768px) {
+            .article-hero {
+                padding: 2rem 1rem;
+            }
+
+            .article-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
             .scroll-top {
                 bottom: 1.5rem;
                 right: 1.5rem;
@@ -125,125 +331,147 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="bg-midnight border-b border-neon-cyan/10">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../index.html" class="flex items-center space-x-3">
-                    <img src="../logo.png" alt="Medikal" class="h-10">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <a href="tel:+250788123456" class="top-bar-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+250 788 123 456</span>
                 </a>
-                <nav class="hidden md:flex items-center space-x-6">
-                    <a href="../index.html" class="text-white hover:text-neon-cyan transition">Home</a>
-                    <a href="../index.html#about" class="text-white hover:text-neon-cyan transition">About</a>
-                    <a href="../index.html#mission" class="text-white hover:text-neon-cyan transition">Mission</a>
-                    <a href="index.html" class="text-white hover:text-neon-cyan transition">News</a>
-                </nav>
+                <a href="mailto:info@medikalafrica.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@medikalafrica.com</span>
+                </a>
             </div>
+            <div class="top-bar-right">
+                <select class="language-selector">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                </select>
+                <a href="../index.html#access" class="top-bar-item">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="medikal-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-section">
+                <img src="../logo.png" alt="Medikal - AI Health Assistant" />
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../solutions.html">Solutions</a></li>
+                    <li><a href="../features.html">Features</a></li>
+                    <li><a href="../team.html">Our Team</a></li>
+                    <li><a href="../impact.html">Impact</a></li>
+                    <li><a href="index.html">News & Media</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="../index.html#access" class="cta-button">Get Started</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-midnight to-dark-bg py-12">
-        <div class="container mx-auto px-6">
-            <div class="article-content">
-                <div class="flex flex-wrap gap-4 mb-6 text-sm" style="color: rgba(255,255,255,0.8);">
-                    <span class="text-neon-cyan font-semibold">Leadership & Innovation</span>
-                    <span>•</span>
-                    <span>November 2025</span>
-                    <span>•</span>
-                    <span>Read time: ~5 min</span>
-                </div>
-
-                <h1 class="text-4xl lg:text-5xl font-bold mb-6" style="color: #fff;">
-                    Leadership Spotlight: Outbreak News, USA
-                </h1>
-
-                <p class="text-xl leading-relaxed" style="color: rgba(255,255,255,0.9);">
-                    Our co-founder and AMR Initiative Rwanda founder, Marcel Ishimwe, has been invited to the Outbreak News Interviews Podcast by Robert Herriman to share how AMR Initiative Rwanda is actively tackling antimicrobial resistance in Rwanda and how it will be through collaboration with Medikal Africa.
-                </p>
+    <section class="article-hero">
+        <div class="article-content">
+            <div class="article-meta">
+                <span>Leadership & Innovation</span>
+                <span>•</span>
+                <span>November 2025</span>
+                <span>•</span>
+                <span>Read time: ~5 min</span>
             </div>
+
+            <h1 class="article-title">
+                Leadership Spotlight: Outbreak News, USA
+            </h1>
+
+            <p class="article-subtitle">
+                Our co-founder and AMR Initiative Rwanda founder, Marcel Ishimwe, has been invited to the Outbreak News Interviews Podcast by Robert Herriman to share how AMR Initiative Rwanda is actively tackling antimicrobial resistance in Rwanda and how it will be through collaboration with Medikal Africa.
+            </p>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main class="py-12 bg-dark-bg">
-        <div class="container mx-auto px-6">
-            <div class="article-content">
-                <!-- Article Content -->
-                <article class="bg-card-bg rounded-2xl p-8 lg:p-12 border border-neon-cyan/10">
-                    <!-- Introduction -->
-                    <section>
-                        <h2 class="section-title">Leading the Fight Against AMR in Rwanda</h2>
-                        <p class="article-paragraph">
-                            Marcel Ishimwe, a pharmacist and CEO of <strong>AMR Initiative Rwanda</strong>, leads a non-profit organization implementing the <strong>One Health approach</strong> to prevent, mitigate, and control the spread of resistant microorganisms, while ensuring the availability of safe, effective, and high-quality antimicrobials, and promoting their prudent and rational use in Rwanda.
-                        </p>
-                        <p class="article-paragraph">
-                            As Co-Founder & Director of Strategic Partnerships at Medikal Africa, Marcel brings his deep expertise in antimicrobial resistance prevention and healthcare systems to drive the platform's mission of combating AMR across the continent through innovative AI technology.
-                        </p>
-                    </section>
+    <main class="article-body">
+        <div class="article-section">
+            <!-- Introduction -->
+            <section>
+                <h2 class="section-title">Leading the Fight Against AMR in Rwanda</h2>
+                <p class="article-paragraph">
+                    Marcel Ishimwe, a pharmacist and CEO of <strong>AMR Initiative Rwanda</strong>, leads a non-profit organization implementing the <strong>One Health approach</strong> to prevent, mitigate, and control the spread of resistant microorganisms, while ensuring the availability of safe, effective, and high-quality antimicrobials, and promoting their prudent and rational use in Rwanda.
+                </p>
+                <p class="article-paragraph">
+                    As Co-Founder & Director of Strategic Partnerships at Medikal Africa, Marcel brings his deep expertise in antimicrobial resistance prevention and healthcare systems to drive the platform's mission of combating AMR across the continent through innovative AI technology.
+                </p>
+            </section>
 
-                    <!-- Video Section -->
-                    <section>
-                        <h2 class="section-title">Watch the Full Interview</h2>
-                        <div class="video-container">
-                            <iframe 
-                                src="https://www.youtube.com/embed/cac5iWN33gE?si=yfXQgGArdEYZABmC" 
-                                title="Outbreak News Interviews Podcast - Marcel Ishimwe" 
-                                frameborder="0" 
-                                loading="lazy"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" 
-                                allowfullscreen
-                                aria-label="YouTube video player featuring Marcel Ishimwe on Outbreak News Interviews Podcast">
-                            </iframe>
-                        </div>
-                    </section>
-
-                    <!-- Key Achievements -->
-                    <section>
-                        <h2 class="section-title">Key Achievements</h2>
-                        <p class="article-paragraph">
-                            Marcel's leadership at AMR Initiative Rwanda has positioned the organization as a key player in the fight against antimicrobial resistance in East Africa. Through strategic partnerships and evidence-based interventions, the organization has made significant strides in promoting <strong>prudent antimicrobial use</strong> and building resilient healthcare systems.
-                        </p>
-                        <p class="article-paragraph">
-                            The collaboration between AMR Initiative Rwanda and Medikal Africa represents a powerful synergy between grassroots healthcare expertise and cutting-edge AI technology, enabling more effective AMR prevention and monitoring across Rwanda and the broader East African region.
-                        </p>
-                        <p class="article-paragraph">
-                            Featured on <strong>Outbreak News</strong>, Marcel's insights into AMR prevention strategies and the role of technology in healthcare have reached a global audience, highlighting the importance of African-led solutions in addressing global health challenges.
-                        </p>
-                    </section>
-
-                    <!-- About Marcel -->
-                    <section>
-                        <h2 class="section-title">About Marcel Ishimwe</h2>
-                        <p class="article-paragraph">
-                            <strong>Marcel Ishimwe</strong> is the Co-Founder & Director of Strategic Partnerships at Medikal Africa, based in Rwanda. With a background in pharmacy and extensive experience in antimicrobial resistance prevention, Marcel leads AMR Initiative Rwanda's mission to combat AMR through the One Health approach.
-                        </p>
-                        <p class="article-paragraph">
-                            His work focuses on ensuring the availability of safe, effective antimicrobials while promoting their rational use, making him a key figure in Rwanda's healthcare landscape and an important voice in the global conversation on antimicrobial resistance.
-                        </p>
-                    </section>
-                </article>
-
-                <!-- Back to News Link -->
-                <div class="mt-8 text-center">
-                    <a href="index.html" class="inline-flex items-center gap-2 text-neon-cyan hover:text-warm-beige transition">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to News & Media
-                    </a>
+            <!-- Video Section -->
+            <section>
+                <h2 class="section-title">Watch the Full Interview</h2>
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/cac5iWN33gE" 
+                        title="Outbreak News Interviews Podcast - Marcel Ishimwe" 
+                        frameborder="0" 
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen
+                        aria-label="YouTube video player featuring Marcel Ishimwe on Outbreak News Interviews Podcast">
+                    </iframe>
                 </div>
-            </div>
+            </section>
+
+            <!-- Key Achievements -->
+            <section>
+                <h2 class="section-title">Key Achievements</h2>
+                <p class="article-paragraph">
+                    Marcel's leadership at AMR Initiative Rwanda has positioned the organization as a key player in the fight against antimicrobial resistance in East Africa. Through strategic partnerships and evidence-based interventions, the organization has made significant strides in promoting <strong>prudent antimicrobial use</strong> and building resilient healthcare systems.
+                </p>
+                <p class="article-paragraph">
+                    The collaboration between AMR Initiative Rwanda and Medikal Africa represents a powerful synergy between grassroots healthcare expertise and cutting-edge AI technology, enabling more effective AMR prevention and monitoring across Rwanda and the broader East African region.
+                </p>
+                <p class="article-paragraph">
+                    Featured on <strong>Outbreak News</strong>, Marcel's insights into AMR prevention strategies and the role of technology in healthcare have reached a global audience, highlighting the importance of African-led solutions in addressing global health challenges.
+                </p>
+            </section>
+
+            <!-- About Marcel -->
+            <section>
+                <h2 class="section-title">About Marcel Ishimwe</h2>
+                <p class="article-paragraph">
+                    <strong>Marcel Ishimwe</strong> is the Co-Founder & Director of Strategic Partnerships at Medikal Africa, based in Rwanda. With a background in pharmacy and extensive experience in antimicrobial resistance prevention, Marcel leads AMR Initiative Rwanda's mission to combat AMR through the One Health approach.
+                </p>
+                <p class="article-paragraph">
+                    His work focuses on ensuring the availability of safe, effective antimicrobials while promoting their rational use, making him a key figure in Rwanda's healthcare landscape and an important voice in the global conversation on antimicrobial resistance.
+                </p>
+            </section>
+
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to News & Media
+            </a>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-midnight border-t border-neon-cyan/10 py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-white/70 text-sm">© 2025 Medikal. All rights reserved.</p>
-            <div class="mt-4 flex justify-center space-x-4">
-                <a href="../index.html" class="text-white/70 hover:text-neon-cyan transition">Home</a>
-                <span class="text-white/30">|</span>
-                <a href="index.html" class="text-white/70 hover:text-neon-cyan transition">News</a>
+    <footer style="background: var(--light-bg); border-top: 1px solid var(--border-light); padding: 3rem 2rem; margin-top: 4rem;">
+        <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+            <p style="color: var(--light-text); font-size: 0.875rem; margin-bottom: 1rem;">© 2025 Medikal. All rights reserved.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="../index.html" style="color: var(--light-text); text-decoration: none; transition: var(--transition);">Home</a>
+                <span style="color: var(--border-light);">|</span>
+                <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">News</a>
             </div>
         </div>
     </footer>

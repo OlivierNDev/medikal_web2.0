@@ -170,12 +170,139 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
         }
 
         .news-card-image-minimal img {
             max-width: 150px;
             max-height: 120px;
             object-fit: contain;
+        }
+
+        /* Video Thumbnail Styles */
+        .video-thumbnail-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            min-height: 180px;
+        }
+
+        .video-thumbnail-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .video-thumbnail-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .video-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(94, 196, 213, 0.9);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            pointer-events: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .video-thumbnail-container:hover .video-play-button {
+            background: rgba(94, 196, 213, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-play-button i {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 3px;
+        }
+
+        /* Responsive adjustments for video thumbnail */
+        @media (max-width: 1024px) {
+            .video-thumbnail-container {
+                min-height: 160px;
+            }
+
+            .video-play-button {
+                width: 55px;
+                height: 55px;
+            }
+
+            .video-play-button i {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-thumbnail-container {
+                min-height: 160px;
+            }
+
+            .video-play-button {
+                width: 50px;
+                height: 50px;
+            }
+
+            .video-play-button i {
+                font-size: 1.2rem;
+            }
+
+            .news-card-image-minimal {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-thumbnail-container {
+                min-height: 140px;
+            }
+
+            .video-play-button {
+                width: 45px;
+                height: 45px;
+            }
+
+            .video-play-button i {
+                font-size: 1rem;
+            }
+
+            .news-card-image-minimal {
+                height: 140px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .video-thumbnail-container {
+                min-height: 120px;
+            }
+
+            .video-play-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .video-play-button i {
+                font-size: 0.9rem;
+            }
+
+            .news-card-image-minimal {
+                height: 120px;
+            }
         }
 
         /* ========================================
@@ -1883,6 +2010,29 @@
             }
         }
 
+        /* Container responsive styles */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+        }
+
         /* News Carousel Styles */
         .news-carousel-wrapper {
             width: 100%;
@@ -1905,11 +2055,13 @@
         .news-card-item {
             flex-shrink: 0;
             width: 380px;
+            max-width: 100%;
         }
 
         @media (max-width: 1024px) {
             .news-card-item {
                 width: 340px;
+                max-width: calc(100vw - 4rem);
             }
 
             .news-carousel-track {
@@ -1924,6 +2076,7 @@
 
             .news-card-item {
                 width: 300px;
+                max-width: calc(100vw - 3rem);
             }
 
             .news-carousel-track {
@@ -1934,10 +2087,18 @@
         @media (max-width: 480px) {
             .news-card-item {
                 width: 280px;
+                max-width: calc(100vw - 2rem);
             }
 
             .news-carousel-track {
                 gap: 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .news-card-item {
+                width: 260px;
+                max-width: calc(100vw - 1.5rem);
             }
         }
 
@@ -2748,7 +2909,15 @@
                             <div class="news-card-minimal">
                                 <div class="mb-4">
                                     <div class="news-card-image-minimal">
-                                        <i class="fas fa-video" style="color: #5EC4D5; font-size: 3rem;"></i>
+                                        <div class="video-thumbnail-container">
+                                            <img 
+                                                src="media/images/Olivier In.jpg" 
+                                                alt="Olivier Niyonshima - ONPOD TV Interview"
+                                                loading="lazy">
+                                            <div class="video-play-button">
+                                                <i class="fas fa-play"></i>
+                                            </div>
+                                        </div>
                                     </div>
                                     <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Innovation</span>
                                     <span class="text-sm mx-2" style="color: #999;">•</span>
@@ -2761,7 +2930,7 @@
                                     Our founder and CEO, Olivier Niyonshima, was featured on ONPOD TV Canada in an exclusive interview highlighting Medikal's mission to fight AMR through AI.
                                 </p>
                                 <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
-                                    Read More <i class="fas fa-arrow-right"></i>
+                                    Watch Video <i class="fas fa-arrow-right"></i>
                                 </span>
                             </div>
                         </a>
