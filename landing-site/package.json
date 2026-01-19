@@ -4,10 +4,7 @@
   "description": "Landing page for Medikal - Africa's AI-Powered Health Assistant",
   "main": "index.html",
   "scripts": {
-    "start": "python -m http.server 8080",
-    "serve": "python3 -m http.server 8080",
-    "build": "echo 'No build process needed - static site'",
-    "deploy": "echo 'Push to GitHub and enable Pages, or deploy to Netlify/Vercel'"
+    "build": "echo 'Static site - no build needed'"
   },
   "keywords": [
     "healthcare",
@@ -15,16 +12,8 @@
     "Africa",
     "AMR",
     "landing-page",
-    "responsive",
-    "tailwind"
+    "responsive"
   ],
   "author": "ZeroX Intelligence & AMR Initiative Rwanda",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yourusername/medikal-landing.git"
-  },
-  "homepage": "https://yourusername.github.io/medikal-landing",
-  "devDependencies": {},
-  "dependencies": {}
+  "license": "MIT"
 }

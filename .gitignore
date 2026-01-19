@@ -1,5 +1,34 @@
--e 
-# Environment files (but keep .env.example)
-*.env
-*.env.*
-!.env.example
+# Dependencies
+node_modules/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+.vercel/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Backend (not needed for deployment)
+backend/venv/
