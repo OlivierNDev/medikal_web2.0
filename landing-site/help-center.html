@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMR Surveillance - Medikal Africa</title>
+    <title>Help Center - Medikal Africa</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -248,11 +248,163 @@
 
         .mobile-menu-btn {
             display: none;
-            background: none;
+            background: var(--primary-blue);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.65rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Mobile Navigation */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem 0;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 2rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .mobile-close-btn {
+            background: var(--accent-light);
             border: none;
             font-size: 1.5rem;
             color: var(--dark-text);
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .mobile-close-btn:hover {
+            background: var(--light-bg);
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-list li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-list li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-list a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-list a i {
+            width: 20px;
+            text-align: center;
+            color: var(--primary-blue);
+        }
+
+        .mobile-nav-list a:hover {
+            background: var(--accent-light);
+            color: var(--primary-blue);
+        }
+
+        .mobile-cta {
+            padding: 2rem;
+            border-top: 1px solid var(--border-light);
+            margin-top: 1rem;
+        }
+
+        .mobile-cta .cta-button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .desktop-only {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-nav,
+            .mobile-overlay {
+                display: none !important;
+            }
         }
 
         /* Page Header */
@@ -278,11 +430,102 @@
             line-height: 1.6;
         }
 
-        /* Content Section */
-        .content-section {
+        /* Help Center Section */
+        .help-section {
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
+        }
+
+        .search-box {
+            background: var(--white);
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-box form {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 0.875rem 1.25rem;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(94, 196, 213, 0.1);
+        }
+
+        .search-box button {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-box button:hover {
+            background: var(--primary-dark);
+        }
+
+        .help-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .help-category-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--dark-text);
+            display: block;
+        }
+
+        .help-category-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .help-category-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .help-category-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark-text);
+        }
+
+        .help-category-card p {
+            color: var(--light-text);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .help-articles {
+            margin-top: 4rem;
         }
 
         .section-title {
@@ -306,67 +549,93 @@
             border-radius: 2px;
         }
 
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--light-text);
-            margin-bottom: 3rem;
-            line-height: 1.7;
-        }
-
-        /* Feature Grid */
-        .feature-grid {
+        .article-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
-        .feature-card {
+        .article-item {
             background: var(--white);
             border: 1px solid var(--border-light);
-            border-radius: 12px;
-            padding: 2rem;
+            border-radius: 8px;
+            padding: 1.5rem;
             transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-blue);
-            transform: translateY(-4px);
-        }
-
-        .feature-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
             color: var(--dark-text);
-            margin-bottom: 1rem;
         }
 
-        .feature-card p {
-            color: var(--light-text);
-            line-height: 1.7;
-            margin-bottom: 1rem;
+        .article-item:hover {
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
         }
 
-        .feature-list {
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .feature-list li {
-            color: var(--light-text);
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
+        .article-item i {
             color: var(--primary-blue);
-            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .article-item-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
+        }
+
+        .article-item-content p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .quick-links {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .quick-link {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1.25rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--dark-text);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quick-link:hover {
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .quick-link i {
+            font-size: 1.75rem;
+            color: var(--primary-blue);
+        }
+
+        .quick-link span {
+            font-weight: 600;
+            font-size: 0.95rem;
         }
 
         /* Footer */
@@ -486,28 +755,21 @@
         }
 
         /* Responsive */
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr;
-                gap: 2rem;
-            }
-        }
-
         @media (max-width: 1200px) {
             .header-container,
             .top-bar-container,
             .footer-container {
                 padding: 0 1.5rem;
             }
-        }
 
-        @media (max-width: 1024px) {
             .footer-grid {
                 grid-template-columns: 2fr 1fr 1fr;
                 gap: 2rem;
             }
+        }
 
-            .content-section {
+        @media (max-width: 1024px) {
+            .help-section {
                 padding: 3rem 1.5rem;
             }
         }
@@ -541,34 +803,15 @@
 
             .nav-menu {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: var(--shadow-lg);
-                border-top: 1px solid var(--border-light);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-menu > li {
-                width: 100%;
-            }
-
-            .nav-menu > li > a {
-                display: block;
-                width: 100%;
-                padding: 1rem;
             }
 
             .header-container {
                 padding: 0.75rem 1rem;
                 position: relative;
+            }
+
+            .logo-section img {
+                height: 35px;
             }
 
             .cta-button {
@@ -579,34 +822,21 @@
                 padding: 3rem 1rem;
             }
 
-            .page-header h1 {
-                font-size: clamp(1.75rem, 5vw, 2rem);
-            }
-
-            .page-header p {
-                font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-            }
-
-            .content-section {
+            .help-section {
                 padding: 2.5rem 1rem;
             }
 
-            .section-title {
-                font-size: 1.875rem;
+            .search-box form {
+                flex-direction: column;
             }
 
-            .section-subtitle {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-            }
-
-            .feature-grid {
+            .help-categories {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
-            .feature-card {
-                padding: 1.5rem;
+            .quick-links-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .footer-grid {
@@ -630,27 +860,12 @@
                 padding: 2.5rem 0.75rem;
             }
 
-            .content-section {
+            .help-section {
                 padding: 2rem 0.75rem;
             }
 
-            .feature-card {
-                padding: 1.25rem;
-            }
-
-            .feature-card h3 {
-                font-size: 1.125rem;
-            }
-        }
-
-        /* Touch-friendly */
-        @media (hover: none) and (pointer: coarse) {
-            .cta-button,
-            .nav-menu > li > a {
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .quick-links-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -736,6 +951,11 @@
                             <i class="fas fa-chevron-down"></i>
                         </a>
                         <div class="dropdown-menu">
+                            <a href="documentation.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    Documentation
+                                </div>
+                            </a>
                             <a href="clinical-guidelines.html" class="dropdown-item">
                                 <div class="dropdown-content">
                                     Clinical Guidelines
@@ -757,12 +977,6 @@
                     <li>
                         <a href="team.html">
                             Our Team
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="about.html">
-                            About Us
                         </a>
                     </li>
                     
@@ -838,12 +1052,6 @@
                 </a>
             </li>
             <li>
-                <a href="about.html">
-                    <i class="fas fa-info-circle"></i>
-                    About Us
-                </a>
-            </li>
-            <li>
                 <a href="impact.html">
                     <i class="fas fa-heart"></i>
                     Impact
@@ -853,6 +1061,18 @@
                 <a href="news/index.html">
                     <i class="fas fa-newspaper"></i>
                     News & Media
+                </a>
+            </li>
+            <li>
+                <a href="faq.html">
+                    <i class="fas fa-question-circle"></i>
+                    FAQ
+                </a>
+            </li>
+            <li>
+                <a href="help-center.html">
+                    <i class="fas fa-life-ring"></i>
+                    Help Center
                 </a>
             </li>
             <li>
@@ -872,131 +1092,137 @@
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>AMR Surveillance</h1>
-        <p>Advanced antimicrobial resistance monitoring and detection systems for real-time tracking and prevention</p>
+        <h1>Help Center</h1>
+        <p>Find answers, guides, and support resources to help you get the most out of Medikal</p>
     </section>
 
-    <!-- Smart Prescribing -->
-    <section class="content-section">
-        <h2 class="section-title">Smart Prescribing System</h2>
-        <p class="section-subtitle">Intelligent antibiotic prescription management with WHO AWaRe classification and resistance-aware recommendations</p>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>WHO AWaRe Classification</h3>
-                <p>Integrated antibiotic categorization system following World Health Organization guidelines for Access, Watch, and Reserve antibiotics.</p>
-                <ul class="feature-list">
-                    <li>Automatic antibiotic categorization</li>
-                    <li>Access, Watch, Reserve classification</li>
-                    <li>Guideline-based recommendations</li>
-                    <li>Prescription quality monitoring</li>
-                </ul>
-            </div>
+    <!-- Help Center Section -->
+    <section class="help-section">
+        <!-- Search Box -->
+        <div class="search-box">
+            <form onsubmit="event.preventDefault(); searchHelp(this);">
+                <input type="text" placeholder="Search for help articles, guides, or FAQs..." id="helpSearch">
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                    Search
+                </button>
+            </form>
+        </div>
+
+        <!-- Help Categories -->
+        <div class="help-categories">
+            <a href="#getting-started" class="help-category-card">
+                <i class="fas fa-rocket"></i>
+                <h3>Getting Started</h3>
+                <p>New to Medikal? Start here with setup guides, account creation, and first steps.</p>
+            </a>
+
+            <a href="#account-management" class="help-category-card">
+                <i class="fas fa-user-cog"></i>
+                <h3>Account Management</h3>
+                <p>Manage your account settings, profile, security, and subscription preferences.</p>
+            </a>
+
+            <a href="#using-medikal" class="help-category-card">
+                <i class="fas fa-stethoscope"></i>
+                <h3>Using Medikal</h3>
+                <p>Learn how to use AI diagnostics, patient management, and platform features.</p>
+            </a>
+
+            <a href="#troubleshooting" class="help-category-card">
+                <i class="fas fa-tools"></i>
+                <h3>Troubleshooting</h3>
+                <p>Common issues, error solutions, and technical support resources.</p>
+            </a>
+
+            <a href="#platforms" class="help-category-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Platform Guides</h3>
+                <p>Platform-specific guides for desktop, mobile, web, SMS, and WhatsApp.</p>
+            </a>
+
+            <a href="#billing" class="help-category-card">
+                <i class="fas fa-credit-card"></i>
+                <h3>Billing & Plans</h3>
+                <p>Information about pricing, subscriptions, billing, and payment methods.</p>
+            </a>
+        </div>
+
+        <!-- Popular Articles -->
+        <div class="help-articles">
+            <h2 class="section-title">Popular Help Articles</h2>
             
-            <div class="feature-card">
-                <h3>Watch & Reserve Alerts</h3>
-                <p>Automatic highlighting of critical antibiotics to promote appropriate use and reduce resistance development.</p>
-                <ul class="feature-list">
-                    <li>Automatic alert system for critical antibiotics</li>
-                    <li>Prescription approval workflows</li>
-                    <li>Justification requirements for restricted antibiotics</li>
-                    <li>Clinical decision support alerts</li>
-                </ul>
-            </div>
-            
-            <div class="feature-card">
-                <h3>Resistance-Aware Recommendations</h3>
-                <p>AI-powered prescription guidance that considers local resistance patterns and antimicrobial stewardship principles.</p>
-                <ul class="feature-list">
-                    <li>Local resistance pattern analysis</li>
-                    <li>Evidence-based antibiotic selection</li>
-                    <li>Treatment optimization algorithms</li>
-                    <li>Stewardship program integration</li>
-                </ul>
+            <div class="article-list">
+                <a href="faq.html" class="article-item">
+                    <i class="fas fa-question-circle"></i>
+                    <div class="article-item-content">
+                        <h4>Frequently Asked Questions</h4>
+                        <p>Find answers to the most common questions about Medikal platform</p>
+                    </div>
+                </a>
+
+                <a href="documentation.html" class="article-item">
+                    <i class="fas fa-book"></i>
+                    <div class="article-item-content">
+                        <h4>Complete Documentation</h4>
+                        <p>Comprehensive technical documentation and API references</p>
+                    </div>
+                </a>
+
+                <a href="#getting-started" class="article-item">
+                    <i class="fas fa-play-circle"></i>
+                    <div class="article-item-content">
+                        <h4>Quick Start Guide</h4>
+                        <p>Get up and running with Medikal in minutes with our step-by-step guide</p>
+                    </div>
+                </a>
+
+                <a href="#troubleshooting" class="article-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="article-item-content">
+                        <h4>Common Issues & Solutions</h4>
+                        <p>Resolve common problems and errors you might encounter</p>
+                    </div>
+                </a>
+
+                <a href="#account-management" class="article-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="article-item-content">
+                        <h4>Account Security & Privacy</h4>
+                        <p>Learn how to secure your account and protect your medical data</p>
+                    </div>
+                </a>
+
+                <a href="#using-medikal" class="article-item">
+                    <i class="fas fa-brain"></i>
+                    <div class="article-item-content">
+                        <h4>Using AI Diagnostics</h4>
+                        <p>Guide to using Medikal's AI-powered diagnostic features effectively</p>
+                    </div>
+                </a>
             </div>
         </div>
-    </section>
 
-    <!-- Resistance Monitoring -->
-    <section class="content-section" style="background: var(--light-bg); margin: 0; padding: 4rem 2rem;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 class="section-title">Resistance Monitoring & Detection</h2>
-            <p class="section-subtitle">Real-time surveillance and analysis of antimicrobial resistance patterns</p>
-            
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>AST Integration</h3>
-                    <p>Antibiotic Sensitivity Testing result analysis with automated interpretation and resistance pattern detection.</p>
-                    <ul class="feature-list">
-                        <li>Laboratory result integration</li>
-                        <li>Automated sensitivity interpretation</li>
-                        <li>Resistance pattern identification</li>
-                        <li>Susceptibility profile generation</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Pattern Detection</h3>
-                    <p>Real-time resistance pattern identification using advanced analytics and machine learning algorithms.</p>
-                    <ul class="feature-list">
-                        <li>Real-time pattern identification</li>
-                        <li>Multi-drug resistance detection</li>
-                        <li>Pathogen-specific resistance tracking</li>
-                        <li>Anomaly detection algorithms</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Trend Analysis</h3>
-                    <p>Local and regional resistance tracking with comprehensive data analysis and visualization.</p>
-                    <ul class="feature-list">
-                        <li>Historical trend analysis</li>
-                        <li>Regional resistance mapping</li>
-                        <li>Comparative analytics</li>
-                        <li>Predictive modeling</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Early Warning System</h3>
-                    <p>Emerging resistance alerts and notification system for proactive intervention and prevention.</p>
-                    <ul class="feature-list">
-                        <li>Emerging resistance alerts</li>
-                        <li>Outbreak detection capabilities</li>
-                        <li>Automated notification system</li>
-                        <li>Response protocol activation</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Surveillance Reporting -->
-    <section class="content-section">
-        <h2 class="section-title">Surveillance Reporting & Analytics</h2>
-        <p class="section-subtitle">Comprehensive reporting and analytics for AMR surveillance and research</p>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Automated Reports</h3>
-                <p>Generate comprehensive AMR surveillance reports for healthcare facilities, regions, and research purposes.</p>
-                <ul class="feature-list">
-                    <li>Facility-level resistance reports</li>
-                    <li>Regional surveillance summaries</li>
-                    <li>Research data export capabilities</li>
-                    <li>Custom report generation</li>
-                </ul>
-            </div>
-            
-            <div class="feature-card">
-                <h3>Data Visualization</h3>
-                <p>Interactive dashboards and visualizations for understanding resistance patterns and trends.</p>
-                <ul class="feature-list">
-                    <li>Interactive resistance dashboards</li>
-                    <li>Trend visualization tools</li>
-                    <li>Geographic resistance mapping</li>
-                    <li>Comparative analysis charts</li>
-                </ul>
+        <!-- Quick Links -->
+        <div class="quick-links">
+            <h2 class="section-title">Quick Links</h2>
+            <div class="quick-links-grid">
+                <a href="faq.html" class="quick-link">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQ</span>
+                </a>
+                <a href="documentation.html" class="quick-link">
+                    <i class="fas fa-book"></i>
+                    <span>Documentation</span>
+                </a>
+                <a href="contact.html" class="quick-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Support</span>
+                </a>
+                <a href="download.html" class="quick-link">
+                    <i class="fas fa-download"></i>
+                    <span>Download</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1029,29 +1255,27 @@
                     <h3>Product</h3>
                     <ul class="footer-links">
                         <li><a href="features.html" class="footer-link">Features</a></li>
-                        <li><a href="index.html#mission" class="footer-link">Solutions</a></li>
+                        <li><a href="solutions.html" class="footer-link">Solutions</a></li>
                         <li><a href="team.html" class="footer-link">Team</a></li>
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul class="footer-links">
-                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="index.html#about" class="footer-link">About Us</a></li>
                         <li><a href="team.html" class="footer-link">Our Team</a></li>
                         <li><a href="index.html#mission" class="footer-link">Impact</a></li>
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>Support</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html#access" class="footer-link">Contact</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="faq.html" class="footer-link">FAQ</a></li>
                         <li><a href="help-center.html" class="footer-link">Help Center</a></li>
                         <li><a href="documentation.html" class="footer-link">Documentation</a></li>
-                        <li><a href="#" class="footer-link">FAQ</a></li>
                     </ul>
                 </div>
             </div>
@@ -1074,7 +1298,6 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileNav = document.getElementById('mobileNav');
@@ -1120,6 +1343,32 @@
             if (window.innerWidth > 768) {
                 closeMobileMenu();
             }
+        });
+
+        // Search functionality
+        function searchHelp(form) {
+            const searchTerm = form.querySelector('input').value.trim();
+            if (searchTerm) {
+                // Simple search - redirect to FAQ with search term
+                window.location.href = `faq.html?search=${encodeURIComponent(searchTerm)}`;
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
         });
     </script>
 </body>

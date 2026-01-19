@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMR Surveillance - Medikal Africa</title>
+    <title>API - Medikal Africa</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -27,6 +27,8 @@
             --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
             --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --dev-badge: #ff9800;
+            --dev-badge-light: #fff3e0;
         }
 
         body {
@@ -248,11 +250,156 @@
 
         .mobile-menu-btn {
             display: none;
-            background: none;
+            background: var(--primary-blue);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.65rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Mobile Navigation */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem 0;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 2rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .mobile-close-btn {
+            background: var(--accent-light);
             border: none;
             font-size: 1.5rem;
             color: var(--dark-text);
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .mobile-close-btn:hover {
+            background: var(--light-bg);
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-list li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-list li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-list a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-list a i {
+            width: 20px;
+            text-align: center;
+            color: var(--primary-blue);
+        }
+
+        .mobile-nav-list a:hover {
+            background: var(--accent-light);
+            color: var(--primary-blue);
+        }
+
+        .mobile-cta {
+            padding: 2rem;
+            border-top: 1px solid var(--border-light);
+            margin-top: 1rem;
+        }
+
+        .mobile-cta .cta-button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .desktop-only {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none;
+            }
         }
 
         /* Page Header */
@@ -261,6 +408,25 @@
             color: var(--white);
             padding: 4rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.03) 10px,
+                rgba(255, 255, 255, 0.03) 20px
+            );
+            pointer-events: none;
         }
 
         .page-header h1 {
@@ -268,6 +434,8 @@
             font-weight: 700;
             margin-bottom: 1rem;
             line-height: 1.2;
+            position: relative;
+            z-index: 1;
         }
 
         .page-header p {
@@ -276,6 +444,33 @@
             margin: 0 auto;
             opacity: 0.95;
             line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dev-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--dev-badge-light);
+            color: var(--dev-badge);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
+        }
+
+        .dev-banner i {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
         }
 
         /* Content Section */
@@ -313,6 +508,44 @@
             line-height: 1.7;
         }
 
+        /* Alert Box */
+        .alert {
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 4px solid;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .alert-warning {
+            background: var(--dev-badge-light);
+            border-color: var(--dev-badge);
+            color: #e65100;
+        }
+
+        .alert-info {
+            background: var(--accent-light);
+            border-color: var(--primary-blue);
+            color: var(--primary-dark);
+        }
+
+        .alert-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .alert-content {
+            flex: 1;
+        }
+
+        .alert-content strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
         /* Feature Grid */
         .feature-grid {
             display: grid;
@@ -327,11 +560,32 @@
             border-radius: 12px;
             padding: 2rem;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '🚧 Under Development';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--dev-badge-light);
+            color: var(--dev-badge);
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--dev-badge);
+        }
+
+        .feature-card {
+            padding-top: 4rem;
         }
 
         .feature-card:hover {
             box-shadow: var(--shadow-lg);
-            border-color: var(--primary-blue);
+            border-color: var(--dev-badge);
             transform: translateY(-4px);
         }
 
@@ -340,6 +594,13 @@
             font-weight: 700;
             color: var(--dark-text);
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-card h3 i {
+            color: var(--primary-blue);
         }
 
         .feature-card p {
@@ -362,11 +623,55 @@
         }
 
         .feature-list li::before {
-            content: '✓';
+            content: '→';
             position: absolute;
             left: 0;
-            color: var(--primary-blue);
+            color: var(--dev-badge);
             font-weight: 700;
+        }
+
+        /* Coming Soon Section */
+        .coming-soon-section {
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--white) 100%);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            border: 2px dashed var(--primary-blue);
+        }
+
+        .coming-soon-section h2 {
+            font-size: 2rem;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon-section p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .contact-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         /* Footer */
@@ -493,25 +798,6 @@
             }
         }
 
-        @media (max-width: 1200px) {
-            .header-container,
-            .top-bar-container,
-            .footer-container {
-                padding: 0 1.5rem;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr;
-                gap: 2rem;
-            }
-
-            .content-section {
-                padding: 3rem 1.5rem;
-            }
-        }
-
         @media (max-width: 768px) {
             .top-bar {
                 padding: 0.5rem 0;
@@ -541,34 +827,10 @@
 
             .nav-menu {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: var(--shadow-lg);
-                border-top: 1px solid var(--border-light);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-menu > li {
-                width: 100%;
-            }
-
-            .nav-menu > li > a {
-                display: block;
-                width: 100%;
-                padding: 1rem;
             }
 
             .header-container {
                 padding: 0.75rem 1rem;
-                position: relative;
             }
 
             .cta-button {
@@ -579,25 +841,8 @@
                 padding: 3rem 1rem;
             }
 
-            .page-header h1 {
-                font-size: clamp(1.75rem, 5vw, 2rem);
-            }
-
-            .page-header p {
-                font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-            }
-
             .content-section {
-                padding: 2.5rem 1rem;
-            }
-
-            .section-title {
-                font-size: 1.875rem;
-            }
-
-            .section-subtitle {
-                font-size: 1rem;
-                margin-bottom: 2rem;
+                padding: 3rem 1rem;
             }
 
             .feature-grid {
@@ -607,6 +852,11 @@
 
             .feature-card {
                 padding: 1.5rem;
+                padding-top: 3.5rem;
+            }
+
+            .coming-soon-section {
+                padding: 2rem 1.5rem;
             }
 
             .footer-grid {
@@ -636,21 +886,12 @@
 
             .feature-card {
                 padding: 1.25rem;
+                padding-top: 3rem;
             }
 
-            .feature-card h3 {
-                font-size: 1.125rem;
-            }
-        }
-
-        /* Touch-friendly */
-        @media (hover: none) and (pointer: coarse) {
-            .cta-button,
-            .nav-menu > li > a {
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            .dev-banner {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -674,6 +915,10 @@
                     <option value="en">🇬🇧 English</option>
                     <option value="fr">🇫🇷 Français</option>
                 </select>
+                <a href="index.html#access" class="top-bar-item">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </a>
             </div>
         </div>
     </div>
@@ -690,9 +935,7 @@
             <nav>
                 <ul class="nav-menu">
                     <li>
-                        <a href="index.html">
-                            Home
-                        </a>
+                        <a href="index.html">Home</a>
                     </li>
                     
                     <li>
@@ -702,32 +945,22 @@
                         </a>
                         <div class="dropdown-menu">
                             <a href="solutions.html" class="dropdown-item">
-                                <div class="dropdown-content">
-                                    Our Solutions
-                                </div>
+                                <div class="dropdown-content">Our Solutions</div>
                             </a>
                             <a href="ai-diagnostics.html" class="dropdown-item">
-                                <div class="dropdown-content">
-                                    AI Diagnostics
-                                </div>
+                                <div class="dropdown-content">AI Diagnostics</div>
                             </a>
                             <a href="amr-surveillance.html" class="dropdown-item">
-                                <div class="dropdown-content">
-                                    AMR Surveillance
-                                </div>
+                                <div class="dropdown-content">AMR Surveillance</div>
                             </a>
                             <a href="patient-portal.html" class="dropdown-item">
-                                <div class="dropdown-content">
-                                    Patient Portal
-                                </div>
+                                <div class="dropdown-content">Patient Portal</div>
                             </a>
                         </div>
                     </li>
 
                     <li>
-                        <a href="features.html">
-                            Features
-                        </a>
+                        <a href="features.html">Features</a>
                     </li>
                     
                     <li>
@@ -736,60 +969,48 @@
                             <i class="fas fa-chevron-down"></i>
                         </a>
                         <div class="dropdown-menu">
+                            <a href="documentation.html" class="dropdown-item">
+                                <div class="dropdown-content">Documentation</div>
+                            </a>
+                            <a href="api.html" class="dropdown-item">
+                                <div class="dropdown-content">API <span style="color: #ff9800; font-size: 0.85rem;">(Dev)</span></div>
+                            </a>
                             <a href="clinical-guidelines.html" class="dropdown-item">
-                                <div class="dropdown-content">
-                                    Clinical Guidelines
-                                </div>
+                                <div class="dropdown-content">Clinical Guidelines</div>
                             </a>
                             <a href="amr-data.html" class="dropdown-item">
-                                <div class="dropdown-content">
-                                    AMR Data
-                                </div>
+                                <div class="dropdown-content">AMR Data</div>
                             </a>
                             <a href="training-materials.html" class="dropdown-item">
-                                <div class="dropdown-content">
-                                    Training Materials
-                                </div>
+                                <div class="dropdown-content">Training Materials</div>
                             </a>
                         </div>
                     </li>
 
                     <li>
-                        <a href="team.html">
-                            Our Team
-                        </a>
+                        <a href="team.html">Our Team</a>
                     </li>
                     
                     <li>
-                        <a href="about.html">
-                            About Us
-                        </a>
+                        <a href="about.html">About Us</a>
                     </li>
                     
                     <li>
-                        <a href="impact.html">
-                            Impact
-                        </a>
+                        <a href="impact.html">Impact</a>
                     </li>
                     
                     <li>
-                        <a href="news/index.html">
-                            News & Media
-                        </a>
+                        <a href="news/index.html">News & Media</a>
                     </li>
                     
                     <li>
-                        <a href="contact.html">
-                            Contact
-                        </a>
+                        <a href="contact.html">Contact</a>
                     </li>
                 </ul>
             </nav>
             
             <!-- CTA Button -->
-            <a href="index.html#access" class="cta-button desktop-only">
-                Get Started
-            </a>
+            <a href="index.html#access" class="cta-button desktop-only">Get Started</a>
 
             <!-- Mobile Menu Button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
@@ -813,190 +1034,176 @@
         </div>
         
         <ul class="mobile-nav-list">
-            <li>
-                <a href="index.html">
-                    <i class="fas fa-home"></i>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="solutions.html">
-                    <i class="fas fa-puzzle-piece"></i>
-                    Solutions
-                </a>
-            </li>
-            <li>
-                <a href="features.html">
-                    <i class="fas fa-star"></i>
-                    Features
-                </a>
-            </li>
-            <li>
-                <a href="team.html">
-                    <i class="fas fa-users"></i>
-                    Our Team
-                </a>
-            </li>
-            <li>
-                <a href="about.html">
-                    <i class="fas fa-info-circle"></i>
-                    About Us
-                </a>
-            </li>
-            <li>
-                <a href="impact.html">
-                    <i class="fas fa-heart"></i>
-                    Impact
-                </a>
-            </li>
-            <li>
-                <a href="news/index.html">
-                    <i class="fas fa-newspaper"></i>
-                    News & Media
-                </a>
-            </li>
-            <li>
-                <a href="contact.html">
-                    <i class="fas fa-envelope"></i>
-                    Contact
-                </a>
-            </li>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="solutions.html"><i class="fas fa-puzzle-piece"></i> Solutions</a></li>
+            <li><a href="features.html"><i class="fas fa-star"></i> Features</a></li>
+            <li><a href="documentation.html"><i class="fas fa-book"></i> Documentation</a></li>
+            <li><a href="api.html"><i class="fas fa-code"></i> API</a></li>
+            <li><a href="team.html"><i class="fas fa-users"></i> Our Team</a></li>
+            <li><a href="impact.html"><i class="fas fa-heart"></i> Impact</a></li>
+            <li><a href="news/index.html"><i class="fas fa-newspaper"></i> News & Media</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
 
         <div class="mobile-cta">
-            <a href="index.html#access" class="cta-button">
-                Get Started Free
-            </a>
+            <a href="index.html#access" class="cta-button">Get Started Free</a>
         </div>
     </nav>
 
     <!-- Page Header -->
     <section class="page-header">
-        <h1>AMR Surveillance</h1>
-        <p>Advanced antimicrobial resistance monitoring and detection systems for real-time tracking and prevention</p>
-    </section>
-
-    <!-- Smart Prescribing -->
-    <section class="content-section">
-        <h2 class="section-title">Smart Prescribing System</h2>
-        <p class="section-subtitle">Intelligent antibiotic prescription management with WHO AWaRe classification and resistance-aware recommendations</p>
-        
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>WHO AWaRe Classification</h3>
-                <p>Integrated antibiotic categorization system following World Health Organization guidelines for Access, Watch, and Reserve antibiotics.</p>
-                <ul class="feature-list">
-                    <li>Automatic antibiotic categorization</li>
-                    <li>Access, Watch, Reserve classification</li>
-                    <li>Guideline-based recommendations</li>
-                    <li>Prescription quality monitoring</li>
-                </ul>
-            </div>
-            
-            <div class="feature-card">
-                <h3>Watch & Reserve Alerts</h3>
-                <p>Automatic highlighting of critical antibiotics to promote appropriate use and reduce resistance development.</p>
-                <ul class="feature-list">
-                    <li>Automatic alert system for critical antibiotics</li>
-                    <li>Prescription approval workflows</li>
-                    <li>Justification requirements for restricted antibiotics</li>
-                    <li>Clinical decision support alerts</li>
-                </ul>
-            </div>
-            
-            <div class="feature-card">
-                <h3>Resistance-Aware Recommendations</h3>
-                <p>AI-powered prescription guidance that considers local resistance patterns and antimicrobial stewardship principles.</p>
-                <ul class="feature-list">
-                    <li>Local resistance pattern analysis</li>
-                    <li>Evidence-based antibiotic selection</li>
-                    <li>Treatment optimization algorithms</li>
-                    <li>Stewardship program integration</li>
-                </ul>
-            </div>
+        <h1>API Reference</h1>
+        <p>Integrate Medikal Africa's AI-powered healthcare capabilities into your applications</p>
+        <div class="dev-banner">
+            <i class="fas fa-tools"></i>
+            <span>Currently Under Development</span>
         </div>
     </section>
 
-    <!-- Resistance Monitoring -->
-    <section class="content-section" style="background: var(--light-bg); margin: 0; padding: 4rem 2rem;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 class="section-title">Resistance Monitoring & Detection</h2>
-            <p class="section-subtitle">Real-time surveillance and analysis of antimicrobial resistance patterns</p>
-            
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>AST Integration</h3>
-                    <p>Antibiotic Sensitivity Testing result analysis with automated interpretation and resistance pattern detection.</p>
-                    <ul class="feature-list">
-                        <li>Laboratory result integration</li>
-                        <li>Automated sensitivity interpretation</li>
-                        <li>Resistance pattern identification</li>
-                        <li>Susceptibility profile generation</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Pattern Detection</h3>
-                    <p>Real-time resistance pattern identification using advanced analytics and machine learning algorithms.</p>
-                    <ul class="feature-list">
-                        <li>Real-time pattern identification</li>
-                        <li>Multi-drug resistance detection</li>
-                        <li>Pathogen-specific resistance tracking</li>
-                        <li>Anomaly detection algorithms</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Trend Analysis</h3>
-                    <p>Local and regional resistance tracking with comprehensive data analysis and visualization.</p>
-                    <ul class="feature-list">
-                        <li>Historical trend analysis</li>
-                        <li>Regional resistance mapping</li>
-                        <li>Comparative analytics</li>
-                        <li>Predictive modeling</li>
-                    </ul>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Early Warning System</h3>
-                    <p>Emerging resistance alerts and notification system for proactive intervention and prevention.</p>
-                    <ul class="feature-list">
-                        <li>Emerging resistance alerts</li>
-                        <li>Outbreak detection capabilities</li>
-                        <li>Automated notification system</li>
-                        <li>Response protocol activation</li>
-                    </ul>
-                </div>
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle alert-icon"></i>
+            <div class="alert-content">
+                <strong>API Not Available Yet</strong>
+                <p>The Medikal Africa API is currently under active development. We're working hard to bring you a comprehensive, secure, and easy-to-use API that will enable seamless integration with our healthcare platform. Expected release: 2026.</p>
             </div>
         </div>
-    </section>
 
-    <!-- Surveillance Reporting -->
-    <section class="content-section">
-        <h2 class="section-title">Surveillance Reporting & Analytics</h2>
-        <p class="section-subtitle">Comprehensive reporting and analytics for AMR surveillance and research</p>
-        
+        <div class="coming-soon-section">
+            <h2>🚀 Coming Soon</h2>
+            <p>We're building a powerful RESTful API that will allow developers to integrate Medikal Africa's AI diagnostics, AMR surveillance, and patient management features into their own applications.</p>
+            <a href="contact.html" class="contact-cta">
+                <i class="fas fa-envelope"></i>
+                Contact Us for Early Access
+            </a>
+        </div>
+
+        <h2 class="section-title">Planned API Features</h2>
+        <p class="section-subtitle">Here's what you can expect when the API launches:</p>
+
         <div class="feature-grid">
             <div class="feature-card">
-                <h3>Automated Reports</h3>
-                <p>Generate comprehensive AMR surveillance reports for healthcare facilities, regions, and research purposes.</p>
+                <h3><i class="fas fa-robot"></i> AI Diagnostics</h3>
+                <p>Access our AI-powered diagnostic capabilities through API endpoints.</p>
                 <ul class="feature-list">
-                    <li>Facility-level resistance reports</li>
-                    <li>Regional surveillance summaries</li>
-                    <li>Research data export capabilities</li>
-                    <li>Custom report generation</li>
+                    <li>Symptom analysis and diagnosis</li>
+                    <li>Medical image analysis</li>
+                    <li>Lab result interpretation</li>
+                    <li>Treatment recommendations</li>
                 </ul>
             </div>
-            
+
             <div class="feature-card">
-                <h3>Data Visualization</h3>
-                <p>Interactive dashboards and visualizations for understanding resistance patterns and trends.</p>
+                <h3><i class="fas fa-chart-line"></i> AMR Surveillance</h3>
+                <p>Integrate antimicrobial resistance monitoring and reporting.</p>
                 <ul class="feature-list">
-                    <li>Interactive resistance dashboards</li>
-                    <li>Trend visualization tools</li>
-                    <li>Geographic resistance mapping</li>
-                    <li>Comparative analysis charts</li>
+                    <li>AMR data retrieval</li>
+                    <li>Resistance pattern analysis</li>
+                    <li>Outbreak detection alerts</li>
+                    <li>Regional statistics</li>
                 </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><i class="fas fa-users"></i> Patient Management</h3>
+                <p>Manage patient records and healthcare workflows.</p>
+                <ul class="feature-list">
+                    <li>Patient record CRUD operations</li>
+                    <li>Medical history management</li>
+                    <li>Appointment scheduling</li>
+                    <li>Prescription management</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><i class="fas fa-shield-alt"></i> Authentication & Security</h3>
+                <p>Secure API access with industry-standard authentication.</p>
+                <ul class="feature-list">
+                    <li>API key management</li>
+                    <li>OAuth 2.0 support</li>
+                    <li>JWT token authentication</li>
+                    <li>Rate limiting & quotas</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><i class="fas fa-bell"></i> Webhooks</h3>
+                <p>Receive real-time notifications about important events.</p>
+                <ul class="feature-list">
+                    <li>Diagnosis completion events</li>
+                    <li>Patient update notifications</li>
+                    <li>AMR alert triggers</li>
+                    <li>Custom event subscriptions</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><i class="fas fa-language"></i> Multilingual Support</h3>
+                <p>API endpoints with built-in translation capabilities.</p>
+                <ul class="feature-list">
+                    <li>Multi-language responses</li>
+                    <li>Automatic translation</li>
+                    <li>Regional language support</li>
+                    <li>Localized error messages</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">API Specifications</h2>
+        <p class="section-subtitle">Technical details about the upcoming API:</p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3><i class="fas fa-server"></i> Architecture</h3>
+                <p>RESTful API design following industry best practices.</p>
+                <ul class="feature-list">
+                    <li>RESTful endpoints</li>
+                    <li>JSON request/response format</li>
+                    <li>HTTP/HTTPS protocols</li>
+                    <li>Versioned API (v1, v2, etc.)</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><i class="fas fa-tachometer-alt"></i> Performance</h3>
+                <p>Optimized for speed and reliability.</p>
+                <ul class="feature-list">
+                    <li>Low latency responses</li>
+                    <li>High availability (99.9% uptime)</li>
+                    <li>Scalable infrastructure</li>
+                    <li>Response caching support</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><i class="fas fa-code"></i> SDKs & Libraries</h3>
+                <p>Official SDKs for popular programming languages.</p>
+                <ul class="feature-list">
+                    <li>Python SDK</li>
+                    <li>JavaScript/TypeScript SDK</li>
+                    <li>Java SDK</li>
+                    <li>PHP SDK</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3><i class="fas fa-book"></i> Documentation</h3>
+                <p>Comprehensive documentation and resources.</p>
+                <ul class="feature-list">
+                    <li>Interactive API explorer</li>
+                    <li>Code examples & tutorials</li>
+                    <li>Postman collection</li>
+                    <li>OpenAPI/Swagger specs</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle alert-icon"></i>
+            <div class="alert-content">
+                <strong>Stay Updated</strong>
+                <p>Want to be notified when the API is ready? <a href="contact.html" style="color: var(--primary-dark); font-weight: 600;">Contact us</a> to join our developer mailing list and get early access to beta testing.</p>
             </div>
         </div>
     </section>
@@ -1049,9 +1256,9 @@
                     <h3>Support</h3>
                     <ul class="footer-links">
                         <li><a href="index.html#access" class="footer-link">Contact</a></li>
-                        <li><a href="help-center.html" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Help Center</a></li>
                         <li><a href="documentation.html" class="footer-link">Documentation</a></li>
-                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="api.html" class="footer-link">API</a></li>
                     </ul>
                 </div>
             </div>
@@ -1075,7 +1282,6 @@
 
     <script>
         // Mobile menu toggle
-        // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileNav = document.getElementById('mobileNav');
         const mobileOverlay = document.getElementById('mobileOverlay');
