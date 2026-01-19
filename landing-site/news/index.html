@@ -1057,8 +1057,39 @@
                 }
             });
 
+            // Auto-slide functionality
+            let autoSlideInterval;
+            const autoSlideDelay = 4000; // 4 seconds
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
+                    if (currentIndex < cards.length - 1) {
+                        nextSlide();
+                    } else {
+                        // Loop back to start
+                        currentIndex = 0;
+                        updateCarousel();
+                    }
+                }, autoSlideDelay);
+            }
+
+            function stopAutoSlide() {
+                if (autoSlideInterval) {
+                    clearInterval(autoSlideInterval);
+                }
+            }
+
+            // Pause auto-slide on hover/touch
+            track.addEventListener('mouseenter', stopAutoSlide);
+            track.addEventListener('mouseleave', startAutoSlide);
+            track.addEventListener('touchstart', stopAutoSlide);
+            track.addEventListener('touchend', () => {
+                setTimeout(startAutoSlide, 2000); // Resume after 2 seconds
+            });
+
             // Initialize
             updateCarousel();
+            startAutoSlide();
 
             // Handle resize
             let resizeTimer;
@@ -1068,6 +1099,8 @@
                     if (window.innerWidth <= 768) {
                         const newCardWidth = cards[0].offsetWidth + 16;
                         track.style.transform = `translateX(-${currentIndex * newCardWidth}px)`;
+                    } else {
+                        stopAutoSlide();
                     }
                 }, 250);
             });

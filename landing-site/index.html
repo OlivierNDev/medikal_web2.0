@@ -2068,6 +2068,7 @@
 
             .logo-track {
                 gap: 2rem;
+                animation: scrollLogos 30s linear infinite; /* Faster on mobile */
             }
 
             .logo-item {
@@ -2163,6 +2164,7 @@
 
             .news-carousel-track {
                 gap: 1.25rem;
+                animation: scrollNews 45s linear infinite; /* Slower on mobile for better UX */
             }
         }
 
@@ -2773,18 +2775,10 @@
                     <div class="features-visual-content">
                         <div class="demo-video-container-inline">
                             <div class="demo-video-wrapper-inline">
-                                <div class="video-thumbnail-container" id="videoThumbnailContainer">
-                                    <img src="demo-video-thumbnail.jpg" alt="Medikal Demo Video" id="videoThumbnail" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1920 1080\'%3E%3Crect fill=\'%235EC4D5\' width=\'1920\' height=\'1080\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' font-size=\'48\' fill=\'white\' text-anchor=\'middle\' dominant-baseline=\'middle\'%3EMedikal Demo%3C/text%3E%3C/svg%3E';">
-                                    <div class="video-play-overlay">
-                                        <div class="video-play-button">
-                                            <i class="fas fa-play"></i>
-                                        </div>
-                                    </div>
-                                    <video id="inlineDemoVideo" controls preload="none" style="display: none;">
-                                        <source src="demo-video.mp4" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
+                                <video controls preload="metadata">
+                                    <source src="demo-video.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                         </div>
                     </div>
@@ -3327,22 +3321,6 @@
                 behavior: 'smooth' 
             });
         }
-
-        // Inline Video Thumbnail Handler
-        (function() {
-            const videoThumbnailContainer = document.getElementById('videoThumbnailContainer');
-            const inlineDemoVideo = document.getElementById('inlineDemoVideo');
-            
-            if (videoThumbnailContainer && inlineDemoVideo) {
-                videoThumbnailContainer.addEventListener('click', function() {
-                    this.classList.add('playing');
-                    inlineDemoVideo.style.display = 'block';
-                    inlineDemoVideo.play().catch(e => {
-                        console.log('Autoplay prevented:', e);
-                    });
-                });
-            }
-        })();
 
         // Video Modal Functions
         (function() {
