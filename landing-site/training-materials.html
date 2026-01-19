@@ -181,16 +181,18 @@
         }
 
         .page-header h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 700;
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
         .page-header p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             max-width: 800px;
             margin: 0 auto;
             opacity: 0.95;
+            line-height: 1.6;
         }
 
         /* Content Section */
@@ -201,12 +203,13 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
             font-weight: 700;
             color: var(--dark-text);
             margin-bottom: 1rem;
             position: relative;
             padding-bottom: 1rem;
+            line-height: 1.2;
         }
 
         .section-title::after {
@@ -230,7 +233,7 @@
         /* Feature Grid */
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
@@ -407,40 +410,164 @@
             }
         }
 
+        @media (max-width: 1200px) {
+            .header-container,
+            .top-bar-container,
+            .footer-container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .content-section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            .top-bar {
+                padding: 0.5rem 0;
+            }
+
+            .top-bar-container {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 0 1rem;
+            }
+
+            .top-bar-left,
+            .top-bar-right {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .top-bar-item span {
+                font-size: 0.8rem;
+            }
+
             .mobile-menu-btn {
                 display: block;
             }
 
             .nav-menu {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+                border-top: 1px solid var(--border-light);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu > li {
+                width: 100%;
+            }
+
+            .nav-menu > li > a {
+                display: block;
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .header-container {
+                padding: 0.75rem 1rem;
+                position: relative;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            .page-header {
+                padding: 3rem 1rem;
             }
 
             .page-header h1 {
-                font-size: 2rem;
+                font-size: clamp(1.75rem, 5vw, 2rem);
+            }
+
+            .page-header p {
+                font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+            }
+
+            .content-section {
+                padding: 2.5rem 1rem;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.875rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
 
             .feature-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
+            .footer-container {
+                padding: 3rem 1rem 1.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
             .page-header {
-                padding: 3rem 1.5rem;
+                padding: 2.5rem 0.75rem;
             }
 
             .content-section {
-                padding: 3rem 1.5rem;
+                padding: 2rem 0.75rem;
+            }
+
+            .feature-card {
+                padding: 1.25rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Touch-friendly */
+        @media (hover: none) and (pointer: coarse) {
+            .cta-button,
+            .nav-menu > li > a {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     </style>
@@ -649,17 +776,14 @@
                         AI-powered healthcare platform combating Antimicrobial Resistance (AMR) in Africa through innovative technology and multilingual support.
                     </p>
                     <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Follow us on Twitter">
+                        <a href="https://x.com/medikal_africa" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow us on X (Twitter)">
                             <i class="fa-brands fa-twitter"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="Connect on LinkedIn">
+                        <a href="https://www.linkedin.com/company/medikal-africa/about/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Connect on LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="social-link" aria-label="Follow us on Instagram">
+                        <a href="https://www.instagram.com/medikal_africa/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow us on Instagram">
                             <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Like us on Facebook">
-                            <i class="fab fa-facebook-f"></i>
                         </a>
                     </div>
                 </div>
@@ -711,5 +835,59 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                }
+            });
+
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = navMenu.contains(event.target);
+                const isClickOnButton = mobileMenuBtn.contains(event.target);
+                
+                if (!isClickInsideNav && !isClickOnButton && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                }
+            });
+
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                });
+            });
+
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>
