@@ -63,14 +63,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Early access form handling
+// Early access form handling (deprecated - now using mailto links)
+// This code is kept for backward compatibility but won't run since accessForm doesn't exist
 document.addEventListener('DOMContentLoaded', function() {
     const accessForm = document.getElementById('accessForm');
     const successMessage = document.getElementById('successMessage');
     const submitText = document.getElementById('submitText');
     const submitIcon = document.getElementById('submitIcon');
     
-    if (!accessForm) return; // Exit if form doesn't exist
+    // Form no longer exists - we're using mailto links on early-access.html instead
+    if (!accessForm) {
+        // Silently exit - this is expected behavior
+        return;
+    }
 
     accessForm.addEventListener('submit', async (e) => {
     e.preventDefault();

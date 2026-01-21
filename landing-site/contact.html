@@ -1218,9 +1218,22 @@
         const emailInput = document.getElementById('email');
         const replyToInput = document.getElementById('replyTo');
 
+        // Check if form exists
+        if (!contactForm) {
+            console.warn('Contact form not found');
+            return;
+        }
+
+        if (!formMessage || !submitButton || !emailInput || !replyToInput) {
+            console.warn('Contact form elements not found');
+            return;
+        }
+
         // Update reply-to field when email changes
         emailInput.addEventListener('input', function() {
-            replyToInput.value = this.value;
+            if (replyToInput) {
+                replyToInput.value = this.value;
+            }
         });
 
         contactForm.addEventListener('submit', async function(e) {
@@ -1258,17 +1271,25 @@
                     }, 3000);
                 } else {
                     // Error from Formspree
-                    const data = await response.json();
-                    throw new Error(data.error || 'Something went wrong. Please try again.');
+                    try {
+                        const data = await response.json();
+                        throw new Error(data.error || 'Something went wrong. Please try again.');
+                    } catch (jsonError) {
+                        throw new Error('Something went wrong. Please try again.');
+                    }
                 }
             } catch (error) {
                 // Network or other error
-                formMessage.textContent = error.message || 'Unable to send message. Please try again or email us directly at contact@medikalafrica.com';
-                formMessage.classList.add('show', 'error');
+                if (formMessage) {
+                    formMessage.textContent = error.message || 'Unable to send message. Please try again or email us directly at contact@medikalafrica.com';
+                    formMessage.classList.add('show', 'error');
+                }
                 
-                    // Reset button
+                // Reset button
+                if (submitButton) {
                     submitButton.disabled = false;
                     submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> <span>Send Message</span>';
+                }
             }
         });
 
