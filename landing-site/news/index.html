@@ -2,7 +2,10 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
     <title>News - Medikal</title>
     <link rel="icon" type="image/png" href="../logo.png">
     <link rel="shortcut icon" type="image/png" href="../logo.png">
@@ -34,6 +37,8 @@
 
         html {
             overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -44,12 +49,32 @@
             overflow-x: hidden;
             width: 100%;
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* iOS Safari specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            html {
+                height: -webkit-fill-available;
+            }
+
+            body {
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+            }
+
+            .medikal-header {
+                position: -webkit-sticky;
+                position: sticky;
+            }
         }
 
         @media (max-width: 768px) {
             body {
                 font-size: 16px;
                 -webkit-text-size-adjust: 100%;
+                touch-action: pan-y pinch-zoom;
             }
 
             /* Fix for iOS Safari viewport */
@@ -383,6 +408,7 @@
             overflow: hidden;
             width: 100%;
             -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
         }
 
         .news-carousel-track {
@@ -390,6 +416,10 @@
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             gap: 1rem;
             will-change: transform;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
         .news-carousel-card {
@@ -1122,159 +1152,208 @@
     </footer>
 
     <script>
-        // Mobile Carousel Functionality
+        // Mobile Carousel Functionality (iOS Compatible)
         (function() {
-            if (window.innerWidth > 768) return; // Only on mobile
+            // Detect iOS
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-            const track = document.getElementById('newsCarouselTrack');
-            const cards = track.querySelectorAll('.news-carousel-card');
-            const prevBtn = document.getElementById('carouselPrev');
-            const nextBtn = document.getElementById('carouselNext');
-            const indicators = document.getElementById('carouselIndicators');
-            
-            if (!track || cards.length === 0) return;
+            // Initialize on mobile or if already on mobile
+            const initCarousel = () => {
+                if (window.innerWidth > 768) return; // Only on mobile
 
-            let currentIndex = 0;
-            let cardWidth = 0;
-
-            function calculateCardWidth() {
-                if (cards.length > 0) {
-                    const card = cards[0];
-                    const cardStyle = window.getComputedStyle(card);
-                    const cardMargin = parseInt(cardStyle.marginRight) || 16;
-                    cardWidth = card.offsetWidth + cardMargin;
-                }
-            }
-
-            // Calculate initial card width
-            calculateCardWidth();
-
-            // Recalculate on resize
-            let resizeTimer;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
-                    calculateCardWidth();
-                    updateCarousel();
-                }, 250);
-            });
-
-            // Create indicators
-            cards.forEach((_, index) => {
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
-                dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-                dot.addEventListener('click', () => goToSlide(index));
-                indicators.appendChild(dot);
-            });
-
-            function updateCarousel() {
-                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                const track = document.getElementById('newsCarouselTrack');
+                const cards = track ? track.querySelectorAll('.news-carousel-card') : [];
+                const prevBtn = document.getElementById('carouselPrev');
+                const nextBtn = document.getElementById('carouselNext');
+                const indicators = document.getElementById('carouselIndicators');
                 
-                // Update indicators
-                const dots = indicators.querySelectorAll('.carousel-dot');
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
+                if (!track || cards.length === 0) return;
+
+                // Use the existing carousel code but ensure it works on iOS
+                setupCarousel(track, cards, prevBtn, nextBtn, indicators, isIOS);
+            };
+
+            // Setup carousel with iOS compatibility
+            function setupCarousel(track, cards, prevBtn, nextBtn, indicators, isIOS) {
+                let currentIndex = 0;
+                let cardWidth = 0;
+                let autoSlideInterval = null;
+
+                function calculateCardWidth() {
+                    if (cards.length > 0) {
+                        const card = cards[0];
+                        const cardStyle = window.getComputedStyle(card);
+                        const cardMargin = parseInt(cardStyle.marginRight) || 16;
+                        cardWidth = card.offsetWidth + cardMargin;
+                    }
+                }
+
+                // Calculate initial card width with delay for iOS
+                if (isIOS) {
+                    setTimeout(() => {
+                        calculateCardWidth();
+                        updateCarousel();
+                    }, 300);
+                } else {
+                    calculateCardWidth();
+                }
+
+                // Recalculate on resize
+                let resizeTimer;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(() => {
+                        calculateCardWidth();
+                        updateCarousel();
+                    }, 250);
                 });
 
-                // Update buttons
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex === cards.length - 1;
-            }
+                // Create indicators
+                cards.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'carousel-dot' + (index === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                    dot.addEventListener('click', () => goToSlide(index));
+                    indicators.appendChild(dot);
+                });
 
-            function goToSlide(index) {
-                currentIndex = Math.max(0, Math.min(index, cards.length - 1));
-                updateCarousel();
-            }
+                function updateCarousel() {
+                    if (cardWidth === 0) calculateCardWidth();
+                    
+                    const translateX = -currentIndex * cardWidth;
+                    track.style.transform = `translateX(${translateX}px)`;
+                    track.style.webkitTransform = `translateX(${translateX}px)`;
+                    
+                    // Update indicators
+                    const dots = indicators.querySelectorAll('.carousel-dot');
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentIndex);
+                    });
 
-            function nextSlide() {
-                if (currentIndex < cards.length - 1) {
-                    currentIndex++;
+                    // Update buttons
+                    if (prevBtn) prevBtn.disabled = currentIndex === 0;
+                    if (nextBtn) nextBtn.disabled = currentIndex === cards.length - 1;
+                }
+
+                function goToSlide(index) {
+                    currentIndex = Math.max(0, Math.min(index, cards.length - 1));
                     updateCarousel();
                 }
-            }
 
-            function prevSlide() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
-            }
-
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-
-            // Touch/swipe support
-            let startX = 0;
-            let isDragging = false;
-
-            track.addEventListener('touchstart', (e) => {
-                startX = e.touches[0].clientX;
-                isDragging = true;
-            });
-
-            track.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-            });
-
-            track.addEventListener('touchend', (e) => {
-                if (!isDragging) return;
-                isDragging = false;
-                const endX = e.changedTouches[0].clientX;
-                const diff = startX - endX;
-
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) nextSlide();
-                    else prevSlide();
-                }
-            });
-
-            // Auto-slide functionality
-            let autoSlideInterval;
-            const autoSlideDelay = 4000; // 4 seconds
-
-            function startAutoSlide() {
-                autoSlideInterval = setInterval(() => {
+                function nextSlide() {
                     if (currentIndex < cards.length - 1) {
-                        nextSlide();
+                        currentIndex++;
+                        updateCarousel();
                     } else {
                         // Loop back to start
                         currentIndex = 0;
                         updateCarousel();
                     }
-                }, autoSlideDelay);
-            }
+                }
 
-            function stopAutoSlide() {
-                if (autoSlideInterval) {
-                    clearInterval(autoSlideInterval);
-                    autoSlideInterval = null;
+                function prevSlide() {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateCarousel();
+                    } else {
+                        // Loop to end
+                        currentIndex = cards.length - 1;
+                        updateCarousel();
+                    }
+                }
+
+                if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+                if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+                // Touch/swipe support (iOS compatible)
+                let startX = 0;
+                let isDragging = false;
+                const touchOptions = { passive: true };
+
+                track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    stopAutoSlide();
+                }, touchOptions);
+
+                track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    // Allow native scrolling
+                }, touchOptions);
+
+                track.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    const endX = e.changedTouches[0].clientX;
+                    const diff = startX - endX;
+
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) nextSlide();
+                        else prevSlide();
+                    }
+                    
+                    // Resume auto-slide after touch
+                    setTimeout(() => {
+                        startAutoSlide();
+                    }, 2000);
+                }, touchOptions);
+
+                // Auto-slide functionality
+                const autoSlideDelay = 4000; // 4 seconds
+
+                function startAutoSlide() {
+                    stopAutoSlide(); // Clear any existing interval
+                    autoSlideInterval = setInterval(() => {
+                        nextSlide();
+                    }, autoSlideDelay);
+                }
+
+                function stopAutoSlide() {
+                    if (autoSlideInterval) {
+                        clearInterval(autoSlideInterval);
+                        autoSlideInterval = null;
+                    }
+                }
+
+                // Pause auto-slide on hover (desktop only)
+                if (!isIOS) {
+                    track.addEventListener('mouseenter', stopAutoSlide);
+                    track.addEventListener('mouseleave', startAutoSlide);
+                }
+
+                // Initialize
+                if (isIOS) {
+                    // Delay initialization on iOS
+                    setTimeout(() => {
+                        updateCarousel();
+                        startAutoSlide();
+                    }, 500);
+                } else {
+                    updateCarousel();
+                    startAutoSlide();
                 }
             }
 
-            // Pause auto-slide on hover/touch
-            track.addEventListener('mouseenter', stopAutoSlide);
-            track.addEventListener('mouseleave', startAutoSlide);
-            track.addEventListener('touchstart', stopAutoSlide);
-            track.addEventListener('touchend', () => {
-                setTimeout(startAutoSlide, 2000); // Resume after 2 seconds
+            // Initialize carousel
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCarousel);
+            } else {
+                // Small delay to ensure DOM is ready, especially for iOS
+                setTimeout(initCarousel, 100);
+            }
+
+            // Also initialize on window load (iOS sometimes needs this)
+            window.addEventListener('load', () => {
+                setTimeout(initCarousel, 200);
             });
 
-            // Initialize
-            updateCarousel();
-            startAutoSlide();
-
             // Handle window resize
+            let globalResizeTimer;
             window.addEventListener('resize', () => {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(() => {
-                    if (window.innerWidth <= 768) {
-                        calculateCardWidth();
-                        updateCarousel();
-                    } else {
-                        stopAutoSlide();
-                    }
+                clearTimeout(globalResizeTimer);
+                globalResizeTimer = setTimeout(() => {
+                    initCarousel();
                 }, 250);
             });
         })();

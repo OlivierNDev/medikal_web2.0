@@ -2,13 +2,29 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
     <title>Medikal - AI-Powered Health Assistant for Africa</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="shortcut icon" type="image/png" href="logo.png">
     <link rel="apple-touch-icon" href="logo.png">
     <meta name="description" content="Africa's AI-powered health assistant fighting Antimicrobial Resistance (AMR) for safer, smarter healthcare.">
+    <!-- Tailwind CSS CDN - Consider replacing with production build for better performance -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Suppress Tailwind CDN warning in production
+        if (typeof console !== 'undefined' && console.warn) {
+            const originalWarn = console.warn;
+            console.warn = function(...args) {
+                if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) {
+                    return; // Suppress Tailwind CDN warning
+                }
+                originalWarn.apply(console, args);
+            };
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
@@ -69,12 +85,34 @@
         /* Global mobile fixes */
         html {
             overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             overflow-x: hidden;
             width: 100%;
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* iOS Safari specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            html {
+                height: -webkit-fill-available;
+            }
+
+            body {
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+            }
+
+            /* Fix for iOS Safari address bar */
+            .medikal-header {
+                position: -webkit-sticky;
+                position: sticky;
+            }
         }
 
         @media (max-width: 768px) {
@@ -82,9 +120,10 @@
             body {
                 font-size: 16px;
                 -webkit-text-size-adjust: 100%;
+                touch-action: pan-y pinch-zoom;
             }
 
-            /* Fix for iOS Safari viewport */
+            /* iOS Safari viewport fix */
             @supports (-webkit-touch-callout: none) {
                 body {
                     min-height: -webkit-fill-available;
@@ -108,6 +147,21 @@
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Performance optimizations for mobile */
+        @media (max-width: 768px) {
+            /* Reduce animations on mobile for better performance */
+            * {
+                animation-duration: 0.3s !important;
+            }
+            
+            /* Disable expensive effects on mobile */
+            .animate-float,
+            .animate-glow,
+            .animate-pulse-cyber {
+                animation: none !important;
             }
         }
         .cyber-border {
@@ -2217,6 +2271,10 @@
             width: fit-content;
             animation: scrollNews 60s linear infinite;
             will-change: transform;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
         .news-carousel-track:hover {
@@ -2227,6 +2285,14 @@
         @media (hover: none) and (pointer: coarse) {
             .news-carousel-track:hover {
                 animation-play-state: running;
+            }
+        }
+
+        /* iOS Safari animation fix */
+        @supports (-webkit-touch-callout: none) {
+            .news-carousel-track {
+                -webkit-animation: scrollNews 60s linear infinite;
+                animation: scrollNews 60s linear infinite;
             }
         }
 
@@ -2250,9 +2316,11 @@
         @media (max-width: 768px) {
             .news-carousel-wrapper {
                 padding: 1.5rem 0;
-                overflow-x: auto;
+                overflow-x: hidden;
+                overflow-y: visible;
                 -webkit-overflow-scrolling: touch;
-                scroll-snap-type: x mandatory;
+                position: relative;
+                touch-action: pan-y;
             }
 
             .news-carousel-wrapper::-webkit-scrollbar {
@@ -2268,18 +2336,28 @@
                 width: 85vw;
                 max-width: 320px;
                 min-width: 280px;
-                scroll-snap-align: start;
             }
 
             .news-carousel-track {
                 gap: 1.25rem;
                 animation: scrollNews 45s linear infinite;
+                -webkit-animation: scrollNews 45s linear infinite;
                 will-change: transform;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
             }
 
             /* Ensure animation works on mobile */
             .news-carousel-track:hover {
                 animation-play-state: running;
+            }
+
+            /* iOS Safari specific */
+            @supports (-webkit-touch-callout: none) {
+                .news-carousel-track {
+                    -webkit-animation: scrollNews 45s linear infinite;
+                    animation: scrollNews 45s linear infinite;
+                }
             }
         }
 
@@ -3333,31 +3411,45 @@
             const body = document.body;
             const mainHeader = document.getElementById('mainHeader');
 
+            // Check if elements exist before proceeding
+            if (!mobileMenuBtn || !mobileNav || !mobileOverlay) {
+                console.warn('Mobile menu elements not found');
+                return;
+            }
+
             // Open mobile menu
             function openMobileMenu() {
-                mobileNav.classList.add('active');
-                mobileOverlay.classList.add('active');
-                body.classList.add('menu-open');
-                
-                // Update button icon
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.className = 'fas fa-times';
+                if (mobileNav && mobileOverlay) {
+                    mobileNav.classList.add('active');
+                    mobileOverlay.classList.add('active');
+                    body.classList.add('menu-open');
+                    
+                    // Update button icon
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.className = 'fas fa-times';
+                    }
+                }
             }
 
             // Close mobile menu
             function closeMobileMenu() {
-                mobileNav.classList.remove('active');
-                mobileOverlay.classList.remove('active');
-                body.classList.remove('menu-open');
-                
-                // Update button icon
-                const icon = mobileMenuBtn.querySelector('i');
-                icon.className = 'fas fa-bars';
+                if (mobileNav && mobileOverlay) {
+                    mobileNav.classList.remove('active');
+                    mobileOverlay.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    
+                    // Update button icon
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (icon) {
+                        icon.className = 'fas fa-bars';
+                    }
+                }
             }
 
             // Toggle mobile menu
             function toggleMobileMenu() {
-                if (mobileNav.classList.contains('active')) {
+                if (mobileNav && mobileNav.classList.contains('active')) {
                     closeMobileMenu();
                 } else {
                     openMobileMenu();
@@ -3376,17 +3468,23 @@
             }
 
             // Close menu when clicking nav links
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    closeMobileMenu();
+            if (mobileNavLinks && mobileNavLinks.length > 0) {
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        closeMobileMenu();
+                    });
                 });
-            });
+            }
 
             // Close menu on window resize if open
+            let resizeTimer;
             window.addEventListener('resize', function() {
-                if (window.innerWidth > 768 && mobileNav && mobileNav.classList.contains('active')) {
-                    closeMobileMenu();
-                }
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    if (window.innerWidth > 768 && mobileNav && mobileNav.classList.contains('active')) {
+                        closeMobileMenu();
+                    }
+                }, 250);
             });
 
             // Keyboard support (ESC key)
@@ -3855,62 +3953,120 @@
             });
         }
 
-            // ========================================
-            // NEWS CAROUSEL MOBILE ENHANCEMENT
-            // ========================================
+        // ========================================
+        // NEWS CAROUSEL MOBILE ENHANCEMENT (iOS Compatible)
+        // ========================================
+        document.addEventListener('DOMContentLoaded', function() {
             const newsCarousel = document.getElementById('newsCarousel');
             if (newsCarousel) {
-                // Ensure animation works on mobile
+                // Detect iOS
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                             (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+                // Ensure animation works on mobile and iOS
                 const ensureAnimation = () => {
                     if (window.innerWidth <= 768) {
                         // Force reflow to restart animation if needed
+                        const currentAnimation = window.getComputedStyle(newsCarousel).animation;
                         newsCarousel.style.animation = 'none';
+                        
+                        // Use requestAnimationFrame for better iOS compatibility
                         requestAnimationFrame(() => {
-                            newsCarousel.style.animation = '';
+                            requestAnimationFrame(() => {
+                                newsCarousel.style.animation = '';
+                                // Force iOS to recognize the animation
+                                if (isIOS) {
+                                    newsCarousel.style.webkitAnimation = currentAnimation || 'scrollNews 60s linear infinite';
+                                }
+                            });
                         });
                     }
                 };
 
+                // Initialize animation after page load
+                const initAnimation = () => {
+                    // Small delay to ensure DOM is ready
+                    setTimeout(() => {
+                        ensureAnimation();
+                    }, 100);
+                };
+
                 // Check on load
                 if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', ensureAnimation);
+                    document.addEventListener('DOMContentLoaded', initAnimation);
                 } else {
-                    ensureAnimation();
+                    initAnimation();
                 }
+
+                // Also trigger on window load (iOS sometimes needs this)
+                window.addEventListener('load', initAnimation);
 
                 // Re-check on resize
                 let resizeTimer;
                 window.addEventListener('resize', () => {
                     clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(ensureAnimation, 250);
+                    resizeTimer = setTimeout(() => {
+                        if (window.innerWidth <= 768) {
+                            ensureAnimation();
+                        }
+                    }, 250);
                 });
 
-                // Touch support for mobile
+                // Touch support for mobile (iOS compatible)
                 let touchStartX = 0;
                 let touchEndX = 0;
                 let isPaused = false;
+                let pauseTimeout = null;
+
+                const pauseAnimation = () => {
+                    if (!isPaused) {
+                        newsCarousel.style.animationPlayState = 'paused';
+                        newsCarousel.style.webkitAnimationPlayState = 'paused';
+                        isPaused = true;
+                    }
+                };
+
+                const resumeAnimation = () => {
+                    if (isPaused) {
+                        newsCarousel.style.animationPlayState = 'running';
+                        newsCarousel.style.webkitAnimationPlayState = 'running';
+                        isPaused = false;
+                    }
+                };
+
+                // Use passive listeners for better iOS performance
+                const touchOptions = { passive: true };
 
                 newsCarousel.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                    newsCarousel.style.animationPlayState = 'paused';
-                    isPaused = true;
-                });
+                    touchStartX = e.touches[0].clientX;
+                    pauseAnimation();
+                    if (pauseTimeout) clearTimeout(pauseTimeout);
+                }, touchOptions);
+
+                newsCarousel.addEventListener('touchmove', (e) => {
+                    // Keep paused during touch move
+                    pauseAnimation();
+                }, touchOptions);
 
                 newsCarousel.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    const diff = touchStartX - touchEndX;
+                    touchEndX = e.changedTouches[0].clientX;
+                    const diff = Math.abs(touchStartX - touchEndX);
                     
-                    // Resume animation after a delay
-                    setTimeout(() => {
-                        if (isPaused && Math.abs(diff) < 50) {
-                            newsCarousel.style.animationPlayState = 'running';
-                            isPaused = false;
+                    // Resume animation after a delay if user didn't swipe
+                    if (pauseTimeout) clearTimeout(pauseTimeout);
+                    pauseTimeout = setTimeout(() => {
+                        if (diff < 50) {
+                            resumeAnimation();
+                        } else {
+                            // If swiped, resume after longer delay
+                            setTimeout(resumeAnimation, 2000);
                         }
                     }, 1000);
-                });
+                }, touchOptions);
             }
+        }
         });
     </script>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
