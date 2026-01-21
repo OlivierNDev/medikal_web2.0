@@ -732,13 +732,15 @@
             border-radius: 6px;
             cursor: pointer;
             transition: var(--transition);
-            z-index: 1001;
+            z-index: 1002 !important;
             position: relative;
-            pointer-events: auto;
+            pointer-events: auto !important;
             -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
             touch-action: manipulation;
             min-width: 44px;
             min-height: 44px;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .mobile-menu-btn:hover {
@@ -927,7 +929,10 @@
             }
 
             .mobile-menu-btn {
-                display: block;
+                display: block !important;
+                z-index: 1002 !important;
+                position: relative !important;
+                pointer-events: auto !important;
             }
 
             /* Ensure desktop nav is completely hidden on mobile */
@@ -1531,7 +1536,7 @@
             width: 100%;
             border-radius: 16px;
             overflow: hidden;
-            background: #f8fafb;
+            background: #000;
             aspect-ratio: 16 / 9;
         }
 
@@ -1539,7 +1544,7 @@
             position: relative;
             width: 100%;
             height: 100%;
-            background: #f8fafb;
+            background: #000;
         }
 
         .demo-video-wrapper-inline video {
@@ -1547,7 +1552,39 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            background: #f8fafb;
+            background: #000;
+        }
+
+        /* Video preview/thumbnail overlay */
+        .demo-video-wrapper-inline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.3) 0%, rgba(94, 196, 213, 0.1) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .demo-video-wrapper-inline::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.9);
+            z-index: 2;
+            pointer-events: none;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hide overlay when video has poster or is playing */
+        .demo-video-wrapper-inline video[poster] ~ ::before,
+        .demo-video-wrapper-inline video[poster] ~ ::after {
+            display: none;
         }
 
         /* Video poster/thumbnail fix for mobile */
@@ -1557,15 +1594,19 @@
 
         @media (max-width: 768px) {
             .demo-video-container-inline {
-                background: #f8fafb;
+                background: #000;
             }
 
             .demo-video-wrapper-inline {
-                background: #f8fafb;
+                background: #000;
             }
 
             .demo-video-wrapper-inline video {
-                background: #f8fafb;
+                background: #000;
+            }
+
+            .demo-video-wrapper-inline::after {
+                font-size: 3rem;
             }
         }
 
@@ -3062,7 +3103,7 @@
                     <div class="features-visual-content">
                         <div class="demo-video-container-inline">
                             <div class="demo-video-wrapper-inline">
-                                <video controls preload="metadata" style="background: #f8fafb; background-image: linear-gradient(135deg, rgba(94, 196, 213, 0.1) 0%, rgba(94, 196, 213, 0.05) 100%);">
+                                <video controls preload="metadata" poster="" style="background: #000; background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);">
                                     <source src="demo-video.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -3489,6 +3530,8 @@
         // ========================================
         // NEW HEADER MOBILE MENU FUNCTIONALITY
         // ========================================
+        // Using shared mobile-menu.js for consistency
+        // Inline fallback for this page
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileCloseBtn = document.getElementById('mobileCloseBtn');
@@ -3496,11 +3539,9 @@
             const mobileOverlay = document.getElementById('mobileOverlay');
             const mobileNavLinks = document.querySelectorAll('.mobile-nav-list a');
             const body = document.body;
-            const mainHeader = document.getElementById('mainHeader');
 
             // Check if elements exist before proceeding
             if (!mobileMenuBtn || !mobileNav || !mobileOverlay) {
-                console.warn('Mobile menu elements not found');
                 return;
             }
 
@@ -3510,6 +3551,7 @@
                     mobileNav.classList.add('active');
                     mobileOverlay.classList.add('active');
                     body.classList.add('menu-open');
+                    body.style.overflow = 'hidden';
                     
                     // Update button icon
                     const icon = mobileMenuBtn.querySelector('i');
@@ -3525,6 +3567,7 @@
                     mobileNav.classList.remove('active');
                     mobileOverlay.classList.remove('active');
                     body.classList.remove('menu-open');
+                    body.style.overflow = '';
                     
                     // Update button icon
                     const icon = mobileMenuBtn.querySelector('i');
@@ -3535,7 +3578,11 @@
             }
 
             // Toggle mobile menu
-            function toggleMobileMenu() {
+            function toggleMobileMenu(e) {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
                 if (mobileNav && mobileNav.classList.contains('active')) {
                     closeMobileMenu();
                 } else {
@@ -3543,15 +3590,31 @@
                 }
             }
 
+            // Remove existing listeners and reattach
+            const newBtn = mobileMenuBtn.cloneNode(true);
+            mobileMenuBtn.parentNode.replaceChild(newBtn, mobileMenuBtn);
+            const newMobileMenuBtn = document.getElementById('mobileMenuBtn');
+
             // Event listeners
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            if (newMobileMenuBtn) {
+                newMobileMenuBtn.addEventListener('click', toggleMobileMenu, { passive: false });
+                newMobileMenuBtn.addEventListener('touchend', toggleMobileMenu, { passive: false });
             }
+
             if (mobileCloseBtn) {
-                mobileCloseBtn.addEventListener('click', closeMobileMenu);
+                mobileCloseBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeMobileMenu();
+                });
             }
+
             if (mobileOverlay) {
-                mobileOverlay.addEventListener('click', closeMobileMenu);
+                mobileOverlay.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeMobileMenu();
+                });
             }
 
             // Close menu when clicking nav links

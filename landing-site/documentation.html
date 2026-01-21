@@ -258,8 +258,15 @@
             border-radius: 6px;
             cursor: pointer;
             transition: var(--transition);
-            z-index: 1001;
+            z-index: 1002 !important;
             position: relative;
+            pointer-events: auto !important;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
+            touch-action: manipulation;
+            min-width: 44px;
+            min-height: 44px;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .mobile-menu-btn:hover {
@@ -1567,5 +1574,6 @@ const diagnosis = await client.aiDiagnosis.analyze({
 
         window.addEventListener('scroll', updateActiveNav);
     </script>
+    <script src="mobile-menu.js" defer></script>
 </body>
 </html>
