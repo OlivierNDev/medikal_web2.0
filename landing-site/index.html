@@ -123,6 +123,29 @@
                 touch-action: pan-y pinch-zoom;
             }
 
+            /* Ensure all buttons are clickable on mobile */
+            button,
+            .btn-primary,
+            .btn-secondary,
+            a[role="button"],
+            .cta-button {
+                min-width: 44px;
+                min-height: 44px;
+                pointer-events: auto;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: rgba(94, 196, 213, 0.3);
+                position: relative;
+                z-index: 10;
+            }
+
+            /* Fix for links inside carousel */
+            .news-card-item a,
+            .news-card-item button {
+                pointer-events: auto !important;
+                z-index: 10;
+                position: relative;
+            }
+
             /* iOS Safari viewport fix */
             @supports (-webkit-touch-callout: none) {
                 body {
@@ -681,6 +704,11 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            -webkit-tap-highlight-color: rgba(94, 196, 213, 0.3);
+            touch-action: manipulation;
         }
 
         .cta-button:hover {
@@ -706,6 +734,11 @@
             transition: var(--transition);
             z-index: 1001;
             position: relative;
+            pointer-events: auto;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
+            touch-action: manipulation;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         .mobile-menu-btn:hover {
@@ -2316,11 +2349,9 @@
         @media (max-width: 768px) {
             .news-carousel-wrapper {
                 padding: 1.5rem 0;
-                overflow-x: hidden;
-                overflow-y: visible;
-                -webkit-overflow-scrolling: touch;
+                overflow: hidden;
                 position: relative;
-                touch-action: pan-y;
+                touch-action: none;
             }
 
             .news-carousel-wrapper::-webkit-scrollbar {
@@ -2336,27 +2367,37 @@
                 width: 85vw;
                 max-width: 320px;
                 min-width: 280px;
+                pointer-events: auto;
             }
 
             .news-carousel-track {
                 gap: 1.25rem;
-                animation: scrollNews 45s linear infinite;
-                -webkit-animation: scrollNews 45s linear infinite;
+                animation: scrollNews 45s linear infinite !important;
+                -webkit-animation: scrollNews 45s linear infinite !important;
                 will-change: transform;
                 -webkit-transform: translateZ(0);
                 transform: translateZ(0);
+                pointer-events: none;
             }
 
-            /* Ensure animation works on mobile */
+            /* Ensure animation always runs on mobile */
             .news-carousel-track:hover {
-                animation-play-state: running;
+                animation-play-state: running !important;
+                -webkit-animation-play-state: running !important;
+            }
+
+            /* Make cards clickable */
+            .news-card-item a {
+                pointer-events: auto;
+                position: relative;
+                z-index: 1;
             }
 
             /* iOS Safari specific */
             @supports (-webkit-touch-callout: none) {
                 .news-carousel-track {
-                    -webkit-animation: scrollNews 45s linear infinite;
-                    animation: scrollNews 45s linear infinite;
+                    -webkit-animation: scrollNews 45s linear infinite !important;
+                    animation: scrollNews 45s linear infinite !important;
                 }
             }
         }
@@ -3278,7 +3319,7 @@
 
             <!-- View All News Button -->
             <div class="text-center mt-12">
-                <a href="news/index.html" class="bg-5EC4D5 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-4AAFC0 transition-all inline-flex items-center gap-2" style="background: #5EC4D5; color: #ffffff;">
+                <a href="news/index.html" class="bg-5EC4D5 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-4AAFC0 transition-all inline-flex items-center gap-2" style="background: #5EC4D5; color: #ffffff; pointer-events: auto; z-index: 10; position: relative; touch-action: manipulation; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;">
                     View All News <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -4012,59 +4053,29 @@
                     }, 250);
                 });
 
-                // Touch support for mobile (iOS compatible)
-                let touchStartX = 0;
-                let touchEndX = 0;
-                let isPaused = false;
-                let pauseTimeout = null;
-
-                const pauseAnimation = () => {
-                    if (!isPaused) {
-                        newsCarousel.style.animationPlayState = 'paused';
-                        newsCarousel.style.webkitAnimationPlayState = 'paused';
-                        isPaused = true;
-                    }
-                };
-
-                const resumeAnimation = () => {
-                    if (isPaused) {
+                // Don't pause animation on mobile - let it auto-slide continuously
+                // Only ensure animation is running
+                const ensureAnimationRunning = () => {
+                    if (window.innerWidth <= 768) {
                         newsCarousel.style.animationPlayState = 'running';
                         newsCarousel.style.webkitAnimationPlayState = 'running';
-                        isPaused = false;
                     }
                 };
 
-                // Use passive listeners for better iOS performance
-                const touchOptions = { passive: true };
-
-                newsCarousel.addEventListener('touchstart', (e) => {
-                    touchStartX = e.touches[0].clientX;
-                    pauseAnimation();
-                    if (pauseTimeout) clearTimeout(pauseTimeout);
-                }, touchOptions);
-
-                newsCarousel.addEventListener('touchmove', (e) => {
-                    // Keep paused during touch move
-                    pauseAnimation();
-                }, touchOptions);
-
-                newsCarousel.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].clientX;
-                    const diff = Math.abs(touchStartX - touchEndX);
-                    
-                    // Resume animation after a delay if user didn't swipe
-                    if (pauseTimeout) clearTimeout(pauseTimeout);
-                    pauseTimeout = setTimeout(() => {
-                        if (diff < 50) {
-                            resumeAnimation();
-                        } else {
-                            // If swiped, resume after longer delay
-                            setTimeout(resumeAnimation, 2000);
+                // Ensure animation runs on mobile
+                ensureAnimationRunning();
+                
+                // Re-check periodically to ensure animation doesn't stop
+                setInterval(() => {
+                    if (window.innerWidth <= 768) {
+                        const computedStyle = window.getComputedStyle(newsCarousel);
+                        const animationState = computedStyle.animationPlayState || computedStyle.webkitAnimationPlayState;
+                        if (animationState === 'paused') {
+                            ensureAnimationRunning();
                         }
-                    }, 1000);
-                }, touchOptions);
+                    }
+                }, 2000);
             }
-        }
         });
     </script>
     <script src="script.js" defer></script>
