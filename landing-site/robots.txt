@@ -1,0 +1,25 @@
+# Robots.txt for Medikal Africa
+# https://medikalafrica.com/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*?*
+
+# Sitemap
+Sitemap: https://medikalafrica.com/sitemap.xml
+
+# Crawl-delay (optional, helps with server load)
+Crawl-delay: 1
+
+# Specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
