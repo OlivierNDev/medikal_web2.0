@@ -2829,7 +2829,7 @@
     <header class="medikal-header" id="mainHeader">
         <div class="header-container">
             <!-- Logo Section -->
-            <a href="#" class="logo-section">
+            <a href="index.html" class="logo-section">
                 <img src="logo.png" alt="Medikal - AI Health Assistant" />
             </a>
             
@@ -2837,7 +2837,7 @@
             <nav>
                 <ul class="nav-menu">
                     <li>
-                        <a href="#">
+                        <a href="index.html">
                             Home
                         </a>
                     </li>
@@ -2878,7 +2878,7 @@
                     </li>
                     
                     <li>
-                        <a href="#">
+                        <a href="documentation.html">
                             Resources
                             <i class="fas fa-chevron-down"></i>
                         </a>
@@ -3051,7 +3051,7 @@
                     <div class="features-visual-content">
                         <div class="demo-video-container-inline">
                             <div class="demo-video-wrapper-inline">
-                                <video controls preload="metadata" poster="" style="background: #000; background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);">
+                                <video controls preload="metadata" style="background: #000;">
                                     <source src="demo-video.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -3383,7 +3383,7 @@
                 
                 <!-- Company Info -->
                 <div class="footer-company">
-                    <a href="#" class="footer-logo">
+                    <a href="index.html" class="footer-logo">
                         <img src="logo.png" alt="Medikal - AI Healthcare for Africa">
                     </a>
                     <p class="footer-company-text">
@@ -3635,7 +3635,11 @@
         // ========================================
         // Smooth scroll function
         function scrollToAccess() {
-            document.getElementById('access').scrollIntoView({ 
+            // Redirect to early access page instead of scrolling to non-existent section
+            window.location.href = 'early-access.html';
+            return;
+            // Old code (deprecated):
+            // document.getElementById('access').scrollIntoView({ 
                 behavior: 'smooth' 
             });
         }
@@ -4193,7 +4197,6 @@
                         }
                     }
                 }, 2000);
-            }
             }
         });
     </script>

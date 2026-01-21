@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // This prevents conflicts with the existing mobile menu implementation
 });
 
-// Smooth scroll function
+// Smooth scroll function (deprecated - now using early-access.html page)
+// Kept for backward compatibility if needed
 function scrollToAccess() {
-    document.getElementById('access').scrollIntoView({ 
-        behavior: 'smooth' 
-    });
+    // Redirect to early access page instead
+    window.location.href = 'early-access.html';
 }
 
 // AI Avatar speak functionality
