@@ -923,11 +923,17 @@
 
             .nav-menu,
             .cta-button.desktop-only {
-                display: none;
+                display: none !important;
             }
 
             .mobile-menu-btn {
                 display: block;
+            }
+
+            /* Ensure desktop nav is completely hidden on mobile */
+            nav .nav-menu {
+                display: none !important;
+                visibility: hidden !important;
             }
 
             .logo-section {
@@ -1525,7 +1531,7 @@
             width: 100%;
             border-radius: 16px;
             overflow: hidden;
-            background: #000;
+            background: #f8fafb;
             aspect-ratio: 16 / 9;
         }
 
@@ -1533,6 +1539,7 @@
             position: relative;
             width: 100%;
             height: 100%;
+            background: #f8fafb;
         }
 
         .demo-video-wrapper-inline video {
@@ -1540,6 +1547,26 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            background: #f8fafb;
+        }
+
+        /* Video poster/thumbnail fix for mobile */
+        .demo-video-wrapper-inline video::-webkit-media-controls-panel {
+            background-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .demo-video-container-inline {
+                background: #f8fafb;
+            }
+
+            .demo-video-wrapper-inline {
+                background: #f8fafb;
+            }
+
+            .demo-video-wrapper-inline video {
+                background: #f8fafb;
+            }
         }
 
         .video-thumbnail-container {
@@ -2181,16 +2208,35 @@
 
             .logo-track {
                 gap: 2rem;
-                animation: scrollLogos 30s linear infinite; /* Faster on mobile */
+                animation: scrollLogos 30s linear infinite !important;
+                -webkit-animation: scrollLogos 30s linear infinite !important;
+                will-change: transform;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                pointer-events: none;
+            }
+
+            .logo-track:hover {
+                animation-play-state: running !important;
+                -webkit-animation-play-state: running !important;
             }
 
             .logo-item {
                 width: 150px;
                 height: 90px;
+                pointer-events: auto;
             }
 
             .logo-bg {
                 padding: 1rem;
+            }
+
+            /* iOS Safari specific */
+            @supports (-webkit-touch-callout: none) {
+                .logo-track {
+                    -webkit-animation: scrollLogos 30s linear infinite !important;
+                    animation: scrollLogos 30s linear infinite !important;
+                }
             }
         }
 
@@ -3016,7 +3062,7 @@
                     <div class="features-visual-content">
                         <div class="demo-video-container-inline">
                             <div class="demo-video-wrapper-inline">
-                                <video controls preload="metadata">
+                                <video controls preload="metadata" style="background: #f8fafb; background-image: linear-gradient(135deg, rgba(94, 196, 213, 0.1) 0%, rgba(94, 196, 213, 0.05) 100%);">
                                     <source src="demo-video.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -3998,6 +4044,33 @@
         // NEWS CAROUSEL MOBILE ENHANCEMENT (iOS Compatible)
         // ========================================
         document.addEventListener('DOMContentLoaded', function() {
+            // Ensure desktop nav is hidden on mobile and prevent duplicates
+            if (window.innerWidth <= 768) {
+                const desktopNav = document.querySelector('.nav-menu');
+                if (desktopNav) {
+                    desktopNav.style.display = 'none';
+                    desktopNav.style.visibility = 'hidden';
+                }
+                
+                // Remove any duplicate mobile nav items
+                const mobileNavList = document.querySelector('.mobile-nav-list');
+                if (mobileNavList) {
+                    const links = mobileNavList.querySelectorAll('a');
+                    const seen = new Set();
+                    links.forEach(link => {
+                        const href = link.getAttribute('href');
+                        const text = link.textContent.trim();
+                        const key = href + text;
+                        if (seen.has(key)) {
+                            const li = link.closest('li');
+                            if (li) li.remove();
+                        } else {
+                            seen.add(key);
+                        }
+                    });
+                }
+            }
+
             const newsCarousel = document.getElementById('newsCarousel');
             if (newsCarousel) {
                 // Detect iOS
@@ -4075,6 +4148,35 @@
                         }
                     }
                 }, 2000);
+            }
+
+            // ========================================
+            // PARTNERS/LOGO CAROUSEL MOBILE ENHANCEMENT
+            // ========================================
+            const logoTrack = document.querySelector('.logo-track');
+            if (logoTrack) {
+                // Ensure logo carousel animation runs on mobile
+                const ensureLogoAnimationRunning = () => {
+                    if (window.innerWidth <= 768) {
+                        logoTrack.style.animationPlayState = 'running';
+                        logoTrack.style.webkitAnimationPlayState = 'running';
+                    }
+                };
+
+                // Ensure animation runs on mobile
+                ensureLogoAnimationRunning();
+                
+                // Re-check periodically to ensure animation doesn't stop
+                setInterval(() => {
+                    if (window.innerWidth <= 768) {
+                        const computedStyle = window.getComputedStyle(logoTrack);
+                        const animationState = computedStyle.animationPlayState || computedStyle.webkitAnimationPlayState;
+                        if (animationState === 'paused') {
+                            ensureLogoAnimationRunning();
+                        }
+                    }
+                }, 2000);
+            }
             }
         });
     </script>
