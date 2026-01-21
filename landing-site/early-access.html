@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0, user-scalable=yes">
+    <title>Early Access - Medikal Africa</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #5EC4D5;
+            --primary-dark: #4AAFC0;
+            --accent-light: #E8F7F9;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #f8fafb;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(94, 196, 213, 0.08);
+            --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
+            --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html, body {
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: rgba(94, 196, 213, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.6rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .top-bar-left,
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-item {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            font-size: 0.875rem;
+        }
+
+        .top-bar-item:hover {
+            opacity: 0.9;
+        }
+
+        .top-bar-item i {
+            font-size: 0.875rem;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--dark-text);
+        }
+
+        .logo-section img {
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-menu > li > a {
+            color: var(--dark-text);
+            text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu > li > a:hover {
+            background: var(--accent-light);
+            color: var(--primary-blue);
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: var(--primary-blue);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.65rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1002 !important;
+            position: relative;
+            pointer-events: auto !important;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
+            touch-action: manipulation;
+            min-width: 44px;
+            min-height: 44px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        /* Mobile Navigation */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem 0;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-nav-logo img {
+            height: 35px;
+        }
+
+        .mobile-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            padding: 0 1.5rem;
+        }
+
+        .mobile-nav-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-nav-list a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-list a:hover {
+            background: var(--accent-light);
+            color: var(--primary-blue);
+        }
+
+        .mobile-nav-list a i {
+            font-size: 1.2rem;
+            width: 24px;
+        }
+
+        /* Main Content */
+        .early-access-hero {
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.1) 0%, rgba(94, 196, 213, 0.05) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .early-access-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .early-access-badge {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .early-access-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .early-access-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        /* Email Options Section */
+        .email-options {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .email-card {
+            background: var(--white);
+            border: 2px solid var(--border-light);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .email-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .email-card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .email-card-icon i {
+            font-size: 1.75rem;
+            color: var(--primary-blue);
+        }
+
+        .email-card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 0.75rem;
+        }
+
+        .email-card-description {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .email-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            pointer-events: auto;
+            -webkit-tap-highlight-color: rgba(94, 196, 213, 0.3);
+            touch-action: manipulation;
+        }
+
+        .email-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .email-button:active {
+            transform: translateY(0);
+        }
+
+        .email-button i {
+            font-size: 1.1rem;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: var(--light-bg);
+            padding: 4rem 2rem;
+        }
+
+        .benefits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefits-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            text-align: center;
+            color: var(--dark-text);
+            margin-bottom: 3rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .benefit-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .benefit-icon i {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .benefit-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-description {
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--light-bg);
+            border-top: 1px solid var(--border-light);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            color: var(--light-text);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+
+            .header-container {
+                padding: 1rem;
+            }
+
+            .nav-menu,
+            .cta-button.desktop-only {
+                display: none !important;
+            }
+
+            .mobile-menu-btn {
+                display: block !important;
+                z-index: 1002 !important;
+                position: relative !important;
+                pointer-events: auto !important;
+            }
+
+            .logo-section img {
+                height: 32px;
+            }
+
+            .logo-text {
+                display: none;
+            }
+
+            .early-access-hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .email-options {
+                padding: 1rem;
+            }
+
+            .email-card {
+                padding: 1.5rem;
+            }
+
+            .benefits-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mobile-nav {
+                width: 100vw;
+                right: -100vw;
+                max-width: none;
+            }
+
+            .email-card {
+                padding: 1.25rem;
+            }
+
+            .email-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <a href="tel:+17024163329" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+1 (702) 416-3329</span>
+                </a>
+                <a href="mailto:info@medikalafrica.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@medikalafrica.com</span>
+                </a>
+            </div>
+            <div class="top-bar-right">
+                <span class="top-bar-item">
+                    <i class="fas fa-clock"></i>
+                    <span>24/7 AI Support</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="header-container">
+            <a href="index.html" class="logo-section">
+                <img src="logo.png" alt="Medikal Africa Logo">
+                <span class="logo-text">Medikal Africa</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="early-access.html" class="cta-button desktop-only">
+                Get Started
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">
+                <img src="logo.png" alt="Medikal" />
+            </div>
+            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul class="mobile-nav-list">
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    <i class="fas fa-info-circle"></i>
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="features.html">
+                    <i class="fas fa-star"></i>
+                    Features
+                </a>
+            </li>
+            <li>
+                <a href="solutions.html">
+                    <i class="fas fa-puzzle-piece"></i>
+                    Solutions
+                </a>
+            </li>
+            <li>
+                <a href="team.html">
+                    <i class="fas fa-users"></i>
+                    Team
+                </a>
+            </li>
+            <li>
+                <a href="contact.html">
+                    <i class="fas fa-envelope"></i>
+                    Contact
+                </a>
+            </li>
+        </ul>
+
+        <div class="mobile-cta" style="padding: 1.5rem 2rem;">
+            <a href="early-access.html" class="cta-button" style="width: 100%; justify-content: center;">
+                Get Started
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="early-access-hero">
+        <div class="early-access-container">
+            <div class="early-access-badge">
+                <i class="fas fa-rocket"></i> Join the Future of Healthcare
+            </div>
+            <h1 class="early-access-title">Get Early Access to Medikal Africa</h1>
+            <p class="early-access-subtitle">
+                Be among the first to experience our AI-powered healthcare platform. Join healthcare providers, institutions, and partners who are revolutionizing healthcare across Africa.
+            </p>
+        </div>
+    </section>
+
+    <!-- Email Options Section -->
+    <section class="email-options">
+        <div class="email-card">
+            <div class="email-card-icon">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <h2 class="email-card-title">Request Early Access</h2>
+            <p class="email-card-description">
+                Send us an email to request early access to Medikal Africa. Include your name, organization (if applicable), and how you plan to use the platform. Our team will get back to you within 24-48 hours.
+            </p>
+            <a href="mailto:earlyaccess@medikalafrica.com?subject=Early Access Request&body=Hello Medikal Africa Team,%0D%0A%0D%0AI would like to request early access to the Medikal Africa platform.%0D%0A%0D%0AName:%0D%0AOrganization (if applicable):%0D%0AHow I plan to use the platform:%0D%0A%0D%0AThank you!" class="email-button">
+                <i class="fas fa-paper-plane"></i>
+                Send Email Request
+            </a>
+        </div>
+
+        <div class="email-card">
+            <div class="email-card-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <h2 class="email-card-title">Partnership Opportunities</h2>
+            <p class="email-card-description">
+                Are you a healthcare institution, clinic, or organization interested in partnering with Medikal Africa? Reach out to discuss collaboration opportunities and how we can work together to combat AMR.
+            </p>
+            <a href="mailto:earlyaccess@medikalafrica.com?subject=Partnership Inquiry&body=Hello Medikal Africa Team,%0D%0A%0D%0AI am interested in partnership opportunities with Medikal Africa.%0D%0A%0D%0AOrganization Name:%0D%0AYour Name:%0D%0AYour Role:%0D%0AHow we can collaborate:%0D%0A%0D%0ALooking forward to hearing from you!" class="email-button">
+                <i class="fas fa-handshake"></i>
+                Contact for Partnership
+            </a>
+        </div>
+
+        <div class="email-card">
+            <div class="email-card-icon">
+                <i class="fas fa-user-md"></i>
+            </div>
+            <h2 class="email-card-title">Healthcare Provider Access</h2>
+            <p class="email-card-description">
+                Healthcare providers, clinicians, and medical professionals can request access to start using Medikal Africa's AI-powered diagnostic tools and AMR surveillance features.
+            </p>
+            <a href="mailto:earlyaccess@medikalafrica.com?subject=Healthcare Provider Access Request&body=Hello Medikal Africa Team,%0D%0A%0D%0AI am a healthcare provider interested in accessing Medikal Africa.%0D%0A%0D%0AName:%0D%0AProfessional Title:%0D%0AInstitution/Clinic:%0D%0ALocation:%0D%0A%0D%0AThank you!" class="email-button">
+                <i class="fas fa-user-md"></i>
+                Request Provider Access
+            </a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="benefits-container">
+            <h2 class="benefits-title">Why Join Early Access?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="benefit-title">Priority Access</h3>
+                    <p class="benefit-description">
+                        Be among the first to access new features and updates as we continue to develop and improve the platform.
+                    </p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="benefit-title">Direct Support</h3>
+                    <p class="benefit-description">
+                        Receive priority support from our team and help shape the future of Medikal Africa with your feedback.
+                    </p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="benefit-title">Influence Development</h3>
+                    <p class="benefit-description">
+                        Your input and feedback will directly influence the development of features and improvements to the platform.
+                    </p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="benefit-title">Join a Community</h3>
+                    <p class="benefit-description">
+                        Connect with other early adopters, healthcare providers, and partners who are revolutionizing healthcare in Africa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>&copy; 2024-2026 Medikal Africa. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;">Developed by <strong>ZeroX Intelligence</strong> | Kigali, Rwanda</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="mobile-menu.js" defer></script>
+</body>
+</html>

@@ -2978,7 +2978,7 @@
             </nav>
             
             <!-- CTA Button -->
-            <a href="#access" class="cta-button desktop-only">
+            <a href="early-access.html" class="cta-button desktop-only">
                 Get Started
             </a>
 
@@ -3049,7 +3049,7 @@
         </ul>
 
             <div class="mobile-cta">
-            <a href="#access" class="cta-button">
+            <a href="early-access.html" class="cta-button">
                 Get Started Free
             </a>
         </div>
@@ -3077,9 +3077,9 @@
                         <a href="#about" class="features-btn-primary">
                             <span data-i18n="explorePlatform">Explore Platform</span>
                         </a>
-                        <button class="features-btn-secondary" id="watchDemoBtn">
+                        <a href="early-access.html" class="features-btn-secondary" id="watchDemoBtn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
                             <span data-i18n="watchDemo">Early Access</span>
-                        </button>
+                        </a>
                     </div>
 
                     <div class="features-stats">
@@ -3692,12 +3692,18 @@
             });
         }
 
-        // Video Modal Functions
+        // Video Modal Functions (if video modal exists)
         (function() {
             const watchDemoBtn = document.getElementById('watchDemoBtn');
             const videoModal = document.getElementById('videoModal');
             const videoClose = document.getElementById('videoClose');
             const demoVideo = document.getElementById('demoVideo');
+
+            // If watchDemoBtn is now a link (for early access), skip video modal setup
+            if (watchDemoBtn && watchDemoBtn.tagName === 'A') {
+                // Button is now a link to early-access page, no video modal needed
+                return;
+            }
 
             if (!watchDemoBtn || !videoModal || !videoClose || !demoVideo) return;
 
