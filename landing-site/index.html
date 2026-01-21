@@ -790,61 +790,31 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
             padding: 0 2rem 1.5rem;
             border-bottom: 1px solid var(--border-light);
+            margin-bottom: 1.5rem;
         }
 
-        .mobile-nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .mobile-nav-logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .mobile-nav-logo-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-        }
-
-        .mobile-nav-logo-subtitle {
-            font-size: 0.65rem;
-            color: var(--light-text);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .mobile-nav-logo img {
+            height: 35px;
         }
 
         .mobile-close-btn {
-            background: var(--accent-light);
+            background: none;
             border: none;
             font-size: 1.5rem;
             color: var(--dark-text);
             cursor: pointer;
             padding: 0.5rem;
-            border-radius: 6px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             transition: var(--transition);
         }
 
         .mobile-close-btn:hover {
-            background: var(--primary-blue);
-            color: var(--white);
+            color: var(--primary-blue);
         }
 
         .mobile-nav-list {
             list-style: none;
-            margin: 0;
             padding: 0 1.5rem;
         }
 
@@ -856,46 +826,30 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            padding: 1rem;
             color: var(--dark-text);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 1rem 1.5rem;
-            border-radius: 6px;
-            background: var(--white);
-            border: 1px solid var(--border-light);
+            border-radius: 8px;
             transition: var(--transition);
         }
 
-        .mobile-nav-list a i {
-            width: 20px;
-            text-align: center;
-            color: var(--light-text);
-            font-size: 0.95rem;
-        }
-
-        .mobile-nav-list a:hover,
-        .mobile-nav-list a:focus {
-            color: var(--primary-blue);
+        .mobile-nav-list a:hover {
             background: var(--accent-light);
-            border-color: var(--primary-blue);
+            color: var(--primary-blue);
         }
 
-        .mobile-nav-list a:hover i {
-            color: var(--primary-blue);
+        .mobile-nav-list a i {
+            font-size: 1.2rem;
+            width: 24px;
         }
 
         .mobile-cta {
-            margin: 2rem 1.5rem 0;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-light);
+            padding: 1.5rem 2rem;
         }
 
         .mobile-cta .cta-button {
             width: 100%;
             justify-content: center;
-            font-size: 1rem;
-            padding: 1rem 2rem;
         }
 
         /* Responsive Breakpoints */
@@ -3005,9 +2959,15 @@
         
         <ul class="mobile-nav-list">
             <li>
-                <a href="#">
+                <a href="index.html">
                     <i class="fas fa-home"></i>
                     Home
+                </a>
+            </li>
+            <li>
+                <a href="about.html">
+                    <i class="fas fa-info-circle"></i>
+                    About
                 </a>
             </li>
             <li>
@@ -3017,27 +2977,15 @@
                 </a>
             </li>
             <li>
+                <a href="solutions.html">
+                    <i class="fas fa-puzzle-piece"></i>
+                    Solutions
+                </a>
+            </li>
+            <li>
                 <a href="team.html">
                     <i class="fas fa-users"></i>
-                    Our Team
-                </a>
-            </li>
-            <li>
-                <a href="impact.html">
-                    <i class="fas fa-heart"></i>
-                    Impact
-                </a>
-            </li>
-            <li>
-                <a href="#news">
-                    <i class="fas fa-newspaper"></i>
-                    News
-                </a>
-            </li>
-            <li>
-                <a href="about.html">
-                    <i class="fas fa-info-circle"></i>
-                    About Us
+                    Team
                 </a>
             </li>
             <li>
@@ -3048,9 +2996,9 @@
             </li>
         </ul>
 
-            <div class="mobile-cta">
-            <a href="early-access.html" class="cta-button">
-                Get Started Free
+        <div class="mobile-cta" style="padding: 1.5rem 2rem;">
+            <a href="early-access.html" class="cta-button" style="width: 100%; justify-content: center;">
+                Get Started
             </a>
         </div>
     </nav>
@@ -4250,5 +4198,6 @@
         });
     </script>
     <script src="script.js" defer></script>
+    <script src="mobile-menu.js" defer></script>
 </body>
 </html>
