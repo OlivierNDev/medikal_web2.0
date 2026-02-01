@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Medikal Africa has been selected to join the NVIDIA Inception Program, a global initiative supporting startups building advanced AI and accelerated computing solutions for healthcare.">
+    <title>Medikal Africa Selected for NVIDIA Inception Program - AI Healthcare Acceleration</title>
+    <meta name="keywords" content="NVIDIA Inception, Medikal NVIDIA, AI healthcare acceleration, GPU computing healthcare, NVIDIA startup program, AI infrastructure healthcare">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://medikalafrica.com/news/nvidia-inception-program.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://medikalafrica.com/news/nvidia-inception-program.html">
+    <meta property="og:title" content="Medikal Africa Selected for NVIDIA Inception Program">
+    <meta property="og:description" content="Medikal Africa joins NVIDIA Inception Program to accelerate AI-powered healthcare infrastructure for combating AMR across Africa.">
+    <meta property="og:image" content="https://medikalafrica.com/media/images/nvidia-inception-program-badge.jpg">
+    
+    <link rel="icon" type="image/png" href="../logo.png">
+    <link rel="shortcut icon" type="image/png" href="../logo.png">
+    <link rel="apple-touch-icon" href="../logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #5EC4D5;
+            --primary-dark: #4AAFC0;
+            --accent-light: #E8F7F9;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #f8fafb;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(94, 196, 213, 0.08);
+            --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
+            --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.6rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-bar-item:hover {
+            opacity: 0.8;
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        /* Main Header */
+        .medikal-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-section img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-menu a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-blue);
+            background: var(--accent-light);
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Article Content */
+        .article-hero {
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.08) 0%, rgba(255, 255, 255, 0.98) 100%);
+            padding: 4rem 2rem;
+        }
+
+        .article-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--light-text);
+        }
+
+        .article-meta span {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .article-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .article-subtitle {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .badge-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .nvidia-badge {
+            max-width: 300px;
+            height: auto;
+        }
+
+        .nvidia-badge img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .article-body {
+            background: var(--white);
+            padding: 3rem 2rem;
+        }
+
+        .article-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .article-paragraph {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .article-paragraph strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: var(--accent-light);
+            border: 1px solid var(--border-light);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--dark-text);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--accent-light) 0%, rgba(94, 196, 213, 0.05) 100%);
+            border-left: 4px solid var(--primary-blue);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark-text);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+
+        .back-link:hover {
+            color: var(--primary-dark);
+            transform: translateX(-3px);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 2rem 1rem;
+            }
+
+            .article-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .badge-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .scroll-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 44px;
+                height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <a href="tel:+17024163329" class="top-bar-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (702) 416-3329</span>
+                </a>
+                <a href="mailto:info@medikalafrica.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@medikalafrica.com</span>
+                </a>
+            </div>
+            <div class="top-bar-right">
+                <select class="language-selector">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="medikal-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-section">
+                <img src="../logo.png" alt="Medikal - AI Health Assistant" />
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../solutions.html">Solutions</a></li>
+                    <li><a href="../features.html">Features</a></li>
+                    <li><a href="../team.html">Our Team</a></li>
+                    <li><a href="../impact.html">Impact</a></li>
+                    <li><a href="index.html">News</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <a href="../early-access.html" class="cta-button">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="article-hero">
+        <div class="article-content">
+            <div class="article-meta">
+                <span>Technology Partnership</span>
+                <span>•</span>
+                <span>January 2025</span>
+                <span>•</span>
+                <span>Read time: ~6 min</span>
+            </div>
+
+            <h1 class="article-title">
+                Medikal Africa Selected for NVIDIA Inception Program
+            </h1>
+
+            <p class="article-subtitle">
+                Medikal Africa has been selected to join the NVIDIA Inception Program, a global initiative by NVIDIA that supports startups building advanced AI and accelerated computing solutions. This milestone reflects confidence in Medikal's technology, architecture, and long-term vision for healthcare AI.
+            </p>
+
+            <!-- NVIDIA Badge -->
+            <div class="badge-container">
+                <div class="nvidia-badge">
+                    <img src="../media/images/nvidia-inception-program-badge.jpg" alt="NVIDIA Inception Program Badge">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="article-body">
+        <div class="article-section">
+            <!-- Introduction -->
+            <section>
+                <h2 class="section-title">A Milestone in AI Healthcare Infrastructure</h2>
+                <p class="article-paragraph">
+                    <strong>Medikal Africa</strong> has been selected to join the <strong>NVIDIA Inception Program</strong>, a global initiative by NVIDIA that supports startups building advanced AI and accelerated computing solutions. Selection into NVIDIA Inception follows a technical and product review process and places Medikal among a global group of the most promising AI startups working on complex, high-impact problems.
+                </p>
+                <p class="article-paragraph">
+                    This milestone reflects confidence in Medikal's technology, architecture, and long-term vision for healthcare AI. It positions Medikal alongside other innovative companies leveraging NVIDIA's accelerated computing ecosystem to solve critical challenges.
+                </p>
+            </section>
+
+            <!-- Building Core AI Infrastructure -->
+            <section>
+                <h2 class="section-title">Building Core AI Infrastructure for Healthcare</h2>
+                <p class="article-paragraph">
+                    <strong>Medikal Africa is not a consumer health application.</strong> The platform is designed as core AI infrastructure for healthcare systems, with a focus on diagnostics, infection control, and antimicrobial resistance (AMR) across African health systems.
+                </p>
+                <p class="article-paragraph">
+                    AMR is one of the most urgent global health threats, particularly in low- and middle-income countries. At its core, AMR is a systems problem driven by delayed diagnostics, weak clinical decision support, fragmented data, and limited real-time visibility across healthcare facilities. Medikal addresses these challenges by embedding AI directly into clinical and public health workflows.
+                </p>
+            </section>
+
+            <!-- Platform Capabilities -->
+            <section>
+                <h2 class="section-title">Medikal Platform Capabilities</h2>
+                <p class="article-paragraph">
+                    Medikal integrates multiple AI and system-level components into a unified healthcare intelligence platform, including:
+                </p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 class="feature-title">AI-Assisted Clinical Decision Support</h3>
+                        <p class="feature-text">
+                            Advanced diagnostic assistance and evidence-based treatment guidance for healthcare providers, enabling faster and more accurate clinical decisions.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3 class="feature-title">Real-Time Analytics</h3>
+                        <p class="feature-text">
+                            Hospital and public health analytics for system-level visibility, enabling data-driven decision-making across healthcare facilities.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3 class="feature-title">Computer Vision & Automation</h3>
+                        <p class="feature-text">
+                            Advanced computer vision technologies for infection prevention and control, automating critical healthcare processes.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3 class="feature-title">Edge-First Architecture</h3>
+                        <p class="feature-text">
+                            Low-bandwidth deployments designed for resource-constrained environments, ensuring reliable operation in facilities with limited connectivity.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p>
+                        This architecture allows Medikal to operate reliably in real clinical settings, including facilities with limited connectivity or infrastructure—critical for healthcare delivery across diverse African contexts.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Why NVIDIA Inception Matters -->
+            <section>
+                <h2 class="section-title">Why NVIDIA Inception Matters</h2>
+                <p class="article-paragraph">
+                    Through participation in the <strong>NVIDIA Inception Program</strong>, Medikal gains access to GPU acceleration, edge AI tooling, and advanced technical resources that directly support how models are trained, validated, and deployed.
+                </p>
+                <p class="article-paragraph">
+                    For medical AI, where latency, reliability, security, and performance are non-negotiable, NVIDIA's accelerated computing ecosystem strengthens Medikal's ability to deploy inference at the point of care and scale securely across hospitals and public health institutions.
+                </p>
+                <p class="article-paragraph">
+                    This collaboration supports Medikal's mission to build <strong>production-grade, clinically relevant AI</strong>, rather than experimental or demonstration systems. The partnership enables Medikal to leverage cutting-edge GPU technology for faster model training, real-time inference, and scalable deployment across healthcare networks.
+                </p>
+            </section>
+
+            <!-- Looking Ahead -->
+            <section>
+                <h2 class="section-title">Looking Ahead</h2>
+                <p class="article-paragraph">
+                    Medikal Africa remains focused on expanding deployments, strengthening partnerships with hospitals and public health institutions, and advancing AI-driven solutions to combat antimicrobial resistance at scale.
+                </p>
+                <p class="article-paragraph">
+                    Selection into NVIDIA Inception reinforces Medikal's long-term direction: <strong>African-led health AI that is secure, scalable, and designed for real clinical impact.</strong> This partnership accelerates Medikal's ability to deliver on its mission of transforming healthcare delivery across the continent through innovative AI infrastructure.
+                </p>
+            </section>
+
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to News
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: var(--light-bg); border-top: 1px solid var(--border-light); padding: 3rem 2rem; margin-top: 4rem;">
+        <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
+            <p style="color: var(--light-text); font-size: 0.875rem; margin-bottom: 1rem;">© 2025 Medikal. All rights reserved.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="../index.html" style="color: var(--light-text); text-decoration: none; transition: var(--transition);">Home</a>
+                <span style="color: var(--border-light);">|</span>
+                <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">News</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../mobile-menu.js" defer></script>
+    <script>
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        if (scrollTopBtn) {
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 500) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+
+            scrollTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
+</body>
+</html>
