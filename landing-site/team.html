@@ -431,28 +431,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
-            position: relative;
-            background: linear-gradient(135deg, rgba(94, 196, 213, 0.02) 0%, rgba(255, 255, 255, 0.98) 100%);
-            min-height: calc(100vh - 200px);
-        }
-
-        .team-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(94, 196, 213, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(94, 196, 213, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .team-section > * {
-            position: relative;
-            z-index: 1;
+            background: var(--white);
         }
 
         .team-header {
@@ -518,24 +497,24 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .team-member {
             background: var(--white);
-            border-radius: 16px;
+            border-radius: 8px;
             padding: 2rem;
             text-align: center;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             transition: var(--transition);
             border: 1px solid var(--border-light);
             position: relative;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: slideUpFade 0.6s ease-out forwards;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .team-member:nth-child(1) { animation-delay: 0.1s; }
@@ -552,81 +531,20 @@
             }
         }
 
-        .team-member::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--primary-dark));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .team-member::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(94, 196, 213, 0.1) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
         .team-member:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(94, 196, 213, 0.2);
-            border-color: var(--primary-blue);
-        }
-
-        .team-member:hover::before {
-            transform: scaleX(1);
-        }
-
-        .team-member:hover::after {
-            opacity: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-color: var(--border-light);
         }
 
         .member-photo {
-            width: 160px;
-            height: 160px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
-            border: 4px solid var(--border-light);
+            border: 1px solid var(--border-light);
             overflow: hidden;
             transition: var(--transition);
             position: relative;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
-            padding: 4px;
-        }
-
-        .member-photo::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            padding: 4px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .team-member:hover .member-photo {
-            border-color: var(--primary-blue);
-            transform: scale(1.08) rotate(5deg);
-            box-shadow: 0 15px 35px rgba(94, 196, 213, 0.35);
-        }
-
-        .team-member:hover .member-photo::before {
-            opacity: 1;
         }
 
         .member-photo-inner {
@@ -644,131 +562,65 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
-            filter: grayscale(20%);
-        }
-
-        .team-member:hover .member-photo img {
-            transform: scale(1.15);
-            filter: grayscale(0%);
         }
 
         .member-info h3 {
-            font-size: clamp(1.25rem, 3vw, 1.4rem);
-            font-weight: 700;
+            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+            font-weight: 600;
             color: var(--dark-text);
             margin-bottom: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .team-member:hover .member-info h3 {
-            color: var(--primary-blue);
+            letter-spacing: -0.3px;
         }
 
         .member-role {
-            font-size: clamp(0.85rem, 2vw, 0.95rem);
-            font-weight: 600;
-            color: var(--primary-blue);
-            margin-bottom: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: rgba(94, 196, 213, 0.1);
-            border-radius: 20px;
+            font-size: clamp(0.875rem, 1.8vw, 0.95rem);
+            font-weight: 500;
+            color: var(--light-text);
+            margin-bottom: 1rem;
+            letter-spacing: -0.2px;
         }
 
         .member-bio {
-            font-size: clamp(0.85rem, 2vw, 0.9rem);
+            font-size: clamp(0.875rem, 1.8vw, 0.95rem);
             color: var(--light-text);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
             text-align: left;
+            flex-grow: 1;
         }
 
         .member-details {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border-light);
+            margin-bottom: 1rem;
         }
 
         .detail-item {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 0.7rem;
-            font-size: clamp(0.8rem, 1.5vw, 0.85rem);
+            font-size: clamp(0.8rem, 1.5vw, 0.875rem);
             color: var(--light-text);
-            transition: var(--transition);
-        }
-
-        .team-member:hover .detail-item {
-            color: var(--dark-text);
-        }
-
-        .detail-item i {
-            color: var(--primary-blue);
-            width: 16px;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .team-member:hover .detail-item i {
-            transform: scale(1.2);
+            text-align: center;
         }
 
         .linkedin-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            padding: 0.75rem 1.5rem;
-            background: linear-gradient(135deg, #0077b5, #005885);
-            color: white;
+            width: 36px;
+            height: 36px;
+            color: var(--light-text);
             text-decoration: none;
-            border-radius: 10px;
-            font-size: clamp(0.85rem, 2vw, 0.9rem);
-            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid var(--border-light);
             transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 119, 181, 0.2);
-            position: relative;
-            overflow: hidden;
-            min-height: 44px;
-        }
-
-        .linkedin-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .linkedin-btn:hover::before {
-            width: 300px;
-            height: 300px;
+            margin-top: auto;
         }
 
         .linkedin-btn:hover {
-            background: linear-gradient(135deg, #005885, #0077b5);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 119, 181, 0.4);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            background: rgba(94, 196, 213, 0.05);
         }
 
-        .linkedin-btn i,
-        .linkedin-btn span {
-            position: relative;
-            z-index: 1;
+        .linkedin-btn i {
+            font-size: 1rem;
         }
 
         /* Footer */
@@ -896,8 +748,14 @@
             }
 
             .team-grid {
-                grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-                gap: 2rem;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -996,7 +854,7 @@
 
             .team-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
 
             .team-member {
@@ -1223,7 +1081,7 @@
             </nav>
             
             <!-- CTA Button -->
-            <a href="index.html#access" class="cta-button desktop-only">
+            <a href="early-access.html" class="cta-button desktop-only">
                 Get Started
             </a>
 
@@ -1300,7 +1158,7 @@
         </ul>
 
         <div class="mobile-cta">
-            <a href="index.html#access" class="cta-button">
+            <a href="early-access.html" class="cta-button">
                 Get Started Free
             </a>
         </div>
@@ -1309,12 +1167,15 @@
     <!-- Team Section -->
     <section class="team-section">
         <div class="team-header">
-            <h1>Our Team</h1>
-            <p>Meet the brilliant minds behind Medikal's AI-driven healthcare solutions</p>
+            <h1>Team</h1>
         </div>
 
+        <!-- Founders Section -->
+        <div class="team-section-header">
+            <h2>Founders</h2>
+        </div>
         <div class="team-grid">
-            <!-- Founder -->
+            <!-- Olivier Niyonshima -->
             <div class="team-member">
                 <div class="member-photo">
                     <div class="member-photo-inner">
@@ -1325,32 +1186,20 @@
                     <h3>Olivier Niyonshima</h3>
                     <div class="member-role">Founder & CEO</div>
                     <p class="member-bio">
-                        As Founder and Chief Executive Officer, Olivier provides visionary leadership to Medikal Africa. A Software Engineer with expertise in artificial intelligence, he is dedicated to transforming healthcare systems across Africa and leading the fight against antimicrobial resistance. Featured on international media such as OnPod TV Canada, Olivier drives innovation, inspires teams, and ensures Medikal's mission creates lasting impact.
+                        Olivier is the Founder and CEO of Medikal. He is a software engineer focused on artificial intelligence and scalable healthcare systems. He leads product vision, infrastructure strategy, and long-term expansion across African health markets.
                     </p>
-                    
                     <div class="member-details">
                         <div class="detail-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Algonquin College</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Ottawa</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-globe"></i>
-                            <span>Canada</span>
+                            <span>Algonquin College — Ottawa, Canada</span>
                         </div>
                     </div>
-                    
                     <a href="https://www.linkedin.com/in/olivier-niyonshima-aa2b36236/" class="linkedin-btn" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn Profile</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Co-founder / COO -->
+            <!-- Tresor Yubahwe -->
             <div class="team-member">
                 <div class="member-photo">
                     <div class="member-photo-inner">
@@ -1361,66 +1210,20 @@
                     <h3>Tresor Yubahwe</h3>
                     <div class="member-role">Co-Founder & COO</div>
                     <p class="member-bio">
-                        Yubahwe, a Computer Science student at Princeton University, specializes in model training and linguistic AI development, leading the development of the Kinyarwanda AI model. With expertise in machine learning and automation, she plays a key role in optimizing AI-driven language solutions.
+                        Tresor is Co-Founder and COO of Medikal. She specializes in machine learning and AI model development, including linguistic systems for African languages. She oversees operations and ensures execution across product and deployment.
                     </p>
                     <div class="member-details">
                         <div class="detail-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Princeton University</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Princeton, New Jersey</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-globe"></i>
-                            <span>United States</span>
+                            <span>Princeton University — Princeton, USA</span>
                         </div>
                     </div>
-                    
                     <a href="https://www.linkedin.com/in/tresoryubahwe/" class="linkedin-btn" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn Profile</span>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Marcel Ishimwe -->
-            <div class="team-member">
-                <div class="member-photo">
-                    <div class="member-photo-inner">
-                        <img src="media/images/team/Marcel-Ishimwe-S.jpg" alt="Marcel Ishimwe">
-                    </div>
-                </div>
-                <div class="member-info">
-                    <h3>Marcel Ishimwe</h3>
-                    <div class="member-role">Co-Founder & Director of Strategic Partnerships</div>
-                    <p class="member-bio">
-                        As Co-Founder and Director of Strategic Partnerships, Marcel leads efforts to strengthen Medikal Africa's collaborations across the healthcare ecosystem. He forges impactful relationships with institutions, governments, and international organizations, driving growth and expanding the reach of our solutions to maximize real-world impact in African healthcare.
-                    </p>
-                    <div class="member-details">
-                        <div class="detail-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>University of Rwanda</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Kigali</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-globe"></i>
-                            <span>Rwanda</span>
-                        </div>
-                    </div>
-                    
-                    <a href="https://www.linkedin.com/in/marcel-ishimwe-795488247/" class="linkedin-btn" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn Profile</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Product Manager -->
+            <!-- Amen Divine Ikamba -->
             <div class="team-member">
                 <div class="member-photo">
                     <div class="member-photo-inner">
@@ -1429,33 +1232,28 @@
                 </div>
                 <div class="member-info">
                     <h3>Amen Divine Ikamba</h3>
-                    <div class="member-role">Product Manager</div>
+                    <div class="member-role">Co-Founder & Head of Product</div>
                     <p class="member-bio">
-                        Amen, a Junior at Pitzer College, leads our AI projects with a passion for software development, artificial intelligence, and data science. She plays a key role in advancing innovative AI solutions within our team.
+                        Amen is Co-Founder and Head of Product at Medikal. She leads product development and user experience, ensuring the platform integrates seamlessly into clinical workflows. Her focus is building scalable, AI-driven healthcare tools.
                     </p>
                     <div class="member-details">
                         <div class="detail-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Pitzer College</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Claremont, California</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-globe"></i>
-                            <span>United States</span>
+                            <span>Pitzer College — California, USA</span>
                         </div>
                     </div>
-                    
                     <a href="https://www.linkedin.com/in/amen123/" class="linkedin-btn" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn Profile</span>
                     </a>
                 </div>
             </div>
+        </div>
 
-            <!-- CTO -->
+        <!-- Leadership Section -->
+        <div class="team-section-header" style="margin-top: 4rem;">
+            <h2>Leadership</h2>
+        </div>
+        <div class="team-grid">
+            <!-- Ishimwe Divin -->
             <div class="team-member">
                 <div class="member-photo">
                     <div class="member-photo-inner">
@@ -1466,31 +1264,20 @@
                     <h3>Ishimwe Divin</h3>
                     <div class="member-role">Chief Technology Officer</div>
                     <p class="member-bio">
-                         Divin oversees Medikal Africa's operations and strategy execution. With strong expertise in healthcare innovation and technology development, he ensures that our initiatives are efficient, impactful, and aligned with the practical needs of African healthcare systems.
+                        Divin leads Medikal's technical architecture and platform engineering. He focuses on infrastructure reliability, system scalability, and secure deployment across healthcare environments.
                     </p>
                     <div class="member-details">
                         <div class="detail-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>EPITECH University</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Vénissieux</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-globe"></i>
-                            <span>France</span>
+                            <span>EPITECH University — France</span>
                         </div>
                     </div>
-                    
                     <a href="https://www.linkedin.com/in/divin-ishimwe-8516462b1/" class="linkedin-btn" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn Profile</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Head of Research -->
+            <!-- Appolinaire Manirakiza -->
             <div class="team-member">
                 <div class="member-photo">
                     <div class="member-photo-inner">
@@ -1499,28 +1286,41 @@
                 </div>
                 <div class="member-info">
                     <h3>Appolinaire Manirakiza</h3>
-                    <div class="member-role">Chief Research Officer</div>
+                    <div class="member-role">Director of Research</div>
                     <p class="member-bio">
-                        As Chief Research Officer, Apollaire brings deep expertise in antimicrobial resistance, clinical research, and public health. A leading academic researcher, he provides scientific direction to ensure Medikal Africa's AI solutions are rooted in cutting-edge AMR research and aligned with global clinical best practices.
+                        Appolinaire oversees research strategy and clinical alignment. His work ensures Medikal's technology reflects current evidence in antimicrobial resistance and public health practice.
                     </p>
                     <div class="member-details">
                         <div class="detail-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>University of British Columbia</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Vancouver</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-globe"></i>
-                            <span>Canada</span>
+                            <span>University of British Columbia — Canada</span>
                         </div>
                     </div>
-                    
                     <a href="https://medikalafrica.com/about-us/#" class="linkedin-btn" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn Profile</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Marcel Ishimwe -->
+            <div class="team-member">
+                <div class="member-photo">
+                    <div class="member-photo-inner">
+                        <img src="media/images/team/Marcel-Ishimwe-S.jpg" alt="Marcel Ishimwe">
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3>Marcel Ishimwe</h3>
+                    <div class="member-role">Director of Strategic Partnerships</div>
+                    <p class="member-bio">
+                        Marcel leads institutional partnerships and ecosystem engagement. He works with healthcare providers and stakeholders to support adoption and long-term implementation.
+                    </p>
+                    <div class="member-details">
+                        <div class="detail-item">
+                            <span>University of Rwanda — Kigali</span>
+                        </div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/marcel-ishimwe-795488247/" class="linkedin-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
                     </a>
                 </div>
             </div>
@@ -1719,6 +1519,7 @@
             });
         }
     </script>
+    <script src="translations.js"></script>
     <script src="mobile-menu.js" defer></script>
 </body>
 </html>
