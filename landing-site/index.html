@@ -56,6 +56,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/mobile-first.css">
+    <link rel="stylesheet" href="css/homepage-responsive.css">
     <script>
         tailwind.config = {
             theme: {
@@ -3184,23 +3185,27 @@
                     <div class="news-card-item">
                         <a href="news/nvidia-inception-program.html" class="block">
                             <div class="news-card-minimal">
-                                <div class="mb-4">
-                                    <div class="news-card-image-minimal" style="background: linear-gradient(135deg, #76b900 0%, #5EC4D5 100%); display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
-                                        <img src="media/images/nvidia-inception-program-badge.jpg" alt="NVIDIA Inception Program Badge" style="max-width: 100%; height: auto; object-fit: contain; border-radius: 4px;">
-                                    </div>
-                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Technology Partnership</span>
-                                    <span class="text-sm mx-2" style="color: #999;">•</span>
-                                    <span class="text-sm" style="color: #666;">Feb 2026</span>
+                                <div class="news-card-image-minimal" style="background: linear-gradient(135deg, #76b900 0%, #5EC4D5 100%); display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+                                    <img src="media/images/nvidia-inception-program-badge.jpg" alt="NVIDIA Inception Program Badge" style="max-width: 100%; height: auto; object-fit: contain;">
                                 </div>
-                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
-                                    Medikal Africa Selected for NVIDIA Inception Program
-                                </h3>
-                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
-                                    Medikal Africa joins NVIDIA Inception Program, gaining access to GPU acceleration and edge AI tooling to strengthen production-grade healthcare AI infrastructure for combating AMR.
-                                </p>
-                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
-                                    Read More <i class="fas fa-arrow-right"></i>
-                                </span>
+                                <div class="news-card-content-wrapper">
+                                    <div class="news-card-meta">
+                                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Technology Partnership</span>
+                                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                                        <span class="text-sm" style="color: #666;">Feb 2026</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                                        Medikal Africa Selected for NVIDIA Inception Program
+                                    </h3>
+                                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                                        Medikal Africa joins NVIDIA Inception Program, gaining access to GPU acceleration and edge AI tooling to strengthen production-grade healthcare AI infrastructure for combating AMR.
+                                    </p>
+                                    <div class="news-card-cta">
+                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
+                                            Read More <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -3209,52 +3214,61 @@
                     <div class="news-card-item">
                         <a href="news/youth-digital-health-champion.html" class="block">
                             <div class="news-card-minimal">
-                                <div class="mb-4">
-                                    <div class="news-card-image-minimal">
-                                        <img src="africa-cdc-logo.png" alt="Africa CDC Logo">
-                                    </div>
-                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Recognition</span>
-                                    <span class="text-sm mx-2" style="color: #999;">•</span>
-                                    <span class="text-sm" style="color: #666;">Dec 2025</span>
+                                <div class="news-card-image-minimal" style="background: #f8fafb; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+                                    <img src="africa-cdc-logo.png" alt="Africa CDC Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                 </div>
-                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
-                                    Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC
-                                </h3>
-                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
-                                    Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion by the Africa CDC Youth in Digital Health Network, recognizing his leadership in combating AMR.
-                                </p>
-                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
-                                    Read More <i class="fas fa-arrow-right"></i>
-                                </span>
+                                <div class="news-card-content-wrapper">
+                                    <div class="news-card-meta">
+                                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Recognition</span>
+                                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                                        <span class="text-sm" style="color: #666;">Dec 2025</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                                        Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC
+                                    </h3>
+                                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                                        Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion by the Africa CDC Youth in Digital Health Network, recognizing his leadership in combating AMR.
+                                    </p>
+                                    <div class="news-card-cta">
+                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
+                                            Read More <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
 
-                    <!-- News Item 2: ONPOD TV Interview -->
+                    <!-- News Item 3: ONPOD TV Interview -->
                     <div class="news-card-item">
                         <a href="news/onpod-tv-interview.html" class="block">
                             <div class="news-card-minimal">
-                                <div class="mb-4">
-                                    <div class="news-card-image-minimal">
-                                        <div class="video-thumbnail-container">
-                                            <div class="video-play-button">
-                                                <i class="fas fa-play"></i>
-                                            </div>
+                                <div class="news-card-image-minimal">
+                                    <div class="video-thumbnail-container">
+                                        <img src="https://img.youtube.com/vi/fs0uUfnqxOw/maxresdefault.jpg" alt="ONPOD TV Interview Preview" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/fs0uUfnqxOw/hqdefault.jpg';">
+                                        <div class="video-play-button">
+                                            <i class="fas fa-play"></i>
                                         </div>
                                     </div>
-                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Innovation</span>
-                                    <span class="text-sm mx-2" style="color: #999;">•</span>
-                                    <span class="text-sm" style="color: #666;">Oct 2025</span>
                                 </div>
-                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
-                                    Leadership Spotlight: ONPOD TV, Canada
-                                </h3>
-                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
-                                    Our founder and CEO, Olivier Niyonshima, was featured on ONPOD TV Canada in an exclusive interview highlighting Medikal's mission to fight AMR through AI.
-                                </p>
-                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
-                                    Watch Video <i class="fas fa-arrow-right"></i>
-                                </span>
+                                <div class="news-card-content-wrapper">
+                                    <div class="news-card-meta">
+                                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Innovation</span>
+                                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                                        <span class="text-sm" style="color: #666;">Oct 2025</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                                        Leadership Spotlight: ONPOD TV, Canada
+                                    </h3>
+                                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                                        Our founder and CEO, Olivier Niyonshima, was featured on ONPOD TV Canada in an exclusive interview highlighting Medikal's mission to fight AMR through AI.
+                                    </p>
+                                    <div class="news-card-cta">
+                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
+                                            Watch Video <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -3263,23 +3277,27 @@
                     <div class="news-card-item">
                         <a href="news/cbot-robolabs-partnership.html" class="block">
                             <div class="news-card-minimal">
-                                <div class="mb-4">
-                                    <div class="news-card-image-minimal" style="height: 180px; overflow: hidden;">
-                                        <img src="cbot.jpg" alt="cBot Robot" style="width: 100%; height: 100%; object-fit: cover;">
-                                    </div>
-                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Healthcare Innovation</span>
-                                    <span class="text-sm mx-2" style="color: #999;">•</span>
-                                    <span class="text-sm" style="color: #666;">Oct 2025</span>
+                                <div class="news-card-image-minimal">
+                                    <img src="cbot.jpg" alt="cBot Robot" style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
-                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
-                                    ZeroX Intelligence × RoboLabs — Deploying cBot UV-C Disinfection Robots
-                                </h3>
-                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
-                                    ZeroX Intelligence partners with RoboLabs to bring advanced autonomous disinfection technology to African healthcare facilities, working alongside Medikal AI.
-                                </p>
-                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
-                                    Read More <i class="fas fa-arrow-right"></i>
-                                </span>
+                                <div class="news-card-content-wrapper">
+                                    <div class="news-card-meta">
+                                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Healthcare Innovation</span>
+                                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                                        <span class="text-sm" style="color: #666;">Oct 2025</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                                        ZeroX Intelligence × RoboLabs — Deploying cBot UV-C Disinfection Robots
+                                    </h3>
+                                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                                        ZeroX Intelligence partners with RoboLabs to bring advanced autonomous disinfection technology to African healthcare facilities, working alongside Medikal AI.
+                                    </p>
+                                    <div class="news-card-cta">
+                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
+                                            Read More <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -3289,23 +3307,27 @@
                     <div class="news-card-item">
                         <a href="news/nvidia-inception-program.html" class="block">
                             <div class="news-card-minimal">
-                                <div class="mb-4">
-                                    <div class="news-card-image-minimal" style="background: linear-gradient(135deg, #76b900 0%, #5EC4D5 100%); display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
-                                        <img src="media/images/nvidia-inception-program-badge.jpg" alt="NVIDIA Inception Program Badge" style="max-width: 100%; height: auto; object-fit: contain; border-radius: 4px;">
-                                    </div>
-                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Technology Partnership</span>
-                                    <span class="text-sm mx-2" style="color: #999;">•</span>
-                                    <span class="text-sm" style="color: #666;">Feb 2026</span>
+                                <div class="news-card-image-minimal" style="background: linear-gradient(135deg, #76b900 0%, #5EC4D5 100%); display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+                                    <img src="media/images/nvidia-inception-program-badge.jpg" alt="NVIDIA Inception Program Badge" style="max-width: 100%; height: auto; object-fit: contain;">
                                 </div>
-                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
-                                    Medikal Africa Selected for NVIDIA Inception Program
-                                </h3>
-                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
-                                    Medikal Africa joins NVIDIA Inception Program, gaining access to GPU acceleration and edge AI tooling to strengthen production-grade healthcare AI infrastructure for combating AMR.
-                                </p>
-                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
-                                    Read More <i class="fas fa-arrow-right"></i>
-                                </span>
+                                <div class="news-card-content-wrapper">
+                                    <div class="news-card-meta">
+                                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Technology Partnership</span>
+                                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                                        <span class="text-sm" style="color: #666;">Feb 2026</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                                        Medikal Africa Selected for NVIDIA Inception Program
+                                    </h3>
+                                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                                        Medikal Africa joins NVIDIA Inception Program, gaining access to GPU acceleration and edge AI tooling to strengthen production-grade healthcare AI infrastructure for combating AMR.
+                                    </p>
+                                    <div class="news-card-cta">
+                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
+                                            Read More <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
@@ -3314,23 +3336,27 @@
                     <div class="news-card-item">
                         <a href="news/youth-digital-health-champion.html" class="block">
                             <div class="news-card-minimal">
-                                <div class="mb-4">
-                                    <div class="news-card-image-minimal">
-                                        <img src="africa-cdc-logo.png" alt="Africa CDC Logo">
-                                    </div>
-                                    <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Recognition</span>
-                                    <span class="text-sm mx-2" style="color: #999;">•</span>
-                                    <span class="text-sm" style="color: #666;">Dec 2025</span>
+                                <div class="news-card-image-minimal" style="background: #f8fafb; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+                                    <img src="africa-cdc-logo.png" alt="Africa CDC Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                 </div>
-                                <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
-                                    Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC
-                                </h3>
-                                <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
-                                    Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion by the Africa CDC Youth in Digital Health Network, recognizing his leadership in combating AMR.
-                                </p>
-                                <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2 mt-auto" style="color: #5EC4D5;">
-                                    Read More <i class="fas fa-arrow-right"></i>
-                                </span>
+                                <div class="news-card-content-wrapper">
+                                    <div class="news-card-meta">
+                                        <span class="text-sm font-semibold" style="color: #5EC4D5;">Leadership & Recognition</span>
+                                        <span class="text-sm mx-2" style="color: #999;">•</span>
+                                        <span class="text-sm" style="color: #666;">Dec 2025</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-3" style="color: #1a1a1a;">
+                                        Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC
+                                    </h3>
+                                    <p class="mb-4 line-clamp-3" style="color: #666; line-height: 1.6;">
+                                        Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion by the Africa CDC Youth in Digital Health Network, recognizing his leadership in combating AMR.
+                                    </p>
+                                    <div class="news-card-cta">
+                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
+                                            Read More <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </a>
                     </div>
