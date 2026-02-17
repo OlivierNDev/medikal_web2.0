@@ -857,32 +857,28 @@
         <div class="contact-info">
             <div class="info-card">
                 <div class="info-card-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
+                    </div>
                 <h3>Email Us</h3>
                 <a href="mailto:contact@medikalafrica.com">contact@medikalafrica.com</a>
             </div>
 
             <div class="info-card">
                 <div class="info-card-icon">
-                    <i class="fas fa-phone-alt"></i>
-                </div>
+                    </div>
                 <h3>Call Us</h3>
                 <a href="tel:+17024163329">+1 (702) 416-3329</a>
             </div>
 
             <div class="info-card">
                 <div class="info-card-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
+                    </div>
                 <h3>Location</h3>
                 <p>Kigali, Rwanda</p>
             </div>
 
             <div class="info-card">
                 <div class="info-card-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
+                    </div>
                 <h3>Response Time</h3>
                 <p>We typically respond within 24-48 hours</p>
             </div>
@@ -928,7 +924,6 @@
                 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
                 <button type="submit" class="form-button" id="submitButton">
-                    <i class="fas fa-paper-plane"></i>
                     <span>Send Message</span>
                 </button>
             </form>
@@ -1000,7 +995,6 @@
                     <form class="newsletter-form">
                         <input type="email" placeholder="Enter your email" class="newsletter-input" required>
                         <button type="submit" class="newsletter-button">
-                            <i class="fas fa-paper-plane"></i>
                             Subscribe
                         </button>
                     </form>
@@ -1046,7 +1040,7 @@
             
             // Disable submit button
             submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Sending...</span>';
+            submitButton.innerHTML = '<span>Sending...</span>';
             
             // Hide previous messages
             formMessage.classList.remove('show', 'success', 'error');
@@ -1072,7 +1066,7 @@
                     // Reset button after 3 seconds
                     setTimeout(() => {
                         submitButton.disabled = false;
-                        submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> <span>Send Message</span>';
+                        submitButton.innerHTML = '<span>Send Message</span>';
                     }, 3000);
                 } else {
                     // Error from Formspree
@@ -1093,7 +1087,7 @@
                 // Reset button
                 if (submitButton) {
                     submitButton.disabled = false;
-                    submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> <span>Send Message</span>';
+                    submitButton.innerHTML = '<span>Send Message</span>';
                 }
             }
         });
@@ -1148,5 +1142,6 @@
     </script>
     <script src="js/load-header.js" defer></script>
     <script src="js/load-footer.js" defer></script>
+    <script src="translations.js"></script>
 </body>
 </html>

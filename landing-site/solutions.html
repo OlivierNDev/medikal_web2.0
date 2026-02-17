@@ -617,18 +617,6 @@
             transform: scaleX(1);
         }
 
-        .problem-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-        }
 
         .problem-card h3 {
             font-size: clamp(1.25rem, 3vw, 1.5rem);
@@ -722,24 +710,6 @@
             opacity: 1;
         }
 
-        .solution-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .solution-card:hover .solution-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 30px rgba(94, 196, 213, 0.3);
-        }
 
         .solution-card h3 {
             font-size: clamp(1.25rem, 3vw, 1.5rem);
@@ -1232,16 +1202,6 @@
                 padding: 1.5rem;
             }
 
-            .problem-icon,
-            .solution-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.25rem;
-            }
-
-            .solution-icon {
-                font-size: 1.5rem;
-            }
 
             .feature-highlight {
                 padding: 2.5rem 0.75rem;
@@ -1292,27 +1252,19 @@
 
         <div class="problem-grid">
             <div class="problem-card">
-                <div class="problem-icon">
-                    <i class="fas fa-exclamation-triangle"></i>
-                </div>
+                
                 <h3>Antibiotic Overuse</h3>
                 <p>Over-prescription and misuse of antibiotics leading to antimicrobial resistance, one of the biggest threats to global health.</p>
                 <span class="problem-badge">Critical Issue</span>
             </div>
 
             <div class="problem-card">
-                <div class="problem-icon">
-                    <i class="fas fa-stethoscope"></i>
-                </div>
                 <h3>Misdiagnosis</h3>
                 <p>Lack of advanced diagnostic tools leading to incorrect treatment decisions and delayed patient care in underserved communities.</p>
                 <span class="problem-badge">High Priority</span>
             </div>
 
             <div class="problem-card">
-                <div class="problem-icon">
-                    <i class="fas fa-info-circle"></i>
-                </div>
                 <h3>Information Gap</h3>
                 <p>Limited access to updated medical information, clinical guidelines, and evidence-based treatment protocols across African healthcare systems.</p>
                 <span class="problem-badge">Addressable</span>
@@ -1329,9 +1281,6 @@
 
         <div class="solution-grid">
             <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
                 <h3>Clinical Decision-Support Infrastructure</h3>
                 <p>Structured data integration and AI-assisted analytics to support clinical decision-making and antibiotic stewardship protocols within hospital workflows.</p>
                 <ul class="solution-features">
@@ -1343,9 +1292,6 @@
             </div>
 
             <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-microscope"></i>
-                </div>
                 <h3>AMR Monitoring & Surveillance</h3>
                 <p>Structured antimicrobial resistance visibility and reporting infrastructure to strengthen surveillance and response capabilities across health systems.</p>
                 <ul class="solution-features">
@@ -1357,9 +1303,6 @@
             </div>
 
             <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-shield-virus"></i>
-                </div>
                 <h3>Antibiotic Stewardship Infrastructure</h3>
                 <p>Institutional infrastructure supporting antibiotic stewardship protocols with prescribing analytics, resistance monitoring, and stewardship coordination.</p>
                 <ul class="solution-features">
@@ -1371,9 +1314,6 @@
             </div>
 
             <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-language"></i>
-                </div>
                 <h3>Multilingual Support</h3>
                 <p>Healthcare solutions accessible in multiple languages including English, French, and Kinyarwanda, breaking language barriers.</p>
                 <ul class="solution-features">
@@ -1385,9 +1325,6 @@
             </div>
 
             <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
                 <h3>Mobile & SMS Integration</h3>
                 <p>Reach remote communities through WhatsApp consultations, SMS health alerts, and mobile diagnostic capabilities.</p>
                 <ul class="solution-features">
@@ -1399,9 +1336,6 @@
             </div>
 
             <div class="solution-card">
-                <div class="solution-icon">
-                    <i class="fas fa-database"></i>
-                </div>
                 <h3>Data Integration Architecture</h3>
                 <p>Modular infrastructure architecture supporting integration with existing hospital information systems and built with interoperability for future regional data exchange in compliance with national regulations.</p>
                 <ul class="solution-features">
@@ -1431,7 +1365,6 @@
             </div>
             <div class="feature-highlight-visual">
                 <div style="text-align: center; padding: 2rem;">
-                    <i class="fas fa-heartbeat" style="font-size: 5rem; color: var(--primary-blue); margin-bottom: 1.5rem;"></i>
                     <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--dark-text); margin-bottom: 1rem;">Healthcare Transformation</h3>
                     <p style="color: var(--light-text); line-height: 1.7;">From individual patient care to continental healthcare systems, our solutions scale to meet every need.</p>
                 </div>
@@ -1446,11 +1379,9 @@
             <p class="cta-description">Join us in the fight against AMR and revolutionize healthcare delivery across Africa</p>
             <div class="cta-buttons">
                 <a href="early-access.html" class="btn-primary">
-                    <i class="fas fa-rocket"></i>
                     Get Started
                 </a>
                 <a href="contact.html" class="btn-secondary">
-                    <i class="fas fa-envelope"></i>
                     Contact Us
                 </a>
             </div>
@@ -1626,5 +1557,6 @@
     </script>
     <script src="js/load-header.js" defer></script>
     <script src="js/load-footer.js" defer></script>
+    <script src="translations.js"></script>
 </body>
 </html>

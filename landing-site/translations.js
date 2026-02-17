@@ -27,13 +27,13 @@
             getStarted: "Get Started",
             getStartedFree: "Request Institutional Access",
             // Hero section
-            heroBadge: "AI-Powered Healthcare Platform",
-            heroTitle1: "Revolutionizing",
-            heroTitle2: "African Healthcare",
-            heroTitle3: "with AI",
-            heroSubtitle: "Combating Antimicrobial Resistance across Africa through advanced AI technology, multilingual support, and intelligent health solutions for clinicians and patients.",
-            explorePlatform: "Explore Platform",
-            watchDemo: "Early Access",
+            heroBadge: "Clinical Intelligence Infrastructure",
+            heroTitle1: "Clinical Intelligence Infrastructure",
+            heroTitle2: "for Antibiotic Stewardship",
+            heroTitle3: "and AMR Monitoring",
+            heroSubtitle: "Medikal supports hospitals and health systems with structured data integration, decision-support analytics, and antimicrobial resistance visibility.",
+            explorePlatform: "Learn More",
+            watchDemo: "Request Institutional Access",
             aiAccuracy: "AI Accuracy",
             languages: "Languages",
             aiSupport: "AI Support",
@@ -81,16 +81,16 @@
             getStarted: "Commencer",
             getStartedFree: "Demander l'Accès Institutionnel",
             // Hero section
-            heroBadge: "Plateforme de Soins de Santé Alimentée par l'IA",
-            heroTitle1: "Révolutionner",
-            heroTitle2: "les Soins de Santé Africains",
-            heroTitle3: "avec l'IA",
-            heroSubtitle: "Lutter contre la Résistance aux Antimicrobiens à travers l'Afrique grâce à une technologie IA avancée, un support multilingue et des solutions de santé intelligentes pour les cliniciens et les patients.",
-            explorePlatform: "Explorer la Plateforme",
-            watchDemo: "Accès Anticipé",
-            aiAccuracy: "Précision IA",
+            heroBadge: "Infrastructure d'Intelligence Clinique",
+            heroTitle1: "Infrastructure d'Intelligence Clinique",
+            heroTitle2: "pour la Gestion des Antibiotiques",
+            heroTitle3: "et la Surveillance de la RAM",
+            heroSubtitle: "Medikal soutient les hôpitaux et les systèmes de santé avec l'intégration de données structurées, des analyses d'aide à la décision et la visibilité de la résistance aux antimicrobiens.",
+            explorePlatform: "En Savoir Plus",
+            watchDemo: "Demander l'Accès Institutionnel",
+            aiAccuracy: "Déploiement",
             languages: "Langues",
-            aiSupport: "Support IA",
+            aiSupport: "Disponibilité du Système",
             clinicalSupport: "Support Clinique",
             amrTracking: "Suivi RAM",
             multilingual: "Multilingue",
@@ -149,24 +149,47 @@
         const navLinks = document.querySelectorAll('.nav-menu a, .mobile-nav-list a');
         navLinks.forEach(link => {
             const text = link.textContent.trim();
-            const firstChild = link.childNodes[0];
-            if (firstChild && firstChild.nodeType === Node.TEXT_NODE) {
+            // Handle links with icons (dropdown parents)
+            if (link.querySelector('i') || link.closest('.nav-item-dropdown') || link.closest('.mobile-nav-dropdown')) {
+                const linkText = link.childNodes[0];
+                if (linkText && linkText.nodeType === Node.TEXT_NODE) {
+                    const trimmed = linkText.textContent.trim();
+                    if (trimmed.includes('Home') || trimmed.includes('Accueil')) {
+                        linkText.textContent = t.home;
+                    } else if (trimmed.includes('Solutions')) {
+                        linkText.textContent = t.solutions;
+                    } else if (trimmed.includes('Features') || trimmed.includes('Fonctionnalités')) {
+                        linkText.textContent = t.features;
+                    } else if (trimmed.includes('Resources') || trimmed.includes('Ressources')) {
+                        linkText.textContent = t.resources;
+                    } else if (trimmed.includes('Our Team') || trimmed.includes("Notre Équipe")) {
+                        linkText.textContent = t.ourTeam;
+                    } else if (trimmed.includes('Impact')) {
+                        linkText.textContent = t.impact;
+                    } else if (trimmed.includes('News') || trimmed.includes("Actualités")) {
+                        linkText.textContent = t.newsMedia;
+                    } else if (trimmed.includes('Contact')) {
+                        linkText.textContent = t.contact;
+                    }
+                }
+            } else {
+                // Regular links without icons
                 if (text.includes('Home') || text.includes('Accueil')) {
-                    firstChild.textContent = ' ' + t.home;
+                    link.textContent = t.home;
                 } else if (text.includes('Solutions')) {
-                    firstChild.textContent = ' ' + t.solutions;
+                    link.textContent = t.solutions;
                 } else if (text.includes('Features') || text.includes('Fonctionnalités')) {
-                    firstChild.textContent = ' ' + t.features;
+                    link.textContent = t.features;
                 } else if (text.includes('Resources') || text.includes('Ressources')) {
-                    firstChild.textContent = ' ' + t.resources;
+                    link.textContent = t.resources;
                 } else if (text.includes('Our Team') || text.includes("Notre Équipe")) {
-                    firstChild.textContent = ' ' + t.ourTeam;
+                    link.textContent = t.ourTeam;
                 } else if (text.includes('Impact')) {
-                    firstChild.textContent = ' ' + t.impact;
-                } else if (text.includes('News & Media') || text.includes("Actualités & Médias")) {
-                    firstChild.textContent = ' ' + t.newsMedia;
+                    link.textContent = t.impact;
+                } else if (text.includes('News') || text.includes("Actualités")) {
+                    link.textContent = t.newsMedia;
                 } else if (text.includes('Contact')) {
-                    firstChild.textContent = ' ' + t.contact;
+                    link.textContent = t.contact;
                 }
             }
         });
@@ -197,14 +220,12 @@
                 // Already handled by data-i18n
                 return;
             }
-            if (text.includes('Get Started') && !text.includes('Free')) {
-                const icon = btn.querySelector('i');
-                btn.innerHTML = (icon ? icon.outerHTML + ' ' : '') + t.getStarted;
-            } else if (text.includes('Request Institutional Access') || text.includes("Demander l'Accès Institutionnel")) {
+            if (text.includes('Get Started') && !text.includes('Free') && !text.includes('Institutional')) {
+                btn.textContent = t.getStarted;
+            } else if (text.includes('Request Institutional Access') || text.includes("Demander l'Accès Institutionnel") || text.includes("Accès Institutionnel")) {
                 btn.textContent = t.getStartedFree;
-            } else if (text.includes('Explore Platform') || text.includes("Explorer la Plateforme")) {
-                const icon = btn.querySelector('i');
-                btn.innerHTML = (icon ? icon.outerHTML + ' ' : '') + t.explorePlatform;
+            } else if (text.includes('Learn More') || text.includes("En Savoir Plus") || text.includes('Explore Platform') || text.includes("Explorer la Plateforme")) {
+                btn.textContent = t.explorePlatform;
             } else if (text.includes('Early Access') || text.includes("Accès Anticipé") || text.includes('Watch Demo') || text.includes("Regarder la Démo")) {
                 btn.textContent = t.watchDemo;
             }
@@ -213,11 +234,11 @@
         // Update stats labels
         document.querySelectorAll('.features-stat-label, .stat-label').forEach(label => {
             const text = label.textContent.trim();
-            if (text.includes('AI Accuracy') || text.includes("Précision IA")) {
+            if (text.includes('Deployment') || text.includes("Déploiement")) {
                 label.textContent = t.aiAccuracy;
             } else if (text.includes('Languages') || text.includes('Langues')) {
                 label.textContent = t.languages;
-            } else if (text.includes('AI Support') || text.includes("Support IA")) {
+            } else if (text.includes('System Availability') || text.includes("Disponibilité du Système") || text.includes('AI Support') || text.includes("Support IA")) {
                 label.textContent = t.aiSupport;
             }
         });
@@ -237,14 +258,18 @@
         });
     }
 
-    // Initialize language selector - wrapped in DOMContentLoaded
+    // Initialize language selector - works with dynamically loaded header
     function initTranslations() {
-        const languageSelector = document.querySelector('.language-selector');
+        // Try multiple selectors to find language selector
+        const languageSelector = document.querySelector('.language-selector') || 
+                                 document.getElementById('languageSelector') ||
+                                 document.querySelector('#languageSelector');
+        
         if (languageSelector) {
             // Load saved language preference or detect from URL
             const urlParams = new URLSearchParams(window.location.search);
             const urlLang = urlParams.get('lang');
-            const savedLang = urlLang || localStorage.getItem('preferredLanguage') || 'en';
+            const savedLang = urlLang || localStorage.getItem('preferredLanguage') || localStorage.getItem('medikal-lang') || 'en';
             
             // Set the selector value
             languageSelector.value = savedLang;
@@ -252,23 +277,46 @@
             // Translate the page
             translatePage(savedLang);
             
+            // Remove old event listeners by cloning
+            const newSelector = languageSelector.cloneNode(true);
+            languageSelector.parentNode.replaceChild(newSelector, languageSelector);
+            
             // Add event listener for language change
-            languageSelector.addEventListener('change', function(e) {
-                translatePage(e.target.value);
-                // Optional: Update URL without reload
+            newSelector.addEventListener('change', function(e) {
+                const selectedLang = e.target.value;
+                translatePage(selectedLang);
+                // Update URL without reload
                 const url = new URL(window.location);
-                url.searchParams.set('lang', e.target.value);
+                url.searchParams.set('lang', selectedLang);
                 window.history.pushState({}, '', url);
             });
+            
+            return true; // Successfully initialized
+        }
+        return false; // Selector not found yet
+    }
+
+    // Initialize when DOM is ready - with retry for dynamically loaded header
+    function tryInitTranslations(retries = 10) {
+        if (initTranslations()) {
+            return; // Success
+        }
+        
+        if (retries > 0) {
+            // Retry after a delay (header might be loading)
+            setTimeout(() => {
+                tryInitTranslations(retries - 1);
+            }, 200);
         }
     }
 
-    // Initialize when DOM is ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initTranslations);
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => tryInitTranslations(), 500);
+        });
     } else {
         // DOM is already ready
-        initTranslations();
+        setTimeout(() => tryInitTranslations(), 500);
     }
 
     // Export for use in other scripts if needed

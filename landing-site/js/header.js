@@ -108,11 +108,14 @@
         const selectedLang = languageSelector.value;
         // Store preference
         if (typeof Storage !== 'undefined') {
+            localStorage.setItem('preferredLanguage', selectedLang);
             localStorage.setItem('medikal-lang', selectedLang);
         }
         // Trigger translation if available
-        if (typeof updateLanguage === 'function') {
-            updateLanguage(selectedLang);
+        if (window.MedikalTranslations && typeof window.MedikalTranslations.translate === 'function') {
+            window.MedikalTranslations.translate(selectedLang);
+        } else if (typeof translatePage === 'function') {
+            translatePage(selectedLang);
         }
     }
 
@@ -175,9 +178,13 @@
             languageSelector.addEventListener('change', handleLanguageChange);
             // Load saved preference
             if (typeof Storage !== 'undefined') {
-                const savedLang = localStorage.getItem('medikal-lang');
+                const savedLang = localStorage.getItem('preferredLanguage') || localStorage.getItem('medikal-lang') || 'en';
                 if (savedLang) {
                     languageSelector.value = savedLang;
+                    // Trigger initial translation
+                    setTimeout(() => {
+                        handleLanguageChange();
+                    }, 100);
                 }
             }
         }

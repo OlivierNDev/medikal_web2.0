@@ -1191,21 +1191,6 @@
             position: relative;
         }
 
-        .visual-icon-container {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, rgba(94, 196, 213, 0.1), rgba(94, 196, 213, 0.05));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-        }
-
-        .visual-icon {
-            font-size: 3.5rem;
-            color: var(--primary-blue);
-        }
 
         .visual-grid {
             display: grid;
@@ -1229,12 +1214,6 @@
             transform: translateY(-2px);
         }
 
-        .visual-feature i {
-            font-size: 1.5rem;
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-            display: block;
-        }
 
         .visual-feature-text {
             font-size: 0.875rem;
@@ -2026,11 +2005,6 @@
                 margin-bottom: 20px;
             }
             
-            .feature-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
         }
 
             .video-modal {
@@ -2094,14 +2068,6 @@
                 padding: 2rem;
             }
 
-            .feature-icon-wrapper {
-                width: 70px;
-                height: 70px;
-            }
-
-            .feature-icon-wrapper i {
-                font-size: 1.75rem;
-            }
 
             .feature-card h3 {
                 font-size: 1.25rem;
@@ -3207,8 +3173,8 @@
                                         Medikal Africa joins NVIDIA Inception Program, gaining access to GPU acceleration and edge AI tooling to strengthen production-grade healthcare AI infrastructure for combating AMR.
                                     </p>
                                     <div class="news-card-cta">
-                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
-                                            Read More <i class="fas fa-arrow-right"></i>
+                                        <span class="text-sm font-semibold hover:underline" style="color: #5EC4D5;">
+                                            Read More
                                         </span>
                                     </div>
                                 </div>
@@ -3236,8 +3202,8 @@
                                         Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion by the Africa CDC Youth in Digital Health Network, recognizing his leadership in combating AMR.
                                     </p>
                                     <div class="news-card-cta">
-                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
-                                            Read More <i class="fas fa-arrow-right"></i>
+                                        <span class="text-sm font-semibold hover:underline" style="color: #5EC4D5;">
+                                            Read More
                                         </span>
                                     </div>
                                 </div>
@@ -3270,8 +3236,8 @@
                                         Our founder and CEO, Olivier Niyonshima, was featured on ONPOD TV Canada in an exclusive interview highlighting Medikal's mission to fight AMR through AI.
                                     </p>
                                     <div class="news-card-cta">
-                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
-                                            Watch Video <i class="fas fa-arrow-right"></i>
+                                        <span class="text-sm font-semibold hover:underline" style="color: #5EC4D5;">
+                                            Watch Video
                                         </span>
                                     </div>
                                 </div>
@@ -3299,8 +3265,8 @@
                                         ZeroX Intelligence partners with RoboLabs to bring advanced autonomous disinfection technology to African healthcare facilities, working alongside Medikal AI.
                                     </p>
                                     <div class="news-card-cta">
-                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
-                                            Read More <i class="fas fa-arrow-right"></i>
+                                        <span class="text-sm font-semibold hover:underline" style="color: #5EC4D5;">
+                                            Read More
                                         </span>
                                     </div>
                                 </div>
@@ -3329,8 +3295,8 @@
                                         Medikal Africa joins NVIDIA Inception Program, gaining access to GPU acceleration and edge AI tooling to strengthen production-grade healthcare AI infrastructure for combating AMR.
                                     </p>
                                     <div class="news-card-cta">
-                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
-                                            Read More <i class="fas fa-arrow-right"></i>
+                                        <span class="text-sm font-semibold hover:underline" style="color: #5EC4D5;">
+                                            Read More
                                         </span>
                                     </div>
                                 </div>
@@ -3358,8 +3324,8 @@
                                         Olivier Niyonshima, CEO and Founder of Medikal Africa, has been honored as a Youth Digital Health Champion by the Africa CDC Youth in Digital Health Network, recognizing his leadership in combating AMR.
                                     </p>
                                     <div class="news-card-cta">
-                                        <span class="text-sm font-semibold hover:underline inline-flex items-center gap-2" style="color: #5EC4D5;">
-                                            Read More <i class="fas fa-arrow-right"></i>
+                                        <span class="text-sm font-semibold hover:underline" style="color: #5EC4D5;">
+                                            Read More
                                         </span>
                                     </div>
                                 </div>
@@ -3373,7 +3339,7 @@
             <!-- View All News Button -->
             <div class="text-center mt-12">
                 <a href="news/index.html" class="bg-5EC4D5 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-4AAFC0 transition-all inline-flex items-center gap-2" style="background: #5EC4D5; color: #ffffff; pointer-events: auto; z-index: 10; position: relative; touch-action: manipulation; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;">
-                    View All News <i class="fas fa-arrow-right"></i>
+                    View All News
                 </a>
             </div>
         </div>
@@ -3734,7 +3700,7 @@
                 // Simulate API call
                 setTimeout(() => {
                     // Success state
-                    button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+                    button.innerHTML = 'Subscribed!';
                     button.style.background = '#48bb78';
                     
                     // Reset after 3 seconds

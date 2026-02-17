@@ -52,6 +52,14 @@
                 script.src = basePath + 'js/header.js';
                 script.async = true;
                 document.body.appendChild(script);
+                
+                // Initialize translations after header is loaded
+                setTimeout(() => {
+                    if (window.MedikalTranslations && typeof window.MedikalTranslations.translate === 'function') {
+                        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+                        window.MedikalTranslations.translate(savedLang);
+                    }
+                }, 200);
             }, 100);
         })
         .catch(error => {
