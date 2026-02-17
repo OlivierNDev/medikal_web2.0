@@ -1,7 +1,7 @@
 /* ============================================
    MOBILE-FIRST CSS - MEDIKAL AFRICA
    Base: 390px, Scale: 640px, 768px, 1024px
-   Stripe-level discipline
+   Professional YC-level mobile responsiveness
    ============================================ */
 
 /* ============================================
@@ -15,12 +15,15 @@
     --space-5: 48px;
     --space-6: 64px;
     
-    /* Colors */
-    --color-black: #000000;
-    --color-white: #ffffff;
-    --color-gray-light: #f8fafb;
-    --color-gray-border: #e5e7eb;
-    --color-gray-text: #666666;
+    /* Original Medikal Colors */
+    --primary-blue: #5EC4D5;
+    --primary-dark: #4AAFC0;
+    --accent-light: #E8F7F9;
+    --dark-text: #1a1a1a;
+    --light-text: #666666;
+    --white: #ffffff;
+    --light-bg: #f8fafb;
+    --border-light: #e5e7eb;
 }
 
 /* ============================================
@@ -64,8 +67,8 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: var(--font-body-mobile);
     line-height: var(--line-height-normal);
-    color: #000000;
-    background: #ffffff;
+    color: var(--dark-text);
+    background: var(--white);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -78,33 +81,30 @@ h1 {
     font-size: var(--font-h1-mobile);
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-tight);
-    color: #000000;
+    color: var(--dark-text);
     margin-bottom: var(--space-2);
-    text-align: left;
 }
 
 h2 {
     font-size: var(--font-h2-mobile);
     font-weight: var(--font-weight-semibold);
     line-height: var(--line-height-tight);
-    color: #000000;
+    color: var(--dark-text);
     margin-bottom: var(--space-2);
-    text-align: left;
 }
 
 h3 {
     font-size: var(--font-h3-mobile);
     font-weight: var(--font-weight-semibold);
     line-height: var(--line-height-tight);
-    color: #000000;
+    color: var(--dark-text);
     margin-bottom: var(--space-2);
-    text-align: left;
 }
 
 p {
     font-size: var(--font-body-mobile);
     line-height: var(--line-height-normal);
-    color: #666666;
+    color: var(--light-text);
     margin-bottom: var(--space-2);
 }
 
@@ -112,16 +112,16 @@ p {
    HEADER (Mobile-first)
    ============================================ */
 .top-bar {
-    background: #000000;
-    color: #ffffff;
+    background: var(--primary-blue);
+    color: var(--white);
     padding: var(--space-1) 0;
     font-size: var(--font-small-mobile);
     display: none; /* Hide on mobile, show on desktop */
 }
 
 .medikal-header {
-    background: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
+    background: var(--white);
+    border-bottom: 1px solid var(--border-light);
     position: sticky;
     top: 0;
     width: 100%;
@@ -153,9 +153,9 @@ p {
 
 .mobile-menu-btn {
     display: block;
-    background: #000000;
+    background: var(--primary-blue);
     border: none;
-    color: #ffffff;
+    color: var(--white);
     font-size: 18px;
     padding: var(--space-1) var(--space-2);
     cursor: pointer;
@@ -163,6 +163,7 @@ p {
     min-height: 44px;
     -webkit-appearance: none;
     touch-action: manipulation;
+    border-radius: 6px;
 }
 
 /* Mobile Navigation */
@@ -240,7 +241,7 @@ p {
 .mobile-nav-list a {
     display: block;
     padding: var(--space-2) var(--space-3);
-    color: #000000;
+    color: var(--dark-text);
     text-decoration: none;
     font-weight: var(--font-weight-medium);
     font-size: var(--font-body-mobile);
@@ -248,7 +249,8 @@ p {
 }
 
 .mobile-nav-list a:hover {
-    background: #f8fafb;
+    background: var(--light-bg);
+    color: var(--primary-blue);
 }
 
 .mobile-cta {
@@ -260,19 +262,20 @@ p {
 .mobile-cta .cta-button {
     display: block;
     width: 100%;
-    background: #000000;
-    color: #ffffff;
+    background: var(--primary-blue);
+    color: var(--white);
     padding: var(--space-2);
     text-align: center;
     text-decoration: none;
     font-weight: var(--font-weight-medium);
-    border: 1px solid #000000;
+    border: none;
+    border-radius: 6px;
     transition: all 0.2s ease;
 }
 
 .mobile-cta .cta-button:hover {
-    background: #ffffff;
-    color: #000000;
+    background: var(--primary-dark);
+    color: var(--white);
 }
 
 /* ============================================
@@ -331,26 +334,30 @@ p {
 
 .hero-btn-primary,
 .features-btn-primary {
-    background: #000000;
-    color: #ffffff;
+    background: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
 }
 
 .hero-btn-primary:hover,
 .features-btn-primary:hover {
-    background: #ffffff;
-    color: #000000;
+    background: var(--primary-dark);
+    color: var(--white);
 }
 
 .hero-btn-secondary,
 .features-btn-secondary {
-    background: #ffffff;
-    color: #000000;
+    background: var(--white);
+    color: var(--dark-text);
+    border: 2px solid var(--border-light);
+    border-radius: 6px;
 }
 
 .hero-btn-secondary:hover,
 .features-btn-secondary:hover {
-    background: #000000;
-    color: #ffffff;
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
 }
 
 /* ============================================
@@ -402,9 +409,10 @@ p {
    FOOTER (Mobile-first)
    ============================================ */
 .medikal-footer {
-    background: #000000;
-    color: #ffffff;
+    background: var(--primary-blue);
+    color: var(--white);
     padding: var(--space-5) var(--space-2) var(--space-3);
+    position: relative;
 }
 
 .footer-container {
@@ -425,7 +433,7 @@ p {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: var(--space-2);
-    color: #ffffff;
+    color: var(--white);
 }
 
 .footer-links {
@@ -437,19 +445,20 @@ p {
 }
 
 .footer-link {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     font-size: var(--font-small-mobile);
     transition: color 0.2s ease;
 }
 
 .footer-link:hover {
-    color: #ffffff;
+    color: var(--white);
+    opacity: 1;
 }
 
 .footer-copyright {
     font-size: var(--font-small-mobile);
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     text-align: center;
     padding-top: var(--space-3);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -499,12 +508,18 @@ p {
     
     .cta-button {
         display: inline-flex;
-        background: #000000;
-        color: #ffffff;
+        background: var(--primary-blue);
+        color: var(--white);
         padding: var(--space-1) var(--space-3);
         text-decoration: none;
         font-weight: var(--font-weight-medium);
-        border: 1px solid #000000;
+        border: none;
+        border-radius: 6px;
+        transition: background 0.2s ease;
+    }
+    
+    .cta-button:hover {
+        background: var(--primary-dark);
     }
     
     .mobile-menu-btn {

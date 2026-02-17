@@ -234,30 +234,30 @@
             background-clip: text;
         }
 
-        /* YC-Level Minimalist Professional Styles */
+        /* Professional Styles */
         .minimal-section {
-            background: #000000;
+            background: #5EC4D5;
             color: #ffffff;
         }
 
         .minimal-card {
             background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 0;
-            padding: 3rem;
-            box-shadow: none;
-            transition: border-color 0.2s ease;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
         .minimal-card:hover {
-            border-color: #000000;
-            transform: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
 
         .minimal-card-blue {
-            background: #000000;
+            background: #5EC4D5;
             color: #ffffff;
-            border: 1px solid #000000;
+            border: none;
         }
 
         .minimal-badge {
@@ -282,18 +282,18 @@
         .news-card-minimal {
             background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 0;
-            padding: 2rem;
-            box-shadow: none;
-            transition: border-color 0.2s ease;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
             height: 100%;
             display: flex;
             flex-direction: column;
         }
 
         .news-card-minimal:hover {
-            border-color: #000000;
-            transform: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
 
         .news-card-image-minimal {
@@ -1379,10 +1379,19 @@
         /* Features Section Styles - Curved Organic Design */
         .features-section {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #ffffff;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
             position: relative;
             padding: 8rem 0;
             overflow: hidden;
+        }
+        
+        /* Hide video on mobile devices only */
+        @media (max-width: 767px) {
+            .features-visual,
+            .demo-video-container-inline,
+            .features-visual-content {
+                display: none !important;
+            }
         }
 
         .features-section::before {
@@ -1412,10 +1421,14 @@
         .features-title {
             font-size: clamp(3rem, 8vw, 5.5rem);
             font-weight: 700;
-            color: #000000;
+            color: #1e293b;
             margin-bottom: 2rem;
             line-height: 1.1;
             letter-spacing: -0.02em;
+        }
+        
+        .features-title .highlight {
+            color: #5ec4d5;
         }
 
         .features-subtitle {
@@ -1435,47 +1448,43 @@
         }
 
         .features-btn-primary {
-            background: #000000;
+            background: linear-gradient(135deg, #5ec4d5, #4db5c8);
             color: #ffffff;
-            padding: 1rem 2.5rem;
-            border-radius: 0;
-            font-weight: 500;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.2s ease;
-            border: 1px solid #000000;
+            transition: all 0.3s ease;
+            border: none;
             cursor: pointer;
-            box-shadow: none;
+            box-shadow: 0 4px 12px rgba(94, 196, 213, 0.3);
             text-align: center;
-            letter-spacing: 0.02em;
         }
 
         .features-btn-primary:hover {
-            background: #ffffff;
-            color: #000000;
-            transform: none;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(94, 196, 213, 0.4);
         }
 
         .features-btn-secondary {
-            background: #ffffff;
-            color: #000000;
-            padding: 1rem 2.5rem;
-            border-radius: 0;
-            font-weight: 500;
+            background: white;
+            color: #1e293b;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: all 0.2s ease;
-            border: 1px solid #000000;
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
             cursor: pointer;
-            letter-spacing: 0.02em;
         }
 
         .features-btn-secondary:hover {
-            background: #000000;
-            color: #ffffff;
-            transform: translateY(-2px);
+            border-color: #5ec4d5;
+            color: #5ec4d5;
         }
 
         .features-stats {
@@ -1514,16 +1523,16 @@
         .features-visual-content {
             position: relative;
             background: white;
-            border-radius: 0;
-            padding: 0;
-            box-shadow: none;
-            border: 1px solid #e5e7eb;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            clip-path: polygon(0% 0%, 85% 0%, 100% 15%, 100% 100%, 0% 100%);
         }
 
         .demo-video-container-inline {
             position: relative;
             width: 100%;
-            border-radius: 0;
+            border-radius: 16px;
             overflow: hidden;
             background: #000;
             aspect-ratio: 16 / 9;
@@ -1546,7 +1555,15 @@
 
         /* Video preview/thumbnail overlay */
         .demo-video-wrapper-inline::before {
-            display: none;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(94, 196, 213, 0.3) 0%, rgba(94, 196, 213, 0.1) 100%);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .demo-video-wrapper-inline::after {
@@ -1874,11 +1891,17 @@
 
             .features-visual {
                 padding: 0.25rem;
+                display: none !important; /* Hide video on mobile */
             }
 
             .features-visual-content {
                 padding: 1.25rem;
                 border-radius: 16px;
+                display: none !important; /* Hide video on mobile */
+            }
+            
+            .demo-video-container-inline {
+                display: none !important; /* Hide video on mobile */
             }
 
             .features-list-item {
@@ -2907,12 +2930,8 @@
 </head>
 <body class="font-inter overflow-x-hidden">
     
-    <!-- Header Placeholder (will be loaded by load-components.js) -->
-    <div id="header-placeholder"></div>
-    
-    <!-- Legacy header (will be replaced) -->
     <!-- Top Bar -->
-    <div class="top-bar" style="display: none;">
+    <div class="top-bar">
         <div class="top-bar-container">
             <div class="top-bar-left">
                 <a href="tel:+17024163329" class="top-bar-item">
@@ -3123,7 +3142,7 @@
                     </div>
 
                     <h1 class="features-title">
-                        <span data-i18n="heroTitle1">Clinical Intelligence Infrastructure</span> <span class="highlight" style="color: #000000;" data-i18n="heroTitle2">for Antibiotic Stewardship</span> <span data-i18n="heroTitle3">and AMR Monitoring</span>
+                        <span data-i18n="heroTitle1">Clinical Intelligence Infrastructure</span> <span class="highlight" style="color: #5ec4d5;" data-i18n="heroTitle2">for Antibiotic Stewardship</span> <span data-i18n="heroTitle3">and AMR Monitoring</span>
                     </h1>
                     <p class="features-subtitle" data-i18n="heroSubtitle">
                         Medikal supports hospitals and health systems with structured data integration, decision-support analytics, and antimicrobial resistance visibility.
@@ -3534,12 +3553,8 @@
         </div>
     </section>
 
-    <!-- Footer Placeholder (will be loaded by load-components.js) -->
-    <div id="footer-placeholder"></div>
-    
-    <!-- Legacy footer (will be replaced) -->
     <!-- Footer -->
-    <footer class="medikal-footer" style="display: none;">
+    <footer class="medikal-footer">
         <div class="footer-container">
             <!-- Footer Grid -->
             <div class="footer-grid">
