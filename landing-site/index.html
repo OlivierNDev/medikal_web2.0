@@ -1425,12 +1425,12 @@
         }
 
         .features-title {
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 700;
             color: #1e293b;
-            margin-bottom: 2rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
         }
         
         .features-title .highlight {
@@ -1438,12 +1438,12 @@
         }
 
         .features-subtitle {
-            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            font-size: clamp(1rem, 2vw, 1.25rem);
             color: #666666;
             line-height: 1.6;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             font-weight: 400;
-            max-width: 700px;
+            max-width: 600px;
         }
 
         .features-cta {
@@ -1746,7 +1746,11 @@
             }
 
             .features-title {
-                font-size: clamp(2rem, 4vw, 2.5rem);
+                font-size: clamp(1.75rem, 4vw, 2.25rem);
+            }
+            
+            .features-subtitle {
+                font-size: clamp(0.9375rem, 2vw, 1.125rem);
             }
 
             .hero-badge-features {
@@ -1795,7 +1799,7 @@
             }
 
             .features-title {
-                font-size: clamp(1.75rem, 5vw, 2rem);
+                font-size: clamp(1.5rem, 4vw, 1.875rem);
                 margin-bottom: 1rem;
             }
 
@@ -2211,15 +2215,15 @@
         .logo-bg {
             width: 100%;
             height: 100%;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
             padding: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .logo-item:hover .logo-bg {
@@ -2234,6 +2238,8 @@
             max-height: 100%;
             object-fit: contain;
             transition: transform 0.3s ease;
+            filter: none !important;
+            opacity: 1 !important;
         }
 
         .logo-item:hover .logo-bg img {
@@ -3387,97 +3393,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="medikal-footer">
-        <div class="footer-container">
-            <!-- Footer Grid -->
-            <div class="footer-grid">
-                
-                <!-- Company Info -->
-                <div class="footer-company">
-                    <a href="index.html" class="footer-logo">
-                        <img src="logo.png" alt="Medikal - AI Healthcare for Africa">
-                    </a>
-                    <p class="footer-company-text">
-                        AI-powered healthcare platform combating Antimicrobial Resistance (AMR) in Africa through innovative technology and multilingual support.
-                    </p>
-                    <div class="social-links">
-                        <a href="https://x.com/medikal_africa" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow us on X (Twitter)">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/company/medikal-africa/about/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Connect on LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://www.instagram.com/medikal_africa/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow us on Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="footer-column">
-                    <h3>Product</h3>
-                    <ul class="footer-links">
-                        <li><a href="features.html" class="footer-link">Features</a></li>
-                        <li><a href="solutions.html" class="footer-link">Solutions</a></li>
-                        <li><a href="team.html" class="footer-link">Team</a></li>
-                        <li><a href="download.html" class="footer-link">Download</a></li>
-                    </ul>
-                </div>
-
-                <!-- Company -->
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul class="footer-links">
-                        <li><a href="about.html" class="footer-link">About Us</a></li>
-                        <li><a href="team.html" class="footer-link">Our Team</a></li>
-                        <li><a href="impact.html" class="footer-link">Impact</a></li>
-                        <li><a href="news/index.html" class="footer-link">News</a></li>
-                    </ul>
-                </div>
-
-                <!-- Support -->
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="contact.html" class="footer-link">Contact</a></li>
-                        <li><a href="faq.html" class="footer-link">FAQ</a></li>
-                        <li><a href="help-center.html" class="footer-link">Help Center</a></li>
-                        <li><a href="documentation.html" class="footer-link">Documentation</a></li>
-                        <li><a href="api.html" class="footer-link">API</a></li>
-                    </ul>
-                </div>
-
-                <!-- Newsletter -->
-                <div class="footer-newsletter">
-                    <h3>Stay Updated</h3>
-                    <p>Get the latest updates on Medikal's AI healthcare innovations.</p>
-                    <form class="newsletter-form" id="footerNewsletterForm">
-                        <input 
-                            type="email" 
-                            placeholder="Enter your email" 
-                            class="newsletter-input"
-                            required
-                            aria-label="Email address for newsletter"
-                        >
-                        <button type="submit" class="newsletter-button">
-                            <i class="fas fa-paper-plane"></i>
-                            Subscribe
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Bottom Footer -->
-            <div class="footer-bottom">
-                <div class="footer-bottom-left">
-                    <p class="footer-copyright">
-                        &copy; 2024-2026 Medikal Africa. All rights reserved.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
 
     <script>
         // ========================================
@@ -4238,5 +4155,6 @@
     <script src="translations.js"></script>
     <script src="script.js" defer></script>
     <script src="js/load-header.js" defer></script>
+    <script src="js/load-footer.js" defer></script>
 </body>
 </html>
