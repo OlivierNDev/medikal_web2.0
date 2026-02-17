@@ -25,7 +25,7 @@
             newsMedia: "News & Media",
             contact: "Contact",
             getStarted: "Get Started",
-            getStartedFree: "Get Started Free",
+            getStartedFree: "Request Institutional Access",
             // Hero section
             heroBadge: "AI-Powered Healthcare Platform",
             heroTitle1: "Revolutionizing",
@@ -79,7 +79,7 @@
             newsMedia: "Actualités & Médias",
             contact: "Contact",
             getStarted: "Commencer",
-            getStartedFree: "Commencer Gratuitement",
+            getStartedFree: "Demander l'Accès Institutionnel",
             // Hero section
             heroBadge: "Plateforme de Soins de Santé Alimentée par l'IA",
             heroTitle1: "Révolutionner",
@@ -200,7 +200,7 @@
             if (text.includes('Get Started') && !text.includes('Free')) {
                 const icon = btn.querySelector('i');
                 btn.innerHTML = (icon ? icon.outerHTML + ' ' : '') + t.getStarted;
-            } else if (text.includes('Get Started Free') || text.includes('Commencer Gratuitement')) {
+            } else if (text.includes('Request Institutional Access') || text.includes("Demander l'Accès Institutionnel")) {
                 btn.textContent = t.getStartedFree;
             } else if (text.includes('Explore Platform') || text.includes("Explorer la Plateforme")) {
                 const icon = btn.querySelector('i');
