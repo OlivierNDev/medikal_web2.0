@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulatory & Data Governance - Medikal Africa</title>
+    <meta name="description" content="Medikal Africa's regulatory framework, data governance, hosting architecture, and compliance standards for clinical intelligence infrastructure.">
+    <meta name="keywords" content="Medikal regulatory, data governance, healthcare data protection, clinical infrastructure compliance, AMR reporting">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://medikalafrica.com/regulatory-data-governance.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://medikalafrica.com/regulatory-data-governance.html">
+    <meta property="og:title" content="Regulatory & Data Governance - Medikal Africa">
+    <meta property="og:description" content="Regulatory framework and data governance for Medikal's clinical intelligence infrastructure.">
+    <meta property="og:image" content="https://medikalafrica.com/logo.png">
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #5EC4D5;
+            --primary-dark: #4AAFC0;
+            --accent-light: #E8F7F9;
+            --dark-text: #1a1a1a;
+            --light-text: #666666;
+            --white: #ffffff;
+            --light-bg: #f8fafb;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(94, 196, 213, 0.08);
+            --shadow-md: 0 4px 12px rgba(94, 196, 213, 0.12);
+            --shadow-lg: 0 10px 24px rgba(94, 196, 213, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--white);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.6rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .top-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .top-bar-item:hover {
+            opacity: 0.8;
+            transform: translateX(2px);
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .language-selector {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-selector:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Header */
+        .medikal-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-section img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0;
+        }
+
+        .nav-menu > li {
+            position: relative;
+        }
+
+        .nav-menu > li > a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu > li > a:hover {
+            color: var(--primary-blue);
+            background: var(--accent-light);
+        }
+
+        .cta-button {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: var(--primary-blue);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.65rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1002 !important;
+            position: relative;
+            pointer-events: auto !important;
+            touch-action: manipulation;
+            min-width: 44px;
+            min-height: 44px;
+            -webkit-appearance: none;
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Mobile Navigation */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem 0;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        @media (min-width: 769px) {
+            .mobile-nav,
+            .mobile-overlay {
+                display: none !important;
+            }
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 2rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .mobile-close-btn {
+            background: var(--accent-light);
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .mobile-close-btn:hover {
+            background: var(--light-bg);
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-list li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-nav-list li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav-list a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-list a i {
+            width: 20px;
+            text-align: center;
+            color: var(--primary-blue);
+        }
+
+        .mobile-nav-list a:hover {
+            background: var(--accent-light);
+            color: var(--primary-blue);
+        }
+
+        .mobile-cta {
+            padding: 2rem;
+            border-top: 1px solid var(--border-light);
+            margin-top: 1rem;
+        }
+
+        .mobile-cta .cta-button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .desktop-only {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .governance-section {
+            margin-bottom: 3rem;
+        }
+
+        .governance-section h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .governance-section h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .governance-section p {
+            color: var(--light-text);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .governance-section ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .governance-section ul li {
+            color: var(--light-text);
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .governance-section ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .info-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--primary-blue);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: var(--dark-text);
+        }
+
+        /* Footer */
+        .medikal-footer {
+            background: #5EC4D5;
+            color: #ffffff;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-company-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .footer-column h3 {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-container {
+                flex-direction: column;
+                gap: 0.75rem;
+                padding: 0 1rem;
+            }
+
+            .top-bar-left,
+            .top-bar-right {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block !important;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .header-container {
+                padding: 0.75rem 1rem;
+            }
+
+            .content-section {
+                padding: 2rem 1rem;
+            }
+
+            .page-header {
+                padding: 3rem 1rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-container {
+                padding: 3rem 1rem 1.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <a href="tel:+17024163329" class="top-bar-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+1 (702) 416-3329</span>
+                </a>
+                <a href="mailto:info@medikalafrica.com" class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@medikalafrica.com</span>
+                </a>
+            </div>
+            <div class="top-bar-right">
+                <select class="language-selector">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="medikal-header" id="mainHeader">
+        <div class="header-container">
+            <a href="index.html" class="logo-section">
+                <img src="logo.png" alt="Medikal - AI Health Assistant" />
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="impact.html">Impact</a></li>
+                    <li><a href="news/index.html">News</a></li>
+                </ul>
+            </nav>
+            
+            <a href="early-access.html" class="cta-button desktop-only">Request Institutional Access</a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">
+                <img src="logo.png" alt="Medikal" />
+            </div>
+            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close mobile menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul class="mobile-nav-list">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="solutions.html"><i class="fas fa-puzzle-piece"></i> Solutions</a></li>
+            <li><a href="features.html"><i class="fas fa-star"></i> Features</a></li>
+            <li><a href="team.html"><i class="fas fa-users"></i> Our Team</a></li>
+            <li><a href="impact.html"><i class="fas fa-heart"></i> Impact</a></li>
+            <li><a href="news/index.html"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+
+        <div class="mobile-cta">
+            <a href="early-access.html" class="cta-button">Request Institutional Access</a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Regulatory & Data Governance</h1>
+        <p>Institutional framework for data ownership, hosting architecture, and compliance standards</p>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+        <!-- Data Ownership -->
+        <div class="governance-section">
+            <h2>Data Ownership</h2>
+            <p>
+                Medikal operates on the principle that health data belongs to the deploying institution. All clinical data, patient information, and health records remain under the ownership and control of the hospital or health system using the platform.
+            </p>
+            <p>
+                Medikal provides infrastructure and analytics capabilities but does not claim ownership of institutional health data. Data governance policies are established in partnership with deploying institutions to align with local regulations and institutional requirements.
+            </p>
+            <div class="info-box">
+                <p><strong>Institutional Control:</strong> Deploying health systems maintain full control over data access, retention policies, and data sharing decisions.</p>
+            </div>
+        </div>
+
+        <!-- Hosting Architecture -->
+        <div class="governance-section">
+            <h2>Hosting Architecture</h2>
+            <p>
+                Medikal supports multiple deployment models to accommodate institutional preferences and regulatory requirements:
+            </p>
+            <h3>Institutional Hosting</h3>
+            <p>
+                Primary deployment model where infrastructure is hosted within the deploying institution's environment or designated data center. This model ensures:
+            </p>
+            <ul>
+                <li>Data remains within institutional control and geographic boundaries</li>
+                <li>Compliance with local data sovereignty requirements</li>
+                <li>Integration with existing hospital information systems</li>
+                <li>Institutional IT governance and security policies</li>
+            </ul>
+            <h3>Cloud Deployment Options</h3>
+            <p>
+                For institutions requiring cloud-based deployment, Medikal supports deployment on cloud infrastructure with:
+            </p>
+            <ul>
+                <li>Regional data center options aligned with data sovereignty requirements</li>
+                <li>Encrypted data transmission and storage</li>
+                <li>Institutional access controls and audit logging</li>
+                <li>Modular architecture supporting hybrid deployment models</li>
+            </ul>
+        </div>
+
+        <!-- Decision-Support Positioning -->
+        <div class="governance-section">
+            <h2>Decision-Support Positioning</h2>
+            <p>
+                Medikal is positioned as clinical decision-support infrastructure, not a replacement for clinical judgment. The platform provides:
+            </p>
+            <ul>
+                <li>Structured data integration and analytics to support clinical decision-making</li>
+                <li>Evidence-based recommendations aligned with clinical guidelines</li>
+                <li>Antibiotic stewardship support integrated into clinical workflows</li>
+                <li>AMR monitoring and surveillance capabilities</li>
+            </ul>
+            <p>
+                All recommendations and analytics are designed to assist healthcare professionals in making informed decisions. Clinical judgment remains the responsibility of licensed healthcare providers.
+            </p>
+            <div class="info-box">
+                <p><strong>Clinical Responsibility:</strong> Medikal supports but does not replace clinical decision-making. Healthcare providers maintain full responsibility for patient care decisions.</p>
+            </div>
+        </div>
+
+        <!-- AMR Reporting Alignment -->
+        <div class="governance-section">
+            <h2>AMR Reporting Alignment</h2>
+            <p>
+                Medikal's infrastructure is designed to support alignment with national and regional AMR surveillance and reporting requirements:
+            </p>
+            <h3>Data Structure Alignment</h3>
+            <ul>
+                <li>Structured data architecture supporting standardized AMR reporting formats</li>
+                <li>Integration capabilities with national surveillance systems</li>
+                <li>Compatibility with WHO and regional AMR reporting frameworks</li>
+                <li>Modular reporting architecture supporting institutional and national requirements</li>
+            </ul>
+            <h3>Reporting Governance</h3>
+            <ul>
+                <li>Institutional control over data sharing and reporting decisions</li>
+                <li>Audit logging for all data access and reporting activities</li>
+                <li>Role-based access controls for reporting functions</li>
+                <li>Compliance with national health information system requirements</li>
+            </ul>
+        </div>
+
+        <!-- Data Protection Standards -->
+        <div class="governance-section">
+            <h2>Data Protection Standards</h2>
+            <p>
+                Medikal implements data protection measures built using internationally recognized standards:
+            </p>
+            <ul>
+                <li>End-to-end encryption for data in transit and at rest</li>
+                <li>Secure infrastructure with access controls and authentication</li>
+                <li>Audit logging for all system access and data operations</li>
+                <li>Role-based access control aligned with clinical workflows</li>
+                <li>Data anonymization capabilities for analytics and research purposes</li>
+            </ul>
+            <p>
+                Specific compliance requirements are addressed in partnership with deploying institutions to ensure alignment with local regulations, international standards, and institutional policies.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="medikal-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-company">
+                    <a href="index.html" class="footer-logo">
+                        <img src="logo.png" alt="Medikal - AI Healthcare for Africa">
+                    </a>
+                    <p class="footer-company-text">
+                        Clinical intelligence infrastructure for antibiotic stewardship and AMR monitoring in hospitals and health systems.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://x.com/medikal_africa" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow us on X (Twitter)">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/medikal-africa/about/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Connect on LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/medikal_africa/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="features.html" class="footer-link">Features</a></li>
+                        <li><a href="solutions.html" class="footer-link">Solutions</a></li>
+                        <li><a href="team.html" class="footer-link">Team</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="team.html" class="footer-link">Our Team</a></li>
+                        <li><a href="impact.html" class="footer-link">Impact</a></li>
+                        <li><a href="news/index.html" class="footer-link">News</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="help-center.html" class="footer-link">Help Center</a></li>
+                        <li><a href="documentation.html" class="footer-link">Documentation</a></li>
+                        <li><a href="api.html" class="footer-link">API</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="regulatory-data-governance.html" class="footer-link">Regulatory & Data Governance</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    <p class="footer-copyright">
+                        &copy; 2024-2026 Medikal Africa. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="mobile-menu.js" defer></script>
+</body>
+</html>
