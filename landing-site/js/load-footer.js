@@ -40,19 +40,6 @@
             cssLink.rel = 'stylesheet';
             cssLink.href = basePath + 'css/footer.css';
             document.head.appendChild(cssLink);
-            
-            // Initialize newsletter form
-            const newsletterForm = document.getElementById('footerNewsletterForm');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const email = this.querySelector('.newsletter-input').value;
-                    if (email) {
-                        // You can integrate with your email service here
-                        window.location.href = `mailto:info@medikalafrica.com?subject=Newsletter Subscription&body=I would like to subscribe to Medikal Africa's newsletter. Email: ${encodeURIComponent(email)}`;
-                    }
-                });
-            }
         })
         .catch(error => {
             console.error('Error loading footer:', error);
