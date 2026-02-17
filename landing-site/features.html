@@ -312,10 +312,12 @@
             height: 100vh;
             background: var(--white);
             z-index: 1001;
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 2rem 0;
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0;
+            box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
         }
 
         .mobile-nav.active {
@@ -326,87 +328,107 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            padding: 0 2rem 1.5rem;
+            padding: 1.5rem 2rem;
             border-bottom: 1px solid var(--border-light);
-        }
-
-        .mobile-nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            background: var(--white);
+            flex-shrink: 0;
         }
 
         .mobile-nav-logo img {
-            height: 40px;
+            height: 32px;
             width: auto;
         }
 
         .mobile-close-btn {
-            background: var(--accent-light);
+            background: transparent;
             border: none;
             font-size: 1.5rem;
             color: var(--dark-text);
             cursor: pointer;
             padding: 0.5rem;
-            border-radius: 6px;
-            width: 40px;
-            height: 40px;
+            min-width: 44px;
+            min-height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: var(--transition);
+            transition: all 0.2s ease;
+            border-radius: 6px;
         }
 
         .mobile-close-btn:hover {
             background: var(--light-bg);
+            color: var(--primary-blue);
+        }
+        
+        .mobile-close-btn:active {
+            background: var(--accent-light);
         }
 
         .mobile-nav-list {
             list-style: none;
             padding: 0;
             margin: 0;
+            flex: 1;
+            overflow-y: auto;
         }
 
         .mobile-nav-list li {
+            margin: 0;
             border-bottom: 1px solid var(--border-light);
         }
-
+        
         .mobile-nav-list li:last-child {
             border-bottom: none;
         }
 
         .mobile-nav-list a {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 2rem;
+            display: block;
+            padding: 1rem 1.5rem;
             color: var(--dark-text);
             text-decoration: none;
             font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .mobile-nav-list a i {
-            width: 20px;
-            text-align: center;
-            color: var(--primary-blue);
+            font-size: 1rem;
+            transition: all 0.2s ease;
         }
 
         .mobile-nav-list a:hover {
-            background: var(--accent-light);
+            background: var(--light-bg);
             color: var(--primary-blue);
+            padding-left: 2rem;
+        }
+        
+        .mobile-nav-list a:active {
+            background: var(--accent-light);
+        }
+        
+        /* Remove any icons */
+        .mobile-nav-list a i {
+            display: none;
         }
 
         .mobile-cta {
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             border-top: 1px solid var(--border-light);
-            margin-top: 1rem;
+            margin-top: auto;
+            background: var(--white);
+            flex-shrink: 0;
         }
 
         .mobile-cta .cta-button {
             width: 100%;
             justify-content: center;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            text-align: center;
+        }
+        
+        .mobile-cta .cta-button:hover {
+            background: var(--primary-dark);
         }
 
         .desktop-only {
@@ -825,25 +847,16 @@
 
         @media (max-width: 768px) {
             .top-bar {
-                padding: 0.5rem 0;
+                display: none;
             }
 
-            .top-bar-container {
-                flex-direction: column;
-                gap: 0.75rem;
-                padding: 0 1rem;
+            .header-container {
+                padding: 1rem;
             }
 
-            .top-bar-left,
-            .top-bar-right {
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
-            .top-bar-item span {
-                font-size: 0.8rem;
+            .nav-menu,
+            .cta-button.desktop-only {
+                display: none !important;
             }
 
             .mobile-menu-btn {
@@ -853,40 +866,18 @@
                 pointer-events: auto !important;
             }
 
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: var(--shadow-lg);
-                border-top: 1px solid var(--border-light);
+            /* Ensure desktop nav is completely hidden on mobile */
+            nav .nav-menu {
+                display: none !important;
+                visibility: hidden !important;
             }
 
-            .nav-menu.active {
-                display: flex;
+            .logo-section {
+                padding: 0.375rem 0.75rem;
             }
 
-            .nav-menu > li {
-                width: 100%;
-            }
-
-            .nav-menu > li > a {
-                display: block;
-                width: 100%;
-                padding: 1rem;
-            }
-
-            .header-container {
-                padding: 0.75rem 1rem;
-                position: relative;
-            }
-
-            .cta-button {
-                display: none;
+            .logo-section img {
+                height: 32px;
             }
 
             .page-header {
@@ -980,6 +971,23 @@
         }
 
         @media (max-width: 480px) {
+            .mobile-nav {
+                width: 90%;
+            }
+            
+            .mobile-nav-header {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .mobile-nav-list a {
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .mobile-cta {
+                padding: 1.25rem 1.5rem;
+            }
+            
             .page-header {
                 padding: 2.5rem 0.75rem;
             }
@@ -988,6 +996,23 @@
                 padding: 2rem 0.75rem;
             }
 
+            .mobile-nav {
+                width: 90%;
+            }
+            
+            .mobile-nav-header {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .mobile-nav-list a {
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .mobile-cta {
+                padding: 1.25rem 1.5rem;
+            }
+            
             .stats-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -1096,7 +1121,7 @@
         <div class="header-container">
             <!-- Logo Section -->
             <a href="index.html" class="logo-section">
-                <img src="logo.png" alt="Medikal - AI Health Assistant" />
+                <img src="logo.png" alt="Medikal - Clinical Intelligence Infrastructure" />
             </a>
             
             <!-- Desktop Navigation -->
@@ -1144,11 +1169,21 @@
                     </li>
                     
                     <li>
-                        <a href="#">
+                        <a href="documentation.html">
                             Resources
                             <i class="fas fa-chevron-down"></i>
                         </a>
                         <div class="dropdown-menu">
+                            <a href="documentation.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    Documentation
+                                </div>
+                            </a>
+                            <a href="api.html" class="dropdown-item">
+                                <div class="dropdown-content">
+                                    API <span style="color: #ff9800; font-size: 0.85rem;">(Dev)</span>
+                                </div>
+                            </a>
                             <a href="clinical-guidelines.html" class="dropdown-item">
                                 <div class="dropdown-content">
                                     Clinical Guidelines
@@ -1189,7 +1224,7 @@
             
             <!-- CTA Button -->
             <a href="early-access.html" class="cta-button desktop-only">
-                Get Started
+                Request Institutional Access
             </a>
 
             <!-- Mobile Menu Button -->
@@ -1214,59 +1249,19 @@
         </div>
         
         <ul class="mobile-nav-list">
-            <li>
-                <a href="index.html">
-                    <i class="fas fa-home"></i>
-                    Home
-                </a>
-            </li>
-            <li>
-                <a href="solutions.html">
-                    <i class="fas fa-puzzle-piece"></i>
-                    Solutions
-                </a>
-            </li>
-            <li>
-                <a href="features.html">
-                    <i class="fas fa-star"></i>
-                    Features
-                </a>
-            </li>
-            <li>
-                <a href="team.html">
-                    <i class="fas fa-users"></i>
-                    Our Team
-                </a>
-            </li>
-            <li>
-                <a href="impact.html">
-                    <i class="fas fa-heart"></i>
-                    Impact
-                </a>
-            </li>
-            <li>
-                <a href="news/index.html">
-                    <i class="fas fa-newspaper"></i>
-                    News
-                </a>
-            </li>
-            <li>
-                <a href="about.html">
-                    <i class="fas fa-info-circle"></i>
-                    About Us
-                </a>
-            </li>
-            <li>
-                <a href="contact.html">
-                    <i class="fas fa-envelope"></i>
-                    Contact
-                </a>
-            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="impact.html">Impact</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="news/index.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
 
         <div class="mobile-cta">
             <a href="early-access.html" class="cta-button">
-                Get Started Free
+                Request Institutional Access
             </a>
         </div>
     </nav>
