@@ -886,7 +886,7 @@
 
         <!-- Contact Form -->
         <div class="contact-form-container">
-            <form id="contactForm" action="https://formspree.io/f/xpwnqjqk" method="POST">
+            <form id="contactForm">
                 <div class="form-message" id="formMessage"></div>
                 
                 <div class="form-group">
@@ -908,20 +908,6 @@
                     <label for="message" class="form-label">Message *</label>
                     <textarea id="message" name="message" class="form-textarea" required placeholder="Tell us how we can help you..."></textarea>
                 </div>
-
-                <!-- Formspree Configuration -->
-                <!-- 
-                    To set up this form:
-                    1. Sign up at https://formspree.io (free tier available)
-                    2. Create a new form
-                    3. Set the email to: contact@medikalafrica.com
-                    4. Replace the form action URL above with your Formspree endpoint
-                    5. The form will automatically send emails to contact@medikalafrica.com
-                -->
-                <input type="hidden" name="_to" value="contact@medikalafrica.com">
-                <input type="hidden" name="_subject" value="New Contact Form Submission from Medikal Website">
-                <input type="hidden" name="_replyto" value="" id="replyTo">
-                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
                 <button type="submit" class="form-button" id="submitButton">
                     <span>Send Message</span>
@@ -1010,87 +996,51 @@
     </footer>
 
     <script>
-        // Contact Form Handling
+        // Contact Form Handling - Simple Mailto Submission
         const contactForm = document.getElementById('contactForm');
         const formMessage = document.getElementById('formMessage');
         const submitButton = document.getElementById('submitButton');
-        const emailInput = document.getElementById('email');
-        const replyToInput = document.getElementById('replyTo');
 
         // Check if form exists
         if (!contactForm) {
             console.warn('Contact form not found');
-            return;
-        }
-
-        if (!formMessage || !submitButton || !emailInput || !replyToInput) {
+        } else if (!formMessage || !submitButton) {
             console.warn('Contact form elements not found');
-            return;
-        }
-
-        // Update reply-to field when email changes
-        emailInput.addEventListener('input', function() {
-            if (replyToInput) {
-                replyToInput.value = this.value;
-            }
-        });
-
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Disable submit button
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<span>Sending...</span>';
-            
-            // Hide previous messages
-            formMessage.classList.remove('show', 'success', 'error');
-            
-            try {
-                const formData = new FormData(contactForm);
+        } else {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Submit to Formspree
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // Success
-                    formMessage.textContent = 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
-                    formMessage.classList.add('show', 'success');
-                    contactForm.reset();
-                    
-                    // Reset button after 3 seconds
-                    setTimeout(() => {
-                        submitButton.disabled = false;
-                        submitButton.innerHTML = '<span>Send Message</span>';
-                    }, 3000);
-                } else {
-                    // Error from Formspree
-                    try {
-                        const data = await response.json();
-                        throw new Error(data.error || 'Something went wrong. Please try again.');
-                    } catch (jsonError) {
-                        throw new Error('Something went wrong. Please try again.');
-                    }
-                }
-            } catch (error) {
-                // Network or other error
-                if (formMessage) {
-                    formMessage.textContent = error.message || 'Unable to send message. Please try again or email us directly at contact@medikalafrica.com';
+                // Get form values
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value.trim();
+                const message = document.getElementById('message').value.trim();
+                
+                // Validate
+                if (!name || !email || !subject || !message) {
+                    formMessage.textContent = 'Please fill in all required fields.';
                     formMessage.classList.add('show', 'error');
+                    return;
                 }
                 
-                // Reset button
-                if (submitButton) {
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = '<span>Send Message</span>';
-                }
-            }
-        });
+                // Create mailto link
+                const emailBody = `Name: ${encodeURIComponent(name)}\nEmail: ${encodeURIComponent(email)}\n\nMessage:\n${encodeURIComponent(message)}`;
+                const mailtoLink = `mailto:info@medikalafrica.com?subject=${encodeURIComponent(subject)}&body=${emailBody}`;
+                
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Show success message
+                formMessage.textContent = 'Opening your email client... If it doesn\'t open, please email us at info@medikalafrica.com';
+                formMessage.classList.add('show', 'success');
+                
+                // Reset form after a delay
+                setTimeout(() => {
+                    contactForm.reset();
+                    formMessage.classList.remove('show', 'success', 'error');
+                }, 5000);
+            });
+        }
 
         // Mobile menu toggle (if needed)
         // Mobile Menu Toggle
