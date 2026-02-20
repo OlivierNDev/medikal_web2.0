@@ -39,7 +39,36 @@
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="alternate" hreflang="en" href="https://medikalafrica.com/">
     <link rel="alternate" hreflang="fr" href="https://medikalafrica.com/?lang=fr">
-    <!-- Tailwind CSS CDN - Consider replacing with production build for better performance -->
+    
+    <!-- Performance: Resource Hints for External CDNs -->
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Performance: Preload Critical CSS -->
+    <link rel="preload" href="css/mobile-first.css" as="style">
+    <link rel="preload" href="css/header.css" as="style">
+    <link rel="preload" href="css/homepage-responsive.css" as="style">
+    
+    <!-- Performance: Load Critical CSS First -->
+    <link rel="stylesheet" href="css/mobile-first.css">
+    <link rel="stylesheet" href="css/homepage-responsive.css">
+    
+    <!-- Performance: Load External Resources with Optimization -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Performance: Optimize Font Loading with font-display swap -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN - Loaded with preconnect for faster connection -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         // Suppress Tailwind CDN warning in production
@@ -52,12 +81,7 @@
                 originalWarn.apply(console, args);
             };
         }
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/mobile-first.css">
-    <link rel="stylesheet" href="css/homepage-responsive.css">
-    <script>
+        // Configure Tailwind immediately
         tailwind.config = {
             theme: {
                 extend: {
@@ -4118,8 +4142,9 @@
             }
         });
     </script>
-    <script src="translations.js"></script>
+    <script src="translations.js" defer></script>
     <script src="script.js" defer></script>
+    <script src="js/performance.js" defer></script>
     <script src="js/load-header.js" defer></script>
     <script src="js/load-footer.js" defer></script>
 </body>
