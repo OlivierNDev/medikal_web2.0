@@ -83,13 +83,21 @@
         // Just ensure it's fully opaque
         headerPlaceholder.style.opacity = '1';
         
-        // Initialize translations after header is loaded
-        // Use requestAnimationFrame for better timing
+        // Initialize header functionality after HTML is inserted
+        // Use requestAnimationFrame and setTimeout for better timing
         requestAnimationFrame(() => {
-            if (window.MedikalTranslations && typeof window.MedikalTranslations.translate === 'function') {
-                const savedLang = localStorage.getItem('preferredLanguage') || 'en';
-                window.MedikalTranslations.translate(savedLang);
-            }
+            setTimeout(() => {
+                // Initialize header JavaScript
+                if (window.initHeader && typeof window.initHeader === 'function') {
+                    window.initHeader();
+                }
+                
+                // Initialize translations after header is loaded
+                if (window.MedikalTranslations && typeof window.MedikalTranslations.translate === 'function') {
+                    const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+                    window.MedikalTranslations.translate(savedLang);
+                }
+            }, 50);
         });
     })
     .catch(error => {

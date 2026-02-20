@@ -251,20 +251,37 @@
     display: none;
     flex-direction: column;
     gap: 4px;
-    background: transparent;
+    background: var(--primary-blue, #5EC4D5);
     border: none;
     padding: 0.5rem;
     cursor: pointer;
     z-index: 1002;
     position: relative;
+    border-radius: 6px;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
+    touch-action: manipulation;
+}
+
+.mobile-menu-btn:hover {
+    background: var(--primary-dark, #4AAFC0);
+}
+
+.mobile-menu-btn:active {
+    background: var(--primary-dark, #4AAFC0);
 }
 
 .hamburger-line {
     width: 22px;
     height: 2px;
-    background: var(--dark-text, #1a1a1a);
+    background: var(--white, #ffffff);
     border-radius: 2px;
     transition: all 0.3s ease;
+    display: block;
 }
 
 .mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(1) {
