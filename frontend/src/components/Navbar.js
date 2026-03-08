@@ -19,7 +19,9 @@ function Navbar() {
           <div className="nav-links" data-testid="nav-links">
             <Link to="/" className={isActive('/')}>Home</Link>
             <Link to="/platform" className={isActive('/platform')}>Platform</Link>
+            <Link to="/how-it-works" className={isActive('/how-it-works')}>How It Works</Link>
             <Link to="/amr" className={isActive('/amr')}>AMR</Link>
+            <Link to="/team" className={isActive('/team')}>Team</Link>
             <Link to="/research" className={isActive('/research')}>Research</Link>
           </div>
 
@@ -61,7 +63,9 @@ function Navbar() {
         <div className="mobile-menu-links">
           <Link to="/" onClick={() => setMobileOpen(false)}>Home</Link>
           <Link to="/platform" onClick={() => setMobileOpen(false)}>Platform</Link>
+          <Link to="/how-it-works" onClick={() => setMobileOpen(false)}>How It Works</Link>
           <Link to="/amr" onClick={() => setMobileOpen(false)}>AMR Intelligence</Link>
+          <Link to="/team" onClick={() => setMobileOpen(false)}>Team</Link>
           <Link to="/research" onClick={() => setMobileOpen(false)}>Research</Link>
           <Link to="/request-demo" onClick={() => setMobileOpen(false)}>Request Demo</Link>
         </div>

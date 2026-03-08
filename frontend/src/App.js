@@ -7,6 +7,8 @@ import Platform from './pages/Platform';
 import AMR from './pages/AMR';
 import Research from './pages/Research';
 import RequestDemo from './pages/RequestDemo';
+import HowItWorks from './pages/HowItWorks';
+import Team from './pages/Team';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/amr" element={<AMR />} />
         <Route path="/research" element={<Research />} />
         <Route path="/request-demo" element={<RequestDemo />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/team" element={<Team />} />
       </Routes>
       <Footer />
     </>

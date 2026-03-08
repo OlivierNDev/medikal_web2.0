@@ -532,6 +532,30 @@
   border-radius: 50%;
 }
 
+/* Click hint in tooltip */
+.tooltip-click-hint {
+  text-align: center;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.5rem;
+  color: #5EC4D5;
+  letter-spacing: 0.05em;
+}
+
+/* Selected hotspot */
+.map-hotspot.selected .hotspot-core {
+  width: 14px;
+  height: 14px;
+  box-shadow: 0 0 24px var(--risk-color);
+}
+
+.map-hotspot.selected .hotspot-pulse {
+  width: 36px;
+  height: 36px;
+  opacity: 0.6;
+}
+
 /* Map instruction */
 .map-instruction {
   position: absolute;
@@ -542,6 +566,108 @@
   color: #5EC4D5;
   white-space: nowrap;
   opacity: 0.7;
+}
+
+/* Time-series Chart Panel */
+.trend-chart-panel {
+  background: #1A1F26;
+  border: 1px solid rgba(94, 196, 213, 0.15);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+}
+
+.trend-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.trend-chart-header h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.125rem;
+}
+
+.trend-chart-subtitle {
+  font-size: 0.6875rem;
+  color: #979797;
+}
+
+.trend-chart-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trend-chart-badge {
+  font-size: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: #FFFFFF;
+}
+
+.trend-chart-close {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  color: #979797;
+  transition: all 0.2s;
+}
+
+.trend-chart-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.trend-chart-body {
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0.75rem 0.5rem 0.25rem 0;
+}
+
+.trend-chart-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.6875rem;
+  color: #979797;
+}
+
+/* Custom chart tooltip */
+.chart-tooltip-custom {
+  background: #0F1117;
+  border: 1px solid rgba(94, 196, 213, 0.2);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.chart-tooltip-label {
+  font-size: 0.625rem;
+  color: #979797;
+}
+
+.chart-tooltip-value {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 @keyframes pulse {

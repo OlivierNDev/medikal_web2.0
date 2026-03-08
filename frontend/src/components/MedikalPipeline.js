@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import './MedikalPipeline.css';
 
 const scenes = [
@@ -34,6 +35,65 @@ const scenes = [
     dataTypes: ["Alerts", "Analytics", "Reports", "Insights"]
   }
 ];
+
+// Time-series data for each country
+const countryTimeSeries = {
+  Kenya: [
+    { month: 'Jan', rate: 38 }, { month: 'Feb', rate: 39 }, { month: 'Mar', rate: 41 },
+    { month: 'Apr', rate: 40 }, { month: 'May', rate: 42 }, { month: 'Jun', rate: 43 },
+    { month: 'Jul', rate: 42 }, { month: 'Aug', rate: 44 }, { month: 'Sep', rate: 43 },
+    { month: 'Oct', rate: 44 }, { month: 'Nov', rate: 45 }, { month: 'Dec', rate: 45 }
+  ],
+  Uganda: [
+    { month: 'Jan', rate: 30 }, { month: 'Feb', rate: 29 }, { month: 'Mar', rate: 29 },
+    { month: 'Apr', rate: 28 }, { month: 'May', rate: 28 }, { month: 'Jun', rate: 29 },
+    { month: 'Jul', rate: 28 }, { month: 'Aug', rate: 27 }, { month: 'Sep', rate: 28 },
+    { month: 'Oct', rate: 28 }, { month: 'Nov', rate: 28 }, { month: 'Dec', rate: 28 }
+  ],
+  Nigeria: [
+    { month: 'Jan', rate: 52 }, { month: 'Feb', rate: 54 }, { month: 'Mar', rate: 55 },
+    { month: 'Apr', rate: 58 }, { month: 'May', rate: 59 }, { month: 'Jun', rate: 61 },
+    { month: 'Jul', rate: 62 }, { month: 'Aug', rate: 63 }, { month: 'Sep', rate: 64 },
+    { month: 'Oct', rate: 65 }, { month: 'Nov', rate: 66 }, { month: 'Dec', rate: 67 }
+  ],
+  Rwanda: [
+    { month: 'Jan', rate: 45 }, { month: 'Feb', rate: 44 }, { month: 'Mar', rate: 43 },
+    { month: 'Apr', rate: 42 }, { month: 'May', rate: 42 }, { month: 'Jun', rate: 41 },
+    { month: 'Jul', rate: 40 }, { month: 'Aug', rate: 40 }, { month: 'Sep', rate: 39 },
+    { month: 'Oct', rate: 39 }, { month: 'Nov', rate: 38 }, { month: 'Dec', rate: 38 }
+  ],
+  "South Africa": [
+    { month: 'Jan', rate: 33 }, { month: 'Feb', rate: 32 }, { month: 'Mar', rate: 32 },
+    { month: 'Apr', rate: 31 }, { month: 'May', rate: 31 }, { month: 'Jun', rate: 32 },
+    { month: 'Jul', rate: 31 }, { month: 'Aug', rate: 31 }, { month: 'Sep', rate: 31 },
+    { month: 'Oct', rate: 31 }, { month: 'Nov', rate: 31 }, { month: 'Dec', rate: 31 }
+  ]
+};
+
+const riskColors = {
+  low: '#10B981',
+  moderate: '#F59E0B',
+  high: '#EF4444'
+};
+
+const riskLabels = {
+  low: 'Low Risk',
+  moderate: 'Moderate Risk',
+  high: 'High Risk'
+};
+
+// Custom chart tooltip
+const ChartTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="chart-tooltip-custom">
+        <span className="chart-tooltip-label">{label}</span>
+        <span className="chart-tooltip-value">{payload[0].value}% resistance</span>
+      </div>
+    );
+  }
+  return null;
+};
 
 // Data packet component
 const DataPacket = ({ delay, color }) => (
@@ -77,128 +137,60 @@ const PipelineNode = ({ label, icon, isActive, stats }) => (
   </motion.div>
 );
 
-// Africa map with interactive hotspots
-const AfricaMap = ({ activeScene }) => {
+// Africa map with interactive hotspots + click for chart
+const AfricaMap = ({ activeScene, onCountryClick, selectedCountry }) => {
   const [hoveredSpot, setHoveredSpot] = useState(null);
 
   const hotspots = [
     { 
-      id: 1, 
-      x: 65, 
-      y: 35, 
-      label: "Kenya", 
-      risk: "moderate", 
-      delay: 0,
+      id: 1, x: 65, y: 35, label: "Kenya", risk: "moderate", delay: 0,
       data: {
-        resistanceRate: "45%",
-        trend: "increasing",
-        trendIcon: "↑",
-        mainPathogen: "E. coli",
-        affectedAntibiotics: ["Ciprofloxacin", "Ampicillin"],
-        facilities: 12,
-        alerts: 2,
-        lastUpdate: "2 hours ago"
+        resistanceRate: "45%", trend: "increasing", trendIcon: "\u2191",
+        mainPathogen: "E. coli", affectedAntibiotics: ["Ciprofloxacin", "Ampicillin"],
+        facilities: 12, alerts: 2, lastUpdate: "2 hours ago"
       }
     },
     { 
-      id: 2, 
-      x: 55, 
-      y: 42, 
-      label: "Uganda", 
-      risk: "low", 
-      delay: 0.2,
+      id: 2, x: 55, y: 42, label: "Uganda", risk: "low", delay: 0.2,
       data: {
-        resistanceRate: "28%",
-        trend: "stable",
-        trendIcon: "→",
-        mainPathogen: "S. aureus",
-        affectedAntibiotics: ["Methicillin"],
-        facilities: 8,
-        alerts: 0,
-        lastUpdate: "4 hours ago"
+        resistanceRate: "28%", trend: "stable", trendIcon: "\u2192",
+        mainPathogen: "S. aureus", affectedAntibiotics: ["Methicillin"],
+        facilities: 8, alerts: 0, lastUpdate: "4 hours ago"
       }
     },
     { 
-      id: 3, 
-      x: 35, 
-      y: 30, 
-      label: "Nigeria", 
-      risk: "high", 
-      delay: 0.4,
+      id: 3, x: 35, y: 30, label: "Nigeria", risk: "high", delay: 0.4,
       data: {
-        resistanceRate: "67%",
-        trend: "critical",
-        trendIcon: "↑↑",
-        mainPathogen: "K. pneumoniae",
-        affectedAntibiotics: ["Carbapenems", "Cephalosporins", "Fluoroquinolones"],
-        facilities: 18,
-        alerts: 5,
-        lastUpdate: "30 min ago"
+        resistanceRate: "67%", trend: "critical", trendIcon: "\u2191\u2191",
+        mainPathogen: "K. pneumoniae", affectedAntibiotics: ["Carbapenems", "Cephalosporins", "Fluoroquinolones"],
+        facilities: 18, alerts: 5, lastUpdate: "30 min ago"
       }
     },
     { 
-      id: 4, 
-      x: 50, 
-      y: 55, 
-      label: "Rwanda", 
-      risk: "moderate", 
-      delay: 0.6,
+      id: 4, x: 50, y: 55, label: "Rwanda", risk: "moderate", delay: 0.6,
       data: {
-        resistanceRate: "38%",
-        trend: "decreasing",
-        trendIcon: "↓",
-        mainPathogen: "P. aeruginosa",
-        affectedAntibiotics: ["Gentamicin", "Amikacin"],
-        facilities: 7,
-        alerts: 1,
-        lastUpdate: "1 hour ago"
+        resistanceRate: "38%", trend: "decreasing", trendIcon: "\u2193",
+        mainPathogen: "P. aeruginosa", affectedAntibiotics: ["Gentamicin", "Amikacin"],
+        facilities: 7, alerts: 1, lastUpdate: "1 hour ago"
       }
     },
     { 
-      id: 5, 
-      x: 55, 
-      y: 75, 
-      label: "South Africa", 
-      risk: "low", 
-      delay: 0.8,
+      id: 5, x: 55, y: 75, label: "South Africa", risk: "low", delay: 0.8,
       data: {
-        resistanceRate: "31%",
-        trend: "stable",
-        trendIcon: "→",
-        mainPathogen: "A. baumannii",
-        affectedAntibiotics: ["Colistin"],
-        facilities: 15,
-        alerts: 1,
-        lastUpdate: "3 hours ago"
+        resistanceRate: "31%", trend: "stable", trendIcon: "\u2192",
+        mainPathogen: "A. baumannii", affectedAntibiotics: ["Colistin"],
+        facilities: 15, alerts: 1, lastUpdate: "3 hours ago"
       }
     },
   ];
 
-  const riskColors = {
-    low: '#10B981',
-    moderate: '#F59E0B',
-    high: '#EF4444'
-  };
-
-  const riskLabels = {
-    low: 'Low Risk',
-    moderate: 'Moderate Risk',
-    high: 'High Risk'
-  };
-
   return (
     <div className="africa-map">
       <svg viewBox="0 0 100 100" className="map-svg">
-        {/* Simplified Africa outline */}
         <path
           d="M35,5 Q50,3 65,8 Q80,15 82,35 Q85,55 75,75 Q65,90 50,95 Q35,92 25,80 Q15,65 18,45 Q20,25 35,5"
-          fill="none"
-          stroke="#5EC4D5"
-          strokeWidth="0.5"
-          opacity="0.3"
+          fill="none" stroke="#5EC4D5" strokeWidth="0.5" opacity="0.3"
         />
-        
-        {/* Grid lines */}
         {[20, 40, 60, 80].map(y => (
           <line key={`h${y}`} x1="10" y1={y} x2="90" y2={y} stroke="#5EC4D5" strokeWidth="0.1" opacity="0.2" />
         ))}
@@ -207,14 +199,12 @@ const AfricaMap = ({ activeScene }) => {
         ))}
       </svg>
 
-      {/* Hotspots */}
       {activeScene >= 4 && hotspots.map((spot) => (
         <motion.div
           key={spot.id}
-          className={`map-hotspot ${hoveredSpot === spot.id ? 'hovered' : ''}`}
+          className={`map-hotspot ${hoveredSpot === spot.id ? 'hovered' : ''} ${selectedCountry === spot.label ? 'selected' : ''}`}
           style={{ 
-            left: `${spot.x}%`, 
-            top: `${spot.y}%`,
+            left: `${spot.x}%`, top: `${spot.y}%`,
             '--risk-color': riskColors[spot.risk]
           }}
           initial={{ scale: 0, opacity: 0 }}
@@ -222,14 +212,15 @@ const AfricaMap = ({ activeScene }) => {
           transition={{ delay: spot.delay, duration: 0.5 }}
           onMouseEnter={() => setHoveredSpot(spot.id)}
           onMouseLeave={() => setHoveredSpot(null)}
+          onClick={() => onCountryClick(spot.label)}
+          data-testid={`hotspot-${spot.label.toLowerCase().replace(' ', '-')}`}
         >
           <div className="hotspot-pulse" />
           <div className="hotspot-core" />
           <span className="hotspot-label">{spot.label}</span>
 
-          {/* Detailed Tooltip */}
           <AnimatePresence>
-            {hoveredSpot === spot.id && (
+            {hoveredSpot === spot.id && !selectedCountry && (
               <motion.div 
                 className="hotspot-tooltip"
                 initial={{ opacity: 0, y: 10, scale: 0.9 }}
@@ -239,34 +230,24 @@ const AfricaMap = ({ activeScene }) => {
               >
                 <div className="tooltip-header">
                   <span className="tooltip-country">{spot.label}</span>
-                  <span 
-                    className="tooltip-risk" 
-                    style={{ background: riskColors[spot.risk] }}
-                  >
+                  <span className="tooltip-risk" style={{ background: riskColors[spot.risk] }}>
                     {riskLabels[spot.risk]}
                   </span>
                 </div>
-
                 <div className="tooltip-stats">
                   <div className="tooltip-stat">
-                    <span className="stat-value" style={{ color: riskColors[spot.risk] }}>
-                      {spot.data.resistanceRate}
-                    </span>
+                    <span className="stat-value" style={{ color: riskColors[spot.risk] }}>{spot.data.resistanceRate}</span>
                     <span className="stat-label">Resistance Rate</span>
                   </div>
                   <div className="tooltip-stat">
-                    <span className="stat-value">
-                      {spot.data.trendIcon} {spot.data.trend}
-                    </span>
+                    <span className="stat-value">{spot.data.trendIcon} {spot.data.trend}</span>
                     <span className="stat-label">Trend</span>
                   </div>
                 </div>
-
                 <div className="tooltip-section">
                   <span className="section-label">Primary Pathogen</span>
                   <span className="section-value pathogen">{spot.data.mainPathogen}</span>
                 </div>
-
                 <div className="tooltip-section">
                   <span className="section-label">Affected Antibiotics</span>
                   <div className="antibiotic-tags">
@@ -275,7 +256,6 @@ const AfricaMap = ({ activeScene }) => {
                     ))}
                   </div>
                 </div>
-
                 <div className="tooltip-footer">
                   <div className="footer-stat">
                     <span className="footer-value">{spot.data.facilities}</span>
@@ -292,13 +272,13 @@ const AfricaMap = ({ activeScene }) => {
                     <span className="footer-label">Updated</span>
                   </div>
                 </div>
+                <div className="tooltip-click-hint">Click for trends</div>
               </motion.div>
             )}
           </AnimatePresence>
         </motion.div>
       ))}
 
-      {/* Legend */}
       {activeScene >= 4 && (
         <div className="map-legend">
           <div className="legend-item">
@@ -316,7 +296,6 @@ const AfricaMap = ({ activeScene }) => {
         </div>
       )}
 
-      {/* Instruction text */}
       {activeScene >= 4 && (
         <motion.p 
           className="map-instruction"
@@ -324,26 +303,100 @@ const AfricaMap = ({ activeScene }) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          Hover over hotspots for details
+          Hover for details \u00B7 Click for trends
         </motion.p>
       )}
     </div>
   );
 };
 
+// Time-series chart panel
+const TrendChart = ({ country, onClose }) => {
+  const data = countryTimeSeries[country];
+  const hotspotData = {
+    Kenya: { risk: 'moderate', rate: '45%', pathogen: 'E. coli' },
+    Uganda: { risk: 'low', rate: '28%', pathogen: 'S. aureus' },
+    Nigeria: { risk: 'high', rate: '67%', pathogen: 'K. pneumoniae' },
+    Rwanda: { risk: 'moderate', rate: '38%', pathogen: 'P. aeruginosa' },
+    "South Africa": { risk: 'low', rate: '31%', pathogen: 'A. baumannii' }
+  };
+  const info = hotspotData[country];
+
+  return (
+    <motion.div 
+      className="trend-chart-panel"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      data-testid="trend-chart-panel"
+    >
+      <div className="trend-chart-header">
+        <div>
+          <h4>{country}</h4>
+          <span className="trend-chart-subtitle">
+            12-month resistance trend \u00B7 {info.pathogen}
+          </span>
+        </div>
+        <div className="trend-chart-header-right">
+          <span className="trend-chart-badge" style={{ background: riskColors[info.risk] }}>
+            {riskLabels[info.risk]}
+          </span>
+          <button className="trend-chart-close" onClick={onClose} data-testid="trend-chart-close">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div className="trend-chart-body">
+        <ResponsiveContainer width="100%" height={160}>
+          <AreaChart data={data}>
+            <defs>
+              <linearGradient id={`grad-${country}`} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor={riskColors[info.risk]} stopOpacity={0.3}/>
+                <stop offset="95%" stopColor={riskColors[info.risk]} stopOpacity={0}/>
+              </linearGradient>
+            </defs>
+            <XAxis 
+              dataKey="month" 
+              tick={{ fill: '#979797', fontSize: 9 }} 
+              axisLine={{ stroke: 'rgba(255,255,255,0.06)' }}
+              tickLine={false}
+            />
+            <YAxis 
+              domain={[0, 80]} 
+              tick={{ fill: '#979797', fontSize: 9 }} 
+              axisLine={{ stroke: 'rgba(255,255,255,0.06)' }}
+              tickLine={false}
+              width={30}
+            />
+            <Tooltip content={<ChartTooltip />} />
+            <Area
+              type="monotone"
+              dataKey="rate"
+              stroke={riskColors[info.risk]}
+              strokeWidth={2}
+              fill={`url(#grad-${country})`}
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+      <div className="trend-chart-footer">
+        <span>Current: {info.rate}</span>
+        <span>Primary: {info.pathogen}</span>
+      </div>
+    </motion.div>
+  );
+};
+
 // Neural network visualization
 const NeuralNetwork = ({ isActive }) => {
   const nodes = [
-    // Input layer
     { x: 10, y: 20 }, { x: 10, y: 40 }, { x: 10, y: 60 }, { x: 10, y: 80 },
-    // Hidden layer 1
     { x: 35, y: 25 }, { x: 35, y: 50 }, { x: 35, y: 75 },
-    // Hidden layer 2
     { x: 60, y: 30 }, { x: 60, y: 60 },
-    // Output
     { x: 85, y: 45 }
   ];
-
   const connections = [
     [0, 4], [0, 5], [1, 4], [1, 5], [1, 6], [2, 5], [2, 6], [3, 5], [3, 6],
     [4, 7], [4, 8], [5, 7], [5, 8], [6, 7], [6, 8],
@@ -352,48 +405,28 @@ const NeuralNetwork = ({ isActive }) => {
 
   return (
     <svg viewBox="0 0 100 100" className="neural-network">
-      {/* Connections */}
       {connections.map(([from, to], i) => (
-        <motion.line
-          key={i}
-          x1={nodes[from].x}
-          y1={nodes[from].y}
-          x2={nodes[to].x}
-          y2={nodes[to].y}
-          stroke="#5EC4D5"
-          strokeWidth="0.3"
+        <motion.line key={i}
+          x1={nodes[from].x} y1={nodes[from].y} x2={nodes[to].x} y2={nodes[to].y}
+          stroke="#5EC4D5" strokeWidth="0.3"
           initial={{ opacity: 0 }}
           animate={{ opacity: isActive ? 0.4 : 0.1 }}
           transition={{ delay: i * 0.05 }}
         />
       ))}
-      
-      {/* Nodes */}
       {nodes.map((node, i) => (
-        <motion.circle
-          key={i}
-          cx={node.x}
-          cy={node.y}
-          r="3"
-          fill="#0F1117"
-          stroke="#5EC4D5"
-          strokeWidth="0.5"
+        <motion.circle key={i}
+          cx={node.x} cy={node.y} r="3"
+          fill="#0F1117" stroke="#5EC4D5" strokeWidth="0.5"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: i * 0.05 }}
         />
       ))}
-
-      {/* Animated signal */}
       {isActive && (
-        <motion.circle
-          r="2"
-          fill="#5EC4D5"
+        <motion.circle r="2" fill="#5EC4D5"
           initial={{ cx: 10, cy: 40 }}
-          animate={{ 
-            cx: [10, 35, 60, 85],
-            cy: [40, 50, 45, 45]
-          }}
+          animate={{ cx: [10, 35, 60, 85], cy: [40, 50, 45, 45] }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         />
       )}
@@ -404,15 +437,18 @@ const NeuralNetwork = ({ isActive }) => {
 // Main Pipeline Component
 export default function MedikalPipeline() {
   const [activeScene, setActiveScene] = useState(1);
-  const [isHovering, setIsHovering] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
-  // Auto-advance scenes
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveScene(prev => prev >= 5 ? 1 : prev + 1);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleCountryClick = (country) => {
+    setSelectedCountry(prev => prev === country ? null : country);
+  };
 
   const pipelineStages = [
     { id: 1, label: "Hospitals", icon: "H", stats: "45+ facilities" },
@@ -425,14 +461,11 @@ export default function MedikalPipeline() {
   return (
     <section className="pipeline-section" data-testid="pipeline-section">
       <div className="pipeline-container">
-        {/* Header */}
         <div className="pipeline-header">
           <h2>See how Medikal detects resistance patterns in real-time</h2>
         </div>
 
-        {/* Main visualization area */}
         <div className="pipeline-visualization">
-          {/* Left panel - Scene info */}
           <div className="scene-info">
             <AnimatePresence mode="wait">
               <motion.div
@@ -446,12 +479,10 @@ export default function MedikalPipeline() {
                 <span className="scene-number">0{activeScene}</span>
                 <h3>{scenes[activeScene - 1].title}</h3>
                 <p>{scenes[activeScene - 1].text}</p>
-                
                 <div className="data-types">
                   {scenes[activeScene - 1].dataTypes.map((type, i) => (
                     <motion.span 
-                      key={type}
-                      className="data-tag"
+                      key={type} className="data-tag"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.1 }}
@@ -463,7 +494,6 @@ export default function MedikalPipeline() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Scene indicators */}
             <div className="scene-indicators">
               {scenes.map((scene) => (
                 <button
@@ -475,16 +505,11 @@ export default function MedikalPipeline() {
             </div>
           </div>
 
-          {/* Center panel - Main animation */}
           <div className="animation-panel">
-            {/* Pipeline flow */}
             <div className="pipeline-flow">
               {pipelineStages.map((stage, index) => (
                 <React.Fragment key={stage.id}>
-                  <PipelineNode 
-                    {...stage}
-                    isActive={activeScene === stage.id}
-                  />
+                  <PipelineNode {...stage} isActive={activeScene === stage.id} />
                   {index < pipelineStages.length - 1 && (
                     <div className="pipeline-connector">
                       <div className="connector-line" />
@@ -501,30 +526,27 @@ export default function MedikalPipeline() {
               ))}
             </div>
 
-            {/* Bottom visualizations */}
             <div className="visualization-panels">
-              {/* Neural network */}
               <div className="viz-panel">
                 <span className="viz-label">AI Model Activity</span>
                 <NeuralNetwork isActive={activeScene === 3} />
               </div>
 
-              {/* Africa map */}
               <div className="viz-panel map-panel">
                 <span className="viz-label">AMR Hotspots</span>
-                <AfricaMap activeScene={activeScene} />
+                <AfricaMap 
+                  activeScene={activeScene} 
+                  onCountryClick={handleCountryClick}
+                  selectedCountry={selectedCountry}
+                />
               </div>
 
-              {/* Metrics */}
               <div className="viz-panel metrics-panel">
                 <span className="viz-label">Live Metrics</span>
                 <div className="metrics-grid">
                   <div className="metric">
-                    <motion.span 
-                      className="metric-value"
-                      key={activeScene}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
+                    <motion.span className="metric-value" key={activeScene}
+                      initial={{ opacity: 0 }} animate={{ opacity: 1 }}
                     >
                       {activeScene >= 3 ? '12,847' : '---'}
                     </motion.span>
@@ -535,8 +557,7 @@ export default function MedikalPipeline() {
                     <span className="metric-label">AI Accuracy</span>
                   </div>
                   <div className="metric">
-                    <motion.span 
-                      className="metric-value"
+                    <motion.span className="metric-value"
                       style={{ color: activeScene >= 4 ? '#EF4444' : '#5EC4D5' }}
                     >
                       {activeScene >= 4 ? '3' : '0'}
@@ -550,19 +571,28 @@ export default function MedikalPipeline() {
                 </div>
               </div>
             </div>
+
+            {/* Time-series chart overlay */}
+            <AnimatePresence>
+              {selectedCountry && (
+                <TrendChart 
+                  country={selectedCountry} 
+                  onClose={() => setSelectedCountry(null)} 
+                />
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
-        {/* Bottom caption */}
         <div className="pipeline-caption">
           <span>Hospitals</span>
-          <span className="caption-arrow">→</span>
+          <span className="caption-arrow">&rarr;</span>
           <span>Secure Data</span>
-          <span className="caption-arrow">→</span>
+          <span className="caption-arrow">&rarr;</span>
           <span>AI Models</span>
-          <span className="caption-arrow">→</span>
+          <span className="caption-arrow">&rarr;</span>
           <span>AMR Detection</span>
-          <span className="caption-arrow">→</span>
+          <span className="caption-arrow">&rarr;</span>
           <span>Health Intelligence</span>
         </div>
       </div>
