@@ -1,0 +1,174 @@
+{
+  "design_system": {
+    "identity": {
+      "name": "Medikal Africa",
+      "essence": "Clinical Intelligence Infrastructure",
+      "vibe": "Research-Grade, Sterile, Precise, High-Speed",
+      "archetype": "The Illuminated Lab",
+      "key_metaphor": "Illuminating the invisible biological data"
+    },
+    "typography": {
+      "primary": {
+        "family": "Inter",
+        "usage": "Headings & UI",
+        "weights": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "settings": {
+          "headings": "tracking-tight font-semibold text-slate-900",
+          "body": "tracking-normal text-slate-600 leading-relaxed"
+        }
+      },
+      "mono": {
+        "family": "JetBrains Mono",
+        "usage": "Data, AMR Sequences, Technical Specs",
+        "weights": [
+          "400",
+          "500"
+        ]
+      }
+    },
+    "colors": {
+      "palette": {
+        "primary": {
+          "main": "#5EC4D5",
+          "light": "#89D9E6",
+          "dark": "#3AA0B0",
+          "usage": "Primary Actions, 'Safe' Status, Brand Accents"
+        },
+        "secondary": {
+          "main": "#979797",
+          "light": "#E2E8F0",
+          "dark": "#475569",
+          "usage": "Borders, Subtext, Inactive Elements"
+        },
+        "neutral": {
+          "bg_app": "#FFFFFF",
+          "bg_surface": "#F8FAFC",
+          "border": "#E2E8F0",
+          "text_main": "#0F172A",
+          "text_muted": "#64748B"
+        },
+        "semantic": {
+          "resistance": "#EF4444",
+          "susceptible": "#10B981",
+          "warning": "#F59E0B",
+          "info": "#3B82F6"
+        }
+      },
+      "gradients": {
+        "hero_glow": "radial-gradient(circle at 50% 50%, rgba(94, 196, 213, 0.15), transparent 70%)",
+        "subtle_fade": "linear-gradient(to bottom, #FFFFFF, #F8FAFC)"
+      }
+    },
+    "layout": {
+      "container": {
+        "max_width": "max-w-7xl",
+        "padding": "px-6 md:px-12 lg:px-24",
+        "alignment": "mx-auto"
+      },
+      "grid_system": {
+        "bento": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6",
+        "split": "grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+      },
+      "spacing": {
+        "section_py": "py-20 md:py-32",
+        "element_gap": "gap-8"
+      }
+    },
+    "visual_enhancers": {
+      "borders": "border border-slate-200",
+      "radius": "rounded-lg",
+      "shadows": {
+        "card": "shadow-sm hover:shadow-md transition-shadow duration-300",
+        "float": "shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+      },
+      "glassmorphism": {
+        "nav": "bg-white/80 backdrop-blur-md border-b border-slate-200/50",
+        "overlay": "bg-white/90 backdrop-blur-sm"
+      }
+    },
+    "motion": {
+      "transition_base": "transition-all duration-300 ease-out",
+      "hover_lift": "hover:-translate-y-1",
+      "stagger_delay": 0.1
+    }
+  },
+  "pages": {
+    "home": {
+      "sections": [
+        "Hero: Split screen (Left: H1 'The AMR Intelligence Infrastructure', Right: 3D Globe/Network)",
+        "Social Proof: 'Trusted by Africa CDC, WHO' (Monochrome logos)",
+        "Platform Overview: 3-Column Bento Grid (Clinical, Lab, Policy)",
+        "AMR Intelligence: Interactive Heatmap Demo (Static Image with hotspots)",
+        "CTA: 'Request Access'"
+      ],
+      "key_components": [
+        "HeroSection",
+        "FeatureGrid",
+        "StatsTicker"
+      ]
+    },
+    "platform": {
+      "focus": "Technical Capability",
+      "visuals": "Abstract Data Flow, Pipeline Animations",
+      "sections": [
+        "The Engine",
+        "Data Ingestion",
+        "AI Analysis",
+        "Reporting"
+      ]
+    },
+    "amr_intelligence": {
+      "focus": "Data & Research",
+      "visuals": "Genomic Sequences, Heatmaps, Resistance Charts",
+      "components": [
+        "ResistanceMap",
+        "GenomicViewer"
+      ]
+    },
+    "technology": {
+      "focus": "Architecture & Security",
+      "visuals": "Server Racks, Encryption Padlocks, Network Nodes",
+      "style": "Blueprint/Schematic"
+    },
+    "research_impact": {
+      "focus": "Mission & Partners",
+      "visuals": "Doctor/Patient photos, Map of Impact",
+      "style": "Editorial/Journal"
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_bg": "https://images.unsplash.com/photo-1771015138249-7dbd8eab0546?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjh8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG1lZGljYWwlMjBkYXRhJTIwbmV0d29yayUyMHZpc3VhbGl6YXRpb24lMjBsaWdodHxlbnwwfHx8fDE3NzI5Mzc3Njl8MA&ixlib=rb-4.1.0&q=85",
+      "lab_context": "https://images.unsplash.com/photo-1748261347902-451fb437e8fb?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHwyfHxsYWJvcmF0b3J5JTIwZ2xhc3N3YXJlJTIwc2NpZW5jZSUyMHJlc2VhcmNoJTIwbGlnaHQlMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3MjkzNzc3MHww&ixlib=rb-4.1.0&q=85",
+      "doctor_tablet": "https://images.unsplash.com/photo-1536064479547-7ee40b74b807?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzN8MHwxfHNlYXJjaHwyfHxibGFjayUyMGRvY3RvciUyMHRhYmxldCUyMGhvc3BpdGFsfGVufDB8fHx8MTc3MjkzNzc1Nnww&ixlib=rb-4.1.0&q=85",
+      "microscope": "https://images.unsplash.com/photo-1738778151587-032287ae9f90?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHw0fHxtaWNyb3Njb3BlJTIwc2NpZW5jZSUyMGxhYnxlbnwwfHx8fDE3NzI5Mzc3NTh8MA&ixlib=rb-4.1.0&q=85",
+      "abstract_dna": "https://images.unsplash.com/photo-1621402705959-fe90b5c9b42c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzB8MHwxfHNlYXJjaHw0fHxETkElMjBzZXF1ZW5jaW5nJTIwZGF0YSUyMHZpc3VhbGl6YXRpb24lMjBhYnN0cmFjdCUyMGxpZ2h0JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NzI5Mzc3MzR8MA&ixlib=rb-4.1.0&q=85"
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "Stroke width 1.5px (Thin/Technical)"
+    }
+  },
+  "instructions_to_main_agent": [
+    "1. INIT: Create a new React project in /app if not present (or restructure existing).",
+    "2. SETUP: Install 'lucide-react', 'framer-motion', 'recharts', 'clsx', 'tailwind-merge'.",
+    "3. CLEANUP: Remove any existing static HTML files in the root if they conflict with the React app.",
+    "4. COMPONENTS: Build 'ui/card', 'ui/button' (pill shape), 'ui/badge' (for status).",
+    "5. NAV: Create a sticky glassmorphic header.",
+    "6. PAGES: Implement the 5 core pages defined in 'pages' section.",
+    "7. DATA VIZ: Use Recharts for the AMR Intelligence graphs. Mock the data.",
+    "8. ANIMATION: Add simple entrance animations (fade-in-up) to all text blocks."
+  ],
+  "universal_guidelines": [
+    "NEVER use generic 'Lorem Ipsum'. Use realistic medical data (e.g., 'Klebsiella pneumoniae', 'Resistance Gene blaNDM-1').",
+    "Ensure Mobile Responsiveness: Stack bento grids to single column on mobile.",
+    "Use 'border-slate-200' for all borders to maintain the 'Light/Clinical' feel.",
+    "Do NOT use heavy drop shadows. Use 'shadow-sm' at most.",
+    "Interactive elements must have a 'data-testid' for testing."
+  ]
+}
