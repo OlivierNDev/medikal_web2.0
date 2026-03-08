@@ -3,55 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Medikal Africa - AI infrastructure for antimicrobial resistance intelligence. Clinical decision support and AMR surveillance for African health systems.">
-  <meta name="keywords" content="Medikal Africa, AMR, antimicrobial resistance, AI healthcare, clinical intelligence, Africa">
-  <meta name="author" content="Medikal Africa">
+  <meta name="description" content="Medikal Africa - AI infrastructure for antimicrobial resistance intelligence and clinical decision support across Africa.">
+  <title>Medikal Africa - AMR Intelligence Platform</title>
   
-  <!-- Open Graph -->
-  <meta property="og:title" content="Medikal Africa - AMR Intelligence Infrastructure">
-  <meta property="og:description" content="AI-powered clinical intelligence platform for antimicrobial resistance detection and health system decision-making.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://medikalafrica.com">
-  
-  <title>Medikal Africa - AMR Intelligence Infrastructure</title>
-  
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/pages.css">
-  
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 <body>
   <!-- Navigation -->
   <nav class="nav" data-testid="main-nav">
     <div class="container nav-container">
-      <a href="index.html" class="nav-logo" data-testid="nav-logo">
-        <img src="assets/logo.png" alt="Medikal Africa" onerror="this.style.display='none'">
-        <span class="nav-logo-text">Medikal<span>Africa</span></span>
+      <a href="index.html">
+        <img src="assets/medikal-logo.png" alt="Medikal Africa" class="nav-logo" data-testid="nav-logo">
       </a>
       
       <div class="nav-links" data-testid="nav-links">
         <a href="index.html" class="nav-link active">Home</a>
         <a href="platform.html" class="nav-link">Platform</a>
-        <a href="amr-intelligence.html" class="nav-link">AMR Intelligence</a>
-        <a href="technology.html" class="nav-link">Technology</a>
+        <a href="amr-intelligence.html" class="nav-link">AMR</a>
         <a href="research.html" class="nav-link">Research</a>
       </div>
       
-      <a href="request-access.html" class="nav-cta" data-testid="nav-cta">
-        Request Access
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
+      <a href="request-access.html" class="nav-cta" data-testid="nav-cta">Request Demo</a>
       
-      <button class="nav-mobile-btn" data-testid="mobile-menu-btn" aria-label="Open menu">
+      <button class="nav-mobile-btn" data-testid="mobile-menu-btn" aria-label="Menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 12h18M3 6h18M3 18h18"/>
         </svg>
@@ -63,8 +42,8 @@
   <div class="mobile-overlay" data-testid="mobile-overlay"></div>
   <div class="mobile-menu" data-testid="mobile-menu">
     <div class="mobile-menu-header">
-      <span class="nav-logo-text">Medikal<span style="color: var(--primary)">Africa</span></span>
-      <button class="mobile-menu-close" data-testid="mobile-menu-close" aria-label="Close menu">
+      <img src="assets/medikal-logo.png" alt="Medikal Africa" height="28">
+      <button class="mobile-close" data-testid="mobile-menu-close" aria-label="Close">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M18 6L6 18M6 6l12 12"/>
         </svg>
@@ -74,316 +53,145 @@
       <a href="index.html">Home</a>
       <a href="platform.html">Platform</a>
       <a href="amr-intelligence.html">AMR Intelligence</a>
-      <a href="technology.html">Technology</a>
       <a href="research.html">Research</a>
-      <a href="request-access.html" class="nav-cta" style="margin-top: 1rem; justify-content: center;">Request Access</a>
+      <a href="request-access.html">Request Demo</a>
     </div>
   </div>
-  
-  <!-- Hero Section -->
+
+  <!-- Hero -->
   <section class="hero" data-testid="hero-section">
     <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge fade-up" data-testid="hero-badge">
-            Clinical Intelligence Platform
-          </div>
-          
-          <h1 class="hero-title fade-up stagger-1" data-testid="hero-title">
-            AI Infrastructure for <span>Antimicrobial Resistance</span> Intelligence
-          </h1>
-          
-          <p class="hero-description fade-up stagger-2" data-testid="hero-description">
-            A continental clinical intelligence platform designed to detect antibiotic resistance patterns, support clinicians, and strengthen health systems across Africa.
-          </p>
-          
-          <div class="hero-cta fade-up stagger-3" data-testid="hero-cta">
-            <a href="request-access.html" class="btn-primary" data-testid="hero-cta-primary">
-              Request Demo
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
-            <a href="platform.html" class="btn-secondary" data-testid="hero-cta-secondary">
-              View Platform
-            </a>
-          </div>
-          
-          <div class="hero-stats fade-up stagger-4" data-testid="hero-stats">
-            <div class="hero-stat">
-              <div class="hero-stat-value">95%</div>
-              <div class="hero-stat-label">AI Accuracy</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-value">500+</div>
-              <div class="hero-stat-label">Target Facilities</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-value">70%</div>
-              <div class="hero-stat-label">AMR Reduction Goal</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-value">54</div>
-              <div class="hero-stat-label">African Countries</div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="hero-visual" data-testid="hero-visual">
-          <div class="hero-visual-card">
-            <div class="data-flow" data-testid="data-flow-animation">
-              <div class="flow-node" style="top: 0; left: 50%; transform: translateX(-50%);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-                </svg>
-                Hospital Systems
-              </div>
-              <div class="flow-line" style="top: 48px; left: 50%; height: 40px;"></div>
-              
-              <div class="flow-node" style="top: 96px; left: 50%; transform: translateX(-50%);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
-                </svg>
-                Clinical Data Pipeline
-              </div>
-              <div class="flow-line" style="top: 144px; left: 50%; height: 40px;"></div>
-              
-              <div class="flow-node active" style="top: 192px; left: 50%; transform: translateX(-50%);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
-                  <path d="M12 6v6l4 2"/>
-                </svg>
-                AI Analysis Engine
-              </div>
-              <div class="flow-line" style="top: 240px; left: 50%; height: 40px;"></div>
-              
-              <div class="flow-node" style="top: 288px; left: 50%; transform: translateX(-50%);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 3v18h18"/>
-                  <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
-                </svg>
-                Intelligence Dashboard
-              </div>
-            </div>
-          </div>
+      <div class="hero-content">
+        <div class="hero-tag">Clinical Intelligence Platform</div>
+        <h1>AI Infrastructure for <span>AMR Intelligence</span></h1>
+        <p>Detecting antimicrobial resistance patterns and supporting clinical decisions across African health systems.</p>
+        <div class="hero-cta">
+          <a href="request-access.html" class="btn-primary" data-testid="hero-cta-primary">Request Demo</a>
+          <a href="#video" class="btn-secondary" data-testid="hero-cta-secondary">Watch Demo</a>
         </div>
       </div>
     </div>
   </section>
-  
-  <!-- Partners Section -->
+
+  <!-- Video Section -->
+  <section class="video-section" id="video" data-testid="video-section">
+    <div class="container">
+      <div class="video-wrapper">
+        <video controls poster="assets/video-poster.jpg" data-testid="demo-video">
+          <source src="demo-video.mp4" type="video/mp4">
+          Your browser does not support video.
+        </video>
+      </div>
+      <p class="video-caption">See how Medikal detects resistance patterns in real-time</p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section" data-testid="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">95%</div>
+          <div class="stat-label">AI Accuracy</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">500+</div>
+          <div class="stat-label">Target Facilities</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">70%</div>
+          <div class="stat-label">AMR Reduction Goal</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">54</div>
+          <div class="stat-label">African Countries</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section" data-testid="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Platform Capabilities</h2>
+        <p>Unified clinical intelligence connecting hospitals, labs, and health ministries.</p>
+      </div>
+      
+      <div class="features-grid" data-testid="features-grid">
+        <div class="feature-card">
+          <h3>Clinical Intelligence</h3>
+          <p>AI-powered diagnostic assistance with evidence-based treatment recommendations.</p>
+        </div>
+        <div class="feature-card">
+          <h3>AMR Detection</h3>
+          <p>Real-time surveillance of resistance patterns with early warning alerts.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Antibiotic Stewardship</h3>
+          <p>Intelligent recommendations for optimal antibiotic selection and dosing.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Lab Analytics</h3>
+          <p>Integration with laboratory systems for susceptibility testing analysis.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Health Intelligence</h3>
+          <p>Dashboards for ministries to monitor trends and allocate resources.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Multilingual AI</h3>
+          <p>Clinical support in English, French, and Kinyarwanda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
   <section class="partners-section" data-testid="partners-section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Trusted Partners</span>
-        <p class="section-description">Recognized by leading global health and technology organizations</p>
+      <div class="partners-header">
+        <p>Trusted By</p>
       </div>
-      
       <div class="partners-grid" data-testid="partners-grid">
-        <div class="partner-logo">
-          <img src="assets/nvidia-logo.png" alt="NVIDIA Inception Program" onerror="this.parentElement.innerHTML='<span style=\'font-weight:600;color:var(--text-muted);font-size:0.875rem;\'>NVIDIA</span>'">
-        </div>
-        <div class="partner-logo">
-          <img src="assets/africa-cdc-logo.png" alt="Africa CDC" onerror="this.parentElement.innerHTML='<span style=\'font-weight:600;color:var(--text-muted);font-size:0.875rem;\'>Africa CDC</span>'">
-        </div>
-        <div class="partner-logo">
-          <img src="assets/amr-logo.png" alt="AMR Initiative Rwanda" onerror="this.parentElement.innerHTML='<span style=\'font-weight:600;color:var(--text-muted);font-size:0.875rem;\'>AMR Initiative</span>'">
-        </div>
-        <div class="partner-logo">
-          <img src="assets/robolabs-logo.png" alt="RoboLabs" onerror="this.parentElement.innerHTML='<span style=\'font-weight:600;color:var(--text-muted);font-size:0.875rem;\'>RoboLabs</span>'">
-        </div>
+        <img src="assets/africa-cdc-logo.png" alt="Africa CDC" class="partner-logo">
+        <img src="assets/amr-logo.png" alt="AMR Initiative Rwanda" class="partner-logo">
+        <img src="assets/robolabs-logo.png" alt="RoboLabs" class="partner-logo">
       </div>
     </div>
   </section>
-  
-  <!-- Platform Overview Section -->
-  <section class="platform-overview" data-testid="platform-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Platform</span>
-        <h2 class="section-title">Unified Clinical Intelligence</h2>
-        <p class="section-description">
-          An integrated platform connecting hospital systems, laboratories, and public health agencies for comprehensive AMR surveillance and clinical decision support.
-        </p>
-      </div>
-      
-      <div class="bento-grid" data-testid="bento-grid">
-        <div class="bento-card bento-card-featured" data-testid="bento-card-1">
-          <div class="bento-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/>
-              <path d="M12 6v6l4 2"/>
-            </svg>
-          </div>
-          <h3>Clinical Intelligence Engine</h3>
-          <p>AI-powered diagnostic assistance analyzing patient data, lab results, and clinical history to provide evidence-based treatment recommendations and identify potential AMR patterns.</p>
-        </div>
-        
-        <div class="bento-card" data-testid="bento-card-2">
-          <div class="bento-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
-            </svg>
-          </div>
-          <h3>AMR Detection</h3>
-          <p>Real-time surveillance of antimicrobial resistance patterns across facilities, with early warning alerts for emerging resistance threats.</p>
-        </div>
-        
-        <div class="bento-card" data-testid="bento-card-3">
-          <div class="bento-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-              <path d="M22 4L12 14.01l-3-3"/>
-            </svg>
-          </div>
-          <h3>Antibiotic Stewardship</h3>
-          <p>Intelligent recommendations for optimal antibiotic selection, dosing, and duration to preserve antimicrobial effectiveness.</p>
-        </div>
-        
-        <div class="bento-card" data-testid="bento-card-4">
-          <div class="bento-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-            </svg>
-          </div>
-          <h3>Multilingual AI Assistant</h3>
-          <p>Clinical support in English, French, and Kinyarwanda, enabling accessible healthcare guidance across diverse populations.</p>
-        </div>
-        
-        <div class="bento-card" data-testid="bento-card-5">
-          <div class="bento-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M3 3v18h18"/>
-              <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
-            </svg>
-          </div>
-          <h3>Health System Analytics</h3>
-          <p>Comprehensive dashboards for ministries and public health agencies to monitor AMR trends and optimize resource allocation.</p>
-        </div>
-        
-        <div class="bento-card" data-testid="bento-card-6">
-          <div class="bento-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <h3>Secure Infrastructure</h3>
-          <p>HIPAA-compliant data handling with encrypted transport, secure processing, and anonymized analytics for population health insights.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- AMR Intelligence Preview -->
-  <section class="amr-section" data-testid="amr-preview-section">
-    <div class="container">
-      <div class="platform-grid">
-        <div>
-          <span class="section-badge">AMR Intelligence</span>
-          <h2 class="section-title" style="margin-top: 1rem;">Detecting Resistance Before It Spreads</h2>
-          <p style="margin-top: 1rem; margin-bottom: 2rem;">
-            Our AMR detection engine analyzes antibiotic usage patterns, laboratory susceptibility data, and clinical outcomes to identify emerging resistance threats in real-time.
-          </p>
-          
-          <div class="stats-grid" data-testid="amr-stats">
-            <div class="stat-card">
-              <div class="stat-card-value">4.95M</div>
-              <div class="stat-card-label">AMR deaths globally (2019)</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card-value">10M</div>
-              <div class="stat-card-label">Projected deaths by 2050</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card-value">50%</div>
-              <div class="stat-card-label">Inappropriate prescriptions</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card-value">24hrs</div>
-              <div class="stat-card-label">Early warning capability</div>
-            </div>
-          </div>
-          
-          <a href="amr-intelligence.html" class="btn-primary" style="margin-top: 2rem;" data-testid="amr-learn-more">
-            Learn More
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-        </div>
-        
-        <div class="amr-visual" data-testid="amr-visual">
-          <div class="heatmap-container" data-testid="heatmap">
-            <!-- Heatmap cells will be generated by JS -->
-          </div>
-          <div class="heatmap-legend">
-            <div class="legend-item">
-              <div class="legend-color" style="background: #10B981;"></div>
-              <span>Susceptible</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-color" style="background: #F59E0B;"></div>
-              <span>Intermediate</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-color" style="background: #EF4444;"></div>
-              <span>Resistant</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- CTA Section -->
+
+  <!-- CTA -->
   <section class="cta-section" data-testid="cta-section">
     <div class="container">
-      <div class="section-header" style="margin-bottom: 0;">
-        <h2 class="section-title">Ready to strengthen your health system?</h2>
-        <p>Join leading institutions using Medikal for clinical intelligence and AMR surveillance.</p>
-        
-        <div class="cta-buttons">
-          <a href="request-access.html" class="btn-white" data-testid="cta-primary">
-            Request Demo
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="technology.html" class="btn-outline-white" data-testid="cta-secondary">
-            View Technology
-          </a>
-        </div>
-      </div>
+      <h2>Ready to strengthen your health system?</h2>
+      <p>Join leading institutions using Medikal for AMR surveillance.</p>
+      <a href="request-access.html" class="btn-white" data-testid="cta-primary">Request Demo</a>
     </div>
   </section>
-  
+
   <!-- Footer -->
   <footer class="footer" data-testid="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <span class="nav-logo-text" style="color: white;">Medikal<span style="color: var(--primary-light);">Africa</span></span>
-          <p>AI-powered clinical intelligence platform for antimicrobial resistance detection and health system decision-making across Africa.</p>
+          <img src="assets/medikal-logo.png" alt="Medikal Africa">
+          <p>AI-powered clinical intelligence for antimicrobial resistance detection across Africa.</p>
         </div>
-        
         <div>
           <h4 class="footer-title">Platform</h4>
           <ul class="footer-links">
             <li><a href="platform.html">Overview</a></li>
             <li><a href="amr-intelligence.html">AMR Intelligence</a></li>
-            <li><a href="technology.html">Technology</a></li>
           </ul>
         </div>
-        
         <div>
           <h4 class="footer-title">Company</h4>
           <ul class="footer-links">
-            <li><a href="research.html">Research & Impact</a></li>
-            <li><a href="request-access.html">Request Access</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="request-access.html">Contact</a></li>
           </ul>
         </div>
-        
         <div>
           <h4 class="footer-title">Contact</h4>
           <ul class="footer-links">
@@ -392,29 +200,13 @@
           </ul>
         </div>
       </div>
-      
       <div class="footer-bottom">
-        <p>&copy; 2024 Medikal Africa. All rights reserved.</p>
-        
-        <div class="footer-social">
-          <a href="https://twitter.com/medikal_africa" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
-            </svg>
-          </a>
-          <a href="https://linkedin.com/company/medikal-africa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-          </a>
-        </div>
+        <p>&copy; 2024 Medikal Africa</p>
+        <a href="https://twitter.com/medikal_africa" target="_blank">Twitter</a>
       </div>
     </div>
   </footer>
-  
-  <!-- Scripts -->
+
   <script src="js/main.js"></script>
 </body>
 </html>

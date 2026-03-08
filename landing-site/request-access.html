@@ -3,42 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Request access to Medikal Africa - Schedule a demo of our AI-powered clinical intelligence platform for AMR surveillance.">
-  <title>Request Access - Medikal Africa</title>
+  <meta name="description" content="Request access to Medikal Africa - Schedule a demo.">
+  <title>Request Demo - Medikal Africa</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/pages.css">
   <link rel="icon" type="image/png" href="assets/logo.png">
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="nav" data-testid="main-nav">
+  <nav class="nav">
     <div class="container nav-container">
-      <a href="index.html" class="nav-logo">
-        <img src="assets/logo.png" alt="Medikal Africa" onerror="this.style.display='none'">
-        <span class="nav-logo-text">Medikal<span>Africa</span></span>
+      <a href="index.html">
+        <img src="assets/medikal-logo.png" alt="Medikal Africa" class="nav-logo">
       </a>
-      
       <div class="nav-links">
         <a href="index.html" class="nav-link">Home</a>
         <a href="platform.html" class="nav-link">Platform</a>
-        <a href="amr-intelligence.html" class="nav-link">AMR Intelligence</a>
-        <a href="technology.html" class="nav-link">Technology</a>
+        <a href="amr-intelligence.html" class="nav-link">AMR</a>
         <a href="research.html" class="nav-link">Research</a>
       </div>
-      
-      <a href="request-access.html" class="nav-cta" style="background: var(--primary-dark);">
-        Request Access
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
-      
-      <button class="nav-mobile-btn" aria-label="Open menu">
+      <a href="request-access.html" class="nav-cta" style="background: var(--primary);">Request Demo</a>
+      <button class="nav-mobile-btn" aria-label="Menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 12h18M3 6h18M3 18h18"/>
         </svg>
@@ -50,8 +39,8 @@
   <div class="mobile-overlay"></div>
   <div class="mobile-menu">
     <div class="mobile-menu-header">
-      <span class="nav-logo-text">Medikal<span style="color: var(--primary)">Africa</span></span>
-      <button class="mobile-menu-close" aria-label="Close menu">
+      <img src="assets/medikal-logo.png" alt="Medikal Africa" height="28">
+      <button class="mobile-close" aria-label="Close">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M18 6L6 18M6 6l12 12"/>
         </svg>
@@ -61,209 +50,83 @@
       <a href="index.html">Home</a>
       <a href="platform.html">Platform</a>
       <a href="amr-intelligence.html">AMR Intelligence</a>
-      <a href="technology.html">Technology</a>
       <a href="research.html">Research</a>
-      <a href="request-access.html" class="nav-cta" style="margin-top: 1rem; justify-content: center;">Request Access</a>
+      <a href="request-access.html">Request Demo</a>
     </div>
   </div>
-  
-  <!-- Request Access Section -->
-  <section class="request-hero" data-testid="request-hero">
+
+  <!-- Form Section -->
+  <section class="form-section" style="padding-top: 10rem;" data-testid="request-section">
     <div class="container">
-      <div class="request-grid">
-        <div>
-          <span class="section-badge">Get Started</span>
-          <h1 style="margin-top: 1rem; margin-bottom: 1rem;">Request Platform Access</h1>
-          <p style="margin-bottom: 0;">
-            Schedule a demo to explore how Medikal can strengthen your health system with AI-powered clinical intelligence and AMR surveillance.
-          </p>
-          
-          <ul class="request-benefits" data-testid="benefits-list">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                <path d="M22 4L12 14.01l-3-3"/>
-              </svg>
-              <div>
-                <strong>Live Platform Demo</strong>
-                <p style="margin: 0; font-size: 0.9375rem; color: var(--text-muted);">See the clinical intelligence engine, AMR surveillance, and analytics dashboards in action.</p>
-              </div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                <path d="M22 4L12 14.01l-3-3"/>
-              </svg>
-              <div>
-                <strong>Integration Assessment</strong>
-                <p style="margin: 0; font-size: 0.9375rem; color: var(--text-muted);">Discuss how Medikal integrates with your existing hospital systems and workflows.</p>
-              </div>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
-                <path d="M22 4L12 14.01l-3-3"/>
-              </svg>
-              <div>
-                <strong>Pilot Program Options</strong>
-                <p style="margin: 0; font-size: 0.9375rem; color: var(--text-muted);">Learn about deployment options and pilot programs for your organization.</p>
-              </div>
-            </li>
-          </ul>
-          
-          <div class="partners-grid" style="justify-content: flex-start; gap: 1rem; margin-top: 2rem;" data-testid="trust-logos">
-            <div class="partner-logo" style="width: 120px; height: 60px;">
-              <span style="font-weight: 600; color: var(--text-muted); font-size: 0.75rem;">NVIDIA</span>
-            </div>
-            <div class="partner-logo" style="width: 120px; height: 60px;">
-              <span style="font-weight: 600; color: var(--text-muted); font-size: 0.75rem;">Africa CDC</span>
-            </div>
+      <div class="section-header" style="margin-bottom: 3rem;">
+        <h2>Request a Demo</h2>
+        <p>Our team will reach out within 24 hours.</p>
+      </div>
+      
+      <div class="form-card" data-testid="request-form-card">
+        <form action="https://formspree.io/f/your-form-id" method="POST" data-testid="request-form">
+          <div class="form-group">
+            <label class="form-label" for="name">Name *</label>
+            <input type="text" id="name" name="name" class="form-input" required data-testid="input-name">
           </div>
-        </div>
-        
-        <div class="request-form-card" data-testid="request-form-card">
-          <h2 class="request-form-title">Request a Demo</h2>
-          <p class="request-form-subtitle">Fill out the form and our team will reach out within 24 hours.</p>
           
-          <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST" data-testid="request-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="firstName">First Name *</label>
-                <input type="text" id="firstName" name="firstName" class="form-input" required data-testid="input-first-name">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" class="form-input" required data-testid="input-last-name">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label class="form-label" for="email">Work Email *</label>
-              <input type="email" id="email" name="email" class="form-input" required data-testid="input-email">
-            </div>
-            
-            <div class="form-group">
-              <label class="form-label" for="organization">Organization *</label>
-              <input type="text" id="organization" name="organization" class="form-input" required data-testid="input-organization">
-            </div>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="role">Role / Title *</label>
-                <input type="text" id="role" name="role" class="form-input" required data-testid="input-role">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="country">Country *</label>
-                <select id="country" name="country" class="form-select" required data-testid="select-country">
-                  <option value="">Select country</option>
-                  <option value="Rwanda">Rwanda</option>
-                  <option value="Kenya">Kenya</option>
-                  <option value="Uganda">Uganda</option>
-                  <option value="Tanzania">Tanzania</option>
-                  <option value="Nigeria">Nigeria</option>
-                  <option value="South Africa">South Africa</option>
-                  <option value="Ghana">Ghana</option>
-                  <option value="Ethiopia">Ethiopia</option>
-                  <option value="DRC">DR Congo</option>
-                  <option value="Senegal">Senegal</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label class="form-label" for="orgType">Organization Type *</label>
-              <select id="orgType" name="orgType" class="form-select" required data-testid="select-org-type">
-                <option value="">Select type</option>
-                <option value="Hospital">Hospital / Health System</option>
-                <option value="Ministry">Ministry of Health</option>
-                <option value="NGO">NGO / Non-profit</option>
-                <option value="Research">Research Institution</option>
-                <option value="Laboratory">Laboratory / Diagnostic Center</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label class="form-label" for="message">Tell us about your needs (optional)</label>
-              <textarea id="message" name="message" class="form-textarea" rows="3" placeholder="What challenges are you looking to address? What's your timeline?" data-testid="textarea-message"></textarea>
-            </div>
-            
-            <button type="submit" class="btn-primary form-submit" data-testid="submit-button">
-              Request Demo
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </button>
-            
-            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem; text-align: center;">
-              By submitting this form, you agree to our privacy policy. We'll never share your information with third parties.
-            </p>
-          </form>
-        </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Work Email *</label>
+            <input type="email" id="email" name="email" class="form-input" required data-testid="input-email">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="organization">Organization *</label>
+            <input type="text" id="organization" name="organization" class="form-input" required data-testid="input-organization">
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="country">Country *</label>
+            <select id="country" name="country" class="form-select" required data-testid="select-country">
+              <option value="">Select country</option>
+              <option value="Rwanda">Rwanda</option>
+              <option value="Kenya">Kenya</option>
+              <option value="Uganda">Uganda</option>
+              <option value="Tanzania">Tanzania</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="South Africa">South Africa</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="message">Message (optional)</label>
+            <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your needs" data-testid="textarea-message"></textarea>
+          </div>
+          
+          <button type="submit" class="btn-primary form-submit" data-testid="submit-button">Submit Request</button>
+        </form>
       </div>
     </div>
   </section>
-  
-  <!-- Contact Info Section -->
-  <section class="bg-surface" style="padding: 3rem 0;" data-testid="contact-info-section">
-    <div class="container">
-      <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-        <div class="stat-card" style="text-align: center; padding: 2rem;" data-testid="contact-email">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" style="margin: 0 auto 1rem;">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <path d="M22 6l-10 7L2 6"/>
-          </svg>
-          <h4 style="margin-bottom: 0.5rem;">Email</h4>
-          <a href="mailto:info@medikalafrica.com" style="color: var(--primary-dark); text-decoration: none;">info@medikalafrica.com</a>
-        </div>
-        
-        <div class="stat-card" style="text-align: center; padding: 2rem;" data-testid="contact-phone">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" style="margin: 0 auto 1rem;">
-            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-          </svg>
-          <h4 style="margin-bottom: 0.5rem;">Phone</h4>
-          <a href="tel:+17024163329" style="color: var(--primary-dark); text-decoration: none;">+1 (702) 416-3329</a>
-        </div>
-        
-        <div class="stat-card" style="text-align: center; padding: 2rem;" data-testid="contact-response">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" style="margin: 0 auto 1rem;">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v6l4 2"/>
-          </svg>
-          <h4 style="margin-bottom: 0.5rem;">Response Time</h4>
-          <span style="color: var(--text-muted);">Within 24 hours</span>
-        </div>
-      </div>
-    </div>
-  </section>
-  
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <span class="nav-logo-text" style="color: white;">Medikal<span style="color: var(--primary-light);">Africa</span></span>
-          <p>AI-powered clinical intelligence platform for antimicrobial resistance detection and health system decision-making across Africa.</p>
+          <img src="assets/medikal-logo.png" alt="Medikal Africa">
+          <p>AI-powered clinical intelligence for antimicrobial resistance detection across Africa.</p>
         </div>
-        
         <div>
           <h4 class="footer-title">Platform</h4>
           <ul class="footer-links">
             <li><a href="platform.html">Overview</a></li>
             <li><a href="amr-intelligence.html">AMR Intelligence</a></li>
-            <li><a href="technology.html">Technology</a></li>
           </ul>
         </div>
-        
         <div>
           <h4 class="footer-title">Company</h4>
           <ul class="footer-links">
-            <li><a href="research.html">Research & Impact</a></li>
-            <li><a href="request-access.html">Request Access</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="request-access.html">Contact</a></li>
           </ul>
         </div>
-        
         <div>
           <h4 class="footer-title">Contact</h4>
           <ul class="footer-links">
@@ -272,28 +135,13 @@
           </ul>
         </div>
       </div>
-      
       <div class="footer-bottom">
-        <p>&copy; 2024 Medikal Africa. All rights reserved.</p>
-        
-        <div class="footer-social">
-          <a href="https://twitter.com/medikal_africa" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
-            </svg>
-          </a>
-          <a href="https://linkedin.com/company/medikal-africa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
-          </a>
-        </div>
+        <p>&copy; 2024 Medikal Africa</p>
+        <a href="https://twitter.com/medikal_africa" target="_blank">Twitter</a>
       </div>
     </div>
   </footer>
-  
+
   <script src="js/main.js"></script>
 </body>
 </html>
