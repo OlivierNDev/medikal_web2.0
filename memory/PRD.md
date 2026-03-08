@@ -9,13 +9,28 @@
 Redesign Medikal Africa website from 27 pages to 4 core pages as an ultra-minimalist, technical platform.
 
 ### Key Requirements (v3 Update)
-- **Tech Stack:** React.js with React Router
+- **Tech Stack:** React.js with React Router + Framer Motion
 - Only 3 colors: #5EC4D5, #979797, black
 - Use actual logo image (MedikalAfrica branded logo)
 - Remove excessive icons - minimalist design
-- Video embed to show system
+- **Animated pipeline visualization** (replaces video)
 - Real partner logos: NVIDIA, Africa CDC, AMR Initiative, RoboLabs
 - Professional, technical aesthetic
+
+## What's Been Implemented
+
+### January 2026 - v4 Animated Pipeline
+- [x] Created sophisticated 5-scene animated pipeline visualization
+- [x] Scene 1: Hospital Data Generation (prescriptions, lab tests, imaging, symptoms)
+- [x] Scene 2: Secure Data Pipeline (AES-256, TLS 1.3, HIPAA, Anonymized)
+- [x] Scene 3: AI Analysis Layer with neural network visualization
+- [x] Scene 4: Resistance Detection with Africa map hotspots
+- [x] Scene 5: Intelligence Dashboard with live metrics
+- [x] Auto-advancing scenes (5 second intervals)
+- [x] Clickable scene indicators
+- [x] Data packets flowing between nodes
+- [x] Live metrics panel (predictions, accuracy, alerts, sites)
+- [x] Mobile responsive dark theme section
 
 ### Key Requirements
 - Light design (not dark)
