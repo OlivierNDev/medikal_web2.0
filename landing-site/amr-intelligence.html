@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Medikal AMR Intelligence - Antimicrobial resistance detection, surveillance, and early warning system for African health systems.">
+  <title>AMR Intelligence - Medikal Africa</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" data-testid="main-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Medikal Africa" onerror="this.style.display='none'">
+        <span class="nav-logo-text">Medikal<span>Africa</span></span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="platform.html" class="nav-link">Platform</a>
+        <a href="amr-intelligence.html" class="nav-link active">AMR Intelligence</a>
+        <a href="technology.html" class="nav-link">Technology</a>
+        <a href="research.html" class="nav-link">Research</a>
+      </div>
+      
+      <a href="request-access.html" class="nav-cta">
+        Request Access
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      
+      <button class="nav-mobile-btn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-menu">
+    <div class="mobile-menu-header">
+      <span class="nav-logo-text">Medikal<span style="color: var(--primary)">Africa</span></span>
+      <button class="mobile-menu-close" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu-links">
+      <a href="index.html">Home</a>
+      <a href="platform.html">Platform</a>
+      <a href="amr-intelligence.html">AMR Intelligence</a>
+      <a href="technology.html">Technology</a>
+      <a href="research.html">Research</a>
+      <a href="request-access.html" class="nav-cta" style="margin-top: 1rem; justify-content: center;">Request Access</a>
+    </div>
+  </div>
+  
+  <!-- Hero Section -->
+  <section class="amr-hero" data-testid="amr-hero">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <span class="section-badge" style="background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: var(--resistance);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.25rem;">
+            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+            <path d="M12 9v4M12 17h.01"/>
+          </svg>
+          Global Health Priority
+        </span>
+        <h1 class="section-title">The AMR Crisis</h1>
+        <p class="section-description">
+          Antimicrobial resistance is one of the greatest threats to global health. Without intervention, drug-resistant infections could cause 10 million deaths annually by 2050.
+        </p>
+      </div>
+      
+      <div class="amr-crisis-stats" data-testid="crisis-stats">
+        <div class="crisis-stat fade-up">
+          <div class="crisis-stat-value">4.95M</div>
+          <div class="crisis-stat-label">Deaths associated with AMR (2019)</div>
+        </div>
+        <div class="crisis-stat fade-up">
+          <div class="crisis-stat-value">1.27M</div>
+          <div class="crisis-stat-label">Deaths directly caused by AMR</div>
+        </div>
+        <div class="crisis-stat fade-up">
+          <div class="crisis-stat-value">10M</div>
+          <div class="crisis-stat-label">Projected deaths by 2050</div>
+        </div>
+        <div class="crisis-stat fade-up">
+          <div class="crisis-stat-value">$100T</div>
+          <div class="crisis-stat-label">Projected economic cost</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Detection Section -->
+  <section data-testid="detection-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Detection</span>
+        <h2 class="section-title">How Medikal Detects Resistance</h2>
+        <p class="section-description">
+          Our AI-powered detection engine analyzes multiple data sources to identify emerging resistance patterns before they become outbreaks.
+        </p>
+      </div>
+      
+      <div class="detection-flow" data-testid="detection-flow">
+        <div class="detection-step" data-testid="detection-step-1">
+          <div class="detection-step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16"/>
+              <path d="M9 7h6M9 11h6M9 15h4"/>
+            </svg>
+          </div>
+          <h4>Prescription Data</h4>
+          <p>Antibiotic usage patterns from pharmacies and hospitals</p>
+        </div>
+        
+        <div class="detection-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </div>
+        
+        <div class="detection-step" data-testid="detection-step-2">
+          <div class="detection-step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h4>Lab Susceptibility</h4>
+          <p>Culture and sensitivity test results</p>
+        </div>
+        
+        <div class="detection-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </div>
+        
+        <div class="detection-step" data-testid="detection-step-3">
+          <div class="detection-step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h4>AI Analysis</h4>
+          <p>Pattern detection and predictive modeling</p>
+        </div>
+        
+        <div class="detection-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </div>
+        
+        <div class="detection-step" data-testid="detection-step-4">
+          <div class="detection-step-icon" style="background: rgba(239, 68, 68, 0.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--resistance)" stroke-width="1.5">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+              <path d="M12 9v4M12 17h.01"/>
+            </svg>
+          </div>
+          <h4>Early Warning</h4>
+          <p>Alerts to clinicians and health authorities</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Resistance Map Section -->
+  <section class="bg-surface" data-testid="map-section">
+    <div class="container">
+      <div class="platform-grid">
+        <div>
+          <span class="section-badge">Surveillance</span>
+          <h2 style="margin-top: 1rem; margin-bottom: 1rem;">Resistance Pattern Analysis</h2>
+          <p style="margin-bottom: 2rem;">
+            Real-time visualization of antimicrobial resistance patterns across facilities, regions, and pathogens. Identify hotspots and track trends over time.
+          </p>
+          
+          <div class="stats-grid" data-testid="map-stats">
+            <div class="stat-card">
+              <div class="stat-card-value" style="color: var(--resistance);">E. coli</div>
+              <div class="stat-card-label">Most tracked pathogen</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-value" style="color: var(--warning);">67%</div>
+              <div class="stat-card-label">Resistance rate increase</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-value" style="color: var(--primary);">24hrs</div>
+              <div class="stat-card-label">Alert response time</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-value" style="color: var(--susceptible);">15+</div>
+              <div class="stat-card-label">Pathogens monitored</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="resistance-map-container" data-testid="resistance-map">
+          <div class="map-grid" id="resistance-map-grid">
+            <!-- Map cells generated by JS -->
+          </div>
+          <div class="heatmap-legend" style="margin-top: 1.5rem;">
+            <div class="legend-item">
+              <div class="legend-color" style="background: #10B981;"></div>
+              <span>Susceptible</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background: #F59E0B;"></div>
+              <span>Intermediate</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background: #EF4444;"></div>
+              <span>Resistant</span>
+            </div>
+          </div>
+          <div class="map-tooltip" id="map-tooltip">Klebsiella pneumoniae: 78% resistance</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Stewardship Section -->
+  <section data-testid="stewardship-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Stewardship</span>
+        <h2 class="section-title">Antibiotic Stewardship AI</h2>
+        <p class="section-description">
+          Intelligent recommendations to optimize antibiotic prescribing, reduce unnecessary usage, and preserve antimicrobial effectiveness for future generations.
+        </p>
+      </div>
+      
+      <div class="bento-grid" data-testid="stewardship-grid">
+        <div class="bento-card" data-testid="stewardship-1">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+              <path d="M22 4L12 14.01l-3-3"/>
+            </svg>
+          </div>
+          <h3>Optimal Selection</h3>
+          <p>AI-guided antibiotic selection based on local resistance patterns, patient history, and clinical guidelines.</p>
+        </div>
+        
+        <div class="bento-card" data-testid="stewardship-2">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3>Dosing Optimization</h3>
+          <p>Personalized dosing recommendations considering patient factors, infection severity, and pharmacokinetics.</p>
+        </div>
+        
+        <div class="bento-card" data-testid="stewardship-3">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <path d="M16 2v4M8 2v4M3 10h18"/>
+            </svg>
+          </div>
+          <h3>Duration Guidance</h3>
+          <p>Evidence-based treatment duration recommendations to minimize resistance development.</p>
+        </div>
+        
+        <div class="bento-card" data-testid="stewardship-4">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M18 20V10M12 20V4M6 20v-6"/>
+            </svg>
+          </div>
+          <h3>Usage Analytics</h3>
+          <p>Facility-level antibiotic consumption tracking with benchmarking against regional and national standards.</p>
+        </div>
+        
+        <div class="bento-card" data-testid="stewardship-5">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+              <path d="M12 9v4M12 17h.01"/>
+            </svg>
+          </div>
+          <h3>De-escalation Alerts</h3>
+          <p>Automated notifications when culture results support switching to narrower-spectrum antibiotics.</p>
+        </div>
+        
+        <div class="bento-card" data-testid="stewardship-6">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+            </svg>
+          </div>
+          <h3>Guideline Integration</h3>
+          <p>Local and international treatment guidelines embedded into clinical decision support workflows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Key Pathogens Section -->
+  <section class="bg-surface" data-testid="pathogens-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Monitoring</span>
+        <h2 class="section-title">Priority Pathogens Under Surveillance</h2>
+        <p class="section-description">
+          Continuous monitoring of WHO priority pathogens and emerging resistance mechanisms.
+        </p>
+      </div>
+      
+      <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));" data-testid="pathogens-grid">
+        <div class="stat-card" style="text-align: left; padding: 1.5rem;">
+          <div class="mono" style="font-size: 0.75rem; color: var(--resistance); margin-bottom: 0.5rem;">CRITICAL</div>
+          <h4 style="margin-bottom: 0.5rem;">Klebsiella pneumoniae</h4>
+          <p style="font-size: 0.8125rem; margin: 0;">Carbapenem-resistant (CRKP)</p>
+        </div>
+        
+        <div class="stat-card" style="text-align: left; padding: 1.5rem;">
+          <div class="mono" style="font-size: 0.75rem; color: var(--resistance); margin-bottom: 0.5rem;">CRITICAL</div>
+          <h4 style="margin-bottom: 0.5rem;">Acinetobacter baumannii</h4>
+          <p style="font-size: 0.8125rem; margin: 0;">Carbapenem-resistant (CRAB)</p>
+        </div>
+        
+        <div class="stat-card" style="text-align: left; padding: 1.5rem;">
+          <div class="mono" style="font-size: 0.75rem; color: var(--resistance); margin-bottom: 0.5rem;">CRITICAL</div>
+          <h4 style="margin-bottom: 0.5rem;">Pseudomonas aeruginosa</h4>
+          <p style="font-size: 0.8125rem; margin: 0;">Carbapenem-resistant (CRPA)</p>
+        </div>
+        
+        <div class="stat-card" style="text-align: left; padding: 1.5rem;">
+          <div class="mono" style="font-size: 0.75rem; color: var(--warning); margin-bottom: 0.5rem;">HIGH</div>
+          <h4 style="margin-bottom: 0.5rem;">Escherichia coli</h4>
+          <p style="font-size: 0.8125rem; margin: 0;">ESBL-producing, Fluoroquinolone-resistant</p>
+        </div>
+        
+        <div class="stat-card" style="text-align: left; padding: 1.5rem;">
+          <div class="mono" style="font-size: 0.75rem; color: var(--warning); margin-bottom: 0.5rem;">HIGH</div>
+          <h4 style="margin-bottom: 0.5rem;">Staphylococcus aureus</h4>
+          <p style="font-size: 0.8125rem; margin: 0;">Methicillin-resistant (MRSA)</p>
+        </div>
+        
+        <div class="stat-card" style="text-align: left; padding: 1.5rem;">
+          <div class="mono" style="font-size: 0.75rem; color: var(--warning); margin-bottom: 0.5rem;">HIGH</div>
+          <h4 style="margin-bottom: 0.5rem;">Salmonella spp.</h4>
+          <p style="font-size: 0.8125rem; margin: 0;">Fluoroquinolone-resistant</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section" data-testid="cta-section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 0;">
+        <h2 class="section-title">Join the fight against AMR</h2>
+        <p>Deploy Medikal's AMR intelligence in your health system today.</p>
+        
+        <div class="cta-buttons">
+          <a href="request-access.html" class="btn-white" data-testid="cta-demo">
+            Request Demo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="research.html" class="btn-outline-white" data-testid="cta-research">
+            View Research
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo-text" style="color: white;">Medikal<span style="color: var(--primary-light);">Africa</span></span>
+          <p>AI-powered clinical intelligence platform for antimicrobial resistance detection and health system decision-making across Africa.</p>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <ul class="footer-links">
+            <li><a href="platform.html">Overview</a></li>
+            <li><a href="amr-intelligence.html">AMR Intelligence</a></li>
+            <li><a href="technology.html">Technology</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="research.html">Research & Impact</a></li>
+            <li><a href="request-access.html">Request Access</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@medikalafrica.com">info@medikalafrica.com</a></li>
+            <li><a href="tel:+17024163329">+1 (702) 416-3329</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Medikal Africa. All rights reserved.</p>
+        
+        <div class="footer-social">
+          <a href="https://twitter.com/medikal_africa" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/company/medikal-africa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/main.js"></script>
+</body>
+</html>

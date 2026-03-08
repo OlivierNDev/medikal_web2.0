@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Medikal Platform - Clinical Intelligence Engine, AI Diagnostic Models, and Health System Analytics for AMR surveillance.">
+  <title>Platform - Medikal Africa</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" data-testid="main-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo" data-testid="nav-logo">
+        <img src="assets/logo.png" alt="Medikal Africa" onerror="this.style.display='none'">
+        <span class="nav-logo-text">Medikal<span>Africa</span></span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="platform.html" class="nav-link active">Platform</a>
+        <a href="amr-intelligence.html" class="nav-link">AMR Intelligence</a>
+        <a href="technology.html" class="nav-link">Technology</a>
+        <a href="research.html" class="nav-link">Research</a>
+      </div>
+      
+      <a href="request-access.html" class="nav-cta" data-testid="nav-cta">
+        Request Access
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      
+      <button class="nav-mobile-btn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-menu">
+    <div class="mobile-menu-header">
+      <span class="nav-logo-text">Medikal<span style="color: var(--primary)">Africa</span></span>
+      <button class="mobile-menu-close" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu-links">
+      <a href="index.html">Home</a>
+      <a href="platform.html">Platform</a>
+      <a href="amr-intelligence.html">AMR Intelligence</a>
+      <a href="technology.html">Technology</a>
+      <a href="research.html">Research</a>
+      <a href="request-access.html" class="nav-cta" style="margin-top: 1rem; justify-content: center;">Request Access</a>
+    </div>
+  </div>
+  
+  <!-- Hero Section -->
+  <section class="platform-hero" data-testid="platform-hero">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 3rem;">
+        <span class="section-badge">Platform Architecture</span>
+        <h1 class="section-title">The Clinical Intelligence Engine</h1>
+        <p class="section-description">
+          A unified platform connecting hospitals, laboratories, and public health systems for comprehensive AMR surveillance and clinical decision support.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Architecture Section -->
+  <section style="padding-top: 0;" data-testid="architecture-section">
+    <div class="container">
+      <div class="platform-grid">
+        <div>
+          <h2 style="margin-bottom: 1rem;">How Data Flows Through Medikal</h2>
+          <p style="margin-bottom: 2rem;">
+            From hospital intake to actionable insights, our platform processes clinical data through a secure, AI-powered pipeline designed for African health systems.
+          </p>
+          
+          <div class="feature-list" data-testid="feature-list">
+            <div class="feature-item fade-up">
+              <div class="feature-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Hospital Integration</h4>
+                <p>Seamless connection with existing EMR/EHR systems</p>
+              </div>
+            </div>
+            
+            <div class="feature-item fade-up">
+              <div class="feature-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Lab Data Ingestion</h4>
+                <p>Real-time susceptibility test results and culture data</p>
+              </div>
+            </div>
+            
+            <div class="feature-item fade-up">
+              <div class="feature-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+              </div>
+              <div>
+                <h4>AI Processing</h4>
+                <p>Machine learning models analyze patterns in real-time</p>
+              </div>
+            </div>
+            
+            <div class="feature-item fade-up">
+              <div class="feature-item-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M3 3v18h18"/>
+                  <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Intelligence Output</h4>
+                <p>Actionable insights for clinicians and health ministries</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="architecture-diagram" data-testid="architecture-diagram">
+          <div class="arch-layer fade-up">
+            <span class="arch-layer-label">Data Sources</span>
+            <span class="mono" style="font-size: 0.75rem; color: var(--text-muted);">EMR • Labs • Pharmacy</span>
+          </div>
+          <div class="arch-arrow fade-up">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+          </div>
+          
+          <div class="arch-layer fade-up">
+            <span class="arch-layer-label">Data Pipeline</span>
+            <span class="mono" style="font-size: 0.75rem; color: var(--text-muted);">Secure • Encrypted • HIPAA</span>
+          </div>
+          <div class="arch-arrow fade-up">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+          </div>
+          
+          <div class="arch-layer fade-up" style="background: rgba(94, 196, 213, 0.08); border-color: var(--primary);">
+            <span class="arch-layer-label" style="background: var(--primary); color: white;">AI Engine</span>
+            <span class="mono" style="font-size: 0.75rem; color: var(--primary-dark);">Clinical • Imaging • AMR</span>
+          </div>
+          <div class="arch-arrow fade-up">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+          </div>
+          
+          <div class="arch-layer fade-up">
+            <span class="arch-layer-label">Intelligence Layer</span>
+            <span class="mono" style="font-size: 0.75rem; color: var(--text-muted);">Alerts • Reports • APIs</span>
+          </div>
+          <div class="arch-arrow fade-up">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+          </div>
+          
+          <div class="arch-layer fade-up">
+            <span class="arch-layer-label">Stakeholders</span>
+            <span class="mono" style="font-size: 0.75rem; color: var(--text-muted);">Clinicians • Ministries • Researchers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Core Systems Section -->
+  <section class="bg-surface" data-testid="core-systems-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Core Systems</span>
+        <h2 class="section-title">Platform Capabilities</h2>
+        <p class="section-description">
+          Six integrated modules working together to provide comprehensive clinical intelligence.
+        </p>
+      </div>
+      
+      <div class="bento-grid" data-testid="systems-grid">
+        <div class="bento-card" data-testid="system-1">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/>
+              <path d="M12 17h.01"/>
+            </svg>
+          </div>
+          <h3>Clinical Intelligence Engine</h3>
+          <p>AI-powered diagnostic assistance with evidence-based treatment recommendations, symptom analysis, and clinical history integration.</p>
+        </div>
+        
+        <div class="bento-card" data-testid="system-2">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+          </div>
+          <h3>Medikal AI Assistant</h3>
+          <p>Multilingual conversational AI supporting clinicians in English, French, and Kinyarwanda with real-time clinical guidance.</p>
+        </div>
+        
+        <div class="bento-card" data-testid="system-3">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+          </div>
+          <h3>Imaging AI</h3>
+          <p>Medical image analysis for X-rays, ultrasounds, and diagnostic scans with AI-assisted interpretation and reporting.</p>
+        </div>
+        
+        <div class="bento-card" data-testid="system-4">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>Lab Analytics</h3>
+          <p>Integration with laboratory information systems for real-time susceptibility testing and culture result analysis.</p>
+        </div>
+        
+        <div class="bento-card" data-testid="system-5">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+              <path d="M12 9v4M12 17h.01"/>
+            </svg>
+          </div>
+          <h3>AMR Detection Engine</h3>
+          <p>Real-time surveillance and pattern detection for antimicrobial resistance with predictive analytics and early warning systems.</p>
+        </div>
+        
+        <div class="bento-card" data-testid="system-6">
+          <div class="bento-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 3v18h18"/>
+              <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+            </svg>
+          </div>
+          <h3>Health System Intelligence</h3>
+          <p>Dashboards and analytics for public health agencies, enabling data-driven policy decisions and resource allocation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Integration Section -->
+  <section data-testid="integration-section">
+    <div class="container">
+      <div class="platform-grid">
+        <div class="platform-visual" data-testid="pipeline-visual">
+          <div class="pipeline" data-testid="pipeline-animation">
+            <div class="pipeline-step fade-up">
+              <div class="pipeline-step-number">1</div>
+              <div class="pipeline-step-content">
+                <h4>Connect</h4>
+                <p>Integrate with existing hospital systems via secure APIs</p>
+              </div>
+            </div>
+            <div class="pipeline-connector"></div>
+            
+            <div class="pipeline-step fade-up">
+              <div class="pipeline-step-number">2</div>
+              <div class="pipeline-step-content">
+                <h4>Ingest</h4>
+                <p>Securely process clinical data, lab results, and prescriptions</p>
+              </div>
+            </div>
+            <div class="pipeline-connector"></div>
+            
+            <div class="pipeline-step fade-up">
+              <div class="pipeline-step-number">3</div>
+              <div class="pipeline-step-content">
+                <h4>Analyze</h4>
+                <p>AI models detect patterns, risks, and opportunities</p>
+              </div>
+            </div>
+            <div class="pipeline-connector"></div>
+            
+            <div class="pipeline-step fade-up">
+              <div class="pipeline-step-number">4</div>
+              <div class="pipeline-step-content">
+                <h4>Deliver</h4>
+                <p>Insights reach clinicians, alerts reach ministries</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <span class="section-badge">Integration</span>
+          <h2 style="margin-top: 1rem; margin-bottom: 1rem;">Works With Your Systems</h2>
+          <p style="margin-bottom: 2rem;">
+            Medikal is designed to integrate seamlessly with existing healthcare infrastructure, requiring minimal changes to current workflows.
+          </p>
+          
+          <ul style="list-style: none;">
+            <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <path d="M22 4L12 14.01l-3-3"/>
+              </svg>
+              <span><strong>EMR/EHR Integration</strong> - HL7 FHIR and REST API support</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <path d="M22 4L12 14.01l-3-3"/>
+              </svg>
+              <span><strong>Laboratory Systems</strong> - Direct LIS integration for real-time results</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <path d="M22 4L12 14.01l-3-3"/>
+              </svg>
+              <span><strong>Cloud & On-Premise</strong> - Flexible deployment options</span>
+            </li>
+            <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="flex-shrink: 0; margin-top: 2px;">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                <path d="M22 4L12 14.01l-3-3"/>
+              </svg>
+              <span><strong>Offline Capability</strong> - Works in low-connectivity environments</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section" data-testid="cta-section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 0;">
+        <h2 class="section-title">See the platform in action</h2>
+        <p>Schedule a demo to explore how Medikal can strengthen your health system.</p>
+        
+        <div class="cta-buttons">
+          <a href="request-access.html" class="btn-white" data-testid="cta-demo">
+            Request Demo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="technology.html" class="btn-outline-white" data-testid="cta-tech">
+            View Technology
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo-text" style="color: white;">Medikal<span style="color: var(--primary-light);">Africa</span></span>
+          <p>AI-powered clinical intelligence platform for antimicrobial resistance detection and health system decision-making across Africa.</p>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <ul class="footer-links">
+            <li><a href="platform.html">Overview</a></li>
+            <li><a href="amr-intelligence.html">AMR Intelligence</a></li>
+            <li><a href="technology.html">Technology</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="research.html">Research & Impact</a></li>
+            <li><a href="request-access.html">Request Access</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@medikalafrica.com">info@medikalafrica.com</a></li>
+            <li><a href="tel:+17024163329">+1 (702) 416-3329</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Medikal Africa. All rights reserved.</p>
+        
+        <div class="footer-social">
+          <a href="https://twitter.com/medikal_africa" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/company/medikal-africa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/main.js"></script>
+</body>
+</html>

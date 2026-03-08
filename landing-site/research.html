@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Medikal Research & Impact - Global health mission, research partnerships, and measurable outcomes in AMR surveillance.">
+  <title>Research & Impact - Medikal Africa</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" data-testid="main-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Medikal Africa" onerror="this.style.display='none'">
+        <span class="nav-logo-text">Medikal<span>Africa</span></span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="platform.html" class="nav-link">Platform</a>
+        <a href="amr-intelligence.html" class="nav-link">AMR Intelligence</a>
+        <a href="technology.html" class="nav-link">Technology</a>
+        <a href="research.html" class="nav-link active">Research</a>
+      </div>
+      
+      <a href="request-access.html" class="nav-cta">
+        Request Access
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      
+      <button class="nav-mobile-btn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-overlay"></div>
+  <div class="mobile-menu">
+    <div class="mobile-menu-header">
+      <span class="nav-logo-text">Medikal<span style="color: var(--primary)">Africa</span></span>
+      <button class="mobile-menu-close" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu-links">
+      <a href="index.html">Home</a>
+      <a href="platform.html">Platform</a>
+      <a href="amr-intelligence.html">AMR Intelligence</a>
+      <a href="technology.html">Technology</a>
+      <a href="research.html">Research</a>
+      <a href="request-access.html" class="nav-cta" style="margin-top: 1rem; justify-content: center;">Request Access</a>
+    </div>
+  </div>
+  
+  <!-- Hero Section -->
+  <section class="research-hero" data-testid="research-hero">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 3rem;">
+        <span class="section-badge">Mission & Impact</span>
+        <h1 class="section-title">Strengthening Health Systems Across Africa</h1>
+        <p class="section-description">
+          Partnering with global health organizations to combat antimicrobial resistance and improve clinical outcomes through AI-powered intelligence.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Mission Section -->
+  <section style="padding-top: 0;" data-testid="mission-section">
+    <div class="container">
+      <div class="platform-grid">
+        <div>
+          <span class="section-badge">Our Mission</span>
+          <h2 style="margin-top: 1rem; margin-bottom: 1rem;">A 70% Reduction in AMR by 2030</h2>
+          <p style="margin-bottom: 1.5rem;">
+            Medikal Africa was founded with a clear vision: to address the critical challenge of antimicrobial resistance threatening healthcare systems across the continent.
+          </p>
+          <p style="margin-bottom: 2rem;">
+            We combine cutting-edge AI technology with deep local understanding to build clinical intelligence infrastructure that serves all 54 African countries and sets a new global standard for AMR combat.
+          </p>
+          
+          <div class="stats-grid" data-testid="mission-stats">
+            <div class="stat-card">
+              <div class="stat-card-value">54</div>
+              <div class="stat-card-label">Target Countries</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-value">70%</div>
+              <div class="stat-card-label">AMR Reduction Goal</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-value">2M+</div>
+              <div class="stat-card-label">Lives to Impact</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-value">500+</div>
+              <div class="stat-card-label">Target Facilities</div>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <img src="https://images.unsplash.com/photo-1536064479547-7ee40b74b807?w=600&h=400&fit=crop" alt="African healthcare professional with tablet" style="width: 100%; border-radius: 16px; object-fit: cover;" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Team Section -->
+  <section class="bg-surface" data-testid="team-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Leadership</span>
+        <h2 class="section-title">Built by African Innovators</h2>
+        <p class="section-description">
+          A team of healthcare technologists, AI researchers, and public health experts committed to transforming African healthcare.
+        </p>
+      </div>
+      
+      <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));" data-testid="team-grid">
+        <div class="bento-card" style="text-align: center;" data-testid="team-member-1">
+          <div style="width: 80px; height: 80px; background: var(--bg-surface); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--border);">
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">ON</span>
+          </div>
+          <h3 style="margin-bottom: 0.25rem;">Olivier Niyonshima</h3>
+          <p style="color: var(--primary-dark); font-weight: 500; font-size: 0.875rem; margin-bottom: 0.75rem;">Founder & CEO</p>
+          <p style="font-size: 0.875rem;">Software engineer focused on AI and scalable healthcare systems. Leads product vision and expansion strategy.</p>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Algonquin College, Ottawa</p>
+        </div>
+        
+        <div class="bento-card" style="text-align: center;" data-testid="team-member-2">
+          <div style="width: 80px; height: 80px; background: var(--bg-surface); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--border);">
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">TY</span>
+          </div>
+          <h3 style="margin-bottom: 0.25rem;">Tresor Yubahwe</h3>
+          <p style="color: var(--primary-dark); font-weight: 500; font-size: 0.875rem; margin-bottom: 0.75rem;">Co-Founder & COO</p>
+          <p style="font-size: 0.875rem;">Specializes in ML and AI model development. Leads Kinyarwanda AI model and operations.</p>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Princeton University</p>
+        </div>
+        
+        <div class="bento-card" style="text-align: center;" data-testid="team-member-3">
+          <div style="width: 80px; height: 80px; background: var(--bg-surface); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; border: 2px solid var(--border);">
+            <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary);">AI</span>
+          </div>
+          <h3 style="margin-bottom: 0.25rem;">Amen Divine Ikamba</h3>
+          <p style="color: var(--primary-dark); font-weight: 500; font-size: 0.875rem; margin-bottom: 0.75rem;">Co-Founder & Head of Product</p>
+          <p style="font-size: 0.875rem;">Leads product development and UX. Ensures seamless clinical workflow integration.</p>
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem;">Pitzer College, California</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Partnerships Section -->
+  <section data-testid="partnerships-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Partnerships</span>
+        <h2 class="section-title">Global Health Collaborations</h2>
+        <p class="section-description">
+          Strategic partnerships with leading technology and healthcare organizations accelerating our impact.
+        </p>
+      </div>
+      
+      <div class="impact-grid" data-testid="partnerships-grid">
+        <div class="impact-card" data-testid="partnership-1">
+          <div class="impact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+              <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+              <path d="M6 6h.01M6 18h.01"/>
+            </svg>
+          </div>
+          <h3>NVIDIA Inception</h3>
+          <p>Selected for the NVIDIA Inception Program, gaining access to GPU computing resources, AI expertise, and go-to-market support for healthcare AI development.</p>
+        </div>
+        
+        <div class="impact-card" data-testid="partnership-2">
+          <div class="impact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
+          </div>
+          <h3>Africa CDC</h3>
+          <p>Strategic partnership with the Africa Centres for Disease Control and Prevention supporting continental AMR surveillance and public health intelligence.</p>
+        </div>
+        
+        <div class="impact-card" data-testid="partnership-3">
+          <div class="impact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>AMR Initiative Rwanda</h3>
+          <p>Core development partner focused on building local capacity for AMR surveillance and antibiotic stewardship programs in East Africa.</p>
+        </div>
+        
+        <div class="impact-card" data-testid="partnership-4">
+          <div class="impact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>RoboLabs</h3>
+          <p>Technology collaboration integrating UV-C disinfection robots with AMR surveillance for comprehensive infection prevention solutions.</p>
+        </div>
+        
+        <div class="impact-card" data-testid="partnership-5">
+          <div class="impact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <h3>ZeroX Intelligence</h3>
+          <p>Partnership advancing AI-powered healthcare diagnostics and clinical decision support across African health systems.</p>
+        </div>
+        
+        <div class="impact-card" data-testid="partnership-6">
+          <div class="impact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Research Institutions</h3>
+          <p>Collaboration with universities and research centers for clinical validation, AI model improvement, and evidence-based implementation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Recognition Section -->
+  <section class="bg-surface" data-testid="recognition-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Recognition</span>
+        <h2 class="section-title">Awards & Media</h2>
+        <p class="section-description">
+          Recognition from global health and technology communities.
+        </p>
+      </div>
+      
+      <div class="timeline" data-testid="timeline">
+        <div class="timeline-item fade-up">
+          <div class="timeline-date">February 2026</div>
+          <h4>NVIDIA Inception Program</h4>
+          <p>Selected for NVIDIA's startup accelerator program, gaining access to advanced GPU computing resources and AI expertise.</p>
+        </div>
+        
+        <div class="timeline-item fade-up">
+          <div class="timeline-date">2025</div>
+          <h4>Youth Digital Health Champion</h4>
+          <p>Recognized by Africa CDC Youth Network for innovative contributions to digital health and AMR surveillance.</p>
+        </div>
+        
+        <div class="timeline-item fade-up">
+          <div class="timeline-date">2025</div>
+          <h4>OnPod TV Canada Feature</h4>
+          <p>Featured interview discussing Medikal's approach to combating antimicrobial resistance using AI technology.</p>
+        </div>
+        
+        <div class="timeline-item fade-up">
+          <div class="timeline-date">2024</div>
+          <h4>Outbreak News Interview</h4>
+          <p>International media coverage highlighting the critical role of AI in global AMR surveillance and response.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section" data-testid="cta-section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 0;">
+        <h2 class="section-title">Partner with Medikal</h2>
+        <p>Join leading institutions working to strengthen health systems and combat AMR across Africa.</p>
+        
+        <div class="cta-buttons">
+          <a href="request-access.html" class="btn-white" data-testid="cta-demo">
+            Request Demo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="mailto:info@medikalafrica.com" class="btn-outline-white" data-testid="cta-contact">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="nav-logo-text" style="color: white;">Medikal<span style="color: var(--primary-light);">Africa</span></span>
+          <p>AI-powered clinical intelligence platform for antimicrobial resistance detection and health system decision-making across Africa.</p>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <ul class="footer-links">
+            <li><a href="platform.html">Overview</a></li>
+            <li><a href="amr-intelligence.html">AMR Intelligence</a></li>
+            <li><a href="technology.html">Technology</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="research.html">Research & Impact</a></li>
+            <li><a href="request-access.html">Request Access</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@medikalafrica.com">info@medikalafrica.com</a></li>
+            <li><a href="tel:+17024163329">+1 (702) 416-3329</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Medikal Africa. All rights reserved.</p>
+        
+        <div class="footer-social">
+          <a href="https://twitter.com/medikal_africa" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/company/medikal-africa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/main.js"></script>
+</body>
+</html>
