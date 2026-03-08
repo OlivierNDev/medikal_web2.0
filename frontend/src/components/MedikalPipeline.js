@@ -77,20 +77,113 @@ const PipelineNode = ({ label, icon, isActive, stats }) => (
   </motion.div>
 );
 
-// Africa map with hotspots
+// Africa map with interactive hotspots
 const AfricaMap = ({ activeScene }) => {
+  const [hoveredSpot, setHoveredSpot] = useState(null);
+
   const hotspots = [
-    { id: 1, x: 65, y: 35, label: "Kenya", risk: "moderate", delay: 0 },
-    { id: 2, x: 55, y: 42, label: "Uganda", risk: "low", delay: 0.2 },
-    { id: 3, x: 35, y: 30, label: "Nigeria", risk: "high", delay: 0.4 },
-    { id: 4, x: 50, y: 55, label: "Rwanda", risk: "moderate", delay: 0.6 },
-    { id: 5, x: 60, y: 70, label: "S. Africa", risk: "low", delay: 0.8 },
+    { 
+      id: 1, 
+      x: 65, 
+      y: 35, 
+      label: "Kenya", 
+      risk: "moderate", 
+      delay: 0,
+      data: {
+        resistanceRate: "45%",
+        trend: "increasing",
+        trendIcon: "↑",
+        mainPathogen: "E. coli",
+        affectedAntibiotics: ["Ciprofloxacin", "Ampicillin"],
+        facilities: 12,
+        alerts: 2,
+        lastUpdate: "2 hours ago"
+      }
+    },
+    { 
+      id: 2, 
+      x: 55, 
+      y: 42, 
+      label: "Uganda", 
+      risk: "low", 
+      delay: 0.2,
+      data: {
+        resistanceRate: "28%",
+        trend: "stable",
+        trendIcon: "→",
+        mainPathogen: "S. aureus",
+        affectedAntibiotics: ["Methicillin"],
+        facilities: 8,
+        alerts: 0,
+        lastUpdate: "4 hours ago"
+      }
+    },
+    { 
+      id: 3, 
+      x: 35, 
+      y: 30, 
+      label: "Nigeria", 
+      risk: "high", 
+      delay: 0.4,
+      data: {
+        resistanceRate: "67%",
+        trend: "critical",
+        trendIcon: "↑↑",
+        mainPathogen: "K. pneumoniae",
+        affectedAntibiotics: ["Carbapenems", "Cephalosporins", "Fluoroquinolones"],
+        facilities: 18,
+        alerts: 5,
+        lastUpdate: "30 min ago"
+      }
+    },
+    { 
+      id: 4, 
+      x: 50, 
+      y: 55, 
+      label: "Rwanda", 
+      risk: "moderate", 
+      delay: 0.6,
+      data: {
+        resistanceRate: "38%",
+        trend: "decreasing",
+        trendIcon: "↓",
+        mainPathogen: "P. aeruginosa",
+        affectedAntibiotics: ["Gentamicin", "Amikacin"],
+        facilities: 7,
+        alerts: 1,
+        lastUpdate: "1 hour ago"
+      }
+    },
+    { 
+      id: 5, 
+      x: 55, 
+      y: 75, 
+      label: "South Africa", 
+      risk: "low", 
+      delay: 0.8,
+      data: {
+        resistanceRate: "31%",
+        trend: "stable",
+        trendIcon: "→",
+        mainPathogen: "A. baumannii",
+        affectedAntibiotics: ["Colistin"],
+        facilities: 15,
+        alerts: 1,
+        lastUpdate: "3 hours ago"
+      }
+    },
   ];
 
   const riskColors = {
     low: '#10B981',
     moderate: '#F59E0B',
     high: '#EF4444'
+  };
+
+  const riskLabels = {
+    low: 'Low Risk',
+    moderate: 'Moderate Risk',
+    high: 'High Risk'
   };
 
   return (
@@ -118,7 +211,7 @@ const AfricaMap = ({ activeScene }) => {
       {activeScene >= 4 && hotspots.map((spot) => (
         <motion.div
           key={spot.id}
-          className="map-hotspot"
+          className={`map-hotspot ${hoveredSpot === spot.id ? 'hovered' : ''}`}
           style={{ 
             left: `${spot.x}%`, 
             top: `${spot.y}%`,
@@ -127,12 +220,113 @@ const AfricaMap = ({ activeScene }) => {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: spot.delay, duration: 0.5 }}
+          onMouseEnter={() => setHoveredSpot(spot.id)}
+          onMouseLeave={() => setHoveredSpot(null)}
         >
           <div className="hotspot-pulse" />
           <div className="hotspot-core" />
           <span className="hotspot-label">{spot.label}</span>
+
+          {/* Detailed Tooltip */}
+          <AnimatePresence>
+            {hoveredSpot === spot.id && (
+              <motion.div 
+                className="hotspot-tooltip"
+                initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="tooltip-header">
+                  <span className="tooltip-country">{spot.label}</span>
+                  <span 
+                    className="tooltip-risk" 
+                    style={{ background: riskColors[spot.risk] }}
+                  >
+                    {riskLabels[spot.risk]}
+                  </span>
+                </div>
+
+                <div className="tooltip-stats">
+                  <div className="tooltip-stat">
+                    <span className="stat-value" style={{ color: riskColors[spot.risk] }}>
+                      {spot.data.resistanceRate}
+                    </span>
+                    <span className="stat-label">Resistance Rate</span>
+                  </div>
+                  <div className="tooltip-stat">
+                    <span className="stat-value">
+                      {spot.data.trendIcon} {spot.data.trend}
+                    </span>
+                    <span className="stat-label">Trend</span>
+                  </div>
+                </div>
+
+                <div className="tooltip-section">
+                  <span className="section-label">Primary Pathogen</span>
+                  <span className="section-value pathogen">{spot.data.mainPathogen}</span>
+                </div>
+
+                <div className="tooltip-section">
+                  <span className="section-label">Affected Antibiotics</span>
+                  <div className="antibiotic-tags">
+                    {spot.data.affectedAntibiotics.map((ab, i) => (
+                      <span key={i} className="antibiotic-tag">{ab}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="tooltip-footer">
+                  <div className="footer-stat">
+                    <span className="footer-value">{spot.data.facilities}</span>
+                    <span className="footer-label">Facilities</span>
+                  </div>
+                  <div className="footer-stat">
+                    <span className="footer-value" style={{ color: spot.data.alerts > 0 ? '#EF4444' : '#10B981' }}>
+                      {spot.data.alerts}
+                    </span>
+                    <span className="footer-label">Alerts</span>
+                  </div>
+                  <div className="footer-stat">
+                    <span className="footer-value">{spot.data.lastUpdate}</span>
+                    <span className="footer-label">Updated</span>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       ))}
+
+      {/* Legend */}
+      {activeScene >= 4 && (
+        <div className="map-legend">
+          <div className="legend-item">
+            <span className="legend-dot" style={{ background: '#10B981' }} />
+            <span>Low</span>
+          </div>
+          <div className="legend-item">
+            <span className="legend-dot" style={{ background: '#F59E0B' }} />
+            <span>Moderate</span>
+          </div>
+          <div className="legend-item">
+            <span className="legend-dot" style={{ background: '#EF4444' }} />
+            <span>High</span>
+          </div>
+        </div>
+      )}
+
+      {/* Instruction text */}
+      {activeScene >= 4 && (
+        <motion.p 
+          className="map-instruction"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          Hover over hotspots for details
+        </motion.p>
+      )}
     </div>
   );
 };
