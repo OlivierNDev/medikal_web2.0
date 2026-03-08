@@ -3,10 +3,20 @@
 ## Project Overview
 **Product:** Medikal Africa Website Redesign
 **Date:** January 2026
-**Status:** Complete
+**Status:** Complete (v2 - Ultra Minimalist)
 
 ## Original Problem Statement
-Redesign Medikal Africa website from 27 pages to 5 core pages as a minimalist, technical, research-grade AI healthcare platform. The site must feel like Supabase/Vercel/Linear/Palantir - serious scientific infrastructure for AMR (antimicrobial resistance) intelligence.
+Redesign Medikal Africa website from 27 pages to 4 core pages as an ultra-minimalist, technical platform.
+
+### Key Requirements (v2 Update)
+- Only 3 colors: #5EC4D5, #979797, black
+- Use actual logo image (not text)
+- Remove excessive icons
+- Much less content per section
+- More whitespace
+- Video embed to show system
+- Real partner logos
+- Professional, technical aesthetic
 
 ### Key Requirements
 - Light design (not dark)
