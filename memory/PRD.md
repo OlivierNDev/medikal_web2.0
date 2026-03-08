@@ -3,19 +3,18 @@
 ## Project Overview
 **Product:** Medikal Africa Website Redesign
 **Date:** January 2026
-**Status:** Complete (v2 - Ultra Minimalist)
+**Status:** Complete (v3 - React.js)
 
 ## Original Problem Statement
 Redesign Medikal Africa website from 27 pages to 4 core pages as an ultra-minimalist, technical platform.
 
-### Key Requirements (v2 Update)
+### Key Requirements (v3 Update)
+- **Tech Stack:** React.js with React Router
 - Only 3 colors: #5EC4D5, #979797, black
-- Use actual logo image (not text)
-- Remove excessive icons
-- Much less content per section
-- More whitespace
+- Use actual logo image (MedikalAfrica branded logo)
+- Remove excessive icons - minimalist design
 - Video embed to show system
-- Real partner logos
+- Real partner logos: NVIDIA, Africa CDC, AMR Initiative, RoboLabs
 - Professional, technical aesthetic
 
 ### Key Requirements
