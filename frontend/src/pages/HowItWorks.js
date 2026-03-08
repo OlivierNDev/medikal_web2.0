@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import './HowItWorks.css';
 
 const steps = [
@@ -80,61 +80,231 @@ const StepVisual = ({ type, isActive }) => {
   if (type === 'intake') {
     return (
       <svg viewBox="0 0 200 160" className="step-svg">
+        {/* Animated data sources */}
         {[0, 1, 2, 3].map(i => (
           <React.Fragment key={i}>
             <motion.rect
               x={20 + i * 45} y={20} width={35} height={50} rx={4}
               fill="none" stroke="#5EC4D5" strokeWidth="1"
               initial={{ opacity: 0, y: 10 }}
-              animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0.2 }}
-              transition={{ delay: i * 0.15 }}
+              animate={isActive ? { 
+                opacity: 1, 
+                y: 0,
+                strokeWidth: [1, 2, 1]
+              } : { opacity: 0.2 }}
+              transition={{ 
+                delay: i * 0.15,
+                strokeWidth: { duration: 2, repeat: Infinity }
+              }}
             />
+            
+            {/* Animated data flow lines */}
             <motion.line
               x1={37 + i * 45} y1={70} x2={100} y2={130}
               stroke="#5EC4D5" strokeWidth="0.5" strokeDasharray="3 3"
-              initial={{ opacity: 0 }}
-              animate={isActive ? { opacity: 0.4 } : { opacity: 0 }}
-              transition={{ delay: 0.5 + i * 0.1 }}
+              initial={{ opacity: 0, pathLength: 0 }}
+              animate={isActive ? { 
+                opacity: 0.6,
+                pathLength: 1
+              } : { opacity: 0, pathLength: 0 }}
+              transition={{ delay: 0.5 + i * 0.1, duration: 1 }}
             />
+            
+            {/* Animated data packets on lines */}
+            {isActive && (
+              <motion.circle
+                r={2}
+                fill="#5EC4D5"
+                initial={{ cx: 37 + i * 45, cy: 70 }}
+                animate={{
+                  cx: [37 + i * 45, 100],
+                  cy: [70, 130]
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: i * 0.3,
+                  ease: "linear"
+                }}
+              />
+            )}
           </React.Fragment>
         ))}
+        
+        {/* API endpoint with pulse */}
         <motion.rect
           x={75} y={115} width={50} height={30} rx={6}
           fill="rgba(94,196,213,0.15)" stroke="#5EC4D5" strokeWidth="1"
           initial={{ scale: 0 }}
-          animate={isActive ? { scale: 1 } : { scale: 0.5, opacity: 0.2 }}
-          transition={{ delay: 0.8 }}
+          animate={isActive ? { 
+            scale: 1,
+            strokeWidth: [1, 2, 1]
+          } : { scale: 0.5, opacity: 0.2 }}
+          transition={{ 
+            delay: 0.8,
+            strokeWidth: { duration: 1.5, repeat: Infinity }
+          }}
         />
+        
+        {/* Glow effect around API */}
+        {isActive && (
+          <motion.rect
+            x={75} y={115} width={50} height={30} rx={6}
+            fill="none" stroke="#5EC4D5" strokeWidth="1"
+            opacity={0.3}
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.6, 0.3]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        )}
+        
         <motion.text x={100} y={134} textAnchor="middle" fill="#5EC4D5" fontSize="8" fontWeight="600"
           initial={{ opacity: 0 }}
           animate={isActive ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 1 }}
         >API</motion.text>
+        
+        {/* Data stream particles */}
+        {isActive && [...Array(12)].map((_, i) => (
+          <motion.circle
+            key={i}
+            r={1.5}
+            fill="#5EC4D5"
+            initial={{
+              cx: 20 + (i % 4) * 45 + 17.5,
+              cy: 20,
+              opacity: 0
+            }}
+            animate={{
+              cy: [20, 160],
+              opacity: [0, 1, 1, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: (i % 4) * 0.2 + Math.floor(i / 4) * 0.5,
+              ease: "easeOut"
+            }}
+          />
+        ))}
       </svg>
     );
   }
   if (type === 'security') {
     return (
       <svg viewBox="0 0 200 160" className="step-svg">
+        {/* Lock icon with animated path */}
         <motion.path
           d="M100 20 L130 40 L130 80 Q130 110 100 120 Q70 110 70 80 L70 40 Z"
           fill="rgba(16,185,129,0.1)" stroke="#10B981" strokeWidth="1"
           initial={{ pathLength: 0 }}
-          animate={isActive ? { pathLength: 1 } : { pathLength: 0 }}
-          transition={{ duration: 1.5 }}
+          animate={isActive ? { 
+            pathLength: 1,
+            strokeWidth: [1, 2, 1]
+          } : { pathLength: 0 }}
+          transition={{ 
+            duration: 1.5,
+            strokeWidth: { duration: 2, repeat: Infinity }
+          }}
         />
+        
+        {/* Glow effect around lock */}
+        {isActive && (
+          <motion.path
+            d="M100 20 L130 40 L130 80 Q130 110 100 120 Q70 110 70 80 L70 40 Z"
+            fill="none" stroke="#10B981" strokeWidth="1"
+            opacity={0.4}
+            animate={{
+              scale: [1, 1.15, 1],
+              opacity: [0.4, 0.8, 0.4]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        )}
+        
         <motion.text x={100} y={75} textAnchor="middle" fill="#10B981" fontSize="20" fontWeight="700"
           initial={{ opacity: 0, scale: 0 }}
-          animate={isActive ? { opacity: 1, scale: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.8 }}
+          animate={isActive ? { 
+            opacity: 1, 
+            scale: [1, 1.2, 1],
+            rotate: [0, 5, -5, 0]
+          } : { opacity: 0 }}
+          transition={{ 
+            delay: 0.8,
+            scale: { duration: 2, repeat: Infinity },
+            rotate: { duration: 3, repeat: Infinity }
+          }}
         >&#x2713;</motion.text>
+        
+        {/* Encryption layers animation */}
         {[30, 60, 90, 120, 150].map((x, i) => (
-          <motion.rect key={i}
-            x={x} y={140} width={20} height={4} rx={2}
+          <React.Fragment key={i}>
+            <motion.rect
+              x={x} y={140} width={20} height={4} rx={2}
+              fill="#10B981"
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={isActive ? { 
+                opacity: [0.3, 0.8, 0.3],
+                scaleX: [0.8, 1, 0.8]
+              } : { opacity: 0 }}
+              transition={{ 
+                delay: 1 + i * 0.1,
+                duration: 1.5,
+                repeat: Infinity
+              }}
+            />
+            
+            {/* Encryption particles */}
+            {isActive && (
+              <motion.circle
+                r={2}
+                fill="#10B981"
+                cx={x + 10}
+                cy={140}
+                animate={{
+                  y: [140, 120, 140],
+                  opacity: [0, 1, 0]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.2
+                }}
+              />
+            )}
+          </React.Fragment>
+        ))}
+        
+        {/* Security shield particles */}
+        {isActive && [...Array(6)].map((_, i) => (
+          <motion.circle
+            key={i}
+            r={1.5}
             fill="#10B981"
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={isActive ? { opacity: 0.3, scaleX: 1 } : { opacity: 0 }}
-            transition={{ delay: 1 + i * 0.1 }}
+            cx={100}
+            cy={70}
+            initial={{ opacity: 0 }}
+            animate={{
+              x: [0, Math.cos((i * Math.PI * 2) / 6) * 40],
+              y: [0, Math.sin((i * Math.PI * 2) / 6) * 40],
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: i * 0.2
+            }}
           />
         ))}
       </svg>
@@ -149,31 +319,114 @@ const StepVisual = ({ type, isActive }) => {
     const edges = [[0,3],[0,4],[1,3],[1,4],[1,5],[2,4],[2,5],[3,6],[4,6],[5,6]];
     return (
       <svg viewBox="0 0 200 160" className="step-svg">
+        {/* Neural network connections with animated data flow */}
         {edges.map(([a, b], i) => (
-          <motion.line key={i}
-            x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
-            stroke="#8B5CF6" strokeWidth="0.8"
-            initial={{ opacity: 0 }}
-            animate={isActive ? { opacity: 0.3 } : { opacity: 0.05 }}
-            transition={{ delay: i * 0.05 }}
-          />
+          <React.Fragment key={i}>
+            <motion.line
+              x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
+              stroke="#8B5CF6" strokeWidth="0.8"
+              initial={{ opacity: 0, pathLength: 0 }}
+              animate={isActive ? { 
+                opacity: 0.4,
+                pathLength: 1,
+                strokeWidth: [0.8, 1.2, 0.8]
+              } : { opacity: 0.05, pathLength: 0 }}
+              transition={{ 
+                delay: i * 0.05,
+                strokeWidth: { duration: 2, repeat: Infinity }
+              }}
+            />
+            
+            {/* Data packets flowing through connections */}
+            {isActive && (
+              <motion.circle
+                r={2}
+                fill="#8B5CF6"
+                initial={{ cx: nodes[a].x, cy: nodes[a].y }}
+                animate={{
+                  cx: [nodes[a].x, nodes[b].x],
+                  cy: [nodes[a].y, nodes[b].y]
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                  ease: "linear"
+                }}
+              />
+            )}
+          </React.Fragment>
         ))}
+        
+        {/* Neural network nodes with pulse */}
         {nodes.map((n, i) => (
-          <motion.circle key={i}
-            cx={n.x} cy={n.y} r={i === 6 ? 12 : 8}
-            fill={i === 6 ? 'rgba(139,92,246,0.2)' : 'rgba(139,92,246,0.1)'}
-            stroke="#8B5CF6" strokeWidth="1"
-            initial={{ scale: 0 }}
-            animate={isActive ? { scale: 1 } : { scale: 0 }}
-            transition={{ delay: 0.3 + i * 0.08 }}
-          />
+          <React.Fragment key={i}>
+            <motion.circle
+              cx={n.x} cy={n.y} r={i === 6 ? 12 : 8}
+              fill={i === 6 ? 'rgba(139,92,246,0.2)' : 'rgba(139,92,246,0.1)'}
+              stroke="#8B5CF6" strokeWidth="1"
+              initial={{ scale: 0 }}
+              animate={isActive ? { 
+                scale: 1,
+                strokeWidth: [1, 2, 1]
+              } : { scale: 0 }}
+              transition={{ 
+                delay: 0.3 + i * 0.08,
+                strokeWidth: { duration: 2, repeat: Infinity }
+              }}
+            />
+            
+            {/* Node glow effect */}
+            {isActive && (
+              <motion.circle
+                cx={n.x} cy={n.y} r={i === 6 ? 12 : 8}
+                fill="none"
+                stroke="#8B5CF6"
+                strokeWidth="1"
+                opacity={0.4}
+                animate={{
+                  scale: [1, 1.5, 1],
+                  opacity: [0.4, 0.8, 0.4]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.1
+                }}
+              />
+            )}
+          </React.Fragment>
         ))}
+        
+        {/* Main data flow through network */}
         {isActive && (
-          <motion.circle r={4} fill="#8B5CF6"
-            initial={{ cx: 30, cy: 80 }}
-            animate={{ cx: [30, 100, 170], cy: [80, 70, 80] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          />
+          <>
+            <motion.circle r={4} fill="#8B5CF6"
+              initial={{ cx: 30, cy: 80 }}
+              animate={{ cx: [30, 100, 170], cy: [80, 70, 80] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            />
+            <motion.circle r={3} fill="#8B5CF6" opacity={0.6}
+              initial={{ cx: 30, cy: 80 }}
+              animate={{ cx: [30, 100, 170], cy: [80, 70, 80] }}
+              transition={{ duration: 2, repeat: Infinity, delay: 0.3, ease: "linear" }}
+            />
+          </>
+        )}
+        
+        {/* Processing indicator */}
+        {isActive && (
+          <motion.text
+            x={170} y={95}
+            fill="#8B5CF6"
+            fontSize="6"
+            fontWeight="600"
+            opacity={0.8}
+            animate={{ opacity: [0.8, 1, 0.8] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            PROCESSING
+          </motion.text>
         )}
       </svg>
     );
@@ -181,67 +434,322 @@ const StepVisual = ({ type, isActive }) => {
   if (type === 'detection') {
     return (
       <svg viewBox="0 0 200 160" className="step-svg">
+        {/* Resistance pattern graph */}
         <motion.path
           d="M40 130 Q70 130 80 100 Q90 70 100 80 Q110 90 120 50 Q130 10 150 40 Q160 60 170 30"
           fill="none" stroke="#EF4444" strokeWidth="1.5"
           initial={{ pathLength: 0 }}
-          animate={isActive ? { pathLength: 1 } : { pathLength: 0 }}
-          transition={{ duration: 1.5 }}
+          animate={isActive ? { 
+            pathLength: 1,
+            strokeWidth: [1.5, 2.5, 1.5]
+          } : { pathLength: 0 }}
+          transition={{ 
+            duration: 1.5,
+            strokeWidth: { duration: 2, repeat: Infinity }
+          }}
         />
-        <motion.line x1={120} y1={0} x2={120} y2={160} stroke="#EF4444" strokeWidth="0.5" strokeDasharray="4 4"
+        
+        {/* Animated data points on graph */}
+        {isActive && [80, 100, 120, 150].map((x, i) => {
+          const y = i === 0 ? 100 : i === 1 ? 80 : i === 2 ? 50 : 40;
+          return (
+            <motion.circle
+              key={i}
+              cx={x} cy={y} r={3}
+              fill="#EF4444"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{
+                scale: [0, 1.5, 1],
+                opacity: [0, 1, 1]
+              }}
+              transition={{
+                delay: 0.5 + i * 0.3,
+                scale: { duration: 0.5 }
+              }}
+            />
+          );
+        })}
+        
+        {/* Threshold line with pulse */}
+        <motion.line 
+          x1={120} y1={0} x2={120} y2={160} 
+          stroke="#EF4444" strokeWidth="0.5" strokeDasharray="4 4"
           initial={{ opacity: 0 }}
-          animate={isActive ? { opacity: 0.3 } : { opacity: 0 }}
-          transition={{ delay: 1 }}
+          animate={isActive ? { 
+            opacity: [0.3, 0.8, 0.3],
+            strokeWidth: [0.5, 1, 0.5]
+          } : { opacity: 0 }}
+          transition={{ 
+            delay: 1,
+            opacity: { duration: 2, repeat: Infinity },
+            strokeWidth: { duration: 2, repeat: Infinity }
+          }}
         />
+        
         <motion.text x={130} y={16} fill="#EF4444" fontSize="7" fontWeight="600"
           initial={{ opacity: 0 }}
-          animate={isActive ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 1.2 }}
+          animate={isActive ? { 
+            opacity: 1,
+            x: [130, 132, 130]
+          } : { opacity: 0 }}
+          transition={{ 
+            delay: 1.2,
+            x: { duration: 2, repeat: Infinity }
+          }}
         >THRESHOLD</motion.text>
-        <motion.circle cx={150} cy={40} r={6} fill="none" stroke="#EF4444" strokeWidth="1"
+        
+        {/* Alert indicator with expanding rings */}
+        <motion.circle 
+          cx={150} cy={40} r={6} 
+          fill="none" stroke="#EF4444" strokeWidth="1"
           initial={{ scale: 0 }}
-          animate={isActive ? { scale: [1, 1.5, 1] } : { scale: 0 }}
-          transition={{ delay: 1.5, duration: 1, repeat: Infinity }}
+          animate={isActive ? { 
+            scale: [1, 1.5, 1],
+            strokeWidth: [1, 2, 1]
+          } : { scale: 0 }}
+          transition={{ 
+            delay: 1.5, 
+            duration: 1, 
+            repeat: Infinity 
+          }}
         />
+        
+        {/* Expanding alert rings */}
+        {isActive && [...Array(3)].map((_, i) => (
+          <motion.circle
+            key={i}
+            cx={150} cy={40} r={6}
+            fill="none"
+            stroke="#EF4444"
+            strokeWidth="1"
+            opacity={0.4}
+            animate={{
+              scale: [1, 3],
+              opacity: [0.4, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: i * 0.3
+            }}
+          />
+        ))}
+        
+        {/* Alert flash */}
+        {isActive && (
+          <motion.rect
+            x={140} y={30} width={20} height={20} rx={2}
+            fill="#EF4444"
+            opacity={0.2}
+            animate={{
+              opacity: [0.2, 0.6, 0.2]
+            }}
+            transition={{
+              duration: 1,
+              repeat: Infinity
+            }}
+          />
+        )}
+        
+        {/* Data stream to detection point */}
+        {isActive && [...Array(5)].map((_, i) => (
+          <motion.circle
+            key={i}
+            r={2}
+            fill="#EF4444"
+            initial={{ cx: 40, cy: 130, opacity: 0 }}
+            animate={{
+              cx: [40, 150],
+              cy: [130, 40],
+              opacity: [0, 1, 1, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
       </svg>
     );
   }
   // output
   return (
     <svg viewBox="0 0 200 160" className="step-svg">
+      {/* Dashboard panels */}
       {[0, 1, 2].map(i => (
-        <motion.rect key={i}
-          x={30 + i * 50} y={20} width={40} height={100} rx={6}
-          fill="none" stroke="#F59E0B" strokeWidth="1"
-          initial={{ opacity: 0, y: 10 }}
-          animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0.1 }}
-          transition={{ delay: i * 0.2 }}
-        />
+        <React.Fragment key={i}>
+          <motion.rect
+            x={30 + i * 50} y={20} width={40} height={100} rx={6}
+            fill="none" stroke="#F59E0B" strokeWidth="1"
+            initial={{ opacity: 0, y: 10 }}
+            animate={isActive ? { 
+              opacity: 1, 
+              y: 0,
+              strokeWidth: [1, 2, 1]
+            } : { opacity: 0.1 }}
+            transition={{ 
+              delay: i * 0.2,
+              strokeWidth: { duration: 2, repeat: Infinity }
+            }}
+          />
+          
+          {/* Panel glow */}
+          {isActive && (
+            <motion.rect
+              x={30 + i * 50} y={20} width={40} height={100} rx={6}
+              fill="none" stroke="#F59E0B" strokeWidth="1"
+              opacity={0.3}
+              animate={{
+                scale: [1, 1.05, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                delay: i * 0.1
+              }}
+            />
+          )}
+        </React.Fragment>
       ))}
+      
+      {/* Animated data bars */}
       {[0, 1, 2].map(i => (
-        <motion.rect key={`bar-${i}`}
-          x={38 + i * 50} y={isActive ? (60 - i * 15) : 110}
-          width={24} height={isActive ? (60 + i * 15) : 10} rx={3}
-          fill={`rgba(245,158,11,${0.2 + i * 0.15})`}
-          transition={{ delay: 0.5 + i * 0.15, duration: 0.8 }}
-        />
+        <React.Fragment key={`bar-${i}`}>
+          <motion.rect
+            x={38 + i * 50} y={isActive ? (60 - i * 15) : 110}
+            width={24} height={isActive ? (60 + i * 15) : 10} rx={3}
+            fill={`rgba(245,158,11,${0.2 + i * 0.15})`}
+            transition={{ delay: 0.5 + i * 0.15, duration: 0.8 }}
+          />
+          
+          {/* Bar pulse animation */}
+          {isActive && (
+            <motion.rect
+              x={38 + i * 50} y={isActive ? (60 - i * 15) : 110}
+              width={24} height={isActive ? (60 + i * 15) : 10} rx={3}
+              fill="#F59E0B"
+              opacity={0.3}
+              animate={{
+                height: [
+                  isActive ? (60 + i * 15) : 10,
+                  isActive ? (65 + i * 15) : 10,
+                  isActive ? (60 + i * 15) : 10
+                ]
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                delay: i * 0.2
+              }}
+            />
+          )}
+        </React.Fragment>
       ))}
-      <motion.circle cx={170} cy={140} r={4} fill="#F59E0B"
+      
+      {/* Live indicator with pulse */}
+      <motion.circle 
+        cx={170} cy={140} r={4} 
+        fill="#F59E0B"
         initial={{ opacity: 0 }}
-        animate={isActive ? { opacity: [0, 1, 0] } : { opacity: 0 }}
-        transition={{ delay: 1, duration: 1.5, repeat: Infinity }}
+        animate={isActive ? { 
+          opacity: [0, 1, 0],
+          scale: [1, 1.3, 1]
+        } : { opacity: 0 }}
+        transition={{ 
+          delay: 1, 
+          duration: 1.5, 
+          repeat: Infinity 
+        }}
       />
-      <motion.text x={178} y={143} fill="#F59E0B" fontSize="7" fontWeight="500"
+      
+      {/* Expanding pulse rings */}
+      {isActive && [...Array(2)].map((_, i) => (
+        <motion.circle
+          key={i}
+          cx={170} cy={140} r={4}
+          fill="none"
+          stroke="#F59E0B"
+          strokeWidth="1"
+          opacity={0.4}
+          animate={{
+            scale: [1, 2.5],
+            opacity: [0.4, 0]
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            delay: i * 0.5
+          }}
+        />
+      ))}
+      
+      <motion.text 
+        x={178} y={143} 
+        fill="#F59E0B" 
+        fontSize="7" 
+        fontWeight="500"
         initial={{ opacity: 0 }}
-        animate={isActive ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ delay: 1 }}
+        animate={isActive ? { 
+          opacity: [1, 0.5, 1],
+          x: [178, 180, 178]
+        } : { opacity: 0 }}
+        transition={{ 
+          delay: 1,
+          opacity: { duration: 1.5, repeat: Infinity },
+          x: { duration: 1.5, repeat: Infinity }
+        }}
       >LIVE</motion.text>
+      
+      {/* Data streaming to dashboard */}
+      {isActive && [...Array(8)].map((_, i) => (
+        <motion.circle
+          key={i}
+          r={1.5}
+          fill="#F59E0B"
+          initial={{
+            cx: 100,
+            cy: 160,
+            opacity: 0
+          }}
+          animate={{
+            cx: [100, 30 + (i % 3) * 50 + 20],
+            cy: [160, 20],
+            opacity: [0, 1, 1, 0]
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            delay: i * 0.2,
+            ease: "easeOut"
+          }}
+        />
+      ))}
     </svg>
   );
 };
 
-function HowItWorks() {
+const HowItWorks = React.memo(function HowItWorks() {
   const [activeStep, setActiveStep] = useState(1);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
+
+  // Auto-advance feature
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setActiveStep(prev => {
+        if (prev >= steps.length) {
+          return 1; // Loop back to start
+        }
+        return prev + 1;
+      });
+    }, 4000); // Change step every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, steps.length]);
 
   return (
     <div className="hiw-page" data-testid="how-it-works-page">
@@ -266,17 +774,132 @@ function HowItWorks() {
           <div className="pipeline-steps-bar" data-testid="hiw-steps-bar">
             {steps.map((step, i) => (
               <React.Fragment key={step.id}>
-                <button
+                <motion.button
                   className={`step-marker ${activeStep === step.id ? 'active' : ''} ${activeStep > step.id ? 'completed' : ''}`}
                   onClick={() => setActiveStep(step.id)}
                   style={{ '--step-color': step.color }}
                   data-testid={`hiw-step-${step.id}`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ 
+                    opacity: 1, 
+                    y: 0,
+                    boxShadow: activeStep === step.id 
+                      ? `0 0 30px ${step.color}40, 0 0 60px ${step.color}20`
+                      : 'none'
+                  }}
+                  transition={{ delay: i * 0.1, duration: 0.4 }}
                 >
-                  <span className="step-num">{step.id}</span>
+                  <motion.span 
+                    className="step-num"
+                    animate={activeStep === step.id ? {
+                      scale: [1, 1.2, 1],
+                      rotate: [0, 360]
+                    } : {}}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: activeStep === step.id ? Infinity : 0,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    {step.id}
+                  </motion.span>
                   <span className="step-phase">{step.phase}</span>
-                </button>
+                  
+                  {/* Active step glow effect */}
+                  {activeStep === step.id && (
+                    <motion.div
+                      className="step-glow"
+                      style={{ '--glow-color': step.color }}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        opacity: [0.5, 1, 0.5],
+                        scale: [0.8, 1.2, 0.8]
+                      }}
+                      transition={{ 
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                  )}
+                  
+                  {/* Data particles for active step */}
+                  {activeStep === step.id && (
+                    <div className="step-particles">
+                      {[...Array(8)].map((_, idx) => (
+                        <motion.div
+                          key={idx}
+                          className="particle"
+                          style={{ '--particle-color': step.color }}
+                          initial={{ 
+                            x: '50%',
+                            y: '50%',
+                            opacity: 0,
+                            scale: 0
+                          }}
+                          animate={{
+                            x: `${50 + (Math.cos((idx * Math.PI * 2) / 8) * 60)}%`,
+                            y: `${50 + (Math.sin((idx * Math.PI * 2) / 8) * 60)}%`,
+                            opacity: [0, 1, 0],
+                            scale: [0, 1, 0]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: idx * 0.1,
+                            ease: "easeOut"
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </motion.button>
                 {i < steps.length - 1 && (
-                  <div className={`step-connector ${activeStep > step.id ? 'filled' : ''}`} />
+                  <div className={`step-connector ${activeStep > step.id ? 'filled' : ''}`}>
+                    {/* Animated data packets flowing through connector */}
+                    {activeStep > step.id && (
+                      <>
+                        {[...Array(3)].map((_, idx) => (
+                          <motion.div
+                            key={idx}
+                            className="data-packet"
+                            style={{ '--packet-color': steps[i].color }}
+                            initial={{ x: '-10px', opacity: 0 }}
+                            animate={{ 
+                              x: ['-10px', 'calc(100% + 10px)'],
+                              opacity: [0, 1, 1, 0]
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: idx * 0.7,
+                              ease: "linear"
+                            }}
+                          />
+                        ))}
+                      </>
+                    )}
+                    
+                    {/* Pulse animation for active connector */}
+                    {activeStep === step.id && (
+                      <motion.div
+                        className="connector-pulse"
+                        style={{ '--pulse-color': step.color }}
+                        initial={{ scaleX: 0, opacity: 0 }}
+                        animate={{
+                          scaleX: [0, 1, 0],
+                          opacity: [0, 0.8, 0]
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    )}
+                  </div>
                 )}
               </React.Fragment>
             ))}
@@ -327,16 +950,30 @@ function HowItWorks() {
             <button
               className="hiw-nav-btn"
               disabled={activeStep === 1}
-              onClick={() => setActiveStep(s => s - 1)}
+              onClick={() => {
+                setIsAutoPlaying(false);
+                setActiveStep(s => s - 1);
+              }}
               data-testid="hiw-prev-btn"
             >
               Previous
+            </button>
+            <button
+              className={`hiw-nav-btn ${isAutoPlaying ? 'active' : ''}`}
+              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+              data-testid="hiw-autoplay-btn"
+              title={isAutoPlaying ? 'Pause animation' : 'Auto-play animation'}
+            >
+              {isAutoPlaying ? '⏸ Pause' : '▶ Auto'}
             </button>
             <span className="hiw-nav-count">{activeStep} / {steps.length}</span>
             <button
               className="hiw-nav-btn primary"
               disabled={activeStep === steps.length}
-              onClick={() => setActiveStep(s => s + 1)}
+              onClick={() => {
+                setIsAutoPlaying(false);
+                setActiveStep(s => s + 1);
+              }}
               data-testid="hiw-next-btn"
             >
               Next
@@ -379,6 +1016,6 @@ function HowItWorks() {
       </section>
     </div>
   );
-}
+});
 
 export default HowItWorks;

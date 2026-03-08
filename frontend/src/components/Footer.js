@@ -1,8 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/medikal-logo.png';
 
-function Footer() {
+const Footer = React.memo(function Footer() {
+  const [lastSync, setLastSync] = useState(2); // Start at 2 minutes
+
+  useEffect(() => {
+    // Set initial time based on when component mounts
+    // Start countdown immediately
+    const updateSync = () => {
+      setLastSync(prev => {
+        if (prev <= 1) {
+          // Reset to 2 minutes after reaching 1 or less
+          return 2;
+        }
+        return prev - 1;
+      });
+    };
+
+    // Update every minute (60000ms = 1 minute)
+    const interval = setInterval(updateSync, 60000);
+
+    // Also update after 1 minute to show first change
+    const timeout = setTimeout(updateSync, 60000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  const getSyncText = () => {
+    if (lastSync === 1) {
+      return 'Last Sync: 1 min ago';
+    }
+    return `Last Sync: ${lastSync} min ago`;
+  };
+
   return (
     <footer className="footer" data-testid="footer">
       <div className="container">
@@ -18,13 +51,12 @@ function Footer() {
           </div>
           <div className="status-item">
             <span className="status-dot active" />
-            <span>Last Sync: 2 min ago</span>
+            <span>{getSyncText()}</span>
           </div>
         </div>
 
         <div className="footer-grid">
           <div className="footer-brand">
-            <img src={logo} alt="Medikal Africa" />
             <p>AI-powered clinical intelligence for antimicrobial resistance detection across Africa.</p>
             <div className="footer-social">
               <a href="https://twitter.com/medikal_africa" target="_blank" rel="noopener noreferrer" aria-label="Twitter" data-testid="footer-twitter">
@@ -37,6 +69,13 @@ function Footer() {
                   <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
                   <rect x="2" y="9" width="4" height="12"/>
                   <circle cx="4" cy="4" r="2"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/medikal_africa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-testid="footer-instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                 </svg>
               </a>
               <a href="mailto:info@medikalafrica.com" aria-label="Email" data-testid="footer-email">
@@ -64,28 +103,28 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="footer-title">Connect</h4>
+            <h4 className="footer-title">Get Started</h4>
             <ul className="footer-links">
-              <li><a href="mailto:info@medikalafrica.com">info@medikalafrica.com</a></li>
-              <li><a href="tel:+17024163329">+1 (702) 416-3329</a></li>
-              <li><span className="footer-location">Kigali, Rwanda</span></li>
+              <li><Link to="/request-demo">Request Demo</Link></li>
+              <li><Link to="/platform">Platform Overview</Link></li>
+              <li><Link to="/how-it-works">How It Works</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
           <p>&copy; 2026 Medikal Africa. All rights reserved.</p>
-          <div className="footer-bottom-links">
-            <span>Privacy</span>
-            <span className="footer-divider">&middot;</span>
-            <span>Terms</span>
-            <span className="footer-divider">&middot;</span>
-            <span>Security</span>
-          </div>
+                <div className="footer-bottom-links">
+                  <Link to="/privacy">Privacy</Link>
+                  <span className="footer-divider">&middot;</span>
+                  <Link to="/terms">Terms</Link>
+                  <span className="footer-divider">&middot;</span>
+                  <Link to="/security">Security</Link>
+                </div>
         </div>
       </div>
     </footer>
   );
-}
+});
 
 export default Footer;

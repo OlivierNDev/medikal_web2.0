@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './Team.css';
+import olivierPhoto from '../assets/team/olivier.jpg';
+import tresorPhoto from '../assets/team/tresor.png';
+import amenPhoto from '../assets/team/amen.png';
 
 const teamMembers = [
   {
@@ -10,8 +13,8 @@ const teamMembers = [
     role: "Founder & CEO",
     bio: "Software engineer focused on AI and scalable healthcare systems. Leads product vision and continental expansion strategy.",
     education: "Algonquin College, Ottawa",
-    linkedin: "#",
-    twitter: "#",
+    linkedin: "https://www.linkedin.com/in/olivier-niyonshima-aa2b36236/",
+    photo: olivierPhoto,
     initials: "ON"
   },
   {
@@ -20,8 +23,8 @@ const teamMembers = [
     role: "Co-Founder & COO",
     bio: "Specializes in ML and AI model development. Leading the Kinyarwanda language AI model and operational excellence.",
     education: "Princeton University",
-    linkedin: "#",
-    twitter: "#",
+    linkedin: "https://www.linkedin.com/in/tresoryubahwe/",
+    photo: tresorPhoto,
     initials: "TY"
   },
   {
@@ -30,19 +33,13 @@ const teamMembers = [
     role: "Co-Founder & Head of Product",
     bio: "Leads product development and user experience. Ensures seamless clinical workflow integration across health systems.",
     education: "Pitzer College, California",
-    linkedin: "#",
-    twitter: "#",
+    linkedin: "https://www.linkedin.com/in/amen123/",
+    photo: amenPhoto,
     initials: "AI"
   }
 ];
 
-const advisors = [
-  { name: "Dr. Sarah Chen", role: "Clinical Advisor", org: "Stanford Medicine" },
-  { name: "Prof. James Okello", role: "AMR Research Advisor", org: "Makerere University" },
-  { name: "Marie Dubois", role: "Public Health Advisor", org: "WHO Africa" }
-];
-
-function Team() {
+const Team = React.memo(function Team() {
   return (
     <div className="team-page">
       {/* Hero */}
@@ -60,36 +57,39 @@ function Team() {
         </div>
       </section>
 
-      {/* Founders */}
-      <section className="founders-section">
+      {/* Leadership */}
+      <section className="leadership-section">
         <div className="container">
-          <div className="founders-grid">
+          <div className="section-header">
+            <h2>Founding Members</h2>
+            <p>Our founding team brings together expertise in AI, healthcare systems, and product development.</p>
+          </div>
+          <div className="leadership-grid">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.id}
-                className="founder-card"
+                className="leader-card"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.15 }}
               >
-                <div className="founder-avatar">
-                  <span>{member.initials}</span>
+                <div className="leader-avatar">
+                  {member.photo ? (
+                    <img src={member.photo} alt={member.name} />
+                  ) : (
+                    <span>{member.initials || member.name.split(' ').map(n => n[0]).join('')}</span>
+                  )}
                 </div>
                 <h3>{member.name}</h3>
-                <span className="founder-role">{member.role}</span>
+                <span className="leader-role">{member.role}</span>
                 <p>{member.bio}</p>
-                <span className="founder-edu">{member.education}</span>
-                <div className="founder-links">
-                  <a href={member.linkedin} aria-label="LinkedIn">
+                <span className="leader-edu">{member.education}</span>
+                <div className="leader-links">
+                  <a href={member.linkedin} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
                       <rect x="2" y="9" width="4" height="12"/>
                       <circle cx="4" cy="4" r="2"/>
-                    </svg>
-                  </a>
-                  <a href={member.twitter} aria-label="Twitter">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
                     </svg>
                   </a>
                 </div>
@@ -127,29 +127,6 @@ function Team() {
         </div>
       </section>
 
-      {/* Advisors */}
-      <section className="advisors-section">
-        <div className="container">
-          <h2>Advisory Board</h2>
-          <p className="section-desc">Guided by global experts in clinical medicine, AMR research, and public health policy.</p>
-          <div className="advisors-grid">
-            {advisors.map((advisor, index) => (
-              <motion.div
-                key={index}
-                className="advisor-card"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 + index * 0.1 }}
-              >
-                <h4>{advisor.name}</h4>
-                <span className="advisor-role">{advisor.role}</span>
-                <span className="advisor-org">{advisor.org}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Join */}
       <section className="join-section">
         <div className="container">
@@ -165,6 +142,6 @@ function Team() {
       </section>
     </div>
   );
-}
+});
 
 export default Team;

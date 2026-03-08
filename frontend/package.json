@@ -12,7 +12,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "build:analyze": "npm run build && npx source-map-explorer 'build/static/js/*.js'"
   },
   "browserslist": {
     "production": [

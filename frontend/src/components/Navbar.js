@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../assets/medikal-logo.png';
+import logo from '../assets/logo.png';
 
-function Navbar() {
+const Navbar = React.memo(function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
-  const isActive = (path) => location.pathname === path ? 'nav-link active' : 'nav-link';
+  const isActive = useCallback((path) => location.pathname === path ? 'nav-link active' : 'nav-link', [location.pathname]);
+  
+  const handleMobileToggle = useCallback(() => setMobileOpen(true), []);
+  const handleMobileClose = useCallback(() => setMobileOpen(false), []);
 
   return (
     <>
       <nav className="nav" data-testid="main-nav">
         <div className="container nav-container">
           <Link to="/">
-            <img src={logo} alt="Medikal Africa" className="nav-logo" data-testid="nav-logo" />
+            <img src={logo} alt="Medikal Africa" className="nav-logo" data-testid="nav-logo" loading="eager" />
           </Link>
 
           <div className="nav-links" data-testid="nav-links">
@@ -29,7 +32,7 @@ function Navbar() {
 
           <button 
             className="nav-mobile-btn" 
-            onClick={() => setMobileOpen(true)}
+            onClick={handleMobileToggle}
             aria-label="Menu"
             data-testid="mobile-menu-btn"
           >
@@ -42,16 +45,16 @@ function Navbar() {
 
       <div 
         className={`mobile-overlay ${mobileOpen ? 'active' : ''}`} 
-        onClick={() => setMobileOpen(false)}
+        onClick={handleMobileClose}
         data-testid="mobile-overlay"
       />
       
       <div className={`mobile-menu ${mobileOpen ? 'active' : ''}`} data-testid="mobile-menu">
         <div className="mobile-menu-header">
-          <img src={logo} alt="Medikal Africa" height="28" />
+          <img src={logo} alt="Medikal Africa" height="28" loading="lazy" />
           <button 
             className="mobile-close" 
-            onClick={() => setMobileOpen(false)}
+            onClick={handleMobileClose}
             aria-label="Close"
             data-testid="mobile-menu-close"
           >
@@ -61,17 +64,17 @@ function Navbar() {
           </button>
         </div>
         <div className="mobile-menu-links">
-          <Link to="/" onClick={() => setMobileOpen(false)}>Home</Link>
-          <Link to="/platform" onClick={() => setMobileOpen(false)}>Platform</Link>
-          <Link to="/how-it-works" onClick={() => setMobileOpen(false)}>How It Works</Link>
-          <Link to="/amr" onClick={() => setMobileOpen(false)}>AMR Intelligence</Link>
-          <Link to="/team" onClick={() => setMobileOpen(false)}>Team</Link>
-          <Link to="/research" onClick={() => setMobileOpen(false)}>Research</Link>
-          <Link to="/request-demo" onClick={() => setMobileOpen(false)}>Request Demo</Link>
+          <Link to="/" onClick={handleMobileClose}>Home</Link>
+          <Link to="/platform" onClick={handleMobileClose}>Platform</Link>
+          <Link to="/how-it-works" onClick={handleMobileClose}>How It Works</Link>
+          <Link to="/amr" onClick={handleMobileClose}>AMR Intelligence</Link>
+          <Link to="/team" onClick={handleMobileClose}>Team</Link>
+          <Link to="/research" onClick={handleMobileClose}>Research</Link>
+          <Link to="/request-demo" onClick={handleMobileClose}>Request Demo</Link>
         </div>
       </div>
     </>
   );
-}
+});
 
 export default Navbar;

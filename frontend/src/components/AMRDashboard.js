@@ -27,9 +27,9 @@ const generateHistoricalData = (baseRate) => {
   }));
 };
 
-// Risk colors
-const riskColors = { low: '#10B981', moderate: '#F59E0B', high: '#EF4444' };
-const riskLabels = { low: 'Low Risk', moderate: 'Moderate', high: 'Critical' };
+// Risk colors - using only white and gray
+const riskColors = { low: '#979797', moderate: '#FFFFFF', high: '#FFFFFF' };
+const riskLabels = { low: 'Low Risk', moderate: 'Moderate', high: 'High' };
 
 // Time Series Chart Component
 const TimeSeriesChart = ({ data, countryName }) => {
@@ -47,7 +47,7 @@ const TimeSeriesChart = ({ data, countryName }) => {
         <svg viewBox="0 0 400 150" className="chart-svg">
           {/* Grid lines */}
           {[0, 25, 50, 75, 100].map(y => (
-            <line key={y} x1="40" y1={20 + y} x2="390" y2={20 + y} stroke="#2A2F36" strokeWidth="0.5" />
+            <line key={y} x1="40" y1={20 + y} x2="390" y2={20 + y} stroke="rgba(151, 151, 151, 0.1)" strokeWidth="0.5" />
           ))}
           
           {/* Y-axis labels */}
@@ -62,7 +62,7 @@ const TimeSeriesChart = ({ data, countryName }) => {
               return `${i === 0 ? 'M' : 'L'} ${x} ${y}`;
             }).join(' ')}
             fill="none"
-            stroke="#5EC4D5"
+            stroke="#FFFFFF"
             strokeWidth="2"
             initial={{ pathLength: 0 }}
             animate={{ pathLength: 1 }}
@@ -79,8 +79,8 @@ const TimeSeriesChart = ({ data, countryName }) => {
                 cx={x}
                 cy={y}
                 r="4"
-                fill="#0F1117"
-                stroke="#5EC4D5"
+                fill="#1A1A1A"
+                stroke="#FFFFFF"
                 strokeWidth="2"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -113,7 +113,7 @@ const TimeSeriesChart = ({ data, countryName }) => {
 };
 
 // Live Counter Component
-const LiveCounter = ({ label, value, suffix = '', color = '#5EC4D5' }) => {
+const LiveCounter = ({ label, value, suffix = '', color = '#FFFFFF' }) => {
   const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
@@ -142,7 +142,7 @@ const LiveCounter = ({ label, value, suffix = '', color = '#5EC4D5' }) => {
 };
 
 // Main AMR Dashboard Component
-export default function AMRDashboard() {
+const AMRDashboard = React.memo(function AMRDashboard() {
   const [countries, setCountries] = useState(countriesData);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [hoveredCountry, setHoveredCountry] = useState(null);
@@ -214,7 +214,7 @@ export default function AMRDashboard() {
           <LiveCounter label="Predictions Today" value={realtimeData.predictions} />
           <LiveCounter label="Data Points (M)" value={realtimeData.dataPoints} suffix="M" />
           <LiveCounter label="Model Accuracy" value={realtimeData.accuracy} suffix="%" />
-          <LiveCounter label="Active Alerts" value={liveAlerts} color="#EF4444" />
+          <LiveCounter label="Active Alerts" value={liveAlerts} color="#FFFFFF" />
           <LiveCounter label="Connected Facilities" value={127} />
           <LiveCounter label="Countries Monitored" value={12} />
         </div>
@@ -234,7 +234,7 @@ export default function AMRDashboard() {
                 <path
                   d="M22,3 Q35,0 55,5 Q75,10 82,25 Q88,45 85,60 Q82,75 70,85 Q55,95 45,95 Q30,93 20,82 Q10,70 12,50 Q14,30 22,15 Q22,8 22,3"
                   fill="rgba(94, 196, 213, 0.03)"
-                  stroke="#5EC4D5"
+                  stroke="#FFFFFF"
                   strokeWidth="0.3"
                   opacity="0.5"
                 />
@@ -242,8 +242,8 @@ export default function AMRDashboard() {
                 {/* Grid */}
                 {[20, 40, 60, 80].map(v => (
                   <React.Fragment key={v}>
-                    <line x1="5" y1={v} x2="95" y2={v} stroke="#5EC4D5" strokeWidth="0.1" opacity="0.1" />
-                    <line x1={v} y1="5" x2={v} y2="95" stroke="#5EC4D5" strokeWidth="0.1" opacity="0.1" />
+                    <line x1="5" y1={v} x2="95" y2={v} stroke="#FFFFFF" strokeWidth="0.1" opacity="0.1" />
+                    <line x1={v} y1="5" x2={v} y2="95" stroke="#FFFFFF" strokeWidth="0.1" opacity="0.1" />
                   </React.Fragment>
                 ))}
               </svg>
@@ -383,15 +383,15 @@ export default function AMRDashboard() {
                   {/* Quick Stats */}
                   <div className="quick-stats">
                     <div className="quick-stat">
-                      <span className="qs-value" style={{ color: '#EF4444' }}>3</span>
+                      <span className="qs-value" style={{ color: '#FFFFFF' }}>3</span>
                       <span className="qs-label">High Risk</span>
                     </div>
                     <div className="quick-stat">
-                      <span className="qs-value" style={{ color: '#F59E0B' }}>5</span>
+                      <span className="qs-value" style={{ color: '#979797' }}>5</span>
                       <span className="qs-label">Moderate</span>
                     </div>
                     <div className="quick-stat">
-                      <span className="qs-value" style={{ color: '#10B981' }}>4</span>
+                      <span className="qs-value" style={{ color: '#979797' }}>4</span>
                       <span className="qs-label">Low Risk</span>
                     </div>
                   </div>
@@ -410,17 +410,19 @@ export default function AMRDashboard() {
               animate={{ x: [0, -1500] }}
               transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
             >
-              <span className="alert-item high">Nigeria: Carbapenem resistance spike detected in Lagos region</span>
-              <span className="alert-item moderate">Kenya: E. coli resistance increasing in Nairobi facilities</span>
-              <span className="alert-item low">Rwanda: P. aeruginosa levels stabilizing after intervention</span>
-              <span className="alert-item high">DRC: Critical K. pneumoniae outbreak in Kinshasa</span>
-              <span className="alert-item moderate">Ethiopia: New Salmonella resistance pattern identified</span>
-              <span className="alert-item high">Nigeria: Carbapenem resistance spike detected in Lagos region</span>
-              <span className="alert-item moderate">Kenya: E. coli resistance increasing in Nairobi facilities</span>
+              <span className="alert-item">Nigeria: Carbapenem resistance spike detected in Lagos region</span>
+              <span className="alert-item">Kenya: E. coli resistance increasing in Nairobi facilities</span>
+              <span className="alert-item">Rwanda: P. aeruginosa levels stabilizing after intervention</span>
+              <span className="alert-item">DRC: Critical K. pneumoniae outbreak in Kinshasa</span>
+              <span className="alert-item">Ethiopia: New Salmonella resistance pattern identified</span>
+              <span className="alert-item">Nigeria: Carbapenem resistance spike detected in Lagos region</span>
+              <span className="alert-item">Kenya: E. coli resistance increasing in Nairobi facilities</span>
             </motion.div>
           </div>
         </div>
       </div>
     </section>
   );
-}
+});
+
+export default AMRDashboard;

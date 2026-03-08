@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Platform() {
+const Platform = React.memo(function Platform() {
   return (
     <>
       {/* Hero */}
@@ -47,27 +47,27 @@ function Platform() {
             <p>Six integrated modules for comprehensive clinical intelligence.</p>
           </div>
           <div className="features-grid">
-            <div className="feature-card" style={{ background: 'var(--white)' }}>
+            <div className="feature-card feature-card-white">
               <h3>Clinical Intelligence</h3>
               <p>AI diagnostic assistance with evidence-based treatment recommendations.</p>
             </div>
-            <div className="feature-card" style={{ background: 'var(--white)' }}>
+            <div className="feature-card feature-card-white">
               <h3>Medikal AI Assistant</h3>
               <p>Multilingual conversational AI supporting clinicians.</p>
             </div>
-            <div className="feature-card" style={{ background: 'var(--white)' }}>
+            <div className="feature-card feature-card-white">
               <h3>Imaging AI</h3>
               <p>Medical image analysis for X-rays and diagnostic scans.</p>
             </div>
-            <div className="feature-card" style={{ background: 'var(--white)' }}>
+            <div className="feature-card feature-card-white">
               <h3>Lab Analytics</h3>
               <p>Laboratory information system integration.</p>
             </div>
-            <div className="feature-card" style={{ background: 'var(--white)' }}>
+            <div className="feature-card feature-card-white">
               <h3>AMR Detection</h3>
               <p>Real-time resistance pattern surveillance.</p>
             </div>
-            <div className="feature-card" style={{ background: 'var(--white)' }}>
+            <div className="feature-card feature-card-white">
               <h3>Health System Intelligence</h3>
               <p>Dashboards for public health agencies.</p>
             </div>
@@ -85,6 +85,6 @@ function Platform() {
       </section>
     </>
   );
-}
+});
 
 export default Platform;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function AMR() {
+const AMR = React.memo(function AMR() {
   return (
     <>
       {/* Hero */}
@@ -17,19 +17,19 @@ function AMR() {
         <div className="container">
           <div className="stats-grid">
             <div className="stat-item">
-              <div className="stat-value" style={{ color: '#EF4444' }}>4.95M</div>
+              <div className="stat-value">4.95M</div>
               <div className="stat-label">AMR deaths (2019)</div>
             </div>
             <div className="stat-item">
-              <div className="stat-value" style={{ color: '#EF4444' }}>1.27M</div>
+              <div className="stat-value">1.27M</div>
               <div className="stat-label">Direct AMR deaths</div>
             </div>
             <div className="stat-item">
-              <div className="stat-value" style={{ color: '#EF4444' }}>10M</div>
+              <div className="stat-value">10M</div>
               <div className="stat-label">Projected by 2050</div>
             </div>
             <div className="stat-item">
-              <div className="stat-value" style={{ color: '#EF4444' }}>$100T</div>
+              <div className="stat-value">$100T</div>
               <div className="stat-label">Economic cost</div>
             </div>
           </div>
@@ -71,15 +71,15 @@ function AMR() {
             <p>Intelligent recommendations to optimize prescribing and preserve antimicrobial effectiveness.</p>
           </div>
           <div className="features-grid">
-            <div className="feature-card" style={{ background: 'var(--white)' }}>
+            <div className="feature-card feature-card-white">
               <h3>Optimal Selection</h3>
               <p>AI-guided antibiotic selection based on local resistance patterns.</p>
             </div>
-            <div className="feature-card" style={{ background: 'var(--white)' }}>
+            <div className="feature-card feature-card-white">
               <h3>Dosing Optimization</h3>
               <p>Personalized dosing based on patient factors.</p>
             </div>
-            <div className="feature-card" style={{ background: 'var(--white)' }}>
+            <div className="feature-card feature-card-white">
               <h3>Duration Guidance</h3>
               <p>Evidence-based treatment duration recommendations.</p>
             </div>
@@ -97,6 +97,6 @@ function AMR() {
       </section>
     </>
   );
-}
+});
 
 export default AMR;

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
 import './MedikalPipeline.css';
 
 const scenes = [
@@ -71,9 +69,9 @@ const countryTimeSeries = {
 };
 
 const riskColors = {
-  low: '#10B981',
-  moderate: '#F59E0B',
-  high: '#EF4444'
+  low: '#979797',
+  moderate: '#FFFFFF',
+  high: '#FFFFFF'
 };
 
 const riskLabels = {
@@ -262,7 +260,7 @@ const AfricaMap = ({ activeScene, onCountryClick, selectedCountry }) => {
                     <span className="footer-label">Facilities</span>
                   </div>
                   <div className="footer-stat">
-                    <span className="footer-value" style={{ color: spot.data.alerts > 0 ? '#EF4444' : '#10B981' }}>
+                    <span className="footer-value" style={{ color: spot.data.alerts > 0 ? '#FFFFFF' : '#979797' }}>
                       {spot.data.alerts}
                     </span>
                     <span className="footer-label">Alerts</span>
@@ -282,15 +280,15 @@ const AfricaMap = ({ activeScene, onCountryClick, selectedCountry }) => {
       {activeScene >= 4 && (
         <div className="map-legend">
           <div className="legend-item">
-            <span className="legend-dot" style={{ background: '#10B981' }} />
+            <span className="legend-dot" style={{ background: '#979797' }} />
             <span>Low</span>
           </div>
           <div className="legend-item">
-            <span className="legend-dot" style={{ background: '#F59E0B' }} />
+            <span className="legend-dot" style={{ background: '#FFFFFF' }} />
             <span>Moderate</span>
           </div>
           <div className="legend-item">
-            <span className="legend-dot" style={{ background: '#EF4444' }} />
+            <span className="legend-dot" style={{ background: '#FFFFFF' }} />
             <span>High</span>
           </div>
         </div>
@@ -408,7 +406,7 @@ const NeuralNetwork = ({ isActive }) => {
       {connections.map(([from, to], i) => (
         <motion.line key={i}
           x1={nodes[from].x} y1={nodes[from].y} x2={nodes[to].x} y2={nodes[to].y}
-          stroke="#5EC4D5" strokeWidth="0.3"
+          stroke="#979797" strokeWidth="0.3"
           initial={{ opacity: 0 }}
           animate={{ opacity: isActive ? 0.4 : 0.1 }}
           transition={{ delay: i * 0.05 }}
@@ -417,14 +415,14 @@ const NeuralNetwork = ({ isActive }) => {
       {nodes.map((node, i) => (
         <motion.circle key={i}
           cx={node.x} cy={node.y} r="3"
-          fill="#0F1117" stroke="#5EC4D5" strokeWidth="0.5"
+          fill="#1A1A1A" stroke="#979797" strokeWidth="0.5"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: i * 0.05 }}
         />
       ))}
       {isActive && (
-        <motion.circle r="2" fill="#5EC4D5"
+        <motion.circle r="2" fill="#FFFFFF"
           initial={{ cx: 10, cy: 40 }}
           animate={{ cx: [10, 35, 60, 85], cy: [40, 50, 45, 45] }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
@@ -435,167 +433,125 @@ const NeuralNetwork = ({ isActive }) => {
 };
 
 // Main Pipeline Component
-export default function MedikalPipeline() {
+const MedikalPipeline = React.memo(function MedikalPipeline() {
   const [activeScene, setActiveScene] = useState(1);
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
+    if (!isPlaying) return;
+    
     const interval = setInterval(() => {
-      setActiveScene(prev => prev >= 5 ? 1 : prev + 1);
-    }, 5000);
+      setActiveScene(prev => {
+        if (prev >= 5) {
+          // Reset to step 1 after completing all steps
+          return 1;
+        }
+        return prev + 1;
+      });
+    }, 3000); // 3 seconds per step
+    
     return () => clearInterval(interval);
-  }, []);
+  }, [isPlaying]);
 
-  const handleCountryClick = (country) => {
-    setSelectedCountry(prev => prev === country ? null : country);
+  const handleStepClick = (stepId) => {
+    setActiveScene(stepId);
+    setIsPlaying(false);
   };
 
-  const pipelineStages = [
-    { id: 1, label: "Hospitals", icon: "H", stats: "45+ facilities" },
-    { id: 2, label: "Secure API", icon: "S", stats: "AES-256 encrypted" },
-    { id: 3, label: "AI Engine", icon: "AI", stats: "96.2% accuracy" },
-    { id: 4, label: "AMR Detection", icon: "D", stats: "Real-time alerts" },
-    { id: 5, label: "Dashboard", icon: "I", stats: "Live insights" }
-  ];
+  const handlePlay = () => {
+    setIsPlaying(true);
+    setActiveScene(1);
+  };
 
   return (
     <section className="pipeline-section" data-testid="pipeline-section">
       <div className="pipeline-container">
         <div className="pipeline-header">
-          <h2>See how Medikal detects resistance patterns in real-time</h2>
+          <h2>How Medikal detects resistance patterns</h2>
+          <div className="pipeline-controls">
+            <button 
+              className={`control-btn ${isPlaying ? 'active' : ''}`}
+              onClick={handlePlay}
+              aria-label="Play animation"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 3l14 9-14 9V3z"/>
+              </svg>
+            </button>
+            <span className="control-label">{activeScene}/5</span>
+          </div>
         </div>
 
         <div className="pipeline-visualization">
-          <div className="scene-info">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeScene}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.5 }}
-                className="scene-content"
-              >
-                <span className="scene-number">0{activeScene}</span>
-                <h3>{scenes[activeScene - 1].title}</h3>
-                <p>{scenes[activeScene - 1].text}</p>
-                <div className="data-types">
-                  {scenes[activeScene - 1].dataTypes.map((type, i) => (
-                    <motion.span 
-                      key={type} className="data-tag"
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                    >
-                      {type}
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            <div className="scene-indicators">
-              {scenes.map((scene) => (
-                <button
-                  key={scene.id}
-                  className={`indicator ${activeScene === scene.id ? 'active' : ''}`}
-                  onClick={() => setActiveScene(scene.id)}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="animation-panel">
-            <div className="pipeline-flow">
-              {pipelineStages.map((stage, index) => (
-                <React.Fragment key={stage.id}>
-                  <PipelineNode {...stage} isActive={activeScene === stage.id} />
-                  {index < pipelineStages.length - 1 && (
-                    <div className="pipeline-connector">
-                      <div className="connector-line" />
-                      {activeScene > index && (
-                        <>
-                          <DataPacket delay={0} color="#5EC4D5" />
-                          <DataPacket delay={0.5} color="#5EC4D5" />
-                          <DataPacket delay={1} color="#5EC4D5" />
-                        </>
+          {/* Animated Pipeline Flow */}
+          <div className="pipeline-flow">
+            {scenes.map((scene, index) => {
+              const isActive = activeScene === scene.id;
+              const isCompleted = activeScene > scene.id;
+              const isUpcoming = activeScene < scene.id;
+              
+              return (
+                <React.Fragment key={scene.id}>
+                  <div 
+                    className={`pipeline-stage ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''} ${isUpcoming ? 'upcoming' : ''}`}
+                    onClick={() => handleStepClick(scene.id)}
+                  >
+                    <div className="stage-indicator">
+                      <div className="stage-number">{scene.id}</div>
+                      {isActive && <div className="stage-pulse" />}
+                      {isCompleted && (
+                        <svg className="stage-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M20 6L9 17l-5-5"/>
+                        </svg>
                       )}
+                    </div>
+                    <div className="stage-content">
+                      <h4>{scene.title}</h4>
+                      <p>{scene.text}</p>
+                    </div>
+                    {isActive && (
+                      <div className="stage-progress">
+                        <div className="stage-progress-bar" />
+                      </div>
+                    )}
+                  </div>
+                  {index < scenes.length - 1 && (
+                    <div className="pipeline-connector">
+                      <div className={`connector-line ${isCompleted ? 'active' : ''} ${activeScene > scene.id ? 'completed' : ''}`}>
+                        {activeScene > scene.id && (
+                          <div className="data-flow" />
+                        )}
+                      </div>
                     </div>
                   )}
                 </React.Fragment>
-              ))}
-            </div>
-
-            <div className="visualization-panels">
-              <div className="viz-panel">
-                <span className="viz-label">AI Model Activity</span>
-                <NeuralNetwork isActive={activeScene === 3} />
-              </div>
-
-              <div className="viz-panel map-panel">
-                <span className="viz-label">AMR Hotspots</span>
-                <AfricaMap 
-                  activeScene={activeScene} 
-                  onCountryClick={handleCountryClick}
-                  selectedCountry={selectedCountry}
-                />
-              </div>
-
-              <div className="viz-panel metrics-panel">
-                <span className="viz-label">Live Metrics</span>
-                <div className="metrics-grid">
-                  <div className="metric">
-                    <motion.span className="metric-value" key={activeScene}
-                      initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                    >
-                      {activeScene >= 3 ? '12,847' : '---'}
-                    </motion.span>
-                    <span className="metric-label">Predictions/day</span>
-                  </div>
-                  <div className="metric">
-                    <span className="metric-value">96.2%</span>
-                    <span className="metric-label">AI Accuracy</span>
-                  </div>
-                  <div className="metric">
-                    <motion.span className="metric-value"
-                      style={{ color: activeScene >= 4 ? '#EF4444' : '#5EC4D5' }}
-                    >
-                      {activeScene >= 4 ? '3' : '0'}
-                    </motion.span>
-                    <span className="metric-label">Active Alerts</span>
-                  </div>
-                  <div className="metric">
-                    <span className="metric-value">45</span>
-                    <span className="metric-label">Connected Sites</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Time-series chart overlay */}
-            <AnimatePresence>
-              {selectedCountry && (
-                <TrendChart 
-                  country={selectedCountry} 
-                  onClose={() => setSelectedCountry(null)} 
-                />
-              )}
-            </AnimatePresence>
+              );
+            })}
           </div>
-        </div>
 
-        <div className="pipeline-caption">
-          <span>Hospitals</span>
-          <span className="caption-arrow">&rarr;</span>
-          <span>Secure Data</span>
-          <span className="caption-arrow">&rarr;</span>
-          <span>AI Models</span>
-          <span className="caption-arrow">&rarr;</span>
-          <span>AMR Detection</span>
-          <span className="caption-arrow">&rarr;</span>
-          <span>Health Intelligence</span>
+          {/* Technical Metrics */}
+          <div className="pipeline-metrics">
+            <div className="metric-item">
+              <div className="metric-value">{activeScene >= 3 ? '12,847' : '---'}</div>
+              <div className="metric-label">Predictions/day</div>
+            </div>
+            <div className="metric-item">
+              <div className="metric-value">96.2%</div>
+              <div className="metric-label">AI Accuracy</div>
+            </div>
+            <div className="metric-item">
+              <div className="metric-value">{activeScene >= 4 ? '3' : '0'}</div>
+              <div className="metric-label">Active Alerts</div>
+            </div>
+            <div className="metric-item">
+              <div className="metric-value">45</div>
+              <div className="metric-label">Connected Sites</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
-}
+});
+
+export default MedikalPipeline;
