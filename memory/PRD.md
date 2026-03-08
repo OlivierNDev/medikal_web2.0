@@ -19,18 +19,19 @@ Redesign Medikal Africa website from 27 pages to 4 core pages as an ultra-minima
 
 ## What's Been Implemented
 
-### January 2026 - v4 Animated Pipeline
-- [x] Created sophisticated 5-scene animated pipeline visualization
-- [x] Scene 1: Hospital Data Generation (prescriptions, lab tests, imaging, symptoms)
-- [x] Scene 2: Secure Data Pipeline (AES-256, TLS 1.3, HIPAA, Anonymized)
-- [x] Scene 3: AI Analysis Layer with neural network visualization
-- [x] Scene 4: Resistance Detection with Africa map hotspots
-- [x] Scene 5: Intelligence Dashboard with live metrics
-- [x] Auto-advancing scenes (5 second intervals)
-- [x] Clickable scene indicators
-- [x] Data packets flowing between nodes
-- [x] Live metrics panel (predictions, accuracy, alerts, sites)
-- [x] Mobile responsive dark theme section
+### January 2026 - v5 Interactive Map Tooltips
+- [x] Added interactive hover functionality to Africa map hotspots
+- [x] Detailed AMR data per country:
+  - Kenya: 45% resistance, E. coli, Ciprofloxacin/Ampicillin affected
+  - Uganda: 28% resistance, S. aureus, Methicillin affected
+  - Nigeria: 67% resistance (HIGH RISK), K. pneumoniae, Carbapenems affected
+  - Rwanda: 38% resistance (decreasing), P. aeruginosa
+  - South Africa: 31% resistance, A. baumannii
+- [x] Tooltips show: risk level badge, resistance rate, trend indicator
+- [x] Tooltips show: primary pathogen, affected antibiotics tags
+- [x] Tooltips show: connected facilities, active alerts, last update time
+- [x] Added map legend (Low/Moderate/High color coding)
+- [x] Added "Hover over hotspots for details" instruction
 
 ### Key Requirements
 - Light design (not dark)
