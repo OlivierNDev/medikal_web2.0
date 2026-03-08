@@ -1,0 +1,435 @@
+/* Medikal Pipeline Animation Styles */
+/* Dark theme for this section */
+
+.pipeline-section {
+  background: #0F1117;
+  padding: 6rem 2rem;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pipeline-container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header */
+.pipeline-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.pipeline-header h2 {
+  color: #FFFFFF;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Main visualization */
+.pipeline-visualization {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .pipeline-visualization {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scene info panel */
+.scene-info {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+}
+
+.scene-content {
+  min-height: 200px;
+}
+
+.scene-number {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5EC4D5;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.scene-info h3 {
+  color: #FFFFFF;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.scene-info p {
+  color: #979797;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.data-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.data-tag {
+  padding: 0.375rem 0.75rem;
+  background: rgba(94, 196, 213, 0.1);
+  border: 1px solid rgba(94, 196, 213, 0.2);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #5EC4D5;
+}
+
+/* Scene indicators */
+.scene-indicators {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.indicator {
+  width: 32px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.indicator.active {
+  background: #5EC4D5;
+}
+
+/* Animation panel */
+.animation-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Pipeline flow */
+.pipeline-flow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .pipeline-flow {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* Pipeline node */
+.pipeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  min-width: 100px;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.pipeline-node:hover {
+  border-color: rgba(94, 196, 213, 0.3);
+  background: rgba(94, 196, 213, 0.05);
+}
+
+.pipeline-node.active {
+  border-color: #5EC4D5;
+  background: rgba(94, 196, 213, 0.1);
+  box-shadow: 0 0 30px rgba(94, 196, 213, 0.2);
+}
+
+.node-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0F1117;
+  border: 1px solid rgba(94, 196, 213, 0.3);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #5EC4D5;
+}
+
+.pipeline-node.active .node-icon {
+  background: #5EC4D5;
+  color: #0F1117;
+}
+
+.node-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.node-stats {
+  font-size: 0.625rem;
+  color: #5EC4D5;
+  background: rgba(94, 196, 213, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Pipeline connector */
+.pipeline-connector {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  min-width: 40px;
+  margin: 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .pipeline-connector {
+    width: 2px;
+    height: 30px;
+    min-width: unset;
+    margin: 0;
+  }
+}
+
+.connector-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(94, 196, 213, 0.3), transparent);
+}
+
+/* Data packet */
+.data-packet {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  top: -3px;
+}
+
+@media (max-width: 768px) {
+  .data-packet {
+    top: unset;
+    left: -3px;
+  }
+}
+
+/* Visualization panels */
+.visualization-panels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 968px) {
+  .visualization-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
+.viz-panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.viz-label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #979797;
+}
+
+/* Neural network */
+.neural-network {
+  width: 100%;
+  height: 150px;
+  margin-top: 1.5rem;
+}
+
+/* Africa map */
+.africa-map {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  margin-top: 1.5rem;
+}
+
+.map-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Map hotspot */
+.map-hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.hotspot-pulse {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--risk-color);
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.hotspot-core {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--risk-color);
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  box-shadow: 0 0 10px var(--risk-color);
+}
+
+.hotspot-label {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  white-space: nowrap;
+  background: rgba(15, 17, 23, 0.8);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+  50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+}
+
+/* Metrics panel */
+.metrics-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.metric {
+  text-align: center;
+}
+
+.metric-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #5EC4D5;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 0.25rem;
+}
+
+.metric-label {
+  font-size: 0.625rem;
+  color: #979797;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Pipeline caption */
+.pipeline-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: wrap;
+}
+
+.pipeline-caption span {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #979797;
+}
+
+.caption-arrow {
+  color: #5EC4D5 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pipeline-section {
+    padding: 4rem 1rem;
+  }
+
+  .pipeline-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .scene-info {
+    padding: 1.5rem;
+  }
+
+  .visualization-panels {
+    gap: 1rem;
+  }
+
+  .viz-panel {
+    padding: 1rem;
+  }
+}

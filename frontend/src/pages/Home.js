@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MedikalPipeline from '../components/MedikalPipeline';
 import nvidiaLogo from '../assets/nvidia-logo.png';
 import africaCdcLogo from '../assets/africa-cdc-logo.png';
 import amrLogo from '../assets/amr-logo.png';
@@ -17,24 +18,16 @@ function Home() {
             <p>Detecting antimicrobial resistance patterns and supporting clinical decisions across African health systems.</p>
             <div className="hero-cta">
               <Link to="/request-demo" className="btn-primary" data-testid="hero-cta-primary">Request Demo</Link>
-              <a href="#video" className="btn-secondary" data-testid="hero-cta-secondary">Watch Demo</a>
+              <a href="#pipeline" className="btn-secondary" data-testid="hero-cta-secondary">See How It Works</a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="video-section" id="video" data-testid="video-section">
-        <div className="container">
-          <div className="video-wrapper">
-            <video controls data-testid="demo-video">
-              <source src="/assets/demo-video.mp4" type="video/mp4" />
-              Your browser does not support video.
-            </video>
-          </div>
-          <p className="video-caption">See how Medikal detects resistance patterns in real-time</p>
-        </div>
-      </section>
+      {/* Animated Pipeline Section */}
+      <div id="pipeline">
+        <MedikalPipeline />
+      </div>
 
       {/* Stats */}
       <section className="stats-section" data-testid="stats-section">
