@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './MedikalPipeline.css';
 
 const scenes = [
@@ -116,18 +117,18 @@ const DataPacket = ({ delay, color }) => (
 const PipelineNode = ({ label, icon, isActive, stats }) => (
   <motion.div 
     className={`pipeline-node ${isActive ? 'active' : ''}`}
-    whileHover={{ scale: 1.05 }}
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.3, ease: "easeOut" }}
   >
     <div className="node-icon">{icon}</div>
     <div className="node-label">{label}</div>
     {isActive && stats && (
       <motion.div 
         className="node-stats"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
       >
         {stats}
       </motion.div>
@@ -205,9 +206,9 @@ const AfricaMap = ({ activeScene, onCountryClick, selectedCountry }) => {
             left: `${spot.x}%`, top: `${spot.y}%`,
             '--risk-color': riskColors[spot.risk]
           }}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: spot.delay, duration: 0.5 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: spot.delay, duration: 0.3, ease: "easeOut" }}
           onMouseEnter={() => setHoveredSpot(spot.id)}
           onMouseLeave={() => setHoveredSpot(null)}
           onClick={() => onCountryClick(spot.label)}
@@ -221,10 +222,10 @@ const AfricaMap = ({ activeScene, onCountryClick, selectedCountry }) => {
             {hoveredSpot === spot.id && !selectedCountry && (
               <motion.div 
                 className="hotspot-tooltip"
-                initial={{ opacity: 0, y: 10, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
               >
                 <div className="tooltip-header">
                   <span className="tooltip-country">{spot.label}</span>
@@ -323,9 +324,10 @@ const TrendChart = ({ country, onClose }) => {
   return (
     <motion.div 
       className="trend-chart-panel"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       data-testid="trend-chart-panel"
     >
       <div className="trend-chart-header">
@@ -406,26 +408,30 @@ const NeuralNetwork = ({ isActive }) => {
       {connections.map(([from, to], i) => (
         <motion.line key={i}
           x1={nodes[from].x} y1={nodes[from].y} x2={nodes[to].x} y2={nodes[to].y}
-          stroke="#979797" strokeWidth="0.3"
+          stroke="#5EC4D5" strokeWidth="0.3"
           initial={{ opacity: 0 }}
-          animate={{ opacity: isActive ? 0.4 : 0.1 }}
-          transition={{ delay: i * 0.05 }}
+          animate={{ opacity: isActive ? 0.3 : 0.1 }}
+          transition={{ delay: i * 0.03, duration: 0.3, ease: "easeOut" }}
         />
       ))}
       {nodes.map((node, i) => (
         <motion.circle key={i}
           cx={node.x} cy={node.y} r="3"
-          fill="#1A1A1A" stroke="#979797" strokeWidth="0.5"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: i * 0.05 }}
+          fill="#0A0A0A" stroke="#5EC4D5" strokeWidth="0.5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: i * 0.03, duration: 0.3, ease: "easeOut" }}
         />
       ))}
       {isActive && (
-        <motion.circle r="2" fill="#FFFFFF"
-          initial={{ cx: 10, cy: 40 }}
-          animate={{ cx: [10, 35, 60, 85], cy: [40, 50, 45, 45] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+        <motion.circle r="2" fill="#5EC4D5"
+          initial={{ cx: 10, cy: 40, opacity: 0 }}
+          animate={{ 
+            cx: [10, 35, 60, 85], 
+            cy: [40, 50, 45, 45],
+            opacity: [0, 1, 1, 0]
+          }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         />
       )}
     </svg>
