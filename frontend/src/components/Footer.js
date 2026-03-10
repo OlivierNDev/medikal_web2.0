@@ -1,60 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = React.memo(function Footer() {
-  const [lastSync, setLastSync] = useState(2); // Start at 2 minutes
-
-  useEffect(() => {
-    // Set initial time based on when component mounts
-    // Start countdown immediately
-    const updateSync = () => {
-      setLastSync(prev => {
-        if (prev <= 1) {
-          // Reset to 2 minutes after reaching 1 or less
-          return 2;
-        }
-        return prev - 1;
-      });
-    };
-
-    // Update every minute (60000ms = 1 minute)
-    const interval = setInterval(updateSync, 60000);
-
-    // Also update after 1 minute to show first change
-    const timeout = setTimeout(updateSync, 60000);
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  const getSyncText = () => {
-    if (lastSync === 1) {
-      return 'Last Sync: 1 min ago';
-    }
-    return `Last Sync: ${lastSync} min ago`;
-  };
-
   return (
     <footer className="footer" data-testid="footer">
       <div className="container">
-        {/* Top section with status bar */}
-        <div className="footer-status-bar" data-testid="footer-status">
-          <div className="status-item">
-            <span className="status-dot active" />
-            <span>API Status: Operational</span>
-          </div>
-          <div className="status-item">
-            <span className="status-dot active" />
-            <span>45 Facilities Connected</span>
-          </div>
-          <div className="status-item">
-            <span className="status-dot active" />
-            <span>{getSyncText()}</span>
-          </div>
-        </div>
-
         <div className="footer-grid">
           <div className="footer-brand">
             <p>AI-powered clinical intelligence for antimicrobial resistance detection across Africa.</p>
