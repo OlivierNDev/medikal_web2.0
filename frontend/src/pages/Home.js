@@ -9,6 +9,7 @@ import nvidiaLogo from '../assets/nvidia-logo.png';
 import africaCdcLogo from '../assets/africa-cdc-logo.png';
 import amrLogo from '../assets/amr-logo.png';
 import robolabsLogo from '../assets/robolabs-logo.png';
+import africanImpactLogo from '../assets/african-impact-initiative-logo.png';
 
 const Home = React.memo(function Home() {
   return (
@@ -108,6 +109,9 @@ const Home = React.memo(function Home() {
               </div>
               <div className="partner-item">
                 <img src={robolabsLogo} alt="RoboLabs" className="partner-logo" loading="lazy" />
+              </div>
+              <div className="partner-item">
+                <img src={africanImpactLogo} alt="African Impact Initiative" className="partner-logo" loading="lazy" />
               </div>
             </div>
           </div>
