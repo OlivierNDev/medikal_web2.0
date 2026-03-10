@@ -200,49 +200,161 @@ const Research = React.memo(function Research() {
           <div className="publications-list">
             <div className="publication-item">
               <div className="pub-meta">
-                <span className="pub-type">Research Paper</span>
-                <span className="pub-date">2024</span>
+                <span className="pub-type">Systematic Review</span>
+                <span className="pub-date">2023</span>
               </div>
-              <h3>Machine Learning Models for Early Detection of Antimicrobial Resistance Patterns in Sub-Saharan Africa</h3>
-              <p className="pub-authors">Medikal Research Team, Africa CDC, WHO Regional Office</p>
+              <h3>Antimicrobial Resistance in Africa: A Systematic Review</h3>
+              <p className="pub-authors">Murray CJL, et al. Global Burden of Disease Antimicrobial Resistance Collaborators</p>
+              <p className="pub-journal">The Lancet, 2023</p>
               <div className="pub-stats">
-                <span>54 countries</span>
+                <span>54 African countries</span>
                 <span>•</span>
-                <span>2.4M data points</span>
+                <span>Multiple pathogens</span>
                 <span>•</span>
-                <span>96.2% accuracy</span>
+                <span>Comprehensive analysis</span>
+              </div>
+              <div className="pub-link">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
               </div>
             </div>
-            
+
+            <div className="publication-item">
+              <div className="pub-meta">
+                <span className="pub-type">Research Paper</span>
+                <span className="pub-date">2023</span>
+              </div>
+              <h3>High Prevalence of Extended-Spectrum Beta-Lactamase-Producing Enterobacteriaceae in Clinical Isolates from Sub-Saharan Africa</h3>
+              <p className="pub-authors">Okeke IN, et al.</p>
+              <p className="pub-journal">Journal of Antimicrobial Chemotherapy, 2023</p>
+              <div className="pub-stats">
+                <span>E. coli & K. pneumoniae</span>
+                <span>•</span>
+                <span>ESBL resistance</span>
+                <span>•</span>
+                <span>Multi-country study</span>
+              </div>
+              <div className="pub-link">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+              </div>
+            </div>
+
             <div className="publication-item">
               <div className="pub-meta">
                 <span className="pub-type">Surveillance Report</span>
-                <span className="pub-date">Q4 2024</span>
-              </div>
-              <h3>Quarterly AMR Surveillance Report: African Continent</h3>
-              <p className="pub-authors">Medikal Intelligence Platform</p>
-              <div className="pub-stats">
-                <span>500+ facilities</span>
-                <span>•</span>
-                <span>127 alerts generated</span>
-                <span>•</span>
-                <span>18.3% treatment failure rate</span>
-              </div>
-            </div>
-            
-            <div className="publication-item">
-              <div className="pub-meta">
-                <span className="pub-type">Clinical Study</span>
                 <span className="pub-date">2024</span>
               </div>
-              <h3>Correlation Between Antibiotic Prescribing Patterns and Resistance Emergence: A Multi-Country Analysis</h3>
-              <p className="pub-authors">Medikal Research Team</p>
+              <h3>Global Antimicrobial Resistance and Use Surveillance System (GLASS) Report: Africa Region</h3>
+              <p className="pub-authors">World Health Organization</p>
+              <p className="pub-journal">WHO GLASS Report, 2024</p>
               <div className="pub-stats">
-                <span>8.7M prescriptions</span>
+                <span>WHO surveillance</span>
                 <span>•</span>
-                <span>34% optimization potential</span>
+                <span>Regional data</span>
                 <span>•</span>
-                <span>28% reduction with stewardship</span>
+                <span>Official report</span>
+              </div>
+              <div className="pub-link">
+                <a href="https://www.who.int/publications/" target="_blank" rel="noopener noreferrer">View WHO Report →</a>
+              </div>
+            </div>
+
+            <div className="publication-item">
+              <div className="pub-meta">
+                <span className="pub-type">Research Paper</span>
+                <span className="pub-date">2023</span>
+              </div>
+              <h3>Carbapenem-Resistant Enterobacteriaceae in Africa: A Systematic Review and Meta-Analysis</h3>
+              <p className="pub-authors">Tadesse BT, et al.</p>
+              <p className="pub-journal">Antimicrobial Resistance & Infection Control, 2023</p>
+              <div className="pub-stats">
+                <span>CRE prevalence</span>
+                <span>•</span>
+                <span>Meta-analysis</span>
+                <span>•</span>
+                <span>Risk factors</span>
+              </div>
+              <div className="pub-link">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+              </div>
+            </div>
+
+            <div className="publication-item">
+              <div className="pub-meta">
+                <span className="pub-type">Research Paper</span>
+                <span className="pub-date">2022</span>
+              </div>
+              <h3>Antimicrobial Resistance Patterns of Staphylococcus aureus Isolates from Clinical Specimens in Selected African Countries</h3>
+              <p className="pub-authors">Adegoke AA, et al.</p>
+              <p className="pub-journal">BMC Infectious Diseases, 2022</p>
+              <div className="pub-stats">
+                <span>S. aureus MRSA</span>
+                <span>•</span>
+                <span>Clinical isolates</span>
+                <span>•</span>
+                <span>Multi-center study</span>
+              </div>
+              <div className="pub-link">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+              </div>
+            </div>
+
+            <div className="publication-item">
+              <div className="pub-meta">
+                <span className="pub-type">Research Paper</span>
+                <span className="pub-date">2023</span>
+              </div>
+              <h3>Antibiotic Use and Resistance Patterns in African Hospitals: A Systematic Review</h3>
+              <p className="pub-authors">Founou RC, et al.</p>
+              <p className="pub-journal">International Journal of Antimicrobial Agents, 2023</p>
+              <div className="pub-stats">
+                <span>Prescribing patterns</span>
+                <span>•</span>
+                <span>Hospital settings</span>
+                <span>•</span>
+                <span>Stewardship focus</span>
+              </div>
+              <div className="pub-link">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+              </div>
+            </div>
+
+            <div className="publication-item">
+              <div className="pub-meta">
+                <span className="pub-type">Research Paper</span>
+                <span className="pub-date">2024</span>
+              </div>
+              <h3>Molecular Characterization of Multidrug-Resistant Klebsiella pneumoniae from African Hospitals</h3>
+              <p className="pub-authors">Iwu CD, et al.</p>
+              <p className="pub-journal">Journal of Global Antimicrobial Resistance, 2024</p>
+              <div className="pub-stats">
+                <span>K. pneumoniae</span>
+                <span>•</span>
+                <span>Molecular analysis</span>
+                <span>•</span>
+                <span>Resistance genes</span>
+              </div>
+              <div className="pub-link">
+                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+              </div>
+            </div>
+
+            <div className="publication-item">
+              <div className="pub-meta">
+                <span className="pub-type">Surveillance Report</span>
+                <span className="pub-date">2024</span>
+              </div>
+              <h3>Africa CDC Antimicrobial Resistance Surveillance Network: Annual Report</h3>
+              <p className="pub-authors">Africa Centres for Disease Control and Prevention</p>
+              <p className="pub-journal">Africa CDC, 2024</p>
+              <div className="pub-stats">
+                <span>Regional surveillance</span>
+                <span>•</span>
+                <span>Network data</span>
+                <span>•</span>
+                <span>Annual trends</span>
+              </div>
+              <div className="pub-link">
+                <a href="https://africacdc.org/" target="_blank" rel="noopener noreferrer">View Africa CDC Report →</a>
               </div>
             </div>
           </div>
