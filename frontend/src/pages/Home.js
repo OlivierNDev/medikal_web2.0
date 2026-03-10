@@ -2,6 +2,9 @@ import React, { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 // Lazy load heavy animation component
 const MedikalPipeline = lazy(() => import('../components/MedikalPipeline'));
+import BackgroundGrid from '../components/BackgroundGrid';
+import MedicalMicrobes from '../components/MedicalMicrobes';
+import DNAStrand from '../components/DNAStrand';
 import nvidiaLogo from '../assets/nvidia-logo.png';
 import africaCdcLogo from '../assets/africa-cdc-logo.png';
 import amrLogo from '../assets/amr-logo.png';
@@ -10,6 +13,12 @@ import robolabsLogo from '../assets/robolabs-logo.png';
 const Home = React.memo(function Home() {
   return (
     <>
+      {/* Background Elements */}
+      <BackgroundGrid variant="hero" />
+      <MedicalMicrobes count={4} variant="hero" />
+      <DNAStrand position="left" opacity={0.08} />
+      <DNAStrand position="right" opacity={0.08} />
+
       {/* Hero */}
       <section className="hero" data-testid="hero-section">
         <div className="container">
@@ -34,6 +43,7 @@ const Home = React.memo(function Home() {
 
       {/* Features */}
       <section className="features-section" data-testid="features-section">
+        <MedicalMicrobes count={2} variant="section" />
         <div className="container">
           <div className="section-header">
             <h2>Platform Capabilities</h2>

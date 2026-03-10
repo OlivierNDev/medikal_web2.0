@@ -1,0 +1,71 @@
+.dna-strand {
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dna-strand-left {
+  left: 5%;
+}
+
+.dna-strand-right {
+  right: 5%;
+}
+
+.dna-strand svg {
+  width: 100%;
+  height: 100%;
+  animation: dna-drift 20s ease-in-out infinite;
+}
+
+.dna-helix-1 {
+  animation: dna-rotate-1 15s linear infinite;
+}
+
+.dna-helix-2 {
+  animation: dna-rotate-2 15s linear infinite;
+}
+
+@keyframes dna-drift {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100px);
+  }
+}
+
+@keyframes dna-rotate-1 {
+  0% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes dna-rotate-2 {
+  0% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@media (max-width: 768px) {
+  .dna-strand {
+    width: 120px;
+    opacity: 0.5;
+  }
+}

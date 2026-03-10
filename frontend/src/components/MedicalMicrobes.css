@@ -1,0 +1,42 @@
+.medical-microbes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.microbe-svg {
+  position: absolute;
+  opacity: 0.3;
+  animation: microbe-float infinite ease-in-out;
+}
+
+@keyframes microbe-float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.2;
+  }
+  25% {
+    transform: translate(10px, -15px) rotate(90deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-10px, -20px) rotate(180deg);
+    opacity: 0.25;
+  }
+  75% {
+    transform: translate(15px, -10px) rotate(270deg);
+    opacity: 0.3;
+  }
+}
+
+.medical-microbes-hero .microbe-svg {
+  opacity: 0.4;
+}
+
+.medical-microbes-section .microbe-svg {
+  opacity: 0.15;
+}
