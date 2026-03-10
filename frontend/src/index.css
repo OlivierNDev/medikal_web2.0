@@ -855,14 +855,53 @@ p {
   font-family: 'Inter', -apple-system, sans-serif;
 }
 
-.partners-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2rem;
+/* Partners Slider */
+.partners-slider-wrapper {
   width: 100%;
-  max-width: 1200px;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+.partners-slider-track {
+  display: flex;
+  gap: 2rem;
+  width: fit-content;
+  animation: slidePartners 30s linear infinite;
+  will-change: transform;
+}
+
+.partners-slider-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes slidePartners {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partners-grid {
+  display: flex;
+  gap: 2rem;
+  width: fit-content;
   align-items: stretch;
-  justify-items: stretch;
 }
 
 .partner-item {
@@ -870,8 +909,10 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  flex-shrink: 0;
+  width: 200px;
+  min-width: 200px;
+  height: 100px;
   padding: 1.5rem 2rem;
   background: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -941,19 +982,26 @@ p {
 }
 
 @media (max-width: 1024px) {
-  .partners-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem 1.5rem;
+  .partner-item {
+    width: 180px;
+    min-width: 180px;
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .partner-logo {
+    width: 120px;
+    height: 40px;
+  }
+  
+  .partners-slider-track {
+    animation-duration: 25s;
   }
 }
 
 @media (max-width: 768px) {
-  .partners-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem 1.5rem;
-  }
-  
   .partner-item {
+    width: 160px;
+    min-width: 160px;
     padding: 1.25rem 1.5rem;
   }
   
@@ -966,6 +1014,11 @@ p {
     gap: 2rem;
   }
   
+  .partners-slider-track {
+    gap: 1.5rem;
+    animation-duration: 20s;
+  }
+  
   .partner-tooltip {
     font-size: 0.6875rem;
     padding: 0.4rem 0.6rem;
@@ -976,12 +1029,9 @@ p {
 }
 
 @media (max-width: 480px) {
-  .partners-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 1rem;
-  }
-  
   .partner-item {
+    width: 140px;
+    min-width: 140px;
     padding: 1rem 1.25rem;
   }
   
@@ -992,6 +1042,11 @@ p {
   
   .partners-label {
     font-size: 0.625rem;
+  }
+  
+  .partners-slider-track {
+    gap: 1.25rem;
+    animation-duration: 18s;
   }
   
   .partner-tooltip {

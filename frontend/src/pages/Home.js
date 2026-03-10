@@ -96,22 +96,42 @@ const Home = React.memo(function Home() {
         <div className="container">
           <div className="partners-content">
             <div className="partners-label">TRUSTED BY</div>
-            <div className="partners-grid" data-testid="partners-grid">
-              <div className="partner-item partner-item-nvidia">
-                <img src={nvidiaLogo} alt="NVIDIA" className="partner-logo" loading="lazy" />
-                <div className="partner-tooltip">We've partnered with NVIDIA through Inception Program</div>
-              </div>
-              <div className="partner-item">
-                <img src={africaCdcLogo} alt="Africa CDC" className="partner-logo" loading="lazy" />
-              </div>
-              <div className="partner-item">
-                <img src={amrLogo} alt="AMR Initiative Rwanda" className="partner-logo" loading="lazy" />
-              </div>
-              <div className="partner-item">
-                <img src={robolabsLogo} alt="RoboLabs" className="partner-logo" loading="lazy" />
-              </div>
-              <div className="partner-item">
-                <img src={africanImpactLogo} alt="African Impact Initiative" className="partner-logo" loading="lazy" />
+            <div className="partners-slider-wrapper">
+              <div className="partners-slider-track" data-testid="partners-grid">
+                {/* First set of logos */}
+                <div className="partner-item partner-item-nvidia">
+                  <img src={nvidiaLogo} alt="NVIDIA" className="partner-logo" loading="lazy" />
+                  <div className="partner-tooltip">We've partnered with NVIDIA through Inception Program</div>
+                </div>
+                <div className="partner-item">
+                  <img src={africaCdcLogo} alt="Africa CDC" className="partner-logo" loading="lazy" />
+                </div>
+                <div className="partner-item">
+                  <img src={amrLogo} alt="AMR Initiative Rwanda" className="partner-logo" loading="lazy" />
+                </div>
+                <div className="partner-item">
+                  <img src={robolabsLogo} alt="RoboLabs" className="partner-logo" loading="lazy" />
+                </div>
+                <div className="partner-item">
+                  <img src={africanImpactLogo} alt="African Impact Initiative" className="partner-logo" loading="lazy" />
+                </div>
+                {/* Duplicated set for seamless loop */}
+                <div className="partner-item partner-item-nvidia">
+                  <img src={nvidiaLogo} alt="NVIDIA" className="partner-logo" loading="lazy" />
+                  <div className="partner-tooltip">We've partnered with NVIDIA through Inception Program</div>
+                </div>
+                <div className="partner-item">
+                  <img src={africaCdcLogo} alt="Africa CDC" className="partner-logo" loading="lazy" />
+                </div>
+                <div className="partner-item">
+                  <img src={amrLogo} alt="AMR Initiative Rwanda" className="partner-logo" loading="lazy" />
+                </div>
+                <div className="partner-item">
+                  <img src={robolabsLogo} alt="RoboLabs" className="partner-logo" loading="lazy" />
+                </div>
+                <div className="partner-item">
+                  <img src={africanImpactLogo} alt="African Impact Initiative" className="partner-logo" loading="lazy" />
+                </div>
               </div>
             </div>
           </div>
