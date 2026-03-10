@@ -534,26 +534,6 @@ const MedikalPipeline = React.memo(function MedikalPipeline() {
               );
             })}
           </div>
-
-          {/* Technical Metrics */}
-          <div className="pipeline-metrics">
-            <div className="metric-item">
-              <div className="metric-value">{activeScene >= 3 ? '12,847' : '---'}</div>
-              <div className="metric-label">Predictions/day</div>
-            </div>
-            <div className="metric-item">
-              <div className="metric-value">96.2%</div>
-              <div className="metric-label">AI Accuracy</div>
-            </div>
-            <div className="metric-item">
-              <div className="metric-value">{activeScene >= 4 ? '3' : '0'}</div>
-              <div className="metric-label">Active Alerts</div>
-            </div>
-            <div className="metric-item">
-              <div className="metric-value">45</div>
-              <div className="metric-label">Connected Sites</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
