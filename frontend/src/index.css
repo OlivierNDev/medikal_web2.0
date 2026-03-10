@@ -102,6 +102,28 @@ p {
   z-index: 1;
 }
 
+/* Wider containers for large screens */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+    padding: 0 3rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1600px;
+    padding: 0 4rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1800px;
+    padding: 0 5rem;
+  }
+}
+
 /* Navigation */
 .nav {
   position: fixed;
@@ -120,6 +142,20 @@ p {
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  gap: 2rem;
+}
+
+/* More spacing on larger screens */
+@media (min-width: 1400px) {
+  .nav-container {
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .nav-container {
+    gap: 4rem;
+  }
 }
 
 .nav-logo {
@@ -133,12 +169,40 @@ p {
   gap: 2rem;
 }
 
+/* Increased spacing for larger screens */
+@media (min-width: 1400px) {
+  .nav-links {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .nav-links {
+    gap: 3rem;
+  }
+}
+
 .nav-link {
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--gray);
   text-decoration: none;
   transition: color 0.2s;
+  padding: 0.5rem 0;
+}
+
+@media (min-width: 1400px) {
+  .nav-link {
+    font-size: 0.9375rem;
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem;
+  }
 }
 
 .nav-link:hover, .nav-link.active {
@@ -156,6 +220,20 @@ p {
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 8px rgba(94, 196, 213, 0.2);
+}
+
+@media (min-width: 1400px) {
+  .nav-cta {
+    padding: 0.875rem 2rem;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .nav-cta {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+  }
 }
 
 .nav-cta:hover {
@@ -281,6 +359,18 @@ p {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+}
+
+@media (min-width: 1400px) {
+  .hero-content {
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .hero-content {
+    max-width: 1000px;
+  }
 }
 
 .hero-tag {
@@ -596,6 +686,18 @@ p {
   max-width: 700px;
   margin: 0 auto 5rem;
   position: relative;
+}
+
+@media (min-width: 1400px) {
+  .section-header {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .section-header {
+    max-width: 900px;
+  }
 }
 
 .section-header h2 {
@@ -916,6 +1018,24 @@ p {
   gap: 2rem;
   width: fit-content;
   align-items: stretch;
+}
+
+@media (min-width: 1400px) {
+  .partners-grid {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .partners-grid {
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .partners-grid {
+    gap: 3.5rem;
+  }
 }
 
 .partner-item {
