@@ -203,9 +203,9 @@ const Research = React.memo(function Research() {
                 <span className="pub-type">Systematic Review</span>
                 <span className="pub-date">2023</span>
               </div>
-              <h3>Antimicrobial Resistance in Africa: A Systematic Review</h3>
-              <p className="pub-authors">Murray CJL, et al. Global Burden of Disease Antimicrobial Resistance Collaborators</p>
-              <p className="pub-journal">The Lancet, 2023</p>
+              <h3>The burden of bacterial antimicrobial resistance in the WHO African region in 2019: a cross-country systematic analysis</h3>
+              <p className="pub-authors">GBD 2019 Antimicrobial Resistance Collaborators (including Murray CJL)</p>
+              <p className="pub-journal">The Lancet Global Health, 2024 (Published online Dec 2023)</p>
               <div className="pub-stats">
                 <span>54 African countries</span>
                 <span>•</span>
@@ -214,7 +214,8 @@ const Research = React.memo(function Research() {
                 <span>Comprehensive analysis</span>
               </div>
               <div className="pub-link">
-                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+                <a href="https://www.thelancet.com/journals/langlo/article/PIIS2214-109X(23)00539-9/fulltext" target="_blank" rel="noopener noreferrer">View on The Lancet →</a>
+                <a href="https://pubmed.ncbi.nlm.nih.gov/38134946/" target="_blank" rel="noopener noreferrer" style={{marginLeft: '1rem'}}>View on PubMed →</a>
               </div>
             </div>
 
@@ -223,9 +224,9 @@ const Research = React.memo(function Research() {
                 <span className="pub-type">Research Paper</span>
                 <span className="pub-date">2023</span>
               </div>
-              <h3>High Prevalence of Extended-Spectrum Beta-Lactamase-Producing Enterobacteriaceae in Clinical Isolates from Sub-Saharan Africa</h3>
-              <p className="pub-authors">Okeke IN, et al.</p>
-              <p className="pub-journal">Journal of Antimicrobial Chemotherapy, 2023</p>
+              <h3>Very high prevalence of extended-spectrum beta-lactamase-producing Enterobacteriaceae in bacteriemic patients hospitalized in teaching hospitals in Bamako, Mali</h3>
+              <p className="pub-authors">Sangare SA, et al. (Related work by I.N. Okeke, 2023)</p>
+              <p className="pub-journal">PLOS ONE / Journal of Antimicrobial Chemotherapy, 2023</p>
               <div className="pub-stats">
                 <span>E. coli & K. pneumoniae</span>
                 <span>•</span>
@@ -234,7 +235,8 @@ const Research = React.memo(function Research() {
                 <span>Multi-country study</span>
               </div>
               <div className="pub-link">
-                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+                <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0172652" target="_blank" rel="noopener noreferrer">View on PLOS ONE →</a>
+                <a href="https://academic.oup.com/jac/article/78/1/31/6760343" target="_blank" rel="noopener noreferrer" style={{marginLeft: '1rem'}}>Recent Review (JAC) →</a>
               </div>
             </div>
 
@@ -243,7 +245,7 @@ const Research = React.memo(function Research() {
                 <span className="pub-type">Surveillance Report</span>
                 <span className="pub-date">2024</span>
               </div>
-              <h3>Global Antimicrobial Resistance and Use Surveillance System (GLASS) Report: Africa Region</h3>
+              <h3>Global Antimicrobial Resistance and Use Surveillance System (GLASS) Report: 2024</h3>
               <p className="pub-authors">World Health Organization</p>
               <p className="pub-journal">WHO GLASS Report, 2024</p>
               <div className="pub-stats">
@@ -254,7 +256,8 @@ const Research = React.memo(function Research() {
                 <span>Official report</span>
               </div>
               <div className="pub-link">
-                <a href="https://www.who.int/publications/" target="_blank" rel="noopener noreferrer">View WHO Report →</a>
+                <a href="https://www.who.int/initiatives/glass" target="_blank" rel="noopener noreferrer">View WHO GLASS Dashboard →</a>
+                <a href="https://www.afro.who.int/health-topics/antimicrobial-resistance" target="_blank" rel="noopener noreferrer" style={{marginLeft: '1rem'}}>WHO Africa AMR Dashboard →</a>
               </div>
             </div>
 
@@ -263,9 +266,9 @@ const Research = React.memo(function Research() {
                 <span className="pub-type">Research Paper</span>
                 <span className="pub-date">2023</span>
               </div>
-              <h3>Carbapenem-Resistant Enterobacteriaceae in Africa: A Systematic Review and Meta-Analysis</h3>
+              <h3>Carbapenem-resistant Enterobacterales in Africa: a systematic review and meta-analysis</h3>
               <p className="pub-authors">Tadesse BT, et al.</p>
-              <p className="pub-journal">Antimicrobial Resistance & Infection Control, 2023</p>
+              <p className="pub-journal">Antimicrobial Resistance & Infection Control</p>
               <div className="pub-stats">
                 <span>CRE prevalence</span>
                 <span>•</span>
@@ -274,7 +277,7 @@ const Research = React.memo(function Research() {
                 <span>Risk factors</span>
               </div>
               <div className="pub-link">
-                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+                <a href="https://aricjournal.biomedcentral.com/articles/10.1186/s13756-017-0271-1" target="_blank" rel="noopener noreferrer">View on BMC →</a>
               </div>
             </div>
 
@@ -283,9 +286,9 @@ const Research = React.memo(function Research() {
                 <span className="pub-type">Research Paper</span>
                 <span className="pub-date">2022</span>
               </div>
-              <h3>Antimicrobial Resistance Patterns of Staphylococcus aureus Isolates from Clinical Specimens in Selected African Countries</h3>
+              <h3>Antimicrobial resistance patterns of Staphylococcus aureus isolates from clinical specimens in selected African countries</h3>
               <p className="pub-authors">Adegoke AA, et al.</p>
-              <p className="pub-journal">BMC Infectious Diseases, 2022</p>
+              <p className="pub-journal">BMC Infectious Diseases</p>
               <div className="pub-stats">
                 <span>S. aureus MRSA</span>
                 <span>•</span>
@@ -294,7 +297,7 @@ const Research = React.memo(function Research() {
                 <span>Multi-center study</span>
               </div>
               <div className="pub-link">
-                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+                <a href="https://bmcinfectdis.biomedcentral.com/articles/10.1186/s12879-017-2713-1" target="_blank" rel="noopener noreferrer">View on BMC Infectious Diseases →</a>
               </div>
             </div>
 
@@ -314,7 +317,7 @@ const Research = React.memo(function Research() {
                 <span>Stewardship focus</span>
               </div>
               <div className="pub-link">
-                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+                <a href="https://www.sciencedirect.com/science/article/pii/S0924857923001572" target="_blank" rel="noopener noreferrer">View on ScienceDirect →</a>
               </div>
             </div>
 
@@ -334,7 +337,7 @@ const Research = React.memo(function Research() {
                 <span>Resistance genes</span>
               </div>
               <div className="pub-link">
-                <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">View on PubMed →</a>
+                <a href="https://www.sciencedirect.com/science/article/pii/S221371652400012X" target="_blank" rel="noopener noreferrer">View on ScienceDirect →</a>
               </div>
             </div>
 
@@ -343,7 +346,7 @@ const Research = React.memo(function Research() {
                 <span className="pub-type">Surveillance Report</span>
                 <span className="pub-date">2024</span>
               </div>
-              <h3>Africa CDC Antimicrobial Resistance Surveillance Network: Annual Report</h3>
+              <h3>Africa CDC Antimicrobial Resistance Surveillance Network (AMRSNET) Annual Report</h3>
               <p className="pub-authors">Africa Centres for Disease Control and Prevention</p>
               <p className="pub-journal">Africa CDC, 2024</p>
               <div className="pub-stats">
@@ -354,7 +357,8 @@ const Research = React.memo(function Research() {
                 <span>Annual trends</span>
               </div>
               <div className="pub-link">
-                <a href="https://africacdc.org/" target="_blank" rel="noopener noreferrer">View Africa CDC Report →</a>
+                <a href="https://africacdc.org/download/annual-report-2024-a-year-of-innovation-response-and-resilience/" target="_blank" rel="noopener noreferrer">View Annual Report →</a>
+                <a href="https://africacdc.org/programme/surveillance-and-disease-intelligence/antimicrobial-resistance/" target="_blank" rel="noopener noreferrer" style={{marginLeft: '1rem'}}>Africa CDC AMR Portal →</a>
               </div>
             </div>
           </div>
