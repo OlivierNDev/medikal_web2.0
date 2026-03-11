@@ -5,6 +5,15 @@ import './Blog.css';
 const newsArticles = [
   {
     id: 1,
+    title: "Medikal Africa Selected for the African Impact Challenge (AIC) 2026 Bootcamp",
+    category: "Recognition & Innovation",
+    date: "February 2026",
+    excerpt: "Medikal Africa has been selected for the Health Entrepreneurship Stream (Momentum Track) of the African Impact Challenge (AIC) 2026 Bootcamp, following its recent acceptance into the NVIDIA Inception Program. This recognition highlights the growing support for Medikal's mission to strengthen healthcare systems across Africa through advanced technology and clinical intelligence.",
+    content: "Medikal Africa has been selected for the Health Entrepreneurship Stream (Momentum Track) of the African Impact Challenge (AIC) 2026 Bootcamp, following its recent acceptance into the NVIDIA Inception Program. This recognition highlights the growing support for Medikal's mission to strengthen healthcare systems across Africa through advanced technology and clinical intelligence. At Medikal Africa, we are building clinical intelligence infrastructure that helps health systems monitor antimicrobial resistance (AMR) and improve antibiotic stewardship. Through AI-driven tools and data systems, our goal is to equip healthcare providers and public health institutions with better insights to tackle one of the world's most urgent global health challenges.",
+    image: null
+  },
+  {
+    id: 2,
     title: "Medikal Africa Selected for NVIDIA Inception Program",
     category: "Technology Partnership",
     date: "February 2026",
@@ -13,7 +22,7 @@ const newsArticles = [
     image: null
   },
   {
-    id: 2,
+    id: 3,
     title: "Medikal Africa CEO Selected as Youth Digital Health Champion by Africa CDC",
     category: "Leadership & Recognition",
     date: "December 2025",
@@ -22,7 +31,7 @@ const newsArticles = [
     image: null
   },
   {
-    id: 3,
+    id: 4,
     title: "Leadership Spotlight: ONPOD TV, Canada",
     category: "Leadership & Innovation",
     date: "October 2025",
