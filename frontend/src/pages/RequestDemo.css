@@ -334,6 +334,45 @@
   line-height: 1.6;
 }
 
+/* Form Status Messages */
+.form-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.form-status.success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.form-status.error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.form-status.warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+}
+
+.form-status svg {
+  flex-shrink: 0;
+}
+
+.form-status a {
+  color: inherit;
+  text-decoration: underline;
+}
+
 .form-submit-btn {
   width: 100%;
   padding: 1rem 2rem;
@@ -346,16 +385,39 @@
   cursor: pointer;
   transition: all 0.2s;
   margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.form-submit-btn:hover {
+.form-submit-btn:hover:not(:disabled) {
   background: var(--gray);
   color: var(--white);
   border-color: var(--gray);
 }
 
-.form-submit-btn:active {
+.form-submit-btn:active:not(:disabled) {
   transform: scale(0.98);
+}
+
+.form-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Spinner animation */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Contact Information */

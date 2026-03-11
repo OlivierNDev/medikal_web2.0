@@ -1,6 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import './RequestDemo.css';
 
+// Free email service - Get your access key from https://web3forms.com
+// It's completely free and requires no backend!
+const WEB3FORMS_ACCESS_KEY = process.env.REACT_APP_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY_HERE';
+const RECIPIENT_EMAIL = 'info@medikalafrica.com'; // Your email to receive submissions
+
 const contactTypes = [
   {
     id: 'demo',
@@ -38,6 +43,8 @@ const contactTypes = [
 
 const RequestDemo = React.memo(function RequestDemo() {
   const [activeType, setActiveType] = useState('demo');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: null, message: '' });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -55,24 +62,92 @@ const RequestDemo = React.memo(function RequestDemo() {
 
   const handleChange = useCallback((e) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  }, []);
+    // Clear status when user starts typing
+    if (submitStatus.type) {
+      setSubmitStatus({ type: null, message: '' });
+    }
+  }, [submitStatus]);
 
-  const handleSubmit = useCallback((e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', { type: activeType, ...formData });
-    alert(`Thank you! We will respond to your ${activeContact.title.toLowerCase()} request within ${activeContact.responseTime}.`);
-    setFormData({
-      name: '',
-      email: '',
-      organization: '',
-      country: '',
-      facilityType: '',
-      partnershipType: '',
-      researchInstitution: '',
-      researchPurpose: '',
-      supportType: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      // Prepare form data for Web3Forms
+      const formPayload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `${activeContact.title} - ${formData.name} from ${formData.organization}`,
+        from_name: formData.name,
+        email: formData.email,
+        // Format the message with all form fields
+        message: `
+Contact Type: ${activeContact.title} (${activeContact.code})
+Response Time: ${activeContact.responseTime}
+
+--- Contact Information ---
+Name: ${formData.name}
+Email: ${formData.email}
+Organization: ${formData.organization}
+Country: ${formData.country}
+
+${activeType === 'demo' && formData.facilityType ? `Facility Type: ${formData.facilityType}\n` : ''}
+${activeType === 'partnership' && formData.partnershipType ? `Partnership Type: ${formData.partnershipType}\n` : ''}
+${activeType === 'research' && formData.researchInstitution ? `Research Institution: ${formData.researchInstitution}\n` : ''}
+${activeType === 'research' && formData.researchPurpose ? `Research Purpose: ${formData.researchPurpose}\n` : ''}
+${activeType === 'support' && formData.supportType ? `Support Type: ${formData.supportType}\n` : ''}
+
+--- Message ---
+${formData.message || 'No message provided'}
+        `.trim()
+      };
+
+      // Send to Web3Forms API
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formPayload)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: `Thank you, ${formData.name}! We've received your ${activeContact.title.toLowerCase()} request and will respond within ${activeContact.responseTime}.`
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          organization: '',
+          country: '',
+          facilityType: '',
+          partnershipType: '',
+          researchInstitution: '',
+          researchPurpose: '',
+          supportType: '',
+          message: ''
+        });
+
+        // Scroll to top to show success message
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Sorry, there was an error submitting your request. Please try again or contact us directly at info@medikalafrica.com'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }, [formData, activeType, activeContact]);
 
   return (
@@ -130,6 +205,44 @@ const RequestDemo = React.memo(function RequestDemo() {
             </div>
 
             <form onSubmit={handleSubmit} className="contact-form">
+              {/* Status Messages */}
+              {submitStatus.type && (
+                <div className={`form-status ${submitStatus.type}`}>
+                  {submitStatus.type === 'success' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  )}
+                  {submitStatus.type === 'error' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    </svg>
+                  )}
+                  <span>{submitStatus.message}</span>
+                </div>
+              )}
+
+              {/* Setup Notice - Remove this after adding your access key */}
+              {WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE' && (
+                <div className="form-status warning">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                    <line x1="12" y1="9" x2="12" y2="13" />
+                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                  </svg>
+                  <span>
+                    <strong>Setup Required:</strong> Get your free access key from{' '}
+                    <a href="https://web3forms.com" target="_blank" rel="noopener noreferrer" style={{ color: '#5EC4D5', textDecoration: 'underline' }}>
+                      web3forms.com
+                    </a>
+                    {' '}and add it to your .env file as REACT_APP_WEB3FORMS_KEY
+                  </span>
+                </div>
+              )}
+
               <div className="form-grid">
                 <div className="form-group">
                   <label className="form-label" htmlFor="name">
@@ -335,8 +448,21 @@ const RequestDemo = React.memo(function RequestDemo() {
                 />
               </div>
 
-              <button type="submit" className="form-submit-btn">
-                Submit Request
+              <button 
+                type="submit" 
+                className="form-submit-btn"
+                disabled={isSubmitting || WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE'}
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg className="spinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                    </svg>
+                    Submitting...
+                  </>
+                ) : (
+                  'Submit Request'
+                )}
               </button>
             </form>
           </div>
