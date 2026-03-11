@@ -7,9 +7,10 @@ Your contact form is now connected to **Web3Forms**, a completely free email ser
 
 ### Step 1: Get Your Free Access Key
 1. Go to **https://web3forms.com**
-2. Enter your email address (where you want to receive form submissions)
+2. **IMPORTANT:** Enter **info@medikalafrica.com** as your email address (this is where you'll receive all form submissions)
 3. Click "Get Your Access Key"
 4. Copy the access key they provide
+5. **Note:** The access key is tied to the email you register with, so make sure to use info@medikalafrica.com
 
 ### Step 2: Add Access Key to Your Project
 

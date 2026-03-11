@@ -4,7 +4,7 @@ import './RequestDemo.css';
 // Free email service - Get your access key from https://web3forms.com
 // It's completely free and requires no backend!
 const WEB3FORMS_ACCESS_KEY = process.env.REACT_APP_WEB3FORMS_KEY || 'YOUR_ACCESS_KEY_HERE';
-const RECIPIENT_EMAIL = 'info@medikalafrica.com'; // Your email to receive submissions
+const ADMIN_EMAIL = 'info@medikalafrica.com'; // Your email to receive submissions
 
 const contactTypes = [
   {
@@ -74,19 +74,15 @@ const RequestDemo = React.memo(function RequestDemo() {
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      // Prepare form data for Web3Forms
-      const formPayload = {
-        access_key: WEB3FORMS_ACCESS_KEY,
-        subject: `${activeContact.title} - ${formData.name} from ${formData.organization}`,
-        from_name: formData.name,
-        email: formData.email,
-        // Format the message with all form fields
-        message: `
+      // Prepare admin notification email
+      const adminMessage = `
+NEW ${activeContact.title.toUpperCase()} REQUEST
+
 Contact Type: ${activeContact.title} (${activeContact.code})
-Response Time: ${activeContact.responseTime}
+Expected Response Time: ${activeContact.responseTime}
 
 --- Contact Information ---
-Name: ${formData.name}
+Full Name: ${formData.name}
 Email: ${formData.email}
 Organization: ${formData.organization}
 Country: ${formData.country}
@@ -97,9 +93,55 @@ ${activeType === 'research' && formData.researchInstitution ? `Research Institut
 ${activeType === 'research' && formData.researchPurpose ? `Research Purpose: ${formData.researchPurpose}\n` : ''}
 ${activeType === 'support' && formData.supportType ? `Support Type: ${formData.supportType}\n` : ''}
 
---- Message ---
+--- Message from ${formData.name} ---
 ${formData.message || 'No message provided'}
-        `.trim()
+
+---
+This is an automated notification from the Medikal Africa website contact form.
+Please respond to ${formData.email} within ${activeContact.responseTime}.
+      `.trim();
+
+      // Prepare user auto-reply message
+      const userReplyMessage = `
+Dear ${formData.name},
+
+Thank you for contacting Medikal Africa regarding your ${activeContact.title.toLowerCase()} request.
+
+We have received your submission and our team will review it shortly. Here's a summary of your request:
+
+Request Type: ${activeContact.title}
+Expected Response Time: ${activeContact.responseTime}
+Organization: ${formData.organization}
+Country: ${formData.country}
+
+${formData.message ? `Your Message:\n${formData.message}\n\n` : ''}
+
+Our team will get back to you at ${formData.email} within ${activeContact.responseTime}.
+
+If you have any urgent questions, please feel free to contact us directly at info@medikalafrica.com.
+
+Best regards,
+Medikal Africa Team
+
+---
+Medikal Africa
+Strengthening healthcare systems across Africa through AI-powered clinical intelligence.
+Website: https://medikalafrica.com
+      `.trim();
+
+      // Prepare form data for Web3Forms
+      // IMPORTANT: Make sure your Web3Forms access key is registered with info@medikalafrica.com
+      // Go to web3forms.com and ensure your access key is linked to info@medikalafrica.com
+      const formPayload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `[Medikal Africa] ${activeContact.title} - ${formData.name} from ${formData.organization}`,
+        from_name: formData.name,
+        from_email: formData.email,
+        message: adminMessage,
+        // Auto-reply to user (confirmation email)
+        _autoresponse: userReplyMessage,
+        _autoresponse_subject: `Thank you for contacting Medikal Africa - ${activeContact.title}`,
+        _template: 'table'
       };
 
       // Send to Web3Forms API
