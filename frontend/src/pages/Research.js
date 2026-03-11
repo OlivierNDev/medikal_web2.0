@@ -264,26 +264,6 @@ const Research = React.memo(function Research() {
             <div className="publication-item">
               <div className="pub-meta">
                 <span className="pub-type">Research Paper</span>
-                <span className="pub-date">2023</span>
-              </div>
-              <h3>Carbapenem-resistant Enterobacterales in Africa: a systematic review and meta-analysis</h3>
-              <p className="pub-authors">Tadesse BT, et al.</p>
-              <p className="pub-journal">Antimicrobial Resistance & Infection Control</p>
-              <div className="pub-stats">
-                <span>CRE prevalence</span>
-                <span>•</span>
-                <span>Meta-analysis</span>
-                <span>•</span>
-                <span>Risk factors</span>
-              </div>
-              <div className="pub-link">
-                <a href="https://aricjournal.biomedcentral.com/articles/10.1186/s13756-017-0271-1" target="_blank" rel="noopener noreferrer">View on BMC →</a>
-              </div>
-            </div>
-
-            <div className="publication-item">
-              <div className="pub-meta">
-                <span className="pub-type">Research Paper</span>
                 <span className="pub-date">2022</span>
               </div>
               <h3>Antimicrobial resistance patterns of Staphylococcus aureus isolates from clinical specimens in selected African countries</h3>
@@ -298,67 +278,6 @@ const Research = React.memo(function Research() {
               </div>
               <div className="pub-link">
                 <a href="https://bmcinfectdis.biomedcentral.com/articles/10.1186/s12879-017-2713-1" target="_blank" rel="noopener noreferrer">View on BMC Infectious Diseases →</a>
-              </div>
-            </div>
-
-            <div className="publication-item">
-              <div className="pub-meta">
-                <span className="pub-type">Research Paper</span>
-                <span className="pub-date">2023</span>
-              </div>
-              <h3>Antibiotic Use and Resistance Patterns in African Hospitals: A Systematic Review</h3>
-              <p className="pub-authors">Founou RC, et al.</p>
-              <p className="pub-journal">International Journal of Antimicrobial Agents, 2023</p>
-              <div className="pub-stats">
-                <span>Prescribing patterns</span>
-                <span>•</span>
-                <span>Hospital settings</span>
-                <span>•</span>
-                <span>Stewardship focus</span>
-              </div>
-              <div className="pub-link">
-                <a href="https://www.sciencedirect.com/science/article/pii/S0924857923001572" target="_blank" rel="noopener noreferrer">View on ScienceDirect →</a>
-              </div>
-            </div>
-
-            <div className="publication-item">
-              <div className="pub-meta">
-                <span className="pub-type">Research Paper</span>
-                <span className="pub-date">2024</span>
-              </div>
-              <h3>Molecular Characterization of Multidrug-Resistant Klebsiella pneumoniae from African Hospitals</h3>
-              <p className="pub-authors">Iwu CD, et al.</p>
-              <p className="pub-journal">Journal of Global Antimicrobial Resistance, 2024</p>
-              <div className="pub-stats">
-                <span>K. pneumoniae</span>
-                <span>•</span>
-                <span>Molecular analysis</span>
-                <span>•</span>
-                <span>Resistance genes</span>
-              </div>
-              <div className="pub-link">
-                <a href="https://www.sciencedirect.com/science/article/pii/S221371652400012X" target="_blank" rel="noopener noreferrer">View on ScienceDirect →</a>
-              </div>
-            </div>
-
-            <div className="publication-item">
-              <div className="pub-meta">
-                <span className="pub-type">Surveillance Report</span>
-                <span className="pub-date">2024</span>
-              </div>
-              <h3>Africa CDC Antimicrobial Resistance Surveillance Network (AMRSNET) Annual Report</h3>
-              <p className="pub-authors">Africa Centres for Disease Control and Prevention</p>
-              <p className="pub-journal">Africa CDC, 2024</p>
-              <div className="pub-stats">
-                <span>Regional surveillance</span>
-                <span>•</span>
-                <span>Network data</span>
-                <span>•</span>
-                <span>Annual trends</span>
-              </div>
-              <div className="pub-link">
-                <a href="https://africacdc.org/download/annual-report-2024-a-year-of-innovation-response-and-resilience/" target="_blank" rel="noopener noreferrer">View Annual Report →</a>
-                <a href="https://africacdc.org/programme/surveillance-and-disease-intelligence/antimicrobial-resistance/" target="_blank" rel="noopener noreferrer" style={{marginLeft: '1rem'}}>Africa CDC AMR Portal →</a>
               </div>
             </div>
           </div>

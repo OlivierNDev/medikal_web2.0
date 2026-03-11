@@ -263,6 +263,8 @@
   align-items: center;
   padding: 0 0.5rem;
   min-width: 40px;
+  position: relative;
+  overflow: visible;
 }
 
 .connector-line {
@@ -271,6 +273,7 @@
   background: rgba(94, 196, 213, 0.1);
   position: relative;
   transition: all 0.3s ease-out;
+  overflow: visible;
 }
 
 .connector-line.active {
@@ -313,6 +316,35 @@
     left: 100%;
     opacity: 0;
     transform: translateY(-50%) scale(0.8);
+  }
+}
+
+/* Traveling Microbe Styles */
+.traveling-microbe {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 15;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+}
+
+.traveling-microbe svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 6px rgba(94, 196, 213, 0.8));
+  animation: microbe-glow 2s ease-in-out infinite;
+}
+
+@keyframes microbe-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(94, 196, 213, 0.8)) drop-shadow(0 0 3px rgba(94, 196, 213, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(94, 196, 213, 1)) drop-shadow(0 0 6px rgba(94, 196, 213, 0.6));
   }
 }
 

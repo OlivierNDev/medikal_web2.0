@@ -94,24 +94,113 @@ const ChartTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-// Data packet component
-const DataPacket = ({ delay, color }) => (
-  <motion.div
-    className="data-packet"
-    style={{ background: color }}
-    initial={{ x: -20, opacity: 0 }}
-    animate={{ 
-      x: [0, 100, 200, 300, 400],
-      opacity: [0, 1, 1, 1, 0]
-    }}
-    transition={{
-      duration: 3,
-      delay,
-      repeat: Infinity,
-      ease: "linear"
-    }}
-  />
-);
+// Animated Microbe component that travels along the pipeline
+const TravelingMicrobe = ({ fromStage, toStage, delay = 0, isActive }) => {
+  if (!isActive) return null;
+
+  return (
+    <motion.div
+      className="traveling-microbe"
+      initial={{ 
+        opacity: 0, 
+        scale: 0,
+        x: '-10px'
+      }}
+      animate={{ 
+        opacity: [0, 1, 1, 1, 0],
+        scale: [0, 1, 1, 1, 0.8],
+        x: ['-10px', 'calc(100% + 10px)']
+      }}
+      transition={{
+        duration: 2.5,
+        delay,
+        ease: [0.4, 0, 0.2, 1],
+        times: [0, 0.1, 0.5, 0.9, 1],
+        repeat: isActive ? Infinity : 0,
+        repeatDelay: 0.5
+      }}
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 100 100"
+      >
+        {/* Outer membrane */}
+        <circle
+          cx="50"
+          cy="50"
+          r="35"
+          fill="none"
+          stroke="#5EC4D5"
+          strokeWidth="2"
+          opacity="0.4"
+        />
+        {/* Cell wall */}
+        <circle
+          cx="50"
+          cy="50"
+          r="25"
+          fill="none"
+          stroke="#5EC4D5"
+          strokeWidth="1.5"
+          opacity="0.6"
+        />
+        {/* Inner membrane */}
+        <circle
+          cx="50"
+          cy="50"
+          r="15"
+          fill="none"
+          stroke="#5EC4D5"
+          strokeWidth="1"
+          opacity="0.8"
+        />
+        {/* Flagella - animated */}
+        <motion.path
+          d="M 50 50 L 30 30 M 50 50 L 70 30 M 50 50 L 30 70 M 50 50 L 70 70"
+          stroke="#5EC4D5"
+          strokeWidth="1.2"
+          opacity="0.5"
+          strokeLinecap="round"
+          animate={{
+            rotate: [0, 360],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        {/* Nucleoid - glowing core */}
+        <motion.ellipse
+          cx="50"
+          cy="50"
+          rx="8"
+          ry="12"
+          fill="#5EC4D5"
+          animate={{
+            opacity: [0.3, 0.7, 0.3],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        {/* Glowing center */}
+        <circle
+          cx="50"
+          cy="50"
+          r="4"
+          fill="#5EC4D5"
+          opacity="0.9"
+        />
+      </svg>
+    </motion.div>
+  );
+};
 
 // Pipeline node component
 const PipelineNode = ({ label, icon, isActive, stats }) => (
@@ -524,8 +613,24 @@ const MedikalPipeline = React.memo(function MedikalPipeline() {
                   {index < scenes.length - 1 && (
                     <div className="pipeline-connector">
                       <div className={`connector-line ${isCompleted ? 'active' : ''} ${activeScene > scene.id ? 'completed' : ''}`}>
+                        {activeScene === scene.id && (
+                          <TravelingMicrobe 
+                            fromStage={scene.id} 
+                            toStage={scene.id + 1}
+                            delay={0.3}
+                            isActive={true}
+                          />
+                        )}
                         {activeScene > scene.id && (
-                          <div className="data-flow" />
+                          <>
+                            <div className="data-flow" />
+                            <TravelingMicrobe 
+                              fromStage={scene.id} 
+                              toStage={scene.id + 1}
+                              delay={0}
+                              isActive={true}
+                            />
+                          </>
                         )}
                       </div>
                     </div>
