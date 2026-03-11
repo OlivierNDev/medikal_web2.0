@@ -791,20 +791,9 @@ const HowItWorks = React.memo(function HowItWorks() {
                   }}
                   transition={{ delay: i * 0.1, duration: 0.4 }}
                 >
-                  <motion.span 
-                    className="step-num"
-                    animate={activeStep === step.id ? {
-                      scale: [1, 1.2, 1],
-                      rotate: [0, 360]
-                    } : {}}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: activeStep === step.id ? Infinity : 0,
-                      ease: "easeInOut"
-                    }}
-                  >
+                  <span className="step-num">
                     {step.id}
-                  </motion.span>
+                  </span>
                   <span className="step-phase">{step.phase}</span>
                   
                   {/* Active step glow effect */}
@@ -858,46 +847,154 @@ const HowItWorks = React.memo(function HowItWorks() {
                 </motion.button>
                 {i < steps.length - 1 && (
                   <div className={`step-connector ${activeStep > step.id ? 'filled' : ''}`}>
-                    {/* Animated data packets flowing through connector */}
-                    {activeStep > step.id && (
-                      <>
-                        {[...Array(3)].map((_, idx) => (
-                          <motion.div
-                            key={idx}
-                            className="data-packet"
-                            style={{ '--packet-color': steps[i].color }}
-                            initial={{ x: '-10px', opacity: 0 }}
-                            animate={{ 
-                              x: ['-10px', 'calc(100% + 10px)'],
-                              opacity: [0, 1, 1, 0]
+                    {/* Traveling microbe from current step to next */}
+                    {activeStep === step.id && (
+                      <motion.div
+                        className="traveling-microbe-connector"
+                        initial={{ x: '-20px', opacity: 0, scale: 0 }}
+                        animate={{ 
+                          x: ['-20px', 'calc(100% + 20px)'],
+                          opacity: [0, 1, 1, 0],
+                          scale: [0, 1, 1, 0.8]
+                        }}
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                          delay: 0.3,
+                          ease: [0.4, 0, 0.2, 1]
+                        }}
+                      >
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 100 100"
+                          style={{ filter: 'drop-shadow(0 0 6px rgba(94, 196, 213, 0.8))' }}
+                        >
+                          {/* Outer membrane */}
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="35"
+                            fill="none"
+                            stroke="#5EC4D5"
+                            strokeWidth="2"
+                            opacity="0.4"
+                          />
+                          {/* Cell wall */}
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="25"
+                            fill="none"
+                            stroke="#5EC4D5"
+                            strokeWidth="1.5"
+                            opacity="0.6"
+                          />
+                          {/* Inner membrane */}
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="15"
+                            fill="none"
+                            stroke="#5EC4D5"
+                            strokeWidth="1"
+                            opacity="0.8"
+                          />
+                          {/* Flagella - animated */}
+                          <motion.path
+                            d="M 50 50 L 30 30 M 50 50 L 70 30 M 50 50 L 30 70 M 50 50 L 70 70"
+                            stroke="#5EC4D5"
+                            strokeWidth="1.2"
+                            opacity="0.5"
+                            strokeLinecap="round"
+                            animate={{
+                              rotate: [0, 360],
+                              opacity: [0.3, 0.6, 0.3]
                             }}
                             transition={{
                               duration: 2,
                               repeat: Infinity,
-                              delay: idx * 0.7,
                               ease: "linear"
                             }}
                           />
-                        ))}
-                      </>
+                          {/* Nucleoid - glowing core */}
+                          <motion.ellipse
+                            cx="50"
+                            cy="50"
+                            rx="8"
+                            ry="12"
+                            fill="#5EC4D5"
+                            animate={{
+                              opacity: [0.3, 0.7, 0.3],
+                              scale: [1, 1.2, 1]
+                            }}
+                            transition={{
+                              duration: 1.5,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          />
+                          {/* Glowing center */}
+                          <circle
+                            cx="50"
+                            cy="50"
+                            r="4"
+                            fill="#5EC4D5"
+                            opacity="0.9"
+                          />
+                        </svg>
+                      </motion.div>
                     )}
                     
-                    {/* Pulse animation for active connector */}
-                    {activeStep === step.id && (
-                      <motion.div
-                        className="connector-pulse"
-                        style={{ '--pulse-color': step.color }}
-                        initial={{ scaleX: 0, opacity: 0 }}
-                        animate={{
-                          scaleX: [0, 1, 0],
-                          opacity: [0, 0.8, 0]
-                        }}
-                        transition={{
-                          duration: 1.5,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
+                    {/* Microbes for completed connectors */}
+                    {activeStep > step.id && (
+                      <>
+                        {[...Array(2)].map((_, idx) => (
+                          <motion.div
+                            key={idx}
+                            className="traveling-microbe-connector"
+                            initial={{ x: '-20px', opacity: 0, scale: 0 }}
+                            animate={{ 
+                              x: ['-20px', 'calc(100% + 20px)'],
+                              opacity: [0, 1, 1, 0],
+                              scale: [0, 1, 1, 0.8]
+                            }}
+                            transition={{
+                              duration: 2.5,
+                              repeat: Infinity,
+                              delay: idx * 1.2,
+                              ease: [0.4, 0, 0.2, 1]
+                            }}
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 100 100"
+                              style={{ filter: 'drop-shadow(0 0 4px rgba(94, 196, 213, 0.6))' }}
+                            >
+                              <circle cx="50" cy="50" r="30" fill="none" stroke="#5EC4D5" strokeWidth="1.5" opacity="0.3" />
+                              <circle cx="50" cy="50" r="20" fill="none" stroke="#5EC4D5" strokeWidth="1" opacity="0.5" />
+                              <circle cx="50" cy="50" r="12" fill="none" stroke="#5EC4D5" strokeWidth="0.8" opacity="0.7" />
+                              <motion.ellipse
+                                cx="50"
+                                cy="50"
+                                rx="6"
+                                ry="10"
+                                fill="#5EC4D5"
+                                animate={{
+                                  opacity: [0.2, 0.5, 0.2]
+                                }}
+                                transition={{
+                                  duration: 1.5,
+                                  repeat: Infinity,
+                                  ease: "easeInOut"
+                                }}
+                              />
+                              <circle cx="50" cy="50" r="3" fill="#5EC4D5" opacity="0.8" />
+                            </svg>
+                          </motion.div>
+                        ))}
+                      </>
                     )}
                   </div>
                 )}
