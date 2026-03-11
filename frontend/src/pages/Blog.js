@@ -23,39 +23,12 @@ const newsArticles = [
   },
   {
     id: 3,
-    title: "Leadership Spotlight: Outbreak News, USA",
-    category: "Leadership & Innovation",
-    date: "November 2025",
-    excerpt: "Our co-founder and AMR Initiative Rwanda founder, Marcel Ishimwe, has been invited to the Outbreak News Interviews Podcast to share how AMR Initiative Rwanda is actively tackling antimicrobial resistance in Rwanda through collaboration with Medikal Africa.",
-    content: "Marcel Ishimwe, Co-Founder & Director of Strategic Partnerships of Medikal and founder of AMR Initiative Rwanda, was featured on the Outbreak News Interviews Podcast. He discussed how AMR Initiative Rwanda is actively tackling antimicrobial resistance in Rwanda through strategic collaboration with Medikal Africa. The interview highlighted innovative approaches to AMR surveillance and prevention.",
-    image: null
-  },
-  {
-    id: 4,
     title: "Leadership Spotlight: ONPOD TV, Canada",
     category: "Leadership & Innovation",
     date: "October 2025",
     excerpt: "Our founder and CEO, Olivier Niyonshima, was featured on ONPOD TV Canada in an exclusive interview highlighting Medikal's groundbreaking mission to fight antimicrobial resistance (AMR) across Africa through artificial intelligence.",
     content: "Olivier Niyonshima, Founder and CEO of Medikal Africa, was featured on ONPOD TV Canada in an exclusive interview. He discussed Medikal's groundbreaking mission to fight antimicrobial resistance (AMR) across Africa through artificial intelligence. The interview explored how AI-powered solutions can transform healthcare delivery and improve patient outcomes across the continent.",
     videoUrl: "https://www.youtube.com/embed/fs0uUfnqxOw"
-  },
-  {
-    id: 5,
-    title: "ZeroX Intelligence × RoboLabs — Deploying cBot UV-C Disinfection Robots in Africa",
-    category: "Healthcare Innovation",
-    date: "October 2025",
-    excerpt: "Medikal Africa's parent company ZeroX Intelligence partners with RoboLabs to bring advanced autonomous disinfection technology to African healthcare facilities, working alongside Medikal AI to reduce healthcare-associated infections.",
-    content: "Medikal Africa's parent company ZeroX Intelligence has partnered with RoboLabs to deploy cBot UV-C disinfection robots in African healthcare facilities. This innovative partnership combines autonomous disinfection technology with Medikal's AI-powered surveillance to create a comprehensive infection prevention system. The robots work alongside Medikal AI to reduce healthcare-associated infections and improve patient safety.",
-    image: null
-  },
-  {
-    id: 6,
-    title: "ZeroX Intelligence Partners with AMR Initiative Rwanda to Develop 'Medikal'",
-    category: "Healthcare & AI Innovation",
-    date: "October 2025",
-    excerpt: "Medikal is an AI-powered health assistant developed by ZeroX Intelligence and AMR Initiative Rwanda to help clinicians and patients improve diagnosis accuracy, manage medication adherence, and reduce antimicrobial misuse.",
-    content: "ZeroX Intelligence has partnered with AMR Initiative Rwanda to develop Medikal, an AI-powered health assistant designed to help clinicians and patients improve diagnosis accuracy, manage medication adherence, and reduce antimicrobial misuse. This strategic partnership combines ZeroX's technical expertise with AMR Initiative Rwanda's deep understanding of healthcare challenges in Africa.",
-    image: null
   }
 ];
 
