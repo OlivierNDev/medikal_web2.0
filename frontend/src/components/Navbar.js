@@ -26,6 +26,7 @@ const Navbar = React.memo(function Navbar() {
             <Link to="/amr" className={isActive('/amr')}>AMR</Link>
             <Link to="/team" className={isActive('/team')}>Team</Link>
             <Link to="/research" className={isActive('/research')}>Research</Link>
+            <Link to="/blog" className={isActive('/blog')}>News</Link>
           </div>
 
           <Link to="/request-demo" className="nav-cta" data-testid="nav-cta">Request Demo</Link>
@@ -70,6 +71,7 @@ const Navbar = React.memo(function Navbar() {
           <Link to="/amr" onClick={handleMobileClose}>AMR Intelligence</Link>
           <Link to="/team" onClick={handleMobileClose}>Team</Link>
           <Link to="/research" onClick={handleMobileClose}>Research</Link>
+          <Link to="/blog" onClick={handleMobileClose}>News</Link>
           <Link to="/request-demo" onClick={handleMobileClose}>Request Demo</Link>
         </div>
       </div>
