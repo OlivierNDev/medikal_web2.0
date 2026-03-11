@@ -537,7 +537,7 @@ Website: https://medikalafrica.com
               <div className="info-code">CI-004</div>
               <h3>Location</h3>
               <p>Headquarters</p>
-              <div className="info-value">Kigali, Rwanda</div>
+              <div className="info-value">Ottawa, Canada</div>
             </div>
           </div>
         </div>

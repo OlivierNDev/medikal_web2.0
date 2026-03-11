@@ -504,7 +504,7 @@ const Terms = React.memo(function Terms() {
                   <div className="contact-item">
                     <h4>Legal Department</h4>
                     <p>Medikal Africa</p>
-                    <p>Kigali, Rwanda</p>
+                    <p>Ottawa, Canada</p>
                     <p><a href="mailto:legal@medikalafrica.com">legal@medikalafrica.com</a></p>
                   </div>
 

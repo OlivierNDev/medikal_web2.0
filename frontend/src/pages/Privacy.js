@@ -58,7 +58,7 @@ const Privacy = React.memo(function Privacy() {
 
                 <div className="info-box">
                   <h4>Data Controller</h4>
-                  <p>Medikal Africa, headquartered in Kigali, Rwanda, serves as the data controller for information processed through our platform. Healthcare facilities and institutions using our services act as data processors for their respective patient data.</p>
+                  <p>Medikal Africa, headquartered in Ottawa, Canada, serves as the data controller for information processed through our platform. Healthcare facilities and institutions using our services act as data processors for their respective patient data.</p>
                 </div>
               </div>
             </section>
@@ -427,7 +427,7 @@ const Privacy = React.memo(function Privacy() {
                   <div className="contact-item">
                     <h4>Privacy Officer</h4>
                     <p>Medikal Africa</p>
-                    <p>Kigali, Rwanda</p>
+                    <p>Ottawa, Canada</p>
                     <p><a href="mailto:privacy@medikalafrica.com">privacy@medikalafrica.com</a></p>
                   </div>
 
