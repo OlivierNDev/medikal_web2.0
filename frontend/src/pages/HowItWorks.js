@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import './HowItWorks.css';
@@ -733,23 +733,6 @@ const StepVisual = ({ type, isActive }) => {
 
 const HowItWorks = React.memo(function HowItWorks() {
   const [activeStep, setActiveStep] = useState(1);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
-
-  // Auto-advance feature
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    
-    const interval = setInterval(() => {
-      setActiveStep(prev => {
-        if (prev >= steps.length) {
-          return 1; // Loop back to start
-        }
-        return prev + 1;
-      });
-    }, 4000); // Change step every 4 seconds
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, steps.length]);
 
   return (
     <div className="hiw-page" data-testid="how-it-works-page">
@@ -1048,27 +1031,17 @@ const HowItWorks = React.memo(function HowItWorks() {
               className="hiw-nav-btn"
               disabled={activeStep === 1}
               onClick={() => {
-                setIsAutoPlaying(false);
                 setActiveStep(s => s - 1);
               }}
               data-testid="hiw-prev-btn"
             >
               Previous
             </button>
-            <button
-              className={`hiw-nav-btn ${isAutoPlaying ? 'active' : ''}`}
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              data-testid="hiw-autoplay-btn"
-              title={isAutoPlaying ? 'Pause animation' : 'Auto-play animation'}
-            >
-              {isAutoPlaying ? '⏸ Pause' : '▶ Auto'}
-            </button>
             <span className="hiw-nav-count">{activeStep} / {steps.length}</span>
             <button
               className="hiw-nav-btn primary"
               disabled={activeStep === steps.length}
               onClick={() => {
-                setIsAutoPlaying(false);
                 setActiveStep(s => s + 1);
               }}
               data-testid="hiw-next-btn"
